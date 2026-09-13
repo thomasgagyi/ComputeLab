@@ -1,0 +1,23 @@
+add_library(ComputeLabCudaTransform STATIC
+    CudaTransform.cu
+    CudaTransform.hpp
+)
+
+target_include_directories(ComputeLabCudaTransform
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(ComputeLabCudaTransform
+    PRIVATE
+        CUDA::cudart
+)
+
+set_target_properties(ComputeLabCudaTransform
+    PROPERTIES
+        CUDA_ARCHITECTURES native
+        CUDA_STANDARD 20
+        CUDA_STANDARD_REQUIRED ON
+)
+
+target_compile_features(ComputeLabCudaTransform PUBLIC cxx_std_20)

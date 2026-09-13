@@ -22,6 +22,11 @@ if(TARGET ComputeLabEnvironment)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEnvironment)
 endif()
 
+if(TARGET ComputeLabCudaTransform)
+    target_sources(ComputeLabTests PRIVATE CudaTransformTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabCudaTransform)
+endif()
+
 include(GoogleTest)
 
 gtest_discover_tests(ComputeLabTests)
