@@ -96,5 +96,4 @@ Correctness validation and experiment metadata are required by the methodology.
 
 Environment and repository bootstrap are complete.
 
-EX-1 is ready for human approval. Its workloads and timing infrastructure must
-not be implemented until that approval is recorded in Git history.
+EX-1 is approved for implementation under the committed specification.

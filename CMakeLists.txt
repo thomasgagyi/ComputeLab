@@ -23,6 +23,7 @@ if(Q0_ENABLE_VULKAN)
     find_package(Vulkan 1.4 REQUIRED)
 endif()
 
+add_subdirectory(src/input)
 add_subdirectory(src/app)
 add_subdirectory(tests)
 add_subdirectory(tools/smoke)
