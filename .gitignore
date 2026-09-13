@@ -1,0 +1,128 @@
+# =============================================================================
+# ComputeLab
+# Local/editor/build artifacts only.
+# Source, experiment specifications, schemas, and curated evidence stay tracked.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# Visual Studio / IDE state
+# -----------------------------------------------------------------------------
+
+.vs/
+.vscode/
+.idea/
+
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+
+# -----------------------------------------------------------------------------
+# CMake local configuration
+# -----------------------------------------------------------------------------
+
+# Shared project presets are committed.
+# Developer/machine-specific presets are not.
+CMakeUserPresets.json
+
+# Primary out-of-source build tree.
+out/
+
+# Protect against accidental alternative/in-source build trees.
+build/
+cmake-build-*/
+
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+Testing/
+
+build.ninja
+rules.ninja
+.ninja_deps
+.ninja_log
+
+compile_commands.json
+
+
+# -----------------------------------------------------------------------------
+# vcpkg generated state
+# -----------------------------------------------------------------------------
+
+# vcpkg.json and its builtin-baseline ARE committed.
+# Installed/generated package trees are not.
+vcpkg_installed/
+buildtrees/
+packages/
+downloads/
+
+
+# -----------------------------------------------------------------------------
+# Native compiler/linker artifacts
+# -----------------------------------------------------------------------------
+
+*.obj
+*.iobj
+*.idb
+*.ipdb
+*.pch
+*.pdb
+*.ilk
+*.exp
+*.dll
+*.exe
+
+
+# -----------------------------------------------------------------------------
+# Profilers / GPU diagnostic captures
+# -----------------------------------------------------------------------------
+
+*.ncu-rep
+*.nsys-rep
+*.qdrep
+*.etl
+
+
+# -----------------------------------------------------------------------------
+# Experiment output
+# -----------------------------------------------------------------------------
+
+# Local/raw exploratory runs are not committed by default.
+# Later, deliberately curated evidence may live separately under
+# results/evidence/ and remain trackable.
+results/local/
+results/tmp/
+results/scratch/
+
+
+# -----------------------------------------------------------------------------
+# Local environment / secrets
+# -----------------------------------------------------------------------------
+
+.env
+.env.*
+!.env.example
+
+
+# -----------------------------------------------------------------------------
+# Logs / temporary files
+# -----------------------------------------------------------------------------
+
+*.log
+*.tmp
+*.bak
+*~
+~$*
+
+
+# -----------------------------------------------------------------------------
+# OS junk
+# -----------------------------------------------------------------------------
+
+Thumbs.db
+Desktop.ini
+.DS_Store
