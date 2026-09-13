@@ -1,8 +1,81 @@
 #include <vulkan/vulkan.h>
 
 #include <cstdlib>
+#include <iomanip>
 #include <iostream>
+#include <limits>
+#include <sstream>
+#include <string>
 #include <vector>
+
+namespace
+{
+    std::string FormatUuid(const uint8_t (&uuid)[VK_UUID_SIZE])
+    {
+        std::ostringstream stream;
+        stream << std::hex << std::setfill('0');
+
+        for (uint8_t byte : uuid)
+        {
+            stream << std::setw(2) << static_cast<unsigned int>(byte);
+        }
+
+        return stream.str();
+    }
+
+    bool CreateComputeDevice(
+        VkPhysicalDevice physicalDevice,
+        uint32_t queueFamilyIndex)
+    {
+        constexpr float queuePriority = 1.0F;
+
+        VkDeviceQueueCreateInfo queueCreateInfo{};
+        queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+        queueCreateInfo.queueFamilyIndex = queueFamilyIndex;
+        queueCreateInfo.queueCount = 1;
+        queueCreateInfo.pQueuePriorities = &queuePriority;
+
+        VkDeviceCreateInfo deviceCreateInfo{};
+        deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+        deviceCreateInfo.queueCreateInfoCount = 1;
+        deviceCreateInfo.pQueueCreateInfos = &queueCreateInfo;
+
+        VkDevice logicalDevice = VK_NULL_HANDLE;
+        const VkResult createResult =
+            vkCreateDevice(
+                physicalDevice,
+                &deviceCreateInfo,
+                nullptr,
+                &logicalDevice);
+
+        if (createResult != VK_SUCCESS)
+        {
+            std::cerr
+                << "vkCreateDevice failed: "
+                << createResult
+                << '\n';
+
+            return false;
+        }
+
+        VkQueue queue = VK_NULL_HANDLE;
+        vkGetDeviceQueue(
+            logicalDevice,
+            queueFamilyIndex,
+            0,
+            &queue);
+
+        const bool queueCreated = queue != VK_NULL_HANDLE;
+        vkDestroyDevice(logicalDevice, nullptr);
+
+        if (!queueCreated)
+        {
+            std::cerr << "vkGetDeviceQueue returned a null queue.\n";
+        }
+
+        return queueCreated;
+    }
+}
 
 int main()
 {
@@ -12,7 +85,7 @@ int main()
     applicationInfo.applicationVersion = VK_MAKE_VERSION(0, 1, 0);
     applicationInfo.pEngineName = "None";
     applicationInfo.engineVersion = VK_MAKE_VERSION(0, 1, 0);
-    applicationInfo.apiVersion = VK_API_VERSION_1_0;
+    applicationInfo.apiVersion = VK_API_VERSION_1_1;
 
     VkInstanceCreateInfo instanceCreateInfo{};
     instanceCreateInfo.sType =
@@ -71,12 +144,19 @@ int main()
         return EXIT_FAILURE;
     }
 
-    bool computeDeviceFound = false;
+    bool qualifiedDeviceFound = false;
 
     for (VkPhysicalDevice device : devices)
     {
-        VkPhysicalDeviceProperties properties{};
-        vkGetPhysicalDeviceProperties(
+        VkPhysicalDeviceIDProperties idProperties{};
+        idProperties.sType =
+            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES;
+
+        VkPhysicalDeviceProperties2 properties{};
+        properties.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2;
+        properties.pNext = &idProperties;
+
+        vkGetPhysicalDeviceProperties2(
             device,
             &properties);
 
@@ -95,44 +175,75 @@ int main()
             &queueFamilyCount,
             queueFamilies.data());
 
-        bool supportsCompute = false;
+        uint32_t qualifiedQueueFamily =
+            std::numeric_limits<uint32_t>::max();
 
-        for (const auto& queueFamily : queueFamilies)
+        for (uint32_t index = 0; index < queueFamilyCount; ++index)
         {
-            if ((queueFamily.queueFlags & VK_QUEUE_COMPUTE_BIT) != 0)
+            const VkQueueFamilyProperties& queueFamily = queueFamilies[index];
+
+            if (
+                (queueFamily.queueFlags & VK_QUEUE_COMPUTE_BIT) != 0 &&
+                queueFamily.timestampValidBits != 0)
             {
-                supportsCompute = true;
+                qualifiedQueueFamily = index;
                 break;
             }
         }
 
+        const bool hasComputeQueue =
+            qualifiedQueueFamily != std::numeric_limits<uint32_t>::max();
+
         std::cout
             << "Vulkan device: "
-            << properties.deviceName
+            << properties.properties.deviceName
             << '\n'
             << "API version: "
-            << VK_VERSION_MAJOR(properties.apiVersion)
+            << VK_VERSION_MAJOR(properties.properties.apiVersion)
             << '.'
-            << VK_VERSION_MINOR(properties.apiVersion)
+            << VK_VERSION_MINOR(properties.properties.apiVersion)
             << '.'
-            << VK_VERSION_PATCH(properties.apiVersion)
+            << VK_VERSION_PATCH(properties.properties.apiVersion)
             << '\n'
             << "Compute queue: "
-            << (supportsCompute ? "yes" : "no")
+            << (hasComputeQueue ? "yes" : "no")
             << '\n';
 
-        if (supportsCompute)
+        if (!hasComputeQueue)
         {
-            computeDeviceFound = true;
+            std::cout << "Device timestamps: no\n";
+            continue;
         }
+
+        const uint32_t timestampValidBits =
+            queueFamilies[qualifiedQueueFamily].timestampValidBits;
+
+        std::cout
+            << "Device timestamps: yes ("
+            << timestampValidBits
+            << " valid bits)\n";
+
+        if (!CreateComputeDevice(device, qualifiedQueueFamily))
+        {
+            continue;
+        }
+
+        std::cout
+            << "Logical device and compute queue: OK\n"
+            << "COMPUTELAB_DEVICE_UUID="
+            << FormatUuid(idProperties.deviceUUID)
+            << '\n';
+
+        qualifiedDeviceFound = true;
     }
 
     vkDestroyInstance(instance, nullptr);
 
-    if (!computeDeviceFound)
+    if (!qualifiedDeviceFound)
     {
         std::cerr
-            << "No Vulkan compute-capable device was found.\n";
+            << "No Vulkan device with compute timestamps and a usable queue "
+            << "was found.\n";
 
         return EXIT_FAILURE;
     }

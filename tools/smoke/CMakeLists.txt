@@ -60,3 +60,23 @@ if(Q0_ENABLE_VULKAN)
             LABELS "smoke;vulkan"
     )
 endif()
+
+
+if(Q0_ENABLE_CUDA AND Q0_ENABLE_VULKAN)
+    add_test(
+        NAME ComputeLabSmoke.GpuIdentity
+        COMMAND
+            powershell
+            -NoProfile
+            -ExecutionPolicy Bypass
+            -File ${CMAKE_SOURCE_DIR}/scripts/check-gpu-identity.ps1
+            -CudaExecutable $<TARGET_FILE:ComputeLabCudaSmoke>
+            -VulkanExecutable $<TARGET_FILE:ComputeLabVulkanSmoke>
+    )
+
+    set_tests_properties(
+        ComputeLabSmoke.GpuIdentity
+        PROPERTIES
+            LABELS "smoke;cuda;vulkan"
+    )
+endif()

@@ -28,6 +28,11 @@ $vsInstall = & $vswhere `
     -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
     -property installationPath
 
+if ($LASTEXITCODE -ne 0)
+{
+    throw "vswhere failed with exit code $LASTEXITCODE."
+}
+
 if (-not $vsInstall)
 {
     throw 'No compatible Visual Studio installation was found.'
@@ -48,7 +53,18 @@ Push-Location $repoRoot
 try
 {
     cmake --preset x64-debug
+
+    if ($LASTEXITCODE -ne 0)
+    {
+        throw "CMake configure failed with exit code $LASTEXITCODE."
+    }
+
     cmake --build --preset x64-debug
+
+    if ($LASTEXITCODE -ne 0)
+    {
+        throw "CMake build failed with exit code $LASTEXITCODE."
+    }
 }
 finally
 {

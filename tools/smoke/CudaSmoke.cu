@@ -1,8 +1,11 @@
 #include <cuda_runtime.h>
 
 #include <cstdlib>
+#include <iomanip>
 #include <iostream>
 #include <device_launch_parameters.h>
+#include <sstream>
+#include <string>
 
 namespace
 {
@@ -20,6 +23,21 @@ namespace
             << '\n';
 
         return false;
+    }
+
+    std::string FormatUuid(const cudaUUID_t& uuid)
+    {
+        std::ostringstream stream;
+        stream << std::hex << std::setfill('0');
+
+        for (char byte : uuid.bytes)
+        {
+            stream << std::setw(2)
+                   << static_cast<unsigned int>(
+                          static_cast<unsigned char>(byte));
+        }
+
+        return stream.str();
     }
 
     __global__ void WriteValue(int* value)
@@ -65,6 +83,9 @@ int main()
         << properties.major
         << '.'
         << properties.minor
+        << '\n'
+        << "COMPUTELAB_DEVICE_UUID="
+        << FormatUuid(properties.uuid)
         << '\n';
 
     int* deviceValue = nullptr;
