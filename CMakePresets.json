@@ -37,7 +37,8 @@
       "displayName": "x64 Debug",
       "inherits": "windows-base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "COMPUTELAB_CONFIGURE_PRESET": "x64-debug"
       }
     },
     {
@@ -45,7 +46,8 @@
       "displayName": "x64 Release",
       "inherits": "windows-base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "COMPUTELAB_CONFIGURE_PRESET": "x64-release"
       }
     }
   ],

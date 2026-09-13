@@ -15,6 +15,11 @@ target_link_libraries(ComputeLabTests
         ComputeLabResults
 )
 
+if(TARGET ComputeLabEnvironment)
+    target_sources(ComputeLabTests PRIVATE EnvironmentCollectorTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEnvironment)
+endif()
+
 include(GoogleTest)
 
 gtest_discover_tests(ComputeLabTests)
