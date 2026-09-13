@@ -25,6 +25,7 @@ endif()
 
 add_subdirectory(src/input)
 add_subdirectory(src/oracle)
+add_subdirectory(src/results)
 add_subdirectory(src/app)
 add_subdirectory(tests)
 add_subdirectory(tools/smoke)

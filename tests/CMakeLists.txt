@@ -4,6 +4,7 @@ add_executable(ComputeLabTests
     SmokeTests.cpp
     SeededInputTests.cpp
     DeterministicTransformTests.cpp
+    ResultRecordsTests.cpp
 )
 
 target_link_libraries(ComputeLabTests
@@ -11,6 +12,7 @@ target_link_libraries(ComputeLabTests
         GTest::gtest_main
         ComputeLabSeededInput
         ComputeLabDeterministicOracle
+        ComputeLabResults
 )
 
 include(GoogleTest)
