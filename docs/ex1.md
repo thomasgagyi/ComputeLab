@@ -2,11 +2,11 @@
 
 ## Status
 
-Ready for human approval.
+Approved.
 
-Execution remains blocked until a human approver changes this status to
-`Approved`. The approval change must be preserved in Git history before EX-1
-workload or timing implementation begins.
+EX-1 implementation may begin under the committed specification.
+Any change to experiment semantics, timing boundaries, controls, or
+acceptance criteria requires human review before execution.
 
 ## Question
 
