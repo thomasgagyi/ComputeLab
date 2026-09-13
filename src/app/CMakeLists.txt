@@ -1,7 +1,6 @@
-﻿add_executable(
+add_executable(
     ComputeLab
-    "ComputeLab.cpp"
-    "ComputeLab.h"
+    main.cpp
 )
 
 target_compile_features(
