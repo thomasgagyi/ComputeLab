@@ -5,6 +5,7 @@ add_executable(ComputeLabTests
     SeededInputTests.cpp
     DeterministicTransformTests.cpp
     ResultRecordsTests.cpp
+    HostTimingTests.cpp
 )
 
 target_link_libraries(ComputeLabTests
@@ -13,6 +14,7 @@ target_link_libraries(ComputeLabTests
         ComputeLabSeededInput
         ComputeLabDeterministicOracle
         ComputeLabResults
+        ComputeLabHostTiming
 )
 
 if(TARGET ComputeLabEnvironment)
