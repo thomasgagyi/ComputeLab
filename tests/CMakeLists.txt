@@ -29,4 +29,11 @@ endif()
 
 include(GoogleTest)
 
+if(TARGET ComputeLabVulkanTransform)
+    target_sources(ComputeLabTests PRIVATE VulkanTransformTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabVulkanTransform)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_EX1_SPIRV_PATH="${COMPUTELAB_EX1_SPIRV_PATH}")
+endif()
+
 gtest_discover_tests(ComputeLabTests)

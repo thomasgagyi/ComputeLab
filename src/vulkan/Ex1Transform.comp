@@ -1,0 +1,23 @@
+#version 450
+
+// EX-1 implementation constant; no workgroup-size tuning is performed.
+layout(local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
+layout(set = 0, binding = 0, std430) readonly buffer Input { uint values[]; } inputData;
+layout(set = 0, binding = 1, std430) writeonly buffer Output { uint values[]; } outputData;
+layout(push_constant) uniform Parameters { uint elementCount; } parameters;
+
+void main()
+{
+    uint index = gl_GlobalInvocationID.x;
+    if (index >= parameters.elementCount)
+        return;
+
+    uint value = inputData.values[index];
+    value ^= index * 0x9E3779B9U;
+    value ^= value >> 16U;
+    value *= 0x85EBCA6BU;
+    value ^= value >> 13U;
+    value *= 0xC2B2AE35U;
+    value ^= value >> 16U;
+    outputData.values[index] = value;
+}

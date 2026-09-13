@@ -1,0 +1,20 @@
+set(COMPUTELAB_EX1_SPIRV_PATH "${CMAKE_CURRENT_BINARY_DIR}/Ex1Transform.comp.spv")
+add_custom_command(
+    OUTPUT "${COMPUTELAB_EX1_SPIRV_PATH}"
+    # SPIR-V 1.3 retains literal LocalSize, avoiding an unrelated maintenance4
+    # feature requirement from SPIR-V 1.6 LocalSizeId emission.
+    COMMAND Vulkan::glslc --target-env=vulkan1.3 --target-spv=spv1.3
+        "${CMAKE_CURRENT_SOURCE_DIR}/Ex1Transform.comp"
+        -o "${COMPUTELAB_EX1_SPIRV_PATH}"
+    DEPENDS Ex1Transform.comp
+    VERBATIM
+)
+add_library(ComputeLabVulkanTransform STATIC
+    VulkanTransform.cpp VulkanTransform.hpp
+    VulkanTiming.cpp VulkanTiming.hpp
+    "${COMPUTELAB_EX1_SPIRV_PATH}"
+)
+target_compile_features(ComputeLabVulkanTransform PUBLIC cxx_std_20)
+target_include_directories(ComputeLabVulkanTransform PUBLIC "${PROJECT_SOURCE_DIR}/src")
+target_link_libraries(ComputeLabVulkanTransform PUBLIC Vulkan::Vulkan)
+set(COMPUTELAB_EX1_SPIRV_PATH "${COMPUTELAB_EX1_SPIRV_PATH}" PARENT_SCOPE)
