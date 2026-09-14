@@ -22,6 +22,11 @@ if(TARGET ComputeLabEnvironment)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEnvironment)
 endif()
 
+if(TARGET ComputeLabEx1Support)
+    target_sources(ComputeLabTests PRIVATE Ex1SupportTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx1Support)
+endif()
+
 if(TARGET ComputeLabCudaTransform)
     target_sources(ComputeLabTests PRIVATE CudaTransformTests.cpp)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabCudaTransform)
