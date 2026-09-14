@@ -52,6 +52,7 @@ function Write-Ex1BuildProvenance
 
     $paths = Get-Ex1BuildProvenancePaths -RepoRoot $RepoRoot -Preset $Preset
     $executableHash = Get-Ex1Sha256 -LiteralPath $paths.Executable
+
     $spirvRecord = $null
     if (Test-Path -LiteralPath $paths.Spirv -PathType Leaf)
     {
@@ -73,10 +74,18 @@ function Write-Ex1BuildProvenance
     }
 
     $temporaryManifest = "$($paths.Manifest).tmp-$PID-$([Guid]::NewGuid().ToString('N'))"
+
     try
     {
-        $manifest | ConvertTo-Json -Depth 4 |
-            Set-Content -LiteralPath $temporaryManifest -Encoding utf8NoBOM
+        $json = $manifest | ConvertTo-Json -Depth 4
+        $utf8NoBom = [System.Text.UTF8Encoding]::new($false, $true)
+
+        [System.IO.File]::WriteAllText(
+            $temporaryManifest,
+            $json + [Environment]::NewLine,
+            $utf8NoBom
+        )
+
         Move-Item -LiteralPath $temporaryManifest -Destination $paths.Manifest
     }
     finally
