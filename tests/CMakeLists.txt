@@ -29,7 +29,7 @@ endif()
 
 if(TARGET ComputeLabCudaTransform)
     target_sources(ComputeLabTests PRIVATE CudaTransformTests.cpp)
-    target_link_libraries(ComputeLabTests PRIVATE ComputeLabCudaTransform)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabCudaTransform CUDA::cudart)
 endif()
 
 include(GoogleTest)

@@ -4,11 +4,14 @@
 
 #include <array>
 #include <cstdint>
+#include <optional>
 #include <string>
 #include <vector>
 
 namespace computelab::environment
 {
+
+using DeviceUuid = std::array<std::uint8_t, 16>;
 
 struct EnvironmentRunContext
 {
@@ -44,7 +47,7 @@ struct BuildMetadata
 
 struct CudaDeviceMetadata
 {
-    std::array<std::uint8_t, 16> uuid;
+    DeviceUuid uuid;
     std::string name;
     std::uint64_t totalGlobalMemoryBytes{};
     int computeCapabilityMajor{};
@@ -54,7 +57,7 @@ struct CudaDeviceMetadata
 
 struct VulkanDeviceMetadata
 {
-    std::array<std::uint8_t, 16> uuid;
+    DeviceUuid uuid;
     std::uint32_t vendorId{};
     std::uint32_t deviceId{};
     std::string deviceApiVersion;
@@ -68,10 +71,12 @@ struct VulkanDeviceMetadata
     const EnvironmentRunContext& context,
     const WindowsHostMetadata& host,
     const BuildMetadata& build,
-    const CudaDeviceMetadata& cudaDevice,
+    const std::optional<DeviceUuid>& measuredDeviceUuid,
+    const std::vector<CudaDeviceMetadata>& cudaDevices,
     const std::vector<VulkanDeviceMetadata>& vulkanDevices,
-    const std::string& nvidiaDriverVersion);
+    const std::optional<std::string>& nvidiaDriverVersion);
 [[nodiscard]] results::EnvironmentRecord CollectEnvironmentRecord(
-    const EnvironmentRunContext& context);
+    const EnvironmentRunContext& context,
+    const std::optional<DeviceUuid>& measuredDeviceUuid);
 
 } // namespace computelab::environment

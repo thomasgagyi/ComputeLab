@@ -125,6 +125,7 @@ public:
     }
 
     std::size_t elementCount;
+    std::array<std::uint8_t, 16> selectedDeviceUuid{};
     std::uint32_t* input{nullptr};
     std::uint32_t* output{nullptr};
     cudaStream_t stream{nullptr};
@@ -172,6 +173,11 @@ CudaTransformOperation::CudaTransformOperation(
     CheckCuda(
         cudaGetDeviceProperties(&deviceProperties, deviceOrdinal),
         "cudaGetDeviceProperties during CUDA setup");
+    for (std::size_t index = 0U; index < impl_->selectedDeviceUuid.size(); ++index)
+    {
+        impl_->selectedDeviceUuid[index] =
+            static_cast<std::uint8_t>(deviceProperties.uuid.bytes[index]);
+    }
 
     const std::size_t requiredBlocks =
         elementCount / threadsPerBlock +
@@ -222,6 +228,12 @@ CudaTransformOperation::~CudaTransformOperation() = default;
 std::size_t CudaTransformOperation::ElementCount() const noexcept
 {
     return impl_->elementCount;
+}
+
+const std::array<std::uint8_t, 16>&
+CudaTransformOperation::SelectedDeviceUuid() const noexcept
+{
+    return impl_->selectedDeviceUuid;
 }
 
 void CudaTransformOperation::Upload(std::span<const std::uint32_t> input)

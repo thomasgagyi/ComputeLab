@@ -5,6 +5,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstdint>
@@ -124,6 +125,15 @@ TEST(VulkanTransform, SelectedQueueAndEnabledFeaturesMeetA7Requirements)
     EXPECT_TRUE(info.hostQueryResetEnabled);
     EXPECT_GT(info.properties.limits.timestampPeriod, 0.0F);
     EXPECT_TRUE(std::isfinite(info.properties.limits.timestampPeriod));
+}
+
+TEST(VulkanTransform, SelectedDeviceUuidIsExposedFromOwnedPhysicalDevice)
+{
+    vk::TransformDispatch dispatch(1, SpirvPath);
+    EXPECT_EQ(dispatch.SelectedDeviceUuid(), dispatch.Diagnostics().deviceUuid);
+    EXPECT_TRUE(std::any_of(
+        dispatch.SelectedDeviceUuid().begin(), dispatch.SelectedDeviceUuid().end(),
+        [](std::uint8_t value) { return value != 0U; }));
 }
 
 TEST(VulkanTransform, DestructionSafelyDrainsAnAbandonedSubmission)

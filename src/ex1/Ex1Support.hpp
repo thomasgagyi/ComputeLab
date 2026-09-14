@@ -58,6 +58,15 @@ struct SampleTimings
     std::optional<std::uint64_t> downloadNs;
 };
 
+using CpuTransformFunction = std::vector<std::uint32_t> (*)(
+    const std::vector<std::uint32_t>& input);
+
+struct CpuSeriesExecution
+{
+    std::vector<results::SampleRecord> samples;
+    bool validationPassed{true};
+};
+
 [[nodiscard]] std::string_view ToString(Backend backend) noexcept;
 [[nodiscard]] bool IsApprovedWarmupCount(std::uint64_t value) noexcept;
 [[nodiscard]] bool IsApprovedSampleCount(std::uint64_t value) noexcept;
@@ -65,6 +74,16 @@ struct SampleTimings
 [[nodiscard]] std::string SeriesId(const Configuration& configuration);
 [[nodiscard]] environment::EnvironmentRunContext EnvironmentContext(
     const Configuration& configuration);
+[[nodiscard]] bool ValidateCpuOutput(
+    const std::vector<std::uint32_t>& input,
+    const std::vector<std::uint32_t>& output) noexcept;
+[[nodiscard]] CpuSeriesExecution ExecuteCpuSeries(
+    const Configuration& configuration,
+    const std::vector<std::uint32_t>& input,
+    CpuTransformFunction transform);
+[[nodiscard]] results::InitializationRecord MakeInitializationSeedRecord(
+    const Configuration& configuration,
+    std::uint64_t sequenceIndex);
 [[nodiscard]] results::SampleRecord MakeSampleRecord(
     const Configuration& configuration,
     std::uint64_t sampleIndex,

@@ -40,6 +40,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repoRoot = Resolve-Path "$PSScriptRoot\.."
+. "$PSScriptRoot\ex1-build-provenance.ps1"
 $executable = Join-Path $repoRoot "out\build\$Preset\src\app\ComputeLabEx1.exe"
 
 if (-not (Test-Path -LiteralPath $executable -PathType Leaf))
@@ -116,6 +117,13 @@ try
 
     if ($CuratedSourceEligible)
     {
+        Assert-Ex1BuildProvenance `
+            -RepoRoot $repoRoot `
+            -Preset $Preset `
+            -Backend $Backend `
+            -GitCommit $gitCommit
+
+        # This remains the final source-state operation before process launch.
         & "$PSScriptRoot\assert-curated-evidence-ready.ps1"
     }
 

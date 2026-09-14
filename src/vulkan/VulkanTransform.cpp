@@ -249,7 +249,15 @@ struct TransformDispatch::Resources
         if (physicalDeviceIndex >= count)
             throw std::runtime_error("Vulkan device enumeration changed during setup");
         physicalDevice = devices[physicalDeviceIndex];
-        vkGetPhysicalDeviceProperties(physicalDevice, &diagnostics.properties);
+        VkPhysicalDeviceIDProperties idProperties{
+            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES};
+        VkPhysicalDeviceProperties2 properties{
+            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2};
+        properties.pNext = &idProperties;
+        vkGetPhysicalDeviceProperties2(physicalDevice, &properties);
+        diagnostics.properties = properties.properties;
+        std::copy_n(idProperties.deviceUUID,
+            diagnostics.deviceUuid.size(), diagnostics.deviceUuid.begin());
         if (diagnostics.properties.apiVersion < VK_API_VERSION_1_3)
             throw std::runtime_error("Vulkan selected device requires core API 1.3 for EX-1 A7");
         vkGetPhysicalDeviceMemoryProperties(physicalDevice, &memoryProperties);
@@ -557,6 +565,12 @@ std::vector<std::uint32_t> TransformDispatch::RetrieveOutput()
     }
     r.phase = Resources::Phase::Complete;
     return output;
+}
+
+const std::array<std::uint8_t, 16>&
+TransformDispatch::SelectedDeviceUuid() const noexcept
+{
+    return resources_->diagnostics.deviceUuid;
 }
 
 const DeviceDiagnostics& TransformDispatch::Diagnostics() const noexcept

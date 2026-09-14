@@ -104,6 +104,27 @@ Where the metric applies:
 
 Ordinary measurement versus selected diagnostic conditions where relevant.
 
+### Instrumentation declaration contract
+
+Ordinary measurements require the operator to intentionally run without
+validation, profiling, tracing, or other diagnostic instrumentation and to
+declare:
+
+```ini
+validation_enabled = false
+diagnostic_instrumentation = false
+```
+
+Diagnostic measurements must declare the actual condition truthfully through
+`validation_enabled`, `diagnostic_instrumentation`, and `variant`. The harness
+records these declarations but cannot guarantee detection of every externally
+attached instrument. A declaration known to be false makes the result invalid
+evidence.
+
+These instrumentation declarations are distinct from EX-1 correctness
+validation. Correctness validation remains mandatory for accepting performance
+evidence regardless of the diagnostic instrumentation flags.
+
 ## Controlled variables
 
 Within a comparison, preserve:

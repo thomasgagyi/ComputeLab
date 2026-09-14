@@ -4,6 +4,8 @@
 
 #include <gtest/gtest.h>
 
+#include <cuda_runtime_api.h>
+
 #include <cmath>
 #include <cstdint>
 #include <limits>
@@ -123,6 +125,19 @@ TEST(CudaTransform, TimingEventsProduceAValidNonnegativeDeviceDuration)
     operation.WaitForCompletion();
 
     EXPECT_GE(operation.DeviceElapsedNanoseconds(), 0U);
+}
+
+TEST(CudaTransform, SelectedDeviceUuidMatchesOwnedDeviceOrdinal)
+{
+    cudaDeviceProp properties{};
+    ASSERT_EQ(cudaGetDeviceProperties(&properties, 0), cudaSuccess);
+    CudaTransformOperation operation{0, 1U};
+
+    const auto& uuid = operation.SelectedDeviceUuid();
+    for (std::size_t index = 0U; index < uuid.size(); ++index)
+    {
+        EXPECT_EQ(uuid[index], static_cast<std::uint8_t>(properties.uuid.bytes[index]));
+    }
 }
 
 TEST(CudaTimingConversion, UsesNearestIntegerNanosecondRule)

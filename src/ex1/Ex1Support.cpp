@@ -1,5 +1,8 @@
 #include "ex1/Ex1Support.hpp"
 
+#include "oracle/DeterministicTransform.hpp"
+#include "timing/HostTiming.hpp"
+
 #include <algorithm>
 #include <array>
 #include <charconv>
@@ -469,6 +472,93 @@ environment::EnvironmentRunContext EnvironmentContext(
         configuration.machineId,
         configuration.validationEnabled,
         configuration.diagnosticInstrumentation};
+}
+
+bool ValidateCpuOutput(
+    const std::vector<std::uint32_t>& input,
+    const std::vector<std::uint32_t>& output) noexcept
+{
+    if (input.size() != output.size())
+    {
+        return false;
+    }
+    for (std::size_t index = 0U; index < input.size(); ++index)
+    {
+        if (output[index] != computelab::TransformValue(
+                input[index], static_cast<std::uint32_t>(index)))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+CpuSeriesExecution ExecuteCpuSeries(
+    const Configuration& configuration,
+    const std::vector<std::uint32_t>& input,
+    CpuTransformFunction transform)
+{
+    if (configuration.mode != Mode::Series
+        || configuration.backend != Backend::Cpu
+        || !configuration.warmupCount.has_value()
+        || !configuration.plannedSampleCount.has_value()
+        || transform == nullptr)
+    {
+        InvalidConfiguration("CPU execution requires a complete CPU series configuration");
+    }
+
+    for (std::uint64_t index = 0U; index < *configuration.warmupCount; ++index)
+    {
+        const auto output = transform(input);
+        if (!ValidateCpuOutput(input, output))
+        {
+            throw std::runtime_error("CPU warm-up correctness validation failed");
+        }
+    }
+
+    CpuSeriesExecution execution;
+    execution.samples.reserve(static_cast<std::size_t>(*configuration.plannedSampleCount));
+    for (std::uint64_t index = 0U; index < *configuration.plannedSampleCount; ++index)
+    {
+        const auto begin = timing::CaptureHostTime();
+        const auto output = transform(input);
+        const auto end = timing::CaptureHostTime();
+        const bool valid = ValidateCpuOutput(input, output);
+        execution.samples.push_back(MakeSampleRecord(
+            configuration, index, valid,
+            {std::nullopt, std::nullopt, std::nullopt,
+                timing::ElapsedNanoseconds(begin, end), std::nullopt}));
+        if (!valid)
+        {
+            execution.validationPassed = false;
+            break;
+        }
+    }
+    return execution;
+}
+
+results::InitializationRecord MakeInitializationSeedRecord(
+    const Configuration& configuration,
+    std::uint64_t sequenceIndex)
+{
+    if (configuration.mode != Mode::Initialization)
+    {
+        InvalidConfiguration("initialization seed record requires initialization mode");
+    }
+    return {
+        SchemaVersion,
+        configuration.runId,
+        std::string(ExperimentId),
+        std::string(ToString(configuration.backend)),
+        0U,
+        sequenceIndex,
+        "input",
+        std::string(WorkloadId),
+        configuration.variant,
+        configuration.elementCount,
+        "seed",
+        std::nullopt,
+        std::to_string(configuration.seed)};
 }
 
 results::SampleRecord MakeSampleRecord(

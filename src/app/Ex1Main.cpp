@@ -29,6 +29,7 @@ struct ExecutionResult
 {
     std::vector<results::InitializationRecord> initialization;
     std::vector<results::SampleRecord> samples;
+    std::optional<computelab::environment::DeviceUuid> measuredDeviceUuid;
     bool validationPassed{true};
 };
 
@@ -98,19 +99,22 @@ ExecutionResult RunCudaInitialization(
     const std::vector<std::uint32_t>& expected)
 {
     ExecutionResult result;
-    result.initialization.reserve(7U);
+    result.initialization.reserve(8U);
+    result.initialization.push_back(
+        ex1::MakeInitializationSeedRecord(configuration, 0U));
 
     const auto constructionBegin = timing::CaptureHostTime();
     auto operation = std::make_unique<computelab::cuda::CudaTransformOperation>(
         0, input.size());
     result.initialization.push_back(InitializationDuration(
-        configuration, 0U, "backend_setup", "host_duration_ns",
+        configuration, 1U, "backend_setup", "host_duration_ns",
         Elapsed(constructionBegin)));
+    result.measuredDeviceUuid = operation->SelectedDeviceUuid();
 
     const auto uploadBegin = timing::CaptureHostTime();
     operation->Upload(input);
     result.initialization.push_back(InitializationDuration(
-        configuration, 1U, "first_upload", "host_visible_duration_ns",
+        configuration, 2U, "first_upload", "host_visible_duration_ns",
         Elapsed(uploadBegin)));
 
     operation->RecordDeviceStart();
@@ -123,24 +127,24 @@ ExecutionResult RunCudaInitialization(
     const auto endToEndEnd = timing::CaptureHostTime();
 
     result.initialization.push_back(InitializationDuration(
-        configuration, 2U, "first_submission", "host_submission_ns",
+        configuration, 3U, "first_submission", "host_submission_ns",
         timing::ElapsedNanoseconds(submissionBegin, submissionEnd)));
     result.initialization.push_back(InitializationDuration(
-        configuration, 3U, "first_execution", "device_execution_ns",
+        configuration, 4U, "first_execution", "device_execution_ns",
         operation->DeviceElapsedNanoseconds()));
     result.initialization.push_back(InitializationDuration(
-        configuration, 4U, "first_completion", "end_to_end_ns",
+        configuration, 5U, "first_completion", "end_to_end_ns",
         timing::ElapsedNanoseconds(endToEndBegin, endToEndEnd)));
 
     const auto readbackBegin = timing::CaptureHostTime();
     const auto output = operation->RetrieveOutput();
     result.initialization.push_back(InitializationDuration(
-        configuration, 5U, "first_readback", "host_visible_duration_ns",
+        configuration, 6U, "first_readback", "host_visible_duration_ns",
         Elapsed(readbackBegin)));
 
     result.validationPassed = output == expected;
     result.initialization.push_back(InitializationObservation(
-        configuration, 6U, "first_correctness", "validation_passed",
+        configuration, 7U, "first_correctness", "validation_passed",
         result.validationPassed ? "true" : "false"));
     return result;
 }
@@ -151,19 +155,22 @@ ExecutionResult RunVulkanInitialization(
     const std::vector<std::uint32_t>& expected)
 {
     ExecutionResult result;
-    result.initialization.reserve(7U);
+    result.initialization.reserve(8U);
+    result.initialization.push_back(
+        ex1::MakeInitializationSeedRecord(configuration, 0U));
 
     const auto constructionBegin = timing::CaptureHostTime();
     auto operation = std::make_unique<computelab::vulkan::TransformDispatch>(
         input.size(), COMPUTELAB_EX1_SPIRV_PATH);
     result.initialization.push_back(InitializationDuration(
-        configuration, 0U, "backend_setup", "host_duration_ns",
+        configuration, 1U, "backend_setup", "host_duration_ns",
         Elapsed(constructionBegin)));
+    result.measuredDeviceUuid = operation->SelectedDeviceUuid();
 
     const auto uploadBegin = timing::CaptureHostTime();
     operation->Upload(input);
     result.initialization.push_back(InitializationDuration(
-        configuration, 1U, "first_upload", "host_visible_duration_ns",
+        configuration, 2U, "first_upload", "host_visible_duration_ns",
         Elapsed(uploadBegin)));
 
     operation->PrepareMeasurement();
@@ -175,24 +182,24 @@ ExecutionResult RunVulkanInitialization(
     const auto endToEndEnd = timing::CaptureHostTime();
 
     result.initialization.push_back(InitializationDuration(
-        configuration, 2U, "first_submission", "host_submission_ns",
+        configuration, 3U, "first_submission", "host_submission_ns",
         timing::ElapsedNanoseconds(submissionBegin, submissionEnd)));
     result.initialization.push_back(InitializationDuration(
-        configuration, 3U, "first_execution", "device_execution_ns",
+        configuration, 4U, "first_execution", "device_execution_ns",
         operation->DeviceElapsedNanoseconds()));
     result.initialization.push_back(InitializationDuration(
-        configuration, 4U, "first_completion", "end_to_end_ns",
+        configuration, 5U, "first_completion", "end_to_end_ns",
         timing::ElapsedNanoseconds(endToEndBegin, endToEndEnd)));
 
     const auto readbackBegin = timing::CaptureHostTime();
     const auto output = operation->RetrieveOutput();
     result.initialization.push_back(InitializationDuration(
-        configuration, 5U, "first_readback", "host_visible_duration_ns",
+        configuration, 6U, "first_readback", "host_visible_duration_ns",
         Elapsed(readbackBegin)));
 
     result.validationPassed = output == expected;
     result.initialization.push_back(InitializationObservation(
-        configuration, 6U, "first_correctness", "validation_passed",
+        configuration, 7U, "first_correctness", "validation_passed",
         result.validationPassed ? "true" : "false"));
     return result;
 }
@@ -212,47 +219,6 @@ ExecutionResult RunInitialization(
         throw std::invalid_argument("CPU has no EX-1 GPU initialization mode");
     }
     throw std::invalid_argument("unsupported EX-1 backend");
-}
-
-void RunCpuWarmups(
-    const ex1::Configuration& configuration,
-    const std::vector<std::uint32_t>& input,
-    const std::vector<std::uint32_t>& expected)
-{
-    for (std::uint64_t index = 0U; index < *configuration.warmupCount; ++index)
-    {
-        if (computelab::TransformSequence(input) != expected)
-        {
-            throw std::runtime_error("CPU warm-up correctness validation failed");
-        }
-    }
-}
-
-ExecutionResult RunCpuSeries(
-    const ex1::Configuration& configuration,
-    const std::vector<std::uint32_t>& input,
-    const std::vector<std::uint32_t>& expected)
-{
-    RunCpuWarmups(configuration, input, expected);
-    ExecutionResult result;
-    result.samples.reserve(static_cast<std::size_t>(*configuration.plannedSampleCount));
-    for (std::uint64_t index = 0U; index < *configuration.plannedSampleCount; ++index)
-    {
-        const auto begin = timing::CaptureHostTime();
-        const auto output = computelab::TransformSequence(input);
-        const auto end = timing::CaptureHostTime();
-        const bool valid = output == expected;
-        result.samples.push_back(ex1::MakeSampleRecord(
-            configuration, index, valid,
-            {std::nullopt, std::nullopt, std::nullopt,
-                timing::ElapsedNanoseconds(begin, end), std::nullopt}));
-        if (!valid)
-        {
-            result.validationPassed = false;
-            break;
-        }
-    }
-    return result;
 }
 
 void ExecuteCudaUntimed(
@@ -277,12 +243,13 @@ ExecutionResult RunCudaSeries(
     const std::vector<std::uint32_t>& expected)
 {
     computelab::cuda::CudaTransformOperation operation{0, input.size()};
+    ExecutionResult result;
+    result.measuredDeviceUuid = operation.SelectedDeviceUuid();
     for (std::uint64_t index = 0U; index < *configuration.warmupCount; ++index)
     {
         ExecuteCudaUntimed(operation, input, expected);
     }
 
-    ExecutionResult result;
     result.samples.reserve(static_cast<std::size_t>(*configuration.plannedSampleCount));
     for (std::uint64_t index = 0U; index < *configuration.plannedSampleCount; ++index)
     {
@@ -336,12 +303,13 @@ ExecutionResult RunVulkanSeries(
 {
     computelab::vulkan::TransformDispatch operation{
         input.size(), COMPUTELAB_EX1_SPIRV_PATH};
+    ExecutionResult result;
+    result.measuredDeviceUuid = operation.SelectedDeviceUuid();
     for (std::uint64_t index = 0U; index < *configuration.warmupCount; ++index)
     {
         ExecuteVulkanUntimed(operation, input, expected);
     }
 
-    ExecutionResult result;
     result.samples.reserve(static_cast<std::size_t>(*configuration.plannedSampleCount));
     for (std::uint64_t index = 0U; index < *configuration.plannedSampleCount; ++index)
     {
@@ -379,12 +347,12 @@ ExecutionResult RunSeries(
 {
     switch (configuration.backend)
     {
-    case ex1::Backend::Cpu:
-        return RunCpuSeries(configuration, input, expected);
     case ex1::Backend::Cuda:
         return RunCudaSeries(configuration, input, expected);
     case ex1::Backend::Vulkan:
         return RunVulkanSeries(configuration, input, expected);
+    case ex1::Backend::Cpu:
+        throw std::invalid_argument("CPU series uses its A3 per-element validation path");
     }
     throw std::invalid_argument("unsupported EX-1 backend");
 }
@@ -419,22 +387,35 @@ int main(int argc, char** argv)
         }
         const ex1::Configuration configuration = ex1::ParseArguments(arguments);
 
-        // A2 input and A3 expected output are each computed exactly once and
-        // remain outside every measured interval.
+        // A2 input is generated exactly once outside measurement. GPU modes use
+        // one precomputed A3 sequence. CPU series deliberately has no full-
+        // sequence preflight; each result is checked with A3 TransformValue.
         const auto input = computelab::GenerateSeededInput(
             configuration.seed, ElementCount(configuration));
-        const auto expected = computelab::TransformSequence(input);
-
-        ExecutionResult execution = configuration.mode == ex1::Mode::Initialization
-            ? RunInitialization(configuration, input, expected)
-            : RunSeries(configuration, input, expected);
+        ExecutionResult execution;
+        if (configuration.mode == ex1::Mode::Series
+            && configuration.backend == ex1::Backend::Cpu)
+        {
+            auto cpuExecution = ex1::ExecuteCpuSeries(
+                configuration, input, &computelab::TransformSequence);
+            execution.samples = std::move(cpuExecution.samples);
+            execution.validationPassed = cpuExecution.validationPassed;
+        }
+        else
+        {
+            const auto expected = computelab::TransformSequence(input);
+            execution = configuration.mode == ex1::Mode::Initialization
+                ? RunInitialization(configuration, input, expected)
+                : RunSeries(configuration, input, expected);
+        }
 
         // Environment acquisition, statistics, serialization, and file I/O are
         // deliberately after measurement. In initialization mode this also
         // avoids acquiring GPU metadata before the first backend operation.
         const results::EnvironmentRecord environment =
             computelab::environment::CollectEnvironmentRecord(
-                ex1::EnvironmentContext(configuration));
+                ex1::EnvironmentContext(configuration),
+                execution.measuredDeviceUuid);
         const results::SummaryRecord summary = ex1::SummarizeSamples(
             ex1::SchemaVersion,
             configuration.runId,

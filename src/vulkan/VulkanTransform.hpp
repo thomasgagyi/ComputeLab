@@ -2,6 +2,7 @@
 
 #include <vulkan/vulkan.h>
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 #include <filesystem>
@@ -24,6 +25,7 @@ inline constexpr std::uint32_t Ex1LocalSizeX = 256;
 struct DeviceDiagnostics
 {
     VkPhysicalDeviceProperties properties{};
+    std::array<std::uint8_t, 16> deviceUuid{};
     std::uint32_t queueFamilyIndex{};
     VkQueueFamilyProperties queueFamily{};
     bool synchronization2Enabled{};
@@ -62,6 +64,7 @@ public:
     // not exact shader-core execution time. Accept only after A3 correctness.
     [[nodiscard]] std::uint64_t DeviceElapsedNanoseconds() const;
     [[nodiscard]] std::vector<std::uint32_t> RetrieveOutput();
+    [[nodiscard]] const std::array<std::uint8_t, 16>& SelectedDeviceUuid() const noexcept;
     [[nodiscard]] const DeviceDiagnostics& Diagnostics() const noexcept;
 
 private:

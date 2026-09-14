@@ -1,5 +1,7 @@
 #include "environment/EnvironmentCollector.hpp"
 #include "ex1/Ex1Support.hpp"
+#include "input/SeededInput.hpp"
+#include "oracle/DeterministicTransform.hpp"
 #include "results/ResultRecords.hpp"
 
 #include <gtest/gtest.h>
@@ -24,6 +26,15 @@ namespace
 namespace ex1 = computelab::ex1;
 namespace environment = computelab::environment;
 namespace results = computelab::results;
+
+std::uint64_t cpuTransformInvocationCount = 0U;
+
+std::vector<std::uint32_t> CountingCpuTransform(
+    const std::vector<std::uint32_t>& input)
+{
+    ++cpuTransformInvocationCount;
+    return computelab::TransformSequence(input);
+}
 
 ex1::Configuration SeriesConfiguration()
 {
@@ -431,6 +442,51 @@ TEST(Ex1Samples, CpuRecordHasOnlyEndToEndTiming)
     EXPECT_FALSE(sample.downloadNs.has_value());
 }
 
+TEST(Ex1CpuExecution, ZeroWarmupsMakeSampleZeroTheFirstFullTransformInvocation)
+{
+    auto configuration = SeriesConfiguration();
+    configuration.warmupCount = 0U;
+    const auto input = computelab::GenerateSeededInput(
+        configuration.seed, static_cast<std::size_t>(configuration.elementCount));
+    cpuTransformInvocationCount = 0U;
+
+    const auto execution = ex1::ExecuteCpuSeries(
+        configuration, input, &CountingCpuTransform);
+
+    ASSERT_EQ(execution.samples.size(), *configuration.plannedSampleCount);
+    EXPECT_EQ(cpuTransformInvocationCount, *configuration.plannedSampleCount);
+    EXPECT_EQ(execution.samples.front().sampleIndex, 0U);
+    EXPECT_TRUE(execution.validationPassed);
+}
+
+TEST(Ex1CpuExecution, ValidatesWithCanonicalPerElementTransformValue)
+{
+    const std::vector<std::uint32_t> input{1U, 2U, 3U};
+    auto output = computelab::TransformSequence(input);
+    EXPECT_TRUE(ex1::ValidateCpuOutput(input, output));
+    ++output[1];
+    EXPECT_FALSE(ex1::ValidateCpuOutput(input, output));
+    output.pop_back();
+    EXPECT_FALSE(ex1::ValidateCpuOutput(input, output));
+}
+
+TEST(Ex1Initialization, SeedUsesStableObservationRowWithoutSchemaChange)
+{
+    auto configuration = SeriesConfiguration();
+    configuration.mode = ex1::Mode::Initialization;
+    configuration.backend = ex1::Backend::Cuda;
+    configuration.warmupCount.reset();
+    configuration.plannedSampleCount.reset();
+
+    const auto record = ex1::MakeInitializationSeedRecord(configuration, 0U);
+    EXPECT_EQ(record.schemaVersion, 1U);
+    EXPECT_EQ(record.sequenceIndex, 0U);
+    EXPECT_EQ(record.category, "input");
+    EXPECT_EQ(record.metric, "seed");
+    EXPECT_EQ(record.observation, "42");
+    EXPECT_FALSE(record.durationNs.has_value());
+}
+
 TEST(Ex1Samples, FailedCorrectnessIsRejectedEvidenceNotAcceptedPerformance)
 {
     const auto sample = ex1::MakeSampleRecord(
@@ -453,7 +509,7 @@ TEST(Ex1Environment, CallerAndSourceContextSurvivesIntoEnvironmentRecord)
     const environment::CudaDeviceMetadata cuda{{{1U}}, "GPU", 2048U, 8, 6, "13.4"};
     const environment::VulkanDeviceMetadata vulkan{{{1U}}, 0x10DEU, 0x1234U, "1.4"};
     const auto record = environment::ComposeEnvironmentRecord(
-        context, host, build, cuda, {vulkan}, "driver");
+        context, host, build, cuda.uuid, {cuda}, {vulkan}, std::string{"driver"});
     EXPECT_EQ(record.runId, configuration.runId);
     EXPECT_EQ(record.timestampUtc, configuration.timestampUtc);
     EXPECT_EQ(record.gitCommit, configuration.gitCommit);

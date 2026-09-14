@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 #include <memory>
@@ -24,6 +25,7 @@ public:
     CudaTransformOperation& operator=(CudaTransformOperation&&) = delete;
 
     [[nodiscard]] std::size_t ElementCount() const noexcept;
+    [[nodiscard]] const std::array<std::uint8_t, 16>& SelectedDeviceUuid() const noexcept;
 
     void Upload(std::span<const std::uint32_t> input);
     void RecordDeviceStart();

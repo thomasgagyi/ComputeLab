@@ -14,4 +14,6 @@ target_link_libraries(ComputeLabEx1Support
     PUBLIC
         ComputeLabEnvironment
         ComputeLabResults
+        ComputeLabDeterministicOracle
+        ComputeLabHostTiming
 )

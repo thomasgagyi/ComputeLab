@@ -1,3 +1,11 @@
+[CmdletBinding()]
+param(
+    [ValidateSet('x64-debug', 'x64-release')]
+    [string] $Preset = 'x64-debug',
+
+    [switch] $Clean
+)
+
 $ErrorActionPreference = 'Stop'
 
 $repoRoot = Resolve-Path "$PSScriptRoot\.."
@@ -52,14 +60,20 @@ Push-Location $repoRoot
 
 try
 {
-    cmake --preset x64-debug
+    cmake --preset $Preset
 
     if ($LASTEXITCODE -ne 0)
     {
         throw "CMake configure failed with exit code $LASTEXITCODE."
     }
 
-    cmake --build --preset x64-debug
+    $buildArguments = @('--build', '--preset', $Preset)
+    if ($Clean)
+    {
+        $buildArguments += '--clean-first'
+    }
+
+    cmake @buildArguments
 
     if ($LASTEXITCODE -ne 0)
     {

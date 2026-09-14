@@ -13,6 +13,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include <string_view>
+#include <utility>
 #include <vector>
 
 namespace computelab::environment
@@ -198,7 +199,7 @@ std::string FormatVulkanApiVersion(std::uint32_t version)
         + std::to_string(VK_VERSION_PATCH(version));
 }
 
-CudaDeviceMetadata CollectCurrentCudaDeviceMetadata()
+std::vector<CudaDeviceMetadata> CollectCudaDeviceMetadata()
 {
     int deviceCount = 0;
     CheckCuda(cudaGetDeviceCount(&deviceCount), "cudaGetDeviceCount");
@@ -207,32 +208,32 @@ CudaDeviceMetadata CollectCurrentCudaDeviceMetadata()
         ThrowAcquisitionFailure("no CUDA devices are available");
     }
 
-    int selectedDevice = 0;
-    CheckCuda(cudaGetDevice(&selectedDevice), "cudaGetDevice");
-    if (selectedDevice < 0 || selectedDevice >= deviceCount)
-    {
-        ThrowAcquisitionFailure("the current CUDA device index is outside the available device range");
-    }
-
-    cudaDeviceProp properties{};
-    CheckCuda(cudaGetDeviceProperties(&properties, selectedDevice), "cudaGetDeviceProperties");
-
     int runtimeVersion = 0;
     CheckCuda(cudaRuntimeGetVersion(&runtimeVersion), "cudaRuntimeGetVersion");
 
-    CudaDeviceMetadata metadata{
-        ToUuid(properties.uuid),
-        properties.name,
-        static_cast<std::uint64_t>(properties.totalGlobalMem),
-        properties.major,
-        properties.minor,
-        FormatCudaRuntimeVersion(runtimeVersion)};
-    RequireNonEmpty(metadata.name, "CUDA device name");
-    if (metadata.totalGlobalMemoryBytes == 0U)
+    std::vector<CudaDeviceMetadata> devices;
+    devices.reserve(static_cast<std::size_t>(deviceCount));
+    for (int deviceOrdinal = 0; deviceOrdinal < deviceCount; ++deviceOrdinal)
     {
-        ThrowAcquisitionFailure("CUDA device totalGlobalMem is zero");
+        cudaDeviceProp properties{};
+        CheckCuda(
+            cudaGetDeviceProperties(&properties, deviceOrdinal),
+            "cudaGetDeviceProperties");
+        CudaDeviceMetadata metadata{
+            ToUuid(properties.uuid),
+            properties.name,
+            static_cast<std::uint64_t>(properties.totalGlobalMem),
+            properties.major,
+            properties.minor,
+            FormatCudaRuntimeVersion(runtimeVersion)};
+        RequireNonEmpty(metadata.name, "CUDA device name");
+        if (metadata.totalGlobalMemoryBytes == 0U)
+        {
+            ThrowAcquisitionFailure("CUDA device totalGlobalMem is zero");
+        }
+        devices.push_back(std::move(metadata));
     }
-    return metadata;
+    return devices;
 }
 
 std::vector<VulkanDeviceMetadata> CollectVulkanDeviceMetadata()
@@ -401,25 +402,11 @@ results::EnvironmentRecord ComposeEnvironmentRecord(
     const EnvironmentRunContext& context,
     const WindowsHostMetadata& host,
     const BuildMetadata& build,
-    const CudaDeviceMetadata& cudaDevice,
+    const std::optional<DeviceUuid>& measuredDeviceUuid,
+    const std::vector<CudaDeviceMetadata>& cudaDevices,
     const std::vector<VulkanDeviceMetadata>& vulkanDevices,
-    const std::string& nvidiaDriverVersion)
+    const std::optional<std::string>& nvidiaDriverVersion)
 {
-    const auto matchedVulkanDevice = std::find_if(
-        vulkanDevices.begin(),
-        vulkanDevices.end(),
-        [&cudaDevice](const VulkanDeviceMetadata& device) {
-            return device.uuid == cudaDevice.uuid;
-        });
-    if (matchedVulkanDevice == vulkanDevices.end())
-    {
-        ThrowAcquisitionFailure("the current CUDA device UUID is not present in Vulkan physical devices");
-    }
-    if (matchedVulkanDevice->vendorId != kNvidiaVendorId)
-    {
-        ThrowAcquisitionFailure("the UUID-matched Vulkan physical device is not NVIDIA");
-    }
-
     RequireNonEmpty(context.experimentId, "experiment_id");
     RequireNonEmpty(context.runId, "run_id");
     RequireNonEmpty(context.timestampUtc, "timestamp_utc");
@@ -428,13 +415,9 @@ results::EnvironmentRecord ComposeEnvironmentRecord(
     RequireNonEmpty(host.osName, "os_name");
     RequireNonEmpty(host.osVersion, "os_version");
     RequireNonEmpty(host.cpuName, "cpu_name");
-    RequireNonEmpty(cudaDevice.name, "gpu_name");
-    RequireNonEmpty(cudaDevice.runtimeVersion, "cuda_runtime_version");
-    RequireNonEmpty(matchedVulkanDevice->deviceApiVersion, "vulkan_device_api_version");
-    RequireNonEmpty(nvidiaDriverVersion, "nvidia_driver_version");
-    if (host.systemMemoryBytes == 0U || cudaDevice.totalGlobalMemoryBytes == 0U)
+    if (host.systemMemoryBytes == 0U)
     {
-        ThrowAcquisitionFailure("a required memory size is zero");
+        ThrowAcquisitionFailure("system_memory_bytes is zero");
     }
 
     RequireNonEmpty(build.compilerName, "compiler_name");
@@ -443,8 +426,71 @@ results::EnvironmentRecord ComposeEnvironmentRecord(
     RequireNonEmpty(build.ninjaVersion, "ninja_version");
     RequireNonEmpty(build.configurePreset, "configure_preset");
     RequireNonEmpty(build.buildType, "build_type");
-    RequireNonEmpty(build.cudaToolkitVersion, "cuda_toolkit_version");
-    RequireNonEmpty(build.vulkanSdkVersion, "vulkan_sdk_version");
+    std::optional<std::string> gpuName;
+    std::optional<std::string> gpuVendor;
+    std::optional<std::string> gpuDeviceId;
+    std::optional<std::uint64_t> gpuMemoryBytes;
+    std::optional<std::string> driverVersion;
+    std::optional<std::string> cudaToolkitVersion;
+    std::optional<std::string> cudaRuntimeVersion;
+    std::optional<std::string> cudaComputeCapability;
+    std::optional<std::string> vulkanSdkVersion;
+    std::optional<std::string> vulkanDeviceApiVersion;
+
+    if (measuredDeviceUuid.has_value())
+    {
+        const auto matchedCudaDevice = std::find_if(
+            cudaDevices.begin(), cudaDevices.end(),
+            [&measuredDeviceUuid](const CudaDeviceMetadata& device) {
+                return device.uuid == *measuredDeviceUuid;
+            });
+        if (matchedCudaDevice == cudaDevices.end())
+        {
+            ThrowAcquisitionFailure(
+                "the measured GPU UUID is not present in CUDA devices");
+        }
+        const auto matchedVulkanDevice = std::find_if(
+            vulkanDevices.begin(), vulkanDevices.end(),
+            [&measuredDeviceUuid](const VulkanDeviceMetadata& device) {
+                return device.uuid == *measuredDeviceUuid;
+            });
+        if (matchedVulkanDevice == vulkanDevices.end())
+        {
+            ThrowAcquisitionFailure(
+                "the measured GPU UUID is not present in Vulkan physical devices");
+        }
+        if (matchedVulkanDevice->vendorId != kNvidiaVendorId)
+        {
+            ThrowAcquisitionFailure("the measured UUID-matched Vulkan physical device is not NVIDIA");
+        }
+        if (!nvidiaDriverVersion.has_value())
+        {
+            ThrowAcquisitionFailure("nvidia_driver_version is unavailable for the measured GPU");
+        }
+        RequireNonEmpty(matchedCudaDevice->name, "gpu_name");
+        RequireNonEmpty(matchedCudaDevice->runtimeVersion, "cuda_runtime_version");
+        RequireNonEmpty(matchedVulkanDevice->deviceApiVersion, "vulkan_device_api_version");
+        RequireNonEmpty(*nvidiaDriverVersion, "nvidia_driver_version");
+        RequireNonEmpty(build.cudaToolkitVersion, "cuda_toolkit_version");
+        RequireNonEmpty(build.vulkanSdkVersion, "vulkan_sdk_version");
+        if (matchedCudaDevice->totalGlobalMemoryBytes == 0U)
+        {
+            ThrowAcquisitionFailure("gpu_memory_bytes is zero");
+        }
+
+        gpuName = matchedCudaDevice->name;
+        gpuVendor = "NVIDIA";
+        gpuDeviceId = FormatGpuDeviceId(matchedVulkanDevice->deviceId);
+        gpuMemoryBytes = matchedCudaDevice->totalGlobalMemoryBytes;
+        driverVersion = *nvidiaDriverVersion;
+        cudaToolkitVersion = build.cudaToolkitVersion;
+        cudaRuntimeVersion = matchedCudaDevice->runtimeVersion;
+        cudaComputeCapability = FormatComputeCapability(
+            matchedCudaDevice->computeCapabilityMajor,
+            matchedCudaDevice->computeCapabilityMinor);
+        vulkanSdkVersion = build.vulkanSdkVersion;
+        vulkanDeviceApiVersion = matchedVulkanDevice->deviceApiVersion;
+    }
 
     return {
         kEnvironmentSchemaVersion,
@@ -458,18 +504,16 @@ results::EnvironmentRecord ComposeEnvironmentRecord(
         host.osVersion,
         host.cpuName,
         host.systemMemoryBytes,
-        cudaDevice.name,
-        "NVIDIA",
-        FormatGpuDeviceId(matchedVulkanDevice->deviceId),
-        cudaDevice.totalGlobalMemoryBytes,
-        nvidiaDriverVersion,
-        build.cudaToolkitVersion,
-        cudaDevice.runtimeVersion,
-        FormatComputeCapability(
-            cudaDevice.computeCapabilityMajor,
-            cudaDevice.computeCapabilityMinor),
-        build.vulkanSdkVersion,
-        matchedVulkanDevice->deviceApiVersion,
+        gpuName,
+        gpuVendor,
+        gpuDeviceId,
+        gpuMemoryBytes,
+        driverVersion,
+        cudaToolkitVersion,
+        cudaRuntimeVersion,
+        cudaComputeCapability,
+        vulkanSdkVersion,
+        vulkanDeviceApiVersion,
         build.compilerName,
         build.compilerVersion,
         build.cmakeVersion,
@@ -480,15 +524,22 @@ results::EnvironmentRecord ComposeEnvironmentRecord(
         context.diagnosticInstrumentation};
 }
 
-results::EnvironmentRecord CollectEnvironmentRecord(const EnvironmentRunContext& context)
+results::EnvironmentRecord CollectEnvironmentRecord(
+    const EnvironmentRunContext& context,
+    const std::optional<DeviceUuid>& measuredDeviceUuid)
 {
+    const bool hasMeasuredGpu = measuredDeviceUuid.has_value();
     return ComposeEnvironmentRecord(
         context,
         CollectWindowsHostMetadata(),
         GetConfiguredBuildMetadata(),
-        CollectCurrentCudaDeviceMetadata(),
-        CollectVulkanDeviceMetadata(),
-        CollectNvidiaDriverVersion());
+        measuredDeviceUuid,
+        hasMeasuredGpu ? CollectCudaDeviceMetadata()
+                       : std::vector<CudaDeviceMetadata>{},
+        hasMeasuredGpu ? CollectVulkanDeviceMetadata()
+                       : std::vector<VulkanDeviceMetadata>{},
+        hasMeasuredGpu ? std::optional<std::string>{CollectNvidiaDriverVersion()}
+                       : std::nullopt);
 }
 
 } // namespace computelab::environment

@@ -45,8 +45,10 @@ VulkanDeviceMetadata MatchingVulkanDevice()
 
 TEST(EnvironmentCollector, CallerRunContextIsPreservedWithoutHostIdentityDiscovery)
 {
+    const auto measuredUuid = CudaDevice().uuid;
     const auto record = ComposeEnvironmentRecord(
-        Context(), Host(), Build(), CudaDevice(), {MatchingVulkanDevice()}, "580.1");
+        Context(), Host(), Build(), measuredUuid,
+        {CudaDevice()}, {MatchingVulkanDevice()}, std::string{"580.1"});
 
     EXPECT_EQ(record.experimentId, "EX-1");
     EXPECT_EQ(record.runId, "caller-run");
@@ -66,8 +68,10 @@ TEST(EnvironmentCollector, GpuDeviceIdUsesApprovedLowercasePaddedFormat)
 
 TEST(EnvironmentCollector, MatchesCudaAndVulkanDevicesByUuid)
 {
+    const auto measuredUuid = CudaDevice().uuid;
     const auto record = ComposeEnvironmentRecord(
-        Context(), Host(), Build(), CudaDevice(), {MatchingVulkanDevice()}, "580.1");
+        Context(), Host(), Build(), measuredUuid,
+        {CudaDevice()}, {MatchingVulkanDevice()}, std::string{"580.1"});
 
     ASSERT_TRUE(record.gpuDeviceId.has_value());
     EXPECT_EQ(*record.gpuDeviceId, "0x00001f06");
@@ -79,17 +83,74 @@ TEST(EnvironmentCollector, RejectsMismatchedCudaAndVulkanUuids)
 {
     auto mismatchedDevice = MatchingVulkanDevice();
     mismatchedDevice.uuid[0] = 0xFFU;
+    const auto measuredUuid = CudaDevice().uuid;
 
     EXPECT_THROW(
         static_cast<void>(ComposeEnvironmentRecord(
-            Context(), Host(), Build(), CudaDevice(), {mismatchedDevice}, "580.1")),
+            Context(), Host(), Build(), measuredUuid,
+            {CudaDevice()}, {mismatchedDevice}, std::string{"580.1"})),
         std::runtime_error);
+}
+
+TEST(EnvironmentCollector, MeasuredUuidSelectsNonzeroMetadataEntries)
+{
+    auto firstCuda = CudaDevice();
+    firstCuda.uuid[0] = 0x10U;
+    firstCuda.name = "First GPU";
+    auto secondCuda = CudaDevice();
+    secondCuda.uuid[0] = 0x20U;
+    secondCuda.name = "Measured second GPU";
+    secondCuda.totalGlobalMemoryBytes = 8192U;
+
+    auto firstVulkan = MatchingVulkanDevice();
+    firstVulkan.uuid = firstCuda.uuid;
+    firstVulkan.deviceId = 0x1111U;
+    auto secondVulkan = MatchingVulkanDevice();
+    secondVulkan.uuid = secondCuda.uuid;
+    secondVulkan.deviceId = 0x2222U;
+
+    const auto record = ComposeEnvironmentRecord(
+        Context(), Host(), Build(), secondCuda.uuid,
+        {firstCuda, secondCuda}, {firstVulkan, secondVulkan}, std::string{"580.1"});
+
+    EXPECT_EQ(record.gpuName, "Measured second GPU");
+    EXPECT_EQ(record.gpuMemoryBytes, 8192U);
+    EXPECT_EQ(record.gpuDeviceId, "0x00002222");
+}
+
+TEST(EnvironmentCollector, MeasuredUuidMissingFromEitherApiFailsClosed)
+{
+    auto otherCuda = CudaDevice();
+    otherCuda.uuid[0] = 0xAAU;
+    auto otherVulkan = MatchingVulkanDevice();
+    otherVulkan.uuid[0] = 0xBBU;
+    const auto measuredUuid = CudaDevice().uuid;
+
+    EXPECT_THROW(static_cast<void>(ComposeEnvironmentRecord(
+        Context(), Host(), Build(), measuredUuid,
+        {otherCuda}, {MatchingVulkanDevice()}, std::string{"580.1"})), std::runtime_error);
+    EXPECT_THROW(static_cast<void>(ComposeEnvironmentRecord(
+        Context(), Host(), Build(), measuredUuid,
+        {CudaDevice()}, {otherVulkan}, std::string{"580.1"})), std::runtime_error);
+}
+
+TEST(EnvironmentCollector, CpuInvocationDoesNotAttributeAnUnmeasuredGpu)
+{
+    const auto record = ComposeEnvironmentRecord(
+        Context(), Host(), Build(), std::nullopt, {}, {}, std::nullopt);
+
+    EXPECT_FALSE(record.gpuName.has_value());
+    EXPECT_FALSE(record.gpuDeviceId.has_value());
+    EXPECT_FALSE(record.cudaRuntimeVersion.has_value());
+    EXPECT_FALSE(record.vulkanDeviceApiVersion.has_value());
 }
 
 TEST(EnvironmentCollector, PreservesIndependentCudaAndVulkanVersionSources)
 {
+    const auto measuredUuid = CudaDevice().uuid;
     const auto record = ComposeEnvironmentRecord(
-        Context(), Host(), Build(), CudaDevice(), {MatchingVulkanDevice()}, "580.1");
+        Context(), Host(), Build(), measuredUuid,
+        {CudaDevice()}, {MatchingVulkanDevice()}, std::string{"580.1"});
 
     ASSERT_TRUE(record.cudaToolkitVersion.has_value());
     ASSERT_TRUE(record.cudaRuntimeVersion.has_value());
@@ -132,8 +193,10 @@ TEST(EnvironmentCollector, NvidiaDriverVersionIsAcquiredFromNvml)
 
 TEST(EnvironmentCollector, ComposedRecordPassesUnchangedThroughA4aSerializer)
 {
+    const auto measuredUuid = CudaDevice().uuid;
     const auto record = ComposeEnvironmentRecord(
-        Context(), Host(), Build(), CudaDevice(), {MatchingVulkanDevice()}, "580.1");
+        Context(), Host(), Build(), measuredUuid,
+        {CudaDevice()}, {MatchingVulkanDevice()}, std::string{"580.1"});
     const std::string serialized = computelab::results::SerializeEnvironmentJson(record);
 
     EXPECT_NE(serialized.find("\"run_id\":\"caller-run\""), std::string::npos);
