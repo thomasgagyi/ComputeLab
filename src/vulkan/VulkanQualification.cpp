@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <cstring>
 #include <exception>
 #include <fstream>
@@ -148,6 +149,141 @@ std::uint32_t SelectComputeQualificationQueue(
         "Vulkan device has no compute-capable queue for qualification");
 }
 
+std::uint32_t ValidatePairedTimestampQualificationQueue(
+    std::span<const VkQueueFamilyProperties> families,
+    std::uint32_t hostOnlyQueueFamilyIndex)
+{
+    if (hostOnlyQueueFamilyIndex >= families.size())
+    {
+        throw std::invalid_argument(
+            "Vulkan mode-N paired queue-family index is outside the reported families");
+    }
+    const auto& family = families[hostOnlyQueueFamilyIndex];
+    if (family.queueCount == 0U ||
+        (family.queueFlags & VK_QUEUE_COMPUTE_BIT) == 0U)
+    {
+        throw std::runtime_error(
+            "Vulkan mode-N paired queue family is not compute-capable");
+    }
+    if (family.timestampValidBits == 0U)
+    {
+        throw std::runtime_error(
+            "Vulkan mode N is unavailable because the queue selected for mode H has timestampValidBits == 0");
+    }
+    if (family.timestampValidBits < 36U || family.timestampValidBits > 64U)
+    {
+        throw std::runtime_error(
+            "Vulkan mode-N paired queue timestampValidBits must be in [36, 64]");
+    }
+    return hostOnlyQueueFamilyIndex;
+}
+
+std::uint64_t QualificationTimestampNanoseconds(
+    std::uint64_t start,
+    std::uint64_t stop,
+    std::uint32_t validBits,
+    long double timestampPeriod,
+    std::uint64_t durationEnvelopeNanoseconds)
+{
+    if (validBits < 36U || validBits > 64U)
+    {
+        throw std::invalid_argument(
+            "Vulkan qualification timestampValidBits must be in [36, 64]");
+    }
+    if (!std::isfinite(timestampPeriod) || timestampPeriod <= 0.0L)
+    {
+        throw std::invalid_argument(
+            "Vulkan qualification timestampPeriod must be finite and positive");
+    }
+    if (durationEnvelopeNanoseconds == 0U)
+    {
+        throw std::invalid_argument(
+            "Vulkan qualification native duration envelope must be positive");
+    }
+
+    const long double counterRangeNanoseconds =
+        std::ldexp(timestampPeriod, static_cast<int>(validBits));
+    if (!std::isfinite(counterRangeNanoseconds) ||
+        counterRangeNanoseconds <=
+            static_cast<long double>(durationEnvelopeNanoseconds))
+    {
+        throw std::range_error(
+            "Vulkan qualification timestamp counter can wrap more than once inside the declared duration envelope");
+    }
+
+    std::uint64_t delta{};
+    if (validBits == 64U)
+    {
+        delta = stop - start;
+    }
+    else
+    {
+        const std::uint64_t mask =
+            (std::uint64_t{1U} << validBits) - 1U;
+        delta = ((stop & mask) - (start & mask)) & mask;
+    }
+
+    if (timestampPeriod == 1.0L)
+    {
+        if (delta > durationEnvelopeNanoseconds)
+        {
+            throw std::range_error(
+                "Vulkan qualification native duration exceeds the declared envelope");
+        }
+        return delta;
+    }
+
+    const long double nanoseconds =
+        static_cast<long double>(delta) * timestampPeriod;
+    const long double roundedNanoseconds = std::round(nanoseconds);
+    if (!std::isfinite(nanoseconds) || !std::isfinite(roundedNanoseconds) ||
+        roundedNanoseconds < 0.0L ||
+        roundedNanoseconds >= std::ldexp(1.0L, 64))
+    {
+        throw std::overflow_error(
+            "Vulkan qualification timestamp duration is outside uint64 nanoseconds");
+    }
+    if (roundedNanoseconds >
+        static_cast<long double>(durationEnvelopeNanoseconds))
+    {
+        throw std::range_error(
+            "Vulkan qualification native duration exceeds the declared envelope");
+    }
+    return static_cast<std::uint64_t>(roundedNanoseconds);
+}
+
+VulkanNativeTimingResult DecodeQualificationTimestampQueries(
+    VkResult result,
+    const std::array<VulkanQualificationTimestampQuery, 2U>& queries,
+    std::uint32_t validBits,
+    long double timestampPeriod,
+    std::uint64_t durationEnvelopeNanoseconds) noexcept
+{
+    if (result != VK_SUCCESS)
+    {
+        return {VulkanNativeTimingStatus::QueryRetrievalFailed, std::nullopt};
+    }
+    if (queries[0].available == 0U || queries[1].available == 0U)
+    {
+        return {VulkanNativeTimingStatus::QueryUnavailable, std::nullopt};
+    }
+    try
+    {
+        return {
+            VulkanNativeTimingStatus::Valid,
+            QualificationTimestampNanoseconds(
+                queries[0].ticks,
+                queries[1].ticks,
+                validBits,
+                timestampPeriod,
+                durationEnvelopeNanoseconds)};
+    }
+    catch (...)
+    {
+        return {VulkanNativeTimingStatus::ConversionInvalid, std::nullopt};
+    }
+}
+
 struct VulkanQualificationOperation::Resources
 {
     enum class Phase
@@ -176,6 +312,7 @@ struct VulkanQualificationOperation::Resources
     VkCommandBuffer uploadCommands{VK_NULL_HANDLE};
     VkCommandBuffer computeCommands{VK_NULL_HANDLE};
     VkCommandBuffer readbackCommands{VK_NULL_HANDLE};
+    VkQueryPool queryPool{VK_NULL_HANDLE};
     VkFence computeFence{VK_NULL_HANDLE};
     VkFence transferFence{VK_NULL_HANDLE};
     VkDescriptorSetLayout descriptorLayout{VK_NULL_HANDLE};
@@ -193,6 +330,7 @@ struct VulkanQualificationOperation::Resources
     Phase phase{Phase::Empty};
     bool computePending{};
     bool transferPending{};
+    bool deviceTimed{};
 
     ~Resources() noexcept
     {
@@ -212,6 +350,8 @@ struct VulkanQualificationOperation::Resources
         {
             if (commandPool != VK_NULL_HANDLE)
                 vkDestroyCommandPool(device, commandPool, nullptr);
+            if (queryPool != VK_NULL_HANDLE)
+                vkDestroyQueryPool(device, queryPool, nullptr);
             if (pipeline != VK_NULL_HANDLE)
                 vkDestroyPipeline(device, pipeline, nullptr);
             if (shader != VK_NULL_HANDLE)
@@ -350,7 +490,9 @@ struct VulkanQualificationOperation::Resources
     void SetupDevice(std::uint32_t physicalDeviceIndex)
     {
         VkApplicationInfo application{VK_STRUCTURE_TYPE_APPLICATION_INFO};
-        application.pApplicationName = "ComputeLab EX-2 G0-02";
+        application.pApplicationName = deviceTimed
+            ? "ComputeLab EX-2 G0-03 mode N"
+            : "ComputeLab EX-2 G0-02 mode H";
         application.apiVersion = VK_API_VERSION_1_3;
 
         VkInstanceCreateInfo instanceInfo{VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO};
@@ -405,23 +547,44 @@ struct VulkanQualificationOperation::Resources
             physicalDevice, &familyCount, families.data());
         families.resize(familyCount);
         diagnostics.queueFamilyIndex = SelectComputeQualificationQueue(families);
+        if (deviceTimed)
+        {
+            diagnostics.queueFamilyIndex =
+                ValidatePairedTimestampQualificationQueue(
+                    families, diagnostics.queueFamilyIndex);
+        }
         diagnostics.queueFamily = families[diagnostics.queueFamilyIndex];
 
+        VkPhysicalDeviceVulkan12Features supported12{
+            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES};
         VkPhysicalDeviceVulkan13Features supported13{
             VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES};
+        supported12.pNext = &supported13;
         VkPhysicalDeviceFeatures2 supported{
             VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2};
-        supported.pNext = &supported13;
+        supported.pNext = &supported12;
         vkGetPhysicalDeviceFeatures2(physicalDevice, &supported);
         if (supported13.synchronization2 != VK_TRUE)
         {
             throw std::runtime_error(
                 "Vulkan qualification selected device lacks synchronization2");
         }
+        if (deviceTimed && supported12.hostQueryReset != VK_TRUE)
+        {
+            throw std::runtime_error(
+                "Vulkan mode-N qualification selected device lacks hostQueryReset");
+        }
 
+        VkPhysicalDeviceVulkan12Features enabled12{
+            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES};
         VkPhysicalDeviceVulkan13Features enabled13{
             VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES};
         enabled13.synchronization2 = VK_TRUE;
+        if (deviceTimed)
+        {
+            enabled12.hostQueryReset = VK_TRUE;
+            enabled12.pNext = &enabled13;
+        }
         const float priority = 1.0F;
         VkDeviceQueueCreateInfo queueInfo{
             VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO};
@@ -430,13 +593,16 @@ struct VulkanQualificationOperation::Resources
         queueInfo.pQueuePriorities = &priority;
 
         VkDeviceCreateInfo deviceInfo{VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO};
-        deviceInfo.pNext = &enabled13;
+        deviceInfo.pNext = deviceTimed
+            ? static_cast<void*>(&enabled12)
+            : static_cast<void*>(&enabled13);
         deviceInfo.queueCreateInfoCount = 1U;
         deviceInfo.pQueueCreateInfos = &queueInfo;
         CheckVulkan(
             vkCreateDevice(physicalDevice, &deviceInfo, nullptr, &device),
             "vkCreateDevice for Vulkan qualification");
         diagnostics.synchronization2Enabled = true;
+        diagnostics.hostQueryResetEnabled = deviceTimed;
         vkGetDeviceQueue(device, diagnostics.queueFamilyIndex, 0U, &queue);
         if (queue == VK_NULL_HANDLE)
         {
@@ -568,6 +734,17 @@ struct VulkanQualificationOperation::Resources
         computeCommands = commands[1];
         readbackCommands = commands[2];
 
+        if (deviceTimed)
+        {
+            VkQueryPoolCreateInfo queryInfo{
+                VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO};
+            queryInfo.queryType = VK_QUERY_TYPE_TIMESTAMP;
+            queryInfo.queryCount = 2U;
+            CheckVulkan(
+                vkCreateQueryPool(device, &queryInfo, nullptr, &queryPool),
+                "vkCreateQueryPool for Vulkan mode-N qualification timestamps");
+        }
+
         VkFenceCreateInfo fenceInfo{VK_STRUCTURE_TYPE_FENCE_CREATE_INFO};
         CheckVulkan(
             vkCreateFence(device, &fenceInfo, nullptr, &computeFence),
@@ -635,10 +812,29 @@ struct VulkanQualificationOperation::Resources
             0U,
             sizeof(elementCount),
             &elementCount);
+        if (deviceTimed)
+        {
+            vkCmdWriteTimestamp2(
+                computeCommands,
+                QualificationTimestampStartStage,
+                queryPool,
+                0U);
+        }
         vkCmdDispatch(computeCommands, groupCount, 1U, 1U);
+        if (deviceTimed)
+        {
+            vkCmdWriteTimestamp2(
+                computeCommands,
+                QualificationTimestampStopStage,
+                queryPool,
+                1U);
+        }
         CheckVulkan(
             vkEndCommandBuffer(computeCommands),
-            "vkEndCommandBuffer for timestamp-free Vulkan qualification compute");
+            deviceTimed
+                ? "vkEndCommandBuffer for timestamp-bearing Vulkan mode-N qualification compute"
+                : "vkEndCommandBuffer for timestamp-free Vulkan qualification compute");
+        diagnostics.timestampCommandsRecorded = deviceTimed;
 
         CheckVulkan(
             vkBeginCommandBuffer(readbackCommands, &begin),
@@ -721,10 +917,24 @@ VulkanQualificationOperation::VulkanQualificationOperation(
     std::size_t elementCount,
     const std::filesystem::path& spirvPath,
     std::uint32_t physicalDeviceIndex)
+    : VulkanQualificationOperation(
+          elementCount,
+          spirvPath,
+          physicalDeviceIndex,
+          false)
+{
+}
+
+VulkanQualificationOperation::VulkanQualificationOperation(
+    std::size_t elementCount,
+    const std::filesystem::path& spirvPath,
+    std::uint32_t physicalDeviceIndex,
+    bool deviceTimed)
     : resources_{std::make_unique<Resources>()}
 {
     const auto spirv = ReadSpirv(spirvPath);
     auto& resources = *resources_;
+    resources.deviceTimed = deviceTimed;
     resources.SetupDevice(physicalDeviceIndex);
     resources.groupCount = ValidateQualificationDispatch(
         elementCount, resources.diagnostics.properties.limits);
@@ -812,6 +1022,11 @@ void VulkanQualificationOperation::Upload(
 void VulkanQualificationOperation::PrepareHostOnly()
 {
     auto& resources = *resources_;
+    if (resources.deviceTimed)
+    {
+        throw std::logic_error(
+            "PrepareHostOnly cannot use a timestamp-bearing mode-N operation");
+    }
     if (resources.phase != Resources::Phase::Uploaded &&
         resources.phase != Resources::Phase::Complete)
     {
@@ -829,6 +1044,11 @@ VulkanQualificationExecution VulkanQualificationOperation::ExecuteHostOnly(
     std::uint64_t timeoutNanoseconds)
 {
     auto& resources = *resources_;
+    if (resources.deviceTimed)
+    {
+        throw std::logic_error(
+            "ExecuteHostOnly cannot use a timestamp-bearing mode-N operation");
+    }
     resources.Require(Resources::Phase::Prepared, "ExecuteHostOnly");
 
     const timing::HostTimePoint t0 = timing::CaptureHostTime();
@@ -992,6 +1212,301 @@ VulkanQualificationExecution VulkanQualificationOperation::ExecuteHostOnly(
         {},
         true,
         std::move(output)};
+}
+
+void VulkanQualificationOperation::PrepareDeviceTimed()
+{
+    auto& resources = *resources_;
+    if (!resources.deviceTimed)
+    {
+        throw std::logic_error(
+            "PrepareDeviceTimed requires a timestamp-bearing mode-N operation");
+    }
+    if (resources.phase != Resources::Phase::Uploaded &&
+        resources.phase != Resources::Phase::Complete)
+    {
+        throw std::logic_error(
+            "Vulkan mode-N preparation requires uploaded input and proven completion");
+    }
+
+    resources.phase = Resources::Phase::Failed;
+    // hostQueryReset is enabled only for mode N. This reset is legal here
+    // because Uploaded has no prior compute use and Complete proves the prior
+    // fence signaled. It remains outside t0.
+    vkResetQueryPool(resources.device, resources.queryPool, 0U, 2U);
+    CheckVulkan(
+        vkResetFences(resources.device, 1U, &resources.computeFence),
+        "vkResetFences for Vulkan mode-N qualification preparation");
+    resources.phase = Resources::Phase::Prepared;
+}
+
+VulkanQualificationExecution
+VulkanQualificationOperation::ExecuteDeviceTimedInternal(
+    std::uint64_t timeoutNanoseconds)
+{
+    auto& resources = *resources_;
+    if (!resources.deviceTimed)
+    {
+        throw std::logic_error(
+            "ExecuteDeviceTimed requires a timestamp-bearing mode-N operation");
+    }
+    if (timeoutNanoseconds > QualificationNativeDurationEnvelopeNanoseconds)
+    {
+        throw std::invalid_argument(
+            "Vulkan mode-N wait timeout exceeds the declared native duration envelope");
+    }
+    resources.Require(Resources::Phase::Prepared, "ExecuteDeviceTimed");
+
+    VulkanQualificationExecution execution;
+    execution.instrumentMode = "N";
+    execution.nativeTimingStatus = VulkanNativeTimingStatus::QueryUnavailable;
+    execution.nativeTimingMetadata.emplace();
+    execution.nativeTimingMetadata->timestampPeriodNanoseconds =
+        resources.diagnostics.properties.limits.timestampPeriod;
+    execution.nativeTimingMetadata->timestampValidBits =
+        resources.diagnostics.queueFamily.timestampValidBits;
+
+    const timing::HostTimePoint t0 = timing::CaptureHostTime();
+    const VkResult submitResult = resources.Submit(
+        resources.computeCommands,
+        resources.computeFence,
+        resources.computePending);
+    const timing::HostTimePoint t1 = timing::CaptureHostTime();
+
+    if (submitResult != VK_SUCCESS)
+    {
+        resources.phase = Resources::Phase::Failed;
+        execution.status = VulkanQualificationStatus::SubmitFailed;
+        execution.failurePhase = VulkanQualificationFailurePhase::Submission;
+        execution.hostTiming = ex2::CalculateHostTimingIntervals(
+            ex2::HostTimingStatus::SubmitFailed, t0, t1, std::nullopt);
+        execution.nativeResult = submitResult;
+        execution.errorMessage = VulkanErrorMessage(
+            submitResult,
+            "vkQueueSubmit2 for Vulkan mode-N qualification transform");
+        return execution;
+    }
+
+    const VkResult waitResult = vkWaitForFences(
+        resources.device,
+        1U,
+        &resources.computeFence,
+        VK_TRUE,
+        timeoutNanoseconds);
+    if (waitResult != VK_SUCCESS)
+    {
+        resources.phase = Resources::Phase::CompletionUncertain;
+        const bool timedOut = waitResult == VK_TIMEOUT;
+        execution.status = timedOut
+            ? VulkanQualificationStatus::Timeout
+            : VulkanQualificationStatus::WaitFailed;
+        execution.failurePhase =
+            VulkanQualificationFailurePhase::CompletionWait;
+        execution.hostTiming = ex2::CalculateHostTimingIntervals(
+            timedOut
+                ? ex2::HostTimingStatus::Timeout
+                : ex2::HostTimingStatus::WaitFailed,
+            t0,
+            t1,
+            std::nullopt);
+        execution.nativeResult = waitResult;
+        execution.errorMessage = VulkanErrorMessage(
+            waitResult,
+            "vkWaitForFences for Vulkan mode-N qualification completion");
+        return execution;
+    }
+
+    const timing::HostTimePoint t2 = timing::CaptureHostTime();
+    resources.computePending = false;
+    resources.phase = Resources::Phase::Complete;
+    execution.hostTiming = ex2::CalculateHostTimingIntervals(
+        ex2::HostTimingStatus::Ok, t0, t1, t2);
+
+    std::array<VulkanQualificationTimestampQuery, 2U> queries{};
+    static_assert(
+        sizeof(VulkanQualificationTimestampQuery) ==
+        2U * sizeof(std::uint64_t));
+    constexpr VkQueryResultFlags QueryResultFlags =
+        VK_QUERY_RESULT_64_BIT | VK_QUERY_RESULT_WITH_AVAILABILITY_BIT;
+    const VkResult queryResult = vkGetQueryPoolResults(
+        resources.device,
+        resources.queryPool,
+        0U,
+        2U,
+        sizeof(queries),
+        queries.data(),
+        sizeof(VulkanQualificationTimestampQuery),
+        QueryResultFlags);
+    const VulkanNativeTimingResult decoded =
+        DecodeQualificationTimestampQueries(
+            queryResult,
+            queries,
+            resources.diagnostics.queueFamily.timestampValidBits,
+            resources.diagnostics.properties.limits.timestampPeriod);
+    execution.nativeTimingStatus = decoded.status;
+    execution.nativeDeviceIntervalNanoseconds = decoded.intervalNanoseconds;
+    if (queryResult != VK_SUCCESS)
+    {
+        execution.nativeResult = queryResult;
+    }
+
+    std::vector<std::uint32_t> output(resources.elementCount);
+    const VkResult resetResult =
+        vkResetFences(resources.device, 1U, &resources.transferFence);
+    if (resetResult != VK_SUCCESS)
+    {
+        resources.phase = Resources::Phase::Failed;
+        execution.status = VulkanQualificationStatus::ReadbackFailed;
+        execution.failurePhase = VulkanQualificationFailurePhase::Readback;
+        execution.nativeResult = resetResult;
+        execution.errorMessage = VulkanErrorMessage(
+            resetResult,
+            "vkResetFences for Vulkan mode-N qualification readback");
+        return execution;
+    }
+
+    const VkResult readbackSubmitResult = resources.Submit(
+        resources.readbackCommands,
+        resources.transferFence,
+        resources.transferPending);
+    if (readbackSubmitResult != VK_SUCCESS)
+    {
+        resources.phase = Resources::Phase::Failed;
+        execution.status = VulkanQualificationStatus::ReadbackFailed;
+        execution.failurePhase = VulkanQualificationFailurePhase::Readback;
+        execution.nativeResult = readbackSubmitResult;
+        execution.errorMessage = VulkanErrorMessage(
+            readbackSubmitResult,
+            "vkQueueSubmit2 for Vulkan mode-N qualification readback");
+        return execution;
+    }
+
+    const VkResult readbackWaitResult = vkWaitForFences(
+        resources.device,
+        1U,
+        &resources.transferFence,
+        VK_TRUE,
+        TransferTimeoutNanoseconds);
+    if (readbackWaitResult != VK_SUCCESS)
+    {
+        resources.phase = Resources::Phase::CompletionUncertain;
+        execution.status = VulkanQualificationStatus::ReadbackFailed;
+        execution.failurePhase = VulkanQualificationFailurePhase::Readback;
+        execution.nativeResult = readbackWaitResult;
+        execution.errorMessage = VulkanErrorMessage(
+            readbackWaitResult,
+            "vkWaitForFences for Vulkan mode-N qualification readback");
+        return execution;
+    }
+    resources.transferPending = false;
+
+    if (!output.empty())
+    {
+        resources.MaintainHostCache(resources.readback, false);
+        std::memcpy(
+            output.data(),
+            resources.readback.mapped,
+            output.size() * sizeof(std::uint32_t));
+    }
+    execution.output = std::move(output);
+    execution.validationPassed = execution.output == resources.expected;
+
+    if (!execution.validationPassed)
+    {
+        resources.phase = Resources::Phase::Failed;
+        execution.status = VulkanQualificationStatus::ValidationFailed;
+        execution.failurePhase = VulkanQualificationFailurePhase::Validation;
+        execution.errorMessage =
+            "Vulkan mode-N qualification output differs from the exact CPU oracle";
+        return execution;
+    }
+    if (execution.hostTiming.status != ex2::HostTimingStatus::Ok)
+    {
+        resources.phase = Resources::Phase::Failed;
+        execution.status = VulkanQualificationStatus::TimingInvalid;
+        execution.failurePhase = VulkanQualificationFailurePhase::HostTiming;
+        execution.errorMessage =
+            "Vulkan mode-N qualification host timestamps failed the G0-01 contract";
+        return execution;
+    }
+    if (execution.nativeTimingStatus != VulkanNativeTimingStatus::Valid)
+    {
+        resources.phase = Resources::Phase::Failed;
+        execution.status = VulkanQualificationStatus::TimingInvalid;
+        execution.failurePhase = VulkanQualificationFailurePhase::NativeTiming;
+        switch (execution.nativeTimingStatus)
+        {
+        case VulkanNativeTimingStatus::QueryUnavailable:
+            execution.errorMessage =
+                "Vulkan mode-N timestamp queries were unavailable after successful fence completion";
+            break;
+        case VulkanNativeTimingStatus::QueryRetrievalFailed:
+            execution.errorMessage = VulkanErrorMessage(
+                queryResult,
+                "vkGetQueryPoolResults for Vulkan mode-N qualification");
+            break;
+        case VulkanNativeTimingStatus::ConversionInvalid:
+            execution.errorMessage =
+                "Vulkan mode-N timestamp interval violated conversion or duration-envelope rules";
+            break;
+        default:
+            execution.errorMessage =
+                "Vulkan mode-N timestamp interval is invalid";
+            break;
+        }
+        return execution;
+    }
+
+    resources.phase = Resources::Phase::Complete;
+    execution.status = VulkanQualificationStatus::Ok;
+    execution.failurePhase = VulkanQualificationFailurePhase::None;
+    return execution;
+}
+
+VulkanDeviceTimedQualificationOperation::
+    VulkanDeviceTimedQualificationOperation(
+        std::size_t elementCount,
+        const std::filesystem::path& spirvPath,
+        std::uint32_t physicalDeviceIndex)
+    : operation_{new VulkanQualificationOperation(
+          elementCount,
+          spirvPath,
+          physicalDeviceIndex,
+          true)}
+{
+}
+
+VulkanDeviceTimedQualificationOperation::
+    ~VulkanDeviceTimedQualificationOperation() noexcept = default;
+
+std::size_t
+VulkanDeviceTimedQualificationOperation::ElementCount() const noexcept
+{
+    return operation_->ElementCount();
+}
+
+const VulkanQualificationDiagnostics&
+VulkanDeviceTimedQualificationOperation::Diagnostics() const noexcept
+{
+    return operation_->Diagnostics();
+}
+
+void VulkanDeviceTimedQualificationOperation::Upload(
+    std::span<const std::uint32_t> input)
+{
+    operation_->Upload(input);
+}
+
+void VulkanDeviceTimedQualificationOperation::PrepareDeviceTimed()
+{
+    operation_->PrepareDeviceTimed();
+}
+
+VulkanQualificationExecution
+VulkanDeviceTimedQualificationOperation::ExecuteDeviceTimed(
+    std::uint64_t timeoutNanoseconds)
+{
+    return operation_->ExecuteDeviceTimedInternal(timeoutNanoseconds);
 }
 
 } // namespace computelab::vulkan
