@@ -6,6 +6,7 @@ add_executable(ComputeLabTests
     DeterministicTransformTests.cpp
     ResultRecordsTests.cpp
     HostTimingTests.cpp
+    Ex2HostTimingTests.cpp
 )
 
 target_link_libraries(ComputeLabTests
@@ -15,6 +16,7 @@ target_link_libraries(ComputeLabTests
         ComputeLabDeterministicOracle
         ComputeLabResults
         ComputeLabHostTiming
+        ComputeLabEx2HostTiming
 )
 
 if(TARGET ComputeLabEnvironment)
