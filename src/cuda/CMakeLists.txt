@@ -21,3 +21,30 @@ set_target_properties(ComputeLabCudaTransform
 )
 
 target_compile_features(ComputeLabCudaTransform PUBLIC cxx_std_20)
+
+add_library(ComputeLabCudaQualification STATIC
+    CudaQualification.cu
+    CudaQualification.hpp
+)
+
+target_include_directories(ComputeLabCudaQualification
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(ComputeLabCudaQualification
+    PUBLIC
+        ComputeLabEx2HostTiming
+    PRIVATE
+        ComputeLabDeterministicOracle
+        CUDA::cudart
+)
+
+set_target_properties(ComputeLabCudaQualification
+    PROPERTIES
+        CUDA_ARCHITECTURES native
+        CUDA_STANDARD 20
+        CUDA_STANDARD_REQUIRED ON
+)
+
+target_compile_features(ComputeLabCudaQualification PUBLIC cxx_std_20)

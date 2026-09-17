@@ -17,4 +17,18 @@ add_library(ComputeLabVulkanTransform STATIC
 target_compile_features(ComputeLabVulkanTransform PUBLIC cxx_std_20)
 target_include_directories(ComputeLabVulkanTransform PUBLIC "${PROJECT_SOURCE_DIR}/src")
 target_link_libraries(ComputeLabVulkanTransform PUBLIC Vulkan::Vulkan)
+
+add_library(ComputeLabVulkanQualification STATIC
+    VulkanQualification.cpp VulkanQualification.hpp
+    "${COMPUTELAB_EX1_SPIRV_PATH}"
+)
+target_compile_features(ComputeLabVulkanQualification PUBLIC cxx_std_20)
+target_include_directories(ComputeLabVulkanQualification PUBLIC "${PROJECT_SOURCE_DIR}/src")
+target_link_libraries(ComputeLabVulkanQualification
+    PUBLIC
+        Vulkan::Vulkan
+        ComputeLabEx2HostTiming
+    PRIVATE
+        ComputeLabDeterministicOracle
+)
 set(COMPUTELAB_EX1_SPIRV_PATH "${COMPUTELAB_EX1_SPIRV_PATH}" PARENT_SCOPE)
