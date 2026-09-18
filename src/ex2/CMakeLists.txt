@@ -12,6 +12,27 @@ target_include_directories(ComputeLabEx2Foundation
         ${PROJECT_SOURCE_DIR}/src
 )
 
+add_library(ComputeLabEx2CpuOracles STATIC
+    Ex2CpuA.cpp
+    Ex2CpuB.cpp
+    Ex2CpuC.cpp
+    Ex2CpuD.cpp
+    Ex2CpuE.cpp
+    Ex2CpuOracles.hpp
+)
+
+target_compile_features(ComputeLabEx2CpuOracles PUBLIC cxx_std_20)
+
+target_include_directories(ComputeLabEx2CpuOracles
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(ComputeLabEx2CpuOracles
+    PUBLIC
+        ComputeLabEx2Foundation
+)
+
 add_library(ComputeLabEx2HostTiming STATIC
     Ex2HostTiming.cpp
     Ex2HostTiming.hpp
