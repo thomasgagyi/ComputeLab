@@ -7,6 +7,8 @@ add_executable(ComputeLabTests
     ResultRecordsTests.cpp
     HostTimingTests.cpp
     Ex2HostTimingTests.cpp
+    Ex2InputTests.cpp
+    Ex2Sha256Tests.cpp
     Ex2Gate0Tests.cpp
     Ex2Gate0SupervisorTests.cpp
 )
@@ -18,6 +20,7 @@ target_link_libraries(ComputeLabTests
         ComputeLabDeterministicOracle
         ComputeLabResults
         ComputeLabHostTiming
+        ComputeLabEx2Foundation
         ComputeLabEx2HostTiming
         ComputeLabEx2Gate0Support
 )
