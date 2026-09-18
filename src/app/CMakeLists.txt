@@ -34,3 +34,28 @@ if(TARGET ComputeLabEx1Support
             ComputeLabVulkanTransform
     )
 endif()
+
+if(TARGET ComputeLabEx2Gate0Support
+    AND TARGET ComputeLabCudaQualification
+    AND TARGET ComputeLabVulkanQualification
+    AND TARGET ComputeLabEnvironment)
+    add_executable(
+        ComputeLabEx2Gate0
+        Ex2Gate0Main.cpp
+    )
+
+    target_compile_features(ComputeLabEx2Gate0 PRIVATE cxx_std_20)
+    target_compile_definitions(ComputeLabEx2Gate0 PRIVATE
+        COMPUTELAB_EX1_SPIRV_PATH="${COMPUTELAB_EX1_SPIRV_PATH}"
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+    )
+    target_link_libraries(ComputeLabEx2Gate0
+        PRIVATE
+            ComputeLabEx2Gate0Support
+            ComputeLabSeededInput
+            ComputeLabDeterministicOracle
+            ComputeLabCudaQualification
+            ComputeLabVulkanQualification
+            ComputeLabEnvironment
+    )
+endif()

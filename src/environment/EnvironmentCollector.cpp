@@ -11,6 +11,7 @@
 #include <array>
 #include <charconv>
 #include <cstddef>
+#include <limits>
 #include <stdexcept>
 #include <string_view>
 #include <utility>
@@ -219,13 +220,16 @@ std::vector<CudaDeviceMetadata> CollectCudaDeviceMetadata()
         CheckCuda(
             cudaGetDeviceProperties(&properties, deviceOrdinal),
             "cudaGetDeviceProperties");
+        if (properties.pciDeviceID < 0)
+            ThrowAcquisitionFailure("CUDA PCI device identifier is negative");
         CudaDeviceMetadata metadata{
             ToUuid(properties.uuid),
             properties.name,
             static_cast<std::uint64_t>(properties.totalGlobalMem),
             properties.major,
             properties.minor,
-            FormatCudaRuntimeVersion(runtimeVersion)};
+            FormatCudaRuntimeVersion(runtimeVersion),
+            static_cast<std::uint32_t>(properties.pciDeviceID)};
         RequireNonEmpty(metadata.name, "CUDA device name");
         if (metadata.totalGlobalMemoryBytes == 0U)
         {
@@ -279,11 +283,35 @@ std::vector<VulkanDeviceMetadata> CollectVulkanDeviceMetadata()
             properties.pNext = &idProperties;
             vkGetPhysicalDeviceProperties2(physicalDevice, &properties);
 
+            VkPhysicalDeviceMemoryProperties memoryProperties{};
+            vkGetPhysicalDeviceMemoryProperties(
+                physicalDevice, &memoryProperties);
+            std::uint64_t deviceLocalMemoryBytes = 0U;
+            for (std::uint32_t heapIndex = 0U;
+                 heapIndex < memoryProperties.memoryHeapCount; ++heapIndex)
+            {
+                if ((memoryProperties.memoryHeaps[heapIndex].flags
+                        & VK_MEMORY_HEAP_DEVICE_LOCAL_BIT) != 0U)
+                {
+                    if (deviceLocalMemoryBytes
+                        > (std::numeric_limits<std::uint64_t>::max)()
+                            - memoryProperties.memoryHeaps[heapIndex].size)
+                    {
+                        ThrowAcquisitionFailure(
+                            "Vulkan device-local memory total overflowed");
+                    }
+                    deviceLocalMemoryBytes +=
+                        memoryProperties.memoryHeaps[heapIndex].size;
+                }
+            }
+
             metadata.push_back({
                 ToUuid(idProperties.deviceUUID),
                 properties.properties.vendorID,
                 properties.properties.deviceID,
-                FormatVulkanApiVersion(properties.properties.apiVersion)});
+                FormatVulkanApiVersion(properties.properties.apiVersion),
+                properties.properties.deviceName,
+                deviceLocalMemoryBytes});
         }
 
         vkDestroyInstance(instance, nullptr);
@@ -540,6 +568,84 @@ results::EnvironmentRecord CollectEnvironmentRecord(
                        : std::vector<VulkanDeviceMetadata>{},
         hasMeasuredGpu ? std::optional<std::string>{CollectNvidiaDriverVersion()}
                        : std::nullopt);
+}
+
+results::EnvironmentRecord CollectCudaEnvironmentRecord(
+    const EnvironmentRunContext& context,
+    std::uint32_t deviceOrdinal,
+    const DeviceUuid& measuredDeviceUuid)
+{
+    const BuildMetadata build = GetConfiguredBuildMetadata();
+    results::EnvironmentRecord record = ComposeEnvironmentRecord(
+        context,
+        CollectWindowsHostMetadata(),
+        build,
+        std::nullopt,
+        {},
+        {},
+        std::nullopt);
+    const auto devices = CollectCudaDeviceMetadata();
+    if (deviceOrdinal >= devices.size())
+        ThrowAcquisitionFailure("selected CUDA device ordinal is out of range");
+    const CudaDeviceMetadata& device = devices[deviceOrdinal];
+    if (device.uuid != measuredDeviceUuid)
+        ThrowAcquisitionFailure(
+            "selected CUDA device UUID changed between operation and environment collection");
+    RequireNonEmpty(device.name, "gpu_name");
+    RequireNonEmpty(device.runtimeVersion, "cuda_runtime_version");
+    RequireNonEmpty(build.cudaToolkitVersion, "cuda_toolkit_version");
+    if (device.totalGlobalMemoryBytes == 0U)
+        ThrowAcquisitionFailure("gpu_memory_bytes is zero");
+
+    record.gpuName = device.name;
+    record.gpuVendor = "NVIDIA";
+    record.gpuDeviceId = FormatGpuDeviceId(device.deviceId);
+    record.gpuMemoryBytes = device.totalGlobalMemoryBytes;
+    record.nvidiaDriverVersion = CollectNvidiaDriverVersion();
+    record.cudaToolkitVersion = build.cudaToolkitVersion;
+    record.cudaRuntimeVersion = device.runtimeVersion;
+    record.cudaComputeCapability = FormatComputeCapability(
+        device.computeCapabilityMajor, device.computeCapabilityMinor);
+    return record;
+}
+
+results::EnvironmentRecord CollectVulkanEnvironmentRecord(
+    const EnvironmentRunContext& context,
+    std::uint32_t physicalDeviceIndex,
+    const DeviceUuid& measuredDeviceUuid)
+{
+    const BuildMetadata build = GetConfiguredBuildMetadata();
+    results::EnvironmentRecord record = ComposeEnvironmentRecord(
+        context,
+        CollectWindowsHostMetadata(),
+        build,
+        std::nullopt,
+        {},
+        {},
+        std::nullopt);
+    const auto devices = CollectVulkanDeviceMetadata();
+    if (physicalDeviceIndex >= devices.size())
+        ThrowAcquisitionFailure("selected Vulkan physical-device index is out of range");
+    const VulkanDeviceMetadata& device = devices[physicalDeviceIndex];
+    if (device.uuid != measuredDeviceUuid)
+        ThrowAcquisitionFailure(
+            "selected Vulkan device UUID changed between operation and environment collection");
+    if (device.vendorId != kNvidiaVendorId)
+        ThrowAcquisitionFailure("selected Vulkan physical device is not NVIDIA");
+    RequireNonEmpty(device.name, "gpu_name");
+    RequireNonEmpty(device.deviceApiVersion, "vulkan_device_api_version");
+    RequireNonEmpty(build.vulkanSdkVersion, "vulkan_sdk_version");
+    if (device.deviceLocalMemoryBytes == 0U)
+        ThrowAcquisitionFailure("gpu_memory_bytes is zero");
+
+    record.gpuName = device.name;
+    record.gpuVendor = "NVIDIA";
+    record.gpuDeviceId = FormatGpuDeviceId(device.deviceId);
+    record.gpuMemoryBytes = device.deviceLocalMemoryBytes;
+    record.nvidiaDriverVersion = CollectNvidiaDriverVersion();
+    record.vulkanSdkVersion = build.vulkanSdkVersion;
+    record.vulkanDeviceApiVersion = device.deviceApiVersion;
+    return record;
 }
 
 } // namespace computelab::environment

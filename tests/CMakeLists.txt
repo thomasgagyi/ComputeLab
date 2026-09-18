@@ -7,6 +7,7 @@ add_executable(ComputeLabTests
     ResultRecordsTests.cpp
     HostTimingTests.cpp
     Ex2HostTimingTests.cpp
+    Ex2Gate0Tests.cpp
 )
 
 target_link_libraries(ComputeLabTests
@@ -17,6 +18,7 @@ target_link_libraries(ComputeLabTests
         ComputeLabResults
         ComputeLabHostTiming
         ComputeLabEx2HostTiming
+        ComputeLabEx2Gate0Support
 )
 
 if(TARGET ComputeLabEnvironment)
@@ -53,6 +55,15 @@ if(TARGET ComputeLabVulkanQualification)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabVulkanQualification)
     target_compile_definitions(ComputeLabTests PRIVATE
         COMPUTELAB_EX1_SPIRV_PATH="${COMPUTELAB_EX1_SPIRV_PATH}")
+endif()
+
+if(TARGET ComputeLabEx2Gate0)
+    target_sources(ComputeLabTests PRIVATE Ex2Gate0ChildSmokeTests.cpp)
+    add_dependencies(ComputeLabTests ComputeLabEx2Gate0)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_EX2_GATE0_EXE="$<TARGET_FILE:ComputeLabEx2Gate0>"
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+    )
 endif()
 
 gtest_discover_tests(ComputeLabTests)

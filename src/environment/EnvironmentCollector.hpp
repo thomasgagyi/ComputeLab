@@ -53,6 +53,7 @@ struct CudaDeviceMetadata
     int computeCapabilityMajor{};
     int computeCapabilityMinor{};
     std::string runtimeVersion;
+    std::uint32_t deviceId{};
 };
 
 struct VulkanDeviceMetadata
@@ -61,6 +62,8 @@ struct VulkanDeviceMetadata
     std::uint32_t vendorId{};
     std::uint32_t deviceId{};
     std::string deviceApiVersion;
+    std::string name;
+    std::uint64_t deviceLocalMemoryBytes{};
 };
 
 [[nodiscard]] BuildMetadata GetConfiguredBuildMetadata();
@@ -78,5 +81,13 @@ struct VulkanDeviceMetadata
 [[nodiscard]] results::EnvironmentRecord CollectEnvironmentRecord(
     const EnvironmentRunContext& context,
     const std::optional<DeviceUuid>& measuredDeviceUuid);
+[[nodiscard]] results::EnvironmentRecord CollectCudaEnvironmentRecord(
+    const EnvironmentRunContext& context,
+    std::uint32_t deviceOrdinal,
+    const DeviceUuid& measuredDeviceUuid);
+[[nodiscard]] results::EnvironmentRecord CollectVulkanEnvironmentRecord(
+    const EnvironmentRunContext& context,
+    std::uint32_t physicalDeviceIndex,
+    const DeviceUuid& measuredDeviceUuid);
 
 } // namespace computelab::environment

@@ -14,3 +14,12 @@ target_link_libraries(ComputeLabEx2HostTiming
     PUBLIC
         ComputeLabHostTiming
 )
+
+add_library(ComputeLabEx2Gate0Support STATIC
+    Ex2Gate0.cpp
+    Ex2Gate0.hpp
+)
+
+target_compile_features(ComputeLabEx2Gate0Support PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2Gate0Support PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_link_libraries(ComputeLabEx2Gate0Support PUBLIC ComputeLabResults)

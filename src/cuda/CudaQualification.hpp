@@ -2,6 +2,7 @@
 
 #include "ex2/Ex2HostTiming.hpp"
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 #include <memory>
@@ -127,6 +128,8 @@ public:
     CudaQualificationOperation& operator=(CudaQualificationOperation&&) = delete;
 
     [[nodiscard]] std::size_t ElementCount() const noexcept;
+    [[nodiscard]] const std::array<std::uint8_t, 16>&
+    SelectedDeviceUuid() const noexcept;
 
     // Upload, its completion wait, and CPU-oracle construction are untimed.
     void Upload(std::span<const std::uint32_t> input);
@@ -167,6 +170,8 @@ public:
         CudaDeviceTimedQualificationOperation&&) = delete;
 
     [[nodiscard]] std::size_t ElementCount() const noexcept;
+    [[nodiscard]] const std::array<std::uint8_t, 16>&
+    SelectedDeviceUuid() const noexcept;
     void Upload(std::span<const std::uint32_t> input);
 
     // t0 precedes start-event recording. t1 follows the start record, exactly
