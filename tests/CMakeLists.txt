@@ -25,6 +25,10 @@ target_link_libraries(ComputeLabTests
 if(TARGET ComputeLabEnvironment)
     target_sources(ComputeLabTests PRIVATE EnvironmentCollectorTests.cpp)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEnvironment)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_TEST_CONFIGURE_PRESET="${COMPUTELAB_CONFIGURE_PRESET}"
+        COMPUTELAB_TEST_BUILD_TYPE="${CMAKE_BUILD_TYPE}"
+    )
 endif()
 
 if(TARGET ComputeLabEx1Support)

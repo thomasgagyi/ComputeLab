@@ -170,8 +170,8 @@ TEST(EnvironmentCollector, ConfiguredBuildMetadataIsPopulated)
     EXPECT_FALSE(build.compilerVersion.empty());
     EXPECT_FALSE(build.cmakeVersion.empty());
     EXPECT_FALSE(build.ninjaVersion.empty());
-    EXPECT_EQ(build.configurePreset, "x64-debug");
-    EXPECT_EQ(build.buildType, "Debug");
+    EXPECT_EQ(build.configurePreset, COMPUTELAB_TEST_CONFIGURE_PRESET);
+    EXPECT_EQ(build.buildType, COMPUTELAB_TEST_BUILD_TYPE);
     EXPECT_FALSE(build.cudaToolkitVersion.empty());
     EXPECT_FALSE(build.vulkanSdkVersion.empty());
 }
