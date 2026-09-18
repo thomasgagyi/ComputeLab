@@ -58,4 +58,18 @@ if(TARGET ComputeLabEx2Gate0Support
             ComputeLabVulkanQualification
             ComputeLabEnvironment
     )
+
+    add_executable(
+        ComputeLabEx2Gate0Supervisor
+        Ex2Gate0SupervisorMain.cpp
+    )
+    target_compile_features(ComputeLabEx2Gate0Supervisor PRIVATE cxx_std_20)
+    target_compile_definitions(ComputeLabEx2Gate0Supervisor PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+    )
+    target_link_libraries(ComputeLabEx2Gate0Supervisor
+        PRIVATE
+            ComputeLabEx2Gate0Support
+            ComputeLabEnvironment
+    )
 endif()

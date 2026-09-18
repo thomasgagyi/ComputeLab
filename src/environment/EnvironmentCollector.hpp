@@ -66,6 +66,9 @@ struct VulkanDeviceMetadata
     std::uint64_t deviceLocalMemoryBytes{};
 };
 
+[[nodiscard]] std::vector<CudaDeviceMetadata> EnumerateCudaDeviceMetadata();
+[[nodiscard]] std::vector<VulkanDeviceMetadata> EnumerateVulkanDeviceMetadata();
+
 [[nodiscard]] BuildMetadata GetConfiguredBuildMetadata();
 [[nodiscard]] WindowsHostMetadata CollectWindowsHostMetadata();
 [[nodiscard]] std::string CollectNvidiaDriverVersion();

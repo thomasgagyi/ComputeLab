@@ -1,6 +1,7 @@
 #include "cuda/CudaQualification.hpp"
 #include "environment/EnvironmentCollector.hpp"
 #include "ex2/Ex2Gate0.hpp"
+#include "ex2/Ex2Gate0Supervisor.hpp"
 #include "input/SeededInput.hpp"
 #include "oracle/DeterministicTransform.hpp"
 #include "vulkan/VulkanQualification.hpp"
@@ -31,6 +32,7 @@
 namespace
 {
 namespace gate0 = computelab::ex2::gate0;
+namespace supervisor = computelab::ex2::gate0::supervisor;
 namespace cuda = computelab::cuda;
 namespace vk = computelab::vulkan;
 
@@ -371,15 +373,24 @@ ExecutionState ExecuteCondition(
     gate0::QualificationPackage& package,
     std::string_view comparisonConditionId,
     std::string_view seriesId,
+    const std::optional<supervisor::ProgressReporter>& progress,
     Execute execute)
 {
     ExecutionState state;
+    std::uint64_t operationIndex{};
+    const auto executeOne = [&]() {
+        if (progress.has_value()) progress->OperationStarted(operationIndex);
+        OperationObservation observation = execute();
+        if (progress.has_value()) progress->OperationCompleted(operationIndex);
+        ++operationIndex;
+        return observation;
+    };
     if (configuration.phase == gate0::QualificationPhase::WarmupCharacterization)
     {
         for (std::uint64_t index = 0;
              index < gate0::WarmupCharacterizationCount; ++index)
         {
-            const OperationObservation observation = execute();
+            const OperationObservation observation = executeOne();
             package.AppendWarmup({
                 configuration.runId,
                 std::string(seriesId),
@@ -397,7 +408,7 @@ ExecutionState ExecuteCondition(
 
     for (std::uint64_t index = 0; index < configuration.warmupCount; ++index)
     {
-        const OperationObservation observation = execute();
+        const OperationObservation observation = executeOne();
         RetainFailure(state, observation);
         if (state.exitCode != gate0::ExitCode::Success) return state;
     }
@@ -406,7 +417,7 @@ ExecutionState ExecuteCondition(
     for (std::uint64_t index = 0;
          index < configuration.plannedSampleCount; ++index)
     {
-        const OperationObservation observation = execute();
+        const OperationObservation observation = executeOne();
         state.samples.push_back(MakeSample(
             configuration, comparisonConditionId, seriesId, index, observation));
         package.AppendSample(state.samples.back());
@@ -531,7 +542,10 @@ void ValidateInvocationConfiguration(const gate0::Configuration& configuration)
             "qualification package path collision; refusing to overwrite");
 }
 
-int Run(const gate0::Configuration& configuration, const std::filesystem::path& executable)
+int Run(
+    const gate0::Configuration& configuration,
+    const std::filesystem::path& executable,
+    const std::optional<supervisor::ProgressReporter>& progress)
 {
     const GitState gitBefore = ReadGitState();
     const std::string executableHash = gate0::Sha256File(executable);
@@ -594,7 +608,7 @@ int Run(const gate0::Configuration& configuration, const std::filesystem::path& 
         package->WriteInitialization(initialization);
         diagnostics = CudaDiagnostics(configuration.instrumentMode);
         execution = ExecuteCondition(
-            configuration, *package, comparisonConditionId, seriesId,
+            configuration, *package, comparisonConditionId, seriesId, progress,
             [&operation] {
                 return Observe(NativeCall(
                     [&operation] { return operation->ExecuteHostOnly(); }));
@@ -614,7 +628,7 @@ int Run(const gate0::Configuration& configuration, const std::filesystem::path& 
         package->WriteInitialization(initialization);
         diagnostics = CudaDiagnostics(configuration.instrumentMode);
         execution = ExecuteCondition(
-            configuration, *package, comparisonConditionId, seriesId,
+            configuration, *package, comparisonConditionId, seriesId, progress,
             [&operation] {
                 return Observe(NativeCall(
                     [&operation] { return operation->ExecuteDeviceTimed(); }));
@@ -634,7 +648,7 @@ int Run(const gate0::Configuration& configuration, const std::filesystem::path& 
         package->WriteInitialization(initialization);
         diagnostics = VulkanDiagnostics(operation->Diagnostics(), configuration.instrumentMode);
         execution = ExecuteCondition(
-            configuration, *package, comparisonConditionId, seriesId,
+            configuration, *package, comparisonConditionId, seriesId, progress,
             [&operation] {
                 NativeCall([&operation] { operation->PrepareHostOnly(); });
                 return Observe(NativeCall(
@@ -655,7 +669,7 @@ int Run(const gate0::Configuration& configuration, const std::filesystem::path& 
         package->WriteInitialization(initialization);
         diagnostics = VulkanDiagnostics(operation->Diagnostics(), configuration.instrumentMode);
         execution = ExecuteCondition(
-            configuration, *package, comparisonConditionId, seriesId,
+            configuration, *package, comparisonConditionId, seriesId, progress,
             [&operation] {
                 NativeCall([&operation] { operation->PrepareDeviceTimed(); });
                 return Observe(NativeCall(
@@ -733,11 +747,13 @@ int main(int argc, char** argv)
     }
 
     std::optional<gate0::Configuration> configuration;
+    std::optional<supervisor::ProgressReporter> progress;
     try
     {
         std::vector<std::string_view> arguments;
         arguments.reserve(static_cast<std::size_t>(argc > 0 ? argc - 1 : 0));
         for (int index = 1; index < argc; ++index) arguments.emplace_back(argv[index]);
+        progress = supervisor::ExtractProgressReporter(arguments);
         configuration = gate0::ParseArguments(arguments);
         ValidateInvocationConfiguration(*configuration);
     }
@@ -755,7 +771,7 @@ int main(int argc, char** argv)
 
     try
     {
-        return Run(*configuration, RunningExecutablePath());
+        return Run(*configuration, RunningExecutablePath(), progress);
     }
     catch (const NativeExecutionException& error)
     {

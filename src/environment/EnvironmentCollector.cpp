@@ -200,7 +200,7 @@ std::string FormatVulkanApiVersion(std::uint32_t version)
         + std::to_string(VK_VERSION_PATCH(version));
 }
 
-std::vector<CudaDeviceMetadata> CollectCudaDeviceMetadata()
+std::vector<CudaDeviceMetadata> CollectCudaDeviceMetadataImpl()
 {
     int deviceCount = 0;
     CheckCuda(cudaGetDeviceCount(&deviceCount), "cudaGetDeviceCount");
@@ -240,7 +240,7 @@ std::vector<CudaDeviceMetadata> CollectCudaDeviceMetadata()
     return devices;
 }
 
-std::vector<VulkanDeviceMetadata> CollectVulkanDeviceMetadata()
+std::vector<VulkanDeviceMetadata> CollectVulkanDeviceMetadataImpl()
 {
     VkApplicationInfo applicationInfo{};
     applicationInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -325,6 +325,16 @@ std::vector<VulkanDeviceMetadata> CollectVulkanDeviceMetadata()
 }
 
 } // namespace
+
+std::vector<CudaDeviceMetadata> EnumerateCudaDeviceMetadata()
+{
+    return CollectCudaDeviceMetadataImpl();
+}
+
+std::vector<VulkanDeviceMetadata> EnumerateVulkanDeviceMetadata()
+{
+    return CollectVulkanDeviceMetadataImpl();
+}
 
 BuildMetadata GetConfiguredBuildMetadata()
 {
@@ -562,9 +572,9 @@ results::EnvironmentRecord CollectEnvironmentRecord(
         CollectWindowsHostMetadata(),
         GetConfiguredBuildMetadata(),
         measuredDeviceUuid,
-        hasMeasuredGpu ? CollectCudaDeviceMetadata()
+        hasMeasuredGpu ? EnumerateCudaDeviceMetadata()
                        : std::vector<CudaDeviceMetadata>{},
-        hasMeasuredGpu ? CollectVulkanDeviceMetadata()
+        hasMeasuredGpu ? EnumerateVulkanDeviceMetadata()
                        : std::vector<VulkanDeviceMetadata>{},
         hasMeasuredGpu ? std::optional<std::string>{CollectNvidiaDriverVersion()}
                        : std::nullopt);
@@ -584,7 +594,7 @@ results::EnvironmentRecord CollectCudaEnvironmentRecord(
         {},
         {},
         std::nullopt);
-    const auto devices = CollectCudaDeviceMetadata();
+    const auto devices = EnumerateCudaDeviceMetadata();
     if (deviceOrdinal >= devices.size())
         ThrowAcquisitionFailure("selected CUDA device ordinal is out of range");
     const CudaDeviceMetadata& device = devices[deviceOrdinal];
@@ -623,7 +633,7 @@ results::EnvironmentRecord CollectVulkanEnvironmentRecord(
         {},
         {},
         std::nullopt);
-    const auto devices = CollectVulkanDeviceMetadata();
+    const auto devices = EnumerateVulkanDeviceMetadata();
     if (physicalDeviceIndex >= devices.size())
         ThrowAcquisitionFailure("selected Vulkan physical-device index is out of range");
     const VulkanDeviceMetadata& device = devices[physicalDeviceIndex];

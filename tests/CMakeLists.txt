@@ -8,6 +8,7 @@ add_executable(ComputeLabTests
     HostTimingTests.cpp
     Ex2HostTimingTests.cpp
     Ex2Gate0Tests.cpp
+    Ex2Gate0SupervisorTests.cpp
 )
 
 target_link_libraries(ComputeLabTests
@@ -65,5 +66,16 @@ if(TARGET ComputeLabEx2Gate0)
         COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
     )
 endif()
+
+add_executable(ComputeLabEx2Gate0SupervisorTestChild
+    Ex2Gate0SupervisorTestChild.cpp
+)
+target_compile_features(ComputeLabEx2Gate0SupervisorTestChild PRIVATE cxx_std_20)
+target_link_libraries(ComputeLabEx2Gate0SupervisorTestChild
+    PRIVATE ComputeLabEx2Gate0Support)
+add_dependencies(ComputeLabTests ComputeLabEx2Gate0SupervisorTestChild)
+target_compile_definitions(ComputeLabTests PRIVATE
+    COMPUTELAB_EX2_GATE0_SUPERVISOR_TEST_CHILD="$<TARGET_FILE:ComputeLabEx2Gate0SupervisorTestChild>"
+)
 
 gtest_discover_tests(ComputeLabTests)

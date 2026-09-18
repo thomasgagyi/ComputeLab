@@ -18,6 +18,8 @@ target_link_libraries(ComputeLabEx2HostTiming
 add_library(ComputeLabEx2Gate0Support STATIC
     Ex2Gate0.cpp
     Ex2Gate0.hpp
+    Ex2Gate0Supervisor.cpp
+    Ex2Gate0Supervisor.hpp
 )
 
 target_compile_features(ComputeLabEx2Gate0Support PUBLIC cxx_std_20)
