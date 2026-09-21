@@ -81,6 +81,13 @@ if(TARGET ComputeLabVulkanQualification)
         COMPUTELAB_EX1_SPIRV_PATH="${COMPUTELAB_EX1_SPIRV_PATH}")
 endif()
 
+if(TARGET ComputeLabEx2VulkanA1)
+    target_sources(ComputeLabTests PRIVATE Ex2VulkanA1Tests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2VulkanA1)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}")
+endif()
+
 if(TARGET ComputeLabEx2Gate0)
     target_sources(ComputeLabTests PRIVATE Ex2Gate0ChildSmokeTests.cpp)
     add_dependencies(ComputeLabTests ComputeLabEx2Gate0)
