@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ex2/Ex2SemanticTypes.hpp"
+
 #include <cstdint>
 #include <span>
 #include <string_view>
@@ -7,6 +9,11 @@
 
 namespace computelab::ex2
 {
+
+// A-D invocation indices and D pass indices are defined as uint32_t. This
+// shared precondition lets callers reject oversized logical spans without
+// constructing an enormous allocation merely to exercise the check.
+void ValidateUint32IndexedOracleElementCount(std::uint64_t elementCount);
 
 [[nodiscard]] std::uint32_t TransformA1Value(
     std::uint32_t input,
@@ -86,12 +93,6 @@ struct IterativeReference
     std::uint64_t seed,
     std::uint64_t elementCount,
     std::uint64_t iterationCount);
-
-enum class TransferDirection
-{
-    HostToDevice,
-    DeviceToHost,
-};
 
 struct TransferReference
 {

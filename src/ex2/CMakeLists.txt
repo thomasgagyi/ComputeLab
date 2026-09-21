@@ -3,6 +3,7 @@ add_library(ComputeLabEx2Foundation STATIC
     Ex2Input.hpp
     Ex2Sha256.cpp
     Ex2Sha256.hpp
+    Ex2SemanticTypes.hpp
 )
 
 target_compile_features(ComputeLabEx2Foundation PUBLIC cxx_std_20)
@@ -29,6 +30,23 @@ target_include_directories(ComputeLabEx2CpuOracles
 )
 
 target_link_libraries(ComputeLabEx2CpuOracles
+    PUBLIC
+        ComputeLabEx2Foundation
+)
+
+add_library(ComputeLabEx2Configuration STATIC
+    Ex2Configuration.cpp
+    Ex2Configuration.hpp
+)
+
+target_compile_features(ComputeLabEx2Configuration PUBLIC cxx_std_20)
+
+target_include_directories(ComputeLabEx2Configuration
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(ComputeLabEx2Configuration
     PUBLIC
         ComputeLabEx2Foundation
 )

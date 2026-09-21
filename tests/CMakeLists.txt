@@ -14,6 +14,7 @@ add_executable(ComputeLabTests
     Ex2CpuCTests.cpp
     Ex2CpuDTests.cpp
     Ex2CpuETests.cpp
+    Ex2ConfigurationTests.cpp
     Ex2Gate0Tests.cpp
     Ex2Gate0SupervisorTests.cpp
 )
@@ -27,6 +28,7 @@ target_link_libraries(ComputeLabTests
         ComputeLabHostTiming
         ComputeLabEx2Foundation
         ComputeLabEx2CpuOracles
+        ComputeLabEx2Configuration
         ComputeLabEx2HostTiming
         ComputeLabEx2Gate0Support
 )

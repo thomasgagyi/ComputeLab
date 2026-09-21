@@ -13,11 +13,7 @@ namespace
 
 std::size_t CheckedIndexCount(std::uint64_t elementCount)
 {
-    if (elementCount > std::numeric_limits<std::uint32_t>::max())
-    {
-        throw std::invalid_argument(
-            "EX-2 B element count exceeds uint32 index representation");
-    }
+    ValidateUint32IndexedOracleElementCount(elementCount);
     const auto count = static_cast<std::size_t>(elementCount);
     if (count > std::vector<std::uint32_t>{}.max_size())
     {

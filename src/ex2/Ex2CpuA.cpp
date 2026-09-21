@@ -1,9 +1,20 @@
 #include "ex2/Ex2CpuOracles.hpp"
 
 #include <cstddef>
+#include <limits>
+#include <stdexcept>
 
 namespace computelab::ex2
 {
+
+void ValidateUint32IndexedOracleElementCount(std::uint64_t elementCount)
+{
+    if (elementCount > std::numeric_limits<std::uint32_t>::max())
+    {
+        throw std::invalid_argument(
+            "EX-2 oracle element count exceeds uint32 index semantics");
+    }
+}
 
 std::uint32_t TransformA1Value(
     std::uint32_t input,
@@ -28,6 +39,7 @@ std::uint32_t TransformA2Value(
 std::vector<std::uint32_t> ReferenceA1(
     std::span<const std::uint32_t> input)
 {
+    ValidateUint32IndexedOracleElementCount(input.size());
     std::vector<std::uint32_t> output(input.size());
     for (std::size_t index = 0U; index < input.size(); ++index)
     {
@@ -40,6 +52,7 @@ std::vector<std::uint32_t> ReferenceA1(
 std::vector<std::uint32_t> ReferenceA2(
     std::span<const std::uint32_t> input)
 {
+    ValidateUint32IndexedOracleElementCount(input.size());
     std::vector<std::uint32_t> output(input.size());
     for (std::size_t index = 0U; index < input.size(); ++index)
     {

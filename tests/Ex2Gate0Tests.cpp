@@ -338,6 +338,26 @@ TEST(Ex2Gate0Identity, CanonicalKeyInsertionOrderCannotChangeIdentity)
     EXPECT_EQ(gate0::Sha256(first), gate0::Sha256(second));
 }
 
+TEST(Ex2Gate0Identity, HistoricalCanonicalBytesAndHashesRemainFrozen)
+{
+    // Frozen literals were independently checked with the .NET SHA-256 API.
+    const auto condition = Identity();
+    const std::string conditionJson =
+        "{\"byte_count\":null,\"counter_count\":null,\"element_count\":257,\"execution_mode\":\"ordinary\",\"generator_revision\":\"ex1-mt19937-64-low32-v1\",\"gpu_uuid_identity\":\"00112233-4455-6677-8899-aabbccddeeff\",\"index_pattern\":null,\"instrument_mode\":\"H\",\"iteration_count\":null,\"machine_id\":\"anonymous-machine\",\"operation_boundary\":\"prepared-transform-submit-immediate-wait\",\"protocol_version\":\"1.0\",\"seed\":123456789,\"transfer_direction\":null,\"variant\":\"existing-deterministic-transform-v1\",\"workload\":\"gate0-diagnostic-transform\"}";
+    EXPECT_EQ(gate0::ComparisonConditionCanonicalJson(condition), conditionJson);
+    EXPECT_EQ(gate0::ComparisonConditionId(condition),
+        "df756338fba346901c8e601a14f4be8fc2cb194060d990a0b3fef3bdfe1f6864");
+
+    const gate0::SeriesIdentityContext series{
+        condition, gate0::Backend::Cuda, 0U, 0U, 0U, 2U, 100U,
+        std::string(40U, 'a'), std::string(64U, 'b'), std::nullopt};
+    const std::string seriesJson =
+        "{\"backend\":\"cuda\",\"block_index\":0,\"byte_count\":null,\"counter_count\":null,\"element_count\":257,\"executable_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"execution_mode\":\"ordinary\",\"generator_revision\":\"ex1-mt19937-64-low32-v1\",\"gpu_uuid_identity\":\"00112233-4455-6677-8899-aabbccddeeff\",\"index_pattern\":null,\"instrument_mode\":\"H\",\"iteration_count\":null,\"machine_id\":\"anonymous-machine\",\"operation_boundary\":\"prepared-transform-submit-immediate-wait\",\"order_slot\":0,\"planned_sample_count\":100,\"process_index\":0,\"protocol_version\":\"1.0\",\"seed\":123456789,\"shader_sha256\":null,\"source_revision\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"transfer_direction\":null,\"variant\":\"existing-deterministic-transform-v1\",\"warmup_count\":2,\"workload\":\"gate0-diagnostic-transform\"}";
+    EXPECT_EQ(gate0::SeriesCanonicalJson(series), seriesJson);
+    EXPECT_EQ(gate0::SeriesId(series),
+        "73a6688310a3aa9915e74b25b57be7a7e716a23863b962029fdd53747f70f5ff");
+}
+
 TEST(Ex2Gate0Identity, ComparisonConditionIsBackendNeutral)
 {
     const auto condition = Identity();

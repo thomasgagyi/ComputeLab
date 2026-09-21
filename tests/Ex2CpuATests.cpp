@@ -5,10 +5,22 @@
 #include <gtest/gtest.h>
 
 #include <cstdint>
+#include <limits>
+#include <stdexcept>
 #include <vector>
 
 namespace
 {
+
+TEST(Ex2CpuOracleBounds, RejectsOversizedLogicalCountsWithoutAllocation)
+{
+    EXPECT_NO_THROW(computelab::ex2::ValidateUint32IndexedOracleElementCount(
+        std::numeric_limits<std::uint32_t>::max()));
+    EXPECT_THROW(computelab::ex2::ValidateUint32IndexedOracleElementCount(
+        static_cast<std::uint64_t>(std::numeric_limits<std::uint32_t>::max())
+            + 1U),
+        std::invalid_argument);
+}
 
 TEST(Ex2CpuA, ReproducesLiteralA1AndA2SpecificationFixtures)
 {

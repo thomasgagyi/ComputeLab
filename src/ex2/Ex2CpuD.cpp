@@ -39,6 +39,7 @@ IterativeReference ReferenceD1(
     std::uint64_t iterationCount)
 {
     ValidateIterationCount(iterationCount);
+    ValidateUint32IndexedOracleElementCount(initialState.size());
     std::vector<std::uint32_t> stateA(initialState.begin(), initialState.end());
     std::vector<std::uint32_t> stateB(initialState.size());
     bool previousIsA = true;
@@ -70,6 +71,7 @@ IterativeReference ReferenceD1(
     std::uint64_t iterationCount)
 {
     ValidateIterationCount(iterationCount);
+    ValidateUint32IndexedOracleElementCount(elementCount);
     const auto initialState = GenerateWordInput(seed, elementCount);
     return ReferenceD1(initialState, iterationCount);
 }
