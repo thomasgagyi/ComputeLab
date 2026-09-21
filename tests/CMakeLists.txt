@@ -16,6 +16,7 @@ add_executable(ComputeLabTests
     Ex2CpuETests.cpp
     Ex2ConfigurationTests.cpp
     Ex2EvidenceTests.cpp
+    Ex2FoundationIntegrationTests.cpp
     Ex2Gate0Tests.cpp
     Ex2Gate0SupervisorTests.cpp
 )
