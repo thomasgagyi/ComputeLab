@@ -51,6 +51,24 @@ target_link_libraries(ComputeLabEx2Configuration
         ComputeLabEx2Foundation
 )
 
+add_library(ComputeLabEx2Evidence STATIC
+    Ex2Evidence.cpp
+    Ex2Evidence.hpp
+)
+
+target_compile_features(ComputeLabEx2Evidence PUBLIC cxx_std_20)
+
+target_include_directories(ComputeLabEx2Evidence
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(ComputeLabEx2Evidence
+    PUBLIC
+        ComputeLabEx2Configuration
+        ComputeLabResults
+)
+
 add_library(ComputeLabEx2HostTiming STATIC
     Ex2HostTiming.cpp
     Ex2HostTiming.hpp
