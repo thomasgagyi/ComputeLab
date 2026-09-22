@@ -187,6 +187,7 @@ public:
     [[nodiscard]] const std::array<std::uint8_t, VK_UUID_SIZE>&
     SelectedDeviceUuid() const noexcept;
     [[nodiscard]] const Ex2VulkanA1Diagnostics& Diagnostics() const noexcept;
+    [[nodiscard]] std::span<const std::uint32_t> LoadedSpirv() const noexcept;
 
     void Upload(std::span<const std::uint32_t> input);
     void Prepare();

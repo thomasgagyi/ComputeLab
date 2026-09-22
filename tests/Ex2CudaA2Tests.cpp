@@ -179,6 +179,27 @@ TEST(Ex2CudaA2, DeviceIdentityAndNativeSelectionFailureRemainExplicit)
     }
 }
 
+TEST(Ex2CudaA2, PhaseConversionAndDiagnosticRelabelingAreExplicit)
+{
+    using A1 = cuda::Ex2CudaA1NativePhase;
+    using A2 = cuda::Ex2CudaA2NativePhase;
+    EXPECT_EQ(cuda::detail::ConvertEx2CudaA1PhaseForA2(A1::Submission),
+        A2::Submission);
+    EXPECT_EQ(cuda::detail::ConvertEx2CudaA2PhaseForA1(A2::OutputReadback),
+        A1::OutputReadback);
+    EXPECT_THROW(
+        static_cast<void>(cuda::detail::ConvertEx2CudaA1PhaseForA2(
+            static_cast<A1>(-1))),
+        std::invalid_argument);
+    EXPECT_THROW(
+        static_cast<void>(cuda::detail::ConvertEx2CudaA2PhaseForA1(
+            static_cast<A2>(-1))),
+        std::invalid_argument);
+    EXPECT_EQ(cuda::detail::RelabelEx2CudaA1DiagnosticForA2(
+        "unrelated A1 token; EX-2 CUDA A1 submission"),
+        "unrelated A1 token; EX-2 CUDA A2 submission");
+}
+
 TEST(Ex2CudaA2, UncertainCompletionRequiresProcessTeardownDisposition)
 {
     EXPECT_EQ(

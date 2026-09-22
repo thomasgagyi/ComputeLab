@@ -27,10 +27,10 @@ using a1::VerifySamePhysicalDevice;
 
 [[nodiscard]] FailureClassification ClassifyCudaFailure(
     cuda::Ex2CudaA2NativePhase phase,
-    int nativeErrorCode) noexcept;
+    int nativeErrorCode);
 [[nodiscard]] FailureClassification ClassifyVulkanFailure(
     vulkan::Ex2VulkanA2NativePhase phase,
-    VkResult nativeResult) noexcept;
+    VkResult nativeResult);
 
 [[nodiscard]] CrossBackendObservation RunCrossBackendCorrectness(
     std::uint64_t elementCount,

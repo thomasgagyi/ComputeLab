@@ -237,4 +237,25 @@ TEST(Ex2VulkanA2, NativeErrorAndResourceUncertaintyRemainClassified)
         vulkan::detail::Ex2VulkanA2ResourceDisposition::PreserveForProcessTeardown);
 }
 
+TEST(Ex2VulkanA2, PhaseConversionAndDiagnosticRelabelingAreExplicit)
+{
+    using A1 = vulkan::Ex2VulkanA1NativePhase;
+    using A2 = vulkan::Ex2VulkanA2NativePhase;
+    EXPECT_EQ(vulkan::detail::ConvertEx2VulkanA1PhaseForA2(A1::Preparation),
+        A2::Preparation);
+    EXPECT_EQ(vulkan::detail::ConvertEx2VulkanA2PhaseForA1(A2::CompletionWait),
+        A1::CompletionWait);
+    EXPECT_THROW(
+        static_cast<void>(vulkan::detail::ConvertEx2VulkanA1PhaseForA2(
+            static_cast<A1>(-1))),
+        std::invalid_argument);
+    EXPECT_THROW(
+        static_cast<void>(vulkan::detail::ConvertEx2VulkanA2PhaseForA1(
+            static_cast<A2>(-1))),
+        std::invalid_argument);
+    EXPECT_EQ(vulkan::detail::RelabelEx2VulkanA1DiagnosticForA2(
+        "unrelated A1 token; EX-2 Vulkan A1 submission"),
+        "unrelated A1 token; EX-2 Vulkan A2 submission");
+}
+
 } // namespace

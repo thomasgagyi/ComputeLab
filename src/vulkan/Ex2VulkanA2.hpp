@@ -67,6 +67,12 @@ private:
 namespace detail
 {
 
+[[nodiscard]] Ex2VulkanA2NativePhase ConvertEx2VulkanA1PhaseForA2(
+    Ex2VulkanA1NativePhase phase);
+[[nodiscard]] Ex2VulkanA1NativePhase ConvertEx2VulkanA2PhaseForA1(
+    Ex2VulkanA2NativePhase phase);
+[[nodiscard]] std::string RelabelEx2VulkanA1DiagnosticForA2(std::string text);
+
 struct Ex2VulkanA2DispatchShape
 {
     std::uint32_t groupCountX{};
@@ -160,6 +166,7 @@ public:
     [[nodiscard]] const std::array<std::uint8_t, VK_UUID_SIZE>&
     SelectedDeviceUuid() const noexcept;
     [[nodiscard]] const Ex2VulkanA2Diagnostics& Diagnostics() const noexcept;
+    [[nodiscard]] std::span<const std::uint32_t> LoadedSpirv() const noexcept;
 
     void Upload(std::span<const std::uint32_t> input);
     void Prepare();

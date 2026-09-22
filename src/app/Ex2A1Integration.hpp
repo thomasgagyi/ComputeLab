@@ -61,6 +61,7 @@ struct CrossBackendObservation
     std::vector<std::uint32_t> expectedOutput;
     std::string inputSha256;
     std::string expectedOutputSha256;
+    std::string vulkanShaderSha256;
     BackendObservation cuda;
     BackendObservation vulkan;
     bool crossBackendComparisonPerformed{};

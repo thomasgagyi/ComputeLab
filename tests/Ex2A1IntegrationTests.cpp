@@ -99,6 +99,7 @@ a1::CrossBackendObservation SyntheticPassingObservation()
         0x3AB8D324U, 0x5D43B3A0U, 0xA5DBB319U, 0x0F1AB744U};
     result.inputSha256 = ex2::WordInputSha256(result.input);
     result.expectedOutputSha256 = ex2::WordInputSha256(result.expectedOutput);
+    result.vulkanShaderSha256 = std::string(64U, 'b');
     result.cuda = a1::CompletedObservation(
         result.expectedOutput, result.expectedOutput,
         result.input, result.input, true);

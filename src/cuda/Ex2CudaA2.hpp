@@ -59,6 +59,12 @@ private:
 namespace detail
 {
 
+[[nodiscard]] Ex2CudaA2NativePhase ConvertEx2CudaA1PhaseForA2(
+    Ex2CudaA1NativePhase phase);
+[[nodiscard]] Ex2CudaA1NativePhase ConvertEx2CudaA2PhaseForA1(
+    Ex2CudaA2NativePhase phase);
+[[nodiscard]] std::string RelabelEx2CudaA1DiagnosticForA2(std::string text);
+
 struct Ex2CudaA2LaunchShape
 {
     std::uint32_t blockCount{};

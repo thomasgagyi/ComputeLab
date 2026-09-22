@@ -7,45 +7,31 @@ namespace computelab::vulkan
 namespace
 {
 
-Ex2VulkanA2NativePhase ConvertPhase(
-    Ex2VulkanA1NativePhase phase) noexcept
-{
-    return static_cast<Ex2VulkanA2NativePhase>(phase);
-}
-
-std::string A2Text(std::string text)
-{
-    for (std::size_t offset = 0U;
-        (offset = text.find("A1", offset)) != std::string::npos;
-        offset += 2U)
-    {
-        text.replace(offset, 2U, "A2");
-    }
-    return text;
-}
-
 [[noreturn]] void RethrowA2(const Ex2VulkanA1NativeError& error)
 {
     throw Ex2VulkanA2NativeError{
-        ConvertPhase(error.Phase()),
+        detail::ConvertEx2VulkanA1PhaseForA2(error.Phase()),
         error.NativeResult(),
-        A2Text(error.Operation()),
-        A2Text(error.what())};
+        detail::RelabelEx2VulkanA1DiagnosticForA2(error.Operation()),
+        detail::RelabelEx2VulkanA1DiagnosticForA2(error.what())};
 }
 
 [[noreturn]] void RethrowA2(const std::logic_error& error)
 {
-    throw std::logic_error{A2Text(error.what())};
+    throw std::logic_error{
+        detail::RelabelEx2VulkanA1DiagnosticForA2(error.what())};
 }
 
 [[noreturn]] void RethrowA2(const std::invalid_argument& error)
 {
-    throw std::invalid_argument{A2Text(error.what())};
+    throw std::invalid_argument{
+        detail::RelabelEx2VulkanA1DiagnosticForA2(error.what())};
 }
 
 [[noreturn]] void RethrowA2(const std::length_error& error)
 {
-    throw std::length_error{A2Text(error.what())};
+    throw std::length_error{
+        detail::RelabelEx2VulkanA1DiagnosticForA2(error.what())};
 }
 
 void ValidateA2Configuration(const ex2::LinearConfiguration& configuration)
@@ -65,9 +51,91 @@ void ValidateA2Configuration(const ex2::LinearConfiguration& configuration)
 
 } // namespace
 
+Ex2VulkanA2NativePhase detail::ConvertEx2VulkanA1PhaseForA2(
+    Ex2VulkanA1NativePhase phase)
+{
+    using A1 = Ex2VulkanA1NativePhase;
+    using A2 = Ex2VulkanA2NativePhase;
+    switch (phase)
+    {
+    case A1::InstanceCreation: return A2::InstanceCreation;
+    case A1::DeviceEnumeration: return A2::DeviceEnumeration;
+    case A1::DeviceSelection: return A2::DeviceSelection;
+    case A1::DeviceProperties: return A2::DeviceProperties;
+    case A1::QueueSelection: return A2::QueueSelection;
+    case A1::LogicalDeviceCreation: return A2::LogicalDeviceCreation;
+    case A1::ResourcePreflight: return A2::ResourcePreflight;
+    case A1::BufferCreation: return A2::BufferCreation;
+    case A1::MemoryAllocation: return A2::MemoryAllocation;
+    case A1::MemoryBinding: return A2::MemoryBinding;
+    case A1::MemoryMapping: return A2::MemoryMapping;
+    case A1::DescriptorCreation: return A2::DescriptorCreation;
+    case A1::PipelineCreation: return A2::PipelineCreation;
+    case A1::CommandCreation: return A2::CommandCreation;
+    case A1::Upload: return A2::Upload;
+    case A1::Preparation: return A2::Preparation;
+    case A1::Submission: return A2::Submission;
+    case A1::CompletionWait: return A2::CompletionWait;
+    case A1::OutputReadback: return A2::OutputReadback;
+    case A1::InputDiagnosticReadback: return A2::InputDiagnosticReadback;
+    }
+    throw std::invalid_argument("unknown EX-2 Vulkan A1 native phase");
+}
+
+Ex2VulkanA1NativePhase detail::ConvertEx2VulkanA2PhaseForA1(
+    Ex2VulkanA2NativePhase phase)
+{
+    using A1 = Ex2VulkanA1NativePhase;
+    using A2 = Ex2VulkanA2NativePhase;
+    switch (phase)
+    {
+    case A2::InstanceCreation: return A1::InstanceCreation;
+    case A2::DeviceEnumeration: return A1::DeviceEnumeration;
+    case A2::DeviceSelection: return A1::DeviceSelection;
+    case A2::DeviceProperties: return A1::DeviceProperties;
+    case A2::QueueSelection: return A1::QueueSelection;
+    case A2::LogicalDeviceCreation: return A1::LogicalDeviceCreation;
+    case A2::ResourcePreflight: return A1::ResourcePreflight;
+    case A2::BufferCreation: return A1::BufferCreation;
+    case A2::MemoryAllocation: return A1::MemoryAllocation;
+    case A2::MemoryBinding: return A1::MemoryBinding;
+    case A2::MemoryMapping: return A1::MemoryMapping;
+    case A2::DescriptorCreation: return A1::DescriptorCreation;
+    case A2::PipelineCreation: return A1::PipelineCreation;
+    case A2::CommandCreation: return A1::CommandCreation;
+    case A2::Upload: return A1::Upload;
+    case A2::Preparation: return A1::Preparation;
+    case A2::Submission: return A1::Submission;
+    case A2::CompletionWait: return A1::CompletionWait;
+    case A2::OutputReadback: return A1::OutputReadback;
+    case A2::InputDiagnosticReadback: return A1::InputDiagnosticReadback;
+    }
+    throw std::invalid_argument("unknown EX-2 Vulkan A2 native phase");
+}
+
+std::string detail::RelabelEx2VulkanA1DiagnosticForA2(std::string text)
+{
+    constexpr std::string_view from{"EX-2 Vulkan A1"};
+    constexpr std::string_view to{"EX-2 Vulkan A2"};
+    for (std::size_t offset = 0U;
+        (offset = text.find(from, offset)) != std::string::npos;
+        offset += to.size())
+    {
+        text.replace(offset, from.size(), to);
+    }
+    return text;
+}
+
 std::string_view ToString(Ex2VulkanA2NativePhase phase) noexcept
 {
-    return ToString(static_cast<Ex2VulkanA1NativePhase>(phase));
+    try
+    {
+        return ToString(detail::ConvertEx2VulkanA2PhaseForA1(phase));
+    }
+    catch (...)
+    {
+        return "invalid";
+    }
 }
 
 Ex2VulkanA2NativeError::Ex2VulkanA2NativeError(
@@ -191,6 +259,12 @@ const Ex2VulkanA2Diagnostics&
 Ex2VulkanA2Operation::Diagnostics() const noexcept
 {
     return operation_->Diagnostics();
+}
+
+std::span<const std::uint32_t>
+Ex2VulkanA2Operation::LoadedSpirv() const noexcept
+{
+    return operation_->LoadedSpirv();
 }
 
 void Ex2VulkanA2Operation::Upload(std::span<const std::uint32_t> input)

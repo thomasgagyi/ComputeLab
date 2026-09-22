@@ -316,6 +316,22 @@ TEST(Ex2EvidenceCorrectness, RejectsContradictoryValidationStates)
         std::invalid_argument);
 }
 
+TEST(Ex2EvidenceFailures, DiagnosticReadbackFailurePreservesPartialProgress)
+{
+    const auto plan = Plan(Plan().seriesIdentity.condition.workload, 1U);
+    auto record = evidence::MakeSampleRecord(plan, 0U);
+    record.correctness.expectedOutputGenerated = true;
+    record.correctness.operationCompleted = true;
+    record.correctness.outputObserved = true;
+    record.status = evidence::OperationStatus::Incomplete;
+    record.failurePhase = evidence::FailurePhase::Readback;
+    record.errorCode = std::string(evidence::error_code::ReadbackFailed);
+
+    EXPECT_NO_THROW(evidence::ValidateSampleRecord(record));
+    EXPECT_FALSE(record.correctness.comparisonPerformed);
+    EXPECT_FALSE(record.correctness.validationPassed.has_value());
+}
+
 TEST(Ex2EvidenceFailures, EnforcesApprovedStatusesAndStableFailurePhases)
 {
     const auto plan = Plan(Plan().seriesIdentity.condition.workload, 1U);

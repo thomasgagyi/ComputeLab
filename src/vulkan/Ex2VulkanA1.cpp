@@ -388,6 +388,7 @@ struct Ex2VulkanA1Operation::Resources
     VkDeviceSize logicalBufferBytes{};
     VkDeviceSize storageBufferBytes{};
     Ex2VulkanA1Diagnostics diagnostics{};
+    std::vector<std::uint32_t> loadedSpirv;
     OperationState state{OperationState::Empty};
     bool computePending{};
     bool transferPending{};
@@ -1150,7 +1151,7 @@ Ex2VulkanA1Operation::Ex2VulkanA1Operation(
         throw std::length_error(
             "EX-2 Vulkan A1 output exceeds the host vector maximum");
     }
-    const auto spirv = ReadSpirv(spirvPath);
+    resources.loadedSpirv = ReadSpirv(spirvPath);
     resources.SetupDevice(physicalDeviceIndex);
     resources.storageBufferBytes = std::max<VkDeviceSize>(
         resources.logicalBufferBytes,
@@ -1193,7 +1194,7 @@ Ex2VulkanA1Operation::Ex2VulkanA1Operation(
         resources.upload.memoryFlags;
     resources.diagnostics.readbackMemoryFlags =
         resources.readback.memoryFlags;
-    resources.SetupPipeline(spirv);
+    resources.SetupPipeline(resources.loadedSpirv);
     resources.RecordTransferCommands();
 }
 
@@ -1214,6 +1215,12 @@ const Ex2VulkanA1Diagnostics&
 Ex2VulkanA1Operation::Diagnostics() const noexcept
 {
     return resources_->diagnostics;
+}
+
+std::span<const std::uint32_t>
+Ex2VulkanA1Operation::LoadedSpirv() const noexcept
+{
+    return resources_->loadedSpirv;
 }
 
 void Ex2VulkanA1Operation::Upload(

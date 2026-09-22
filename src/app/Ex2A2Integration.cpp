@@ -2,6 +2,7 @@
 
 #include "ex2/Ex2CpuOracles.hpp"
 #include "ex2/Ex2Input.hpp"
+#include "ex2/Ex2Sha256.hpp"
 
 #include <algorithm>
 #include <array>
@@ -150,18 +151,18 @@ BackendObservation ExecuteVulkan(
 
 FailureClassification ClassifyCudaFailure(
     cuda::Ex2CudaA2NativePhase phase,
-    int nativeErrorCode) noexcept
+    int nativeErrorCode)
 {
     return a1::ClassifyCudaFailure(
-        static_cast<cuda::Ex2CudaA1NativePhase>(phase), nativeErrorCode);
+        cuda::detail::ConvertEx2CudaA2PhaseForA1(phase), nativeErrorCode);
 }
 
 FailureClassification ClassifyVulkanFailure(
     vulkan::Ex2VulkanA2NativePhase phase,
-    VkResult nativeResult) noexcept
+    VkResult nativeResult)
 {
     return a1::ClassifyVulkanFailure(
-        static_cast<vulkan::Ex2VulkanA1NativePhase>(phase), nativeResult);
+        vulkan::detail::ConvertEx2VulkanA2PhaseForA1(phase), nativeResult);
 }
 
 CrossBackendObservation RunCrossBackendCorrectness(
@@ -202,6 +203,8 @@ CrossBackendObservation RunCrossBackendCorrectness(
     result.physicalIdentityVerified = true;
     result.inputSha256 = WordInputSha256(input);
     result.expectedOutputSha256 = WordInputSha256(expected);
+    result.vulkanShaderSha256 = Sha256(
+        std::as_bytes(vulkanOperation->LoadedSpirv()));
     result.vulkanDiagnostics = vulkanOperation->Diagnostics();
     result.input = std::move(input);
     result.expectedOutput = std::move(expected);

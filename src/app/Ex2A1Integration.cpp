@@ -2,6 +2,7 @@
 
 #include "ex2/Ex2CpuOracles.hpp"
 #include "ex2/Ex2Input.hpp"
+#include "ex2/Ex2Sha256.hpp"
 
 #include <algorithm>
 #include <array>
@@ -549,6 +550,8 @@ CrossBackendObservation RunCrossBackendCorrectness(
     result.physicalIdentityVerified = true;
     result.inputSha256 = WordInputSha256(input);
     result.expectedOutputSha256 = WordInputSha256(expected);
+    result.vulkanShaderSha256 = Sha256(
+        std::as_bytes(vulkanOperation->LoadedSpirv()));
     result.vulkanDiagnostics = vulkanOperation->Diagnostics();
     result.input = std::move(input);
     result.expectedOutput = std::move(expected);
@@ -592,6 +595,11 @@ SerializedEvidencePair BuildEvidence(
     {
         throw std::invalid_argument(
             "EX-2 A1 evidence requires a genuine, consistent physical-device match");
+    }
+    if (observation.vulkanShaderSha256 != context.shaderSha256)
+    {
+        throw std::invalid_argument(
+            "EX-2 Vulkan shader digest does not identify the SPIR-V loaded by the native operation");
     }
     const ComparisonConditionContext condition{
         "1.0",

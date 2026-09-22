@@ -98,6 +98,7 @@ a2::CrossBackendObservation SyntheticA2Observation()
         0x4579A7C6U, 0x6D06CDCFU, 0x3BE3E55EU, 0x271DAF20U};
     result.inputSha256 = ex2::WordInputSha256(result.input);
     result.expectedOutputSha256 = ex2::WordInputSha256(result.expectedOutput);
+    result.vulkanShaderSha256 = std::string(64U, 'b');
     result.cuda = a2::CompletedObservation(
         result.expectedOutput, result.expectedOutput,
         result.input, result.input, true);
@@ -160,18 +161,31 @@ TEST(Ex2A2Evidence, UsesA2IdentityProvenanceAndNullTimingFields)
     EXPECT_EQ(pair.cuda.summary.validationFailures, 0U);
 }
 
+TEST(Ex2A2Evidence, RejectsShaderDigestThatDoesNotMatchLoadedArtifact)
+{
+    const auto observation = SyntheticA2Observation();
+    auto context = EvidenceContext("a2-shader-mismatch");
+    context.shaderSha256 = std::string(64U, 'c');
+    EXPECT_THROW(
+        static_cast<void>(a2::BuildEvidence(observation, std::move(context))),
+        std::invalid_argument);
+}
+
 TEST(Ex2A2Evidence, A1AndA2ConditionsAreDistinct)
 {
-    const auto a2Observation = SyntheticA2Observation();
-    const auto a2Pair = a2::BuildEvidence(
-        a2Observation, EvidenceContext("a2-identity"));
-    auto a1Observation = a2Observation;
-    a1Observation.configuration = ex2::MakeConfiguration(
-        ex2::LinearConfiguration{ex2::LinearVariant::A1, 4U});
-    const auto a1Pair = a1::BuildEvidence(
-        a1Observation, EvidenceContext("a1-identity"));
-    EXPECT_NE(a1Pair.cuda.environment.plan.comparisonConditionId,
-        a2Pair.cuda.environment.plan.comparisonConditionId);
+    const a2::DeviceUuid uuid{
+        0x00U, 0x11U, 0x22U, 0x33U, 0x44U, 0x55U, 0x66U, 0x77U,
+        0x88U, 0x99U, 0xaaU, 0xbbU, 0xccU, 0xddU, 0xeeU, 0xffU};
+    const auto condition = [&](ex2::LinearVariant variant) {
+        return ex2::ComparisonConditionContext{
+            "1.0",
+            "test-machine",
+            {a2::FormatDeviceUuid(uuid), true},
+            ex2::MakeConfiguration(ex2::LinearConfiguration{variant, 4U}),
+            ex2::InstrumentMode::P};
+    };
+    EXPECT_NE(ex2::ComparisonConditionId(condition(ex2::LinearVariant::A1)),
+        ex2::ComparisonConditionId(condition(ex2::LinearVariant::A2)));
 }
 
 TEST(Ex2A2Identity, PureUuidGateRejectsZeroAndMismatch)
