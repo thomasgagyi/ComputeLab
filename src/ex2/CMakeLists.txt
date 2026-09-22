@@ -1,4 +1,6 @@
 add_library(ComputeLabEx2Foundation STATIC
+    Ex2IndexPermutation.cpp
+    Ex2IndexPermutation.hpp
     Ex2Input.cpp
     Ex2Input.hpp
     Ex2Sha256.cpp

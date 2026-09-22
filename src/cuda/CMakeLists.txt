@@ -91,3 +91,30 @@ target_link_libraries(ComputeLabEx2CudaA2
 )
 
 target_compile_features(ComputeLabEx2CudaA2 PUBLIC cxx_std_20)
+
+add_library(ComputeLabEx2CudaB STATIC
+    Ex2CudaB.cu
+    Ex2CudaB.hpp
+)
+
+target_include_directories(ComputeLabEx2CudaB
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(ComputeLabEx2CudaB
+    PUBLIC
+        ComputeLabEx2Configuration
+    PRIVATE
+        ComputeLabEx2Foundation
+        CUDA::cudart
+)
+
+set_target_properties(ComputeLabEx2CudaB
+    PROPERTIES
+        CUDA_ARCHITECTURES native
+        CUDA_STANDARD 20
+        CUDA_STANDARD_REQUIRED ON
+)
+
+target_compile_features(ComputeLabEx2CudaB PUBLIC cxx_std_20)

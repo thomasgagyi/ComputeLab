@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ex2/Ex2IndexPermutation.hpp"
 #include "ex2/Ex2SemanticTypes.hpp"
 
 #include <cstdint>
@@ -26,17 +27,6 @@ void ValidateUint32IndexedOracleElementCount(std::uint64_t elementCount);
 [[nodiscard]] std::vector<std::uint32_t> ReferenceA2(
     std::span<const std::uint32_t> input);
 
-inline constexpr std::string_view StructuredIndexRevision = "structured-v1";
-inline constexpr std::string_view ShuffledIndexRevision = "shuffled-v1";
-
-[[nodiscard]] std::vector<std::uint32_t> GenerateStructuredPermutation(
-    std::uint64_t elementCount);
-[[nodiscard]] std::vector<std::uint32_t> GenerateShuffledPermutation(
-    std::uint64_t seed,
-    std::uint64_t elementCount);
-void ValidateIndexPermutation(
-    std::span<const std::uint32_t> indices,
-    std::uint64_t expectedElementCount);
 [[nodiscard]] std::vector<std::uint32_t> ReferenceB1Gather(
     std::span<const std::uint32_t> input,
     std::span<const std::uint32_t> indices);
