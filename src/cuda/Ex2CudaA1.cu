@@ -89,6 +89,27 @@ __global__ void Ex2CudaA1Kernel(
     output[index] = input[index] ^ (0x9E3779B9U + index);
 }
 
+__global__ void Ex2CudaA2Kernel(
+    const std::uint32_t* input,
+    std::uint32_t* output,
+    std::uint32_t elementCount)
+{
+    const std::uint32_t index =
+        blockIdx.x * blockDim.x + threadIdx.x;
+    if (index >= elementCount)
+    {
+        return;
+    }
+
+    std::uint32_t value = input[index] ^ (0x9E3779B9U + index);
+    for (std::uint32_t round = 0U; round < 16U; ++round)
+    {
+        value = (value ^ (value >> 16U)) * 0x7FEB352DU;
+        value = (value ^ (value >> 15U)) * 0x846CA68BU;
+    }
+    output[index] = value ^ (value >> 16U);
+}
+
 } // namespace
 
 std::string_view ToString(Ex2CudaA1NativePhase phase) noexcept
@@ -401,6 +422,15 @@ public:
 Ex2CudaA1Operation::Ex2CudaA1Operation(
     int deviceOrdinal,
     const ex2::LinearConfiguration& configuration)
+    : Ex2CudaA1Operation{
+          deviceOrdinal, configuration, ex2::LinearVariant::A1}
+{
+}
+
+Ex2CudaA1Operation::Ex2CudaA1Operation(
+    int deviceOrdinal,
+    const ex2::LinearConfiguration& configuration,
+    ex2::LinearVariant requiredVariant)
     : impl_{std::make_unique<Impl>(deviceOrdinal, configuration)}
 {
     // I2-C semantic validation deliberately precedes all CUDA interaction.
@@ -410,7 +440,7 @@ Ex2CudaA1Operation::Ex2CudaA1Operation(
         throw std::invalid_argument(
             "EX-2 CUDA A1 configuration violates the I2-C semantic contract");
     }
-    if (configuration.variant != ex2::LinearVariant::A1)
+    if (configuration.variant != requiredVariant)
     {
         throw std::invalid_argument(
             "EX-2 CUDA A1 operation requires the A1 linear variant");
@@ -461,8 +491,10 @@ Ex2CudaA1Operation::Ex2CudaA1Operation(
         properties.maxThreadsDim[0] > 0
         ? static_cast<std::uint32_t>(properties.maxThreadsDim[0])
         : 0U;
+    auto launchConfiguration = configuration;
+    launchConfiguration.variant = ex2::LinearVariant::A1;
     impl_->launchShape = detail::ValidateEx2CudaA1LaunchShape(
-        configuration,
+        launchConfiguration,
         maximumGridDimensionX,
         maximumThreadsPerBlock,
         maximumThreadsDimensionX);
@@ -579,15 +611,30 @@ void Ex2CudaA1Operation::SubmitA1()
     impl_->submittedKernel = impl_->configuration.elementCount != 0U;
     if (impl_->submittedKernel)
     {
-        Ex2CudaA1Kernel<<<
-            impl_->launchShape.blockCount,
-            impl_->launchShape.threadsPerBlock,
-            0U,
-            impl_->stream>>>(
-                impl_->input,
-                impl_->output,
-                static_cast<std::uint32_t>(
-                    impl_->configuration.elementCount));
+        if (impl_->configuration.variant == ex2::LinearVariant::A1)
+        {
+            Ex2CudaA1Kernel<<<
+                impl_->launchShape.blockCount,
+                impl_->launchShape.threadsPerBlock,
+                0U,
+                impl_->stream>>>(
+                    impl_->input,
+                    impl_->output,
+                    static_cast<std::uint32_t>(
+                        impl_->configuration.elementCount));
+        }
+        else
+        {
+            Ex2CudaA2Kernel<<<
+                impl_->launchShape.blockCount,
+                impl_->launchShape.threadsPerBlock,
+                0U,
+                impl_->stream>>>(
+                    impl_->input,
+                    impl_->output,
+                    static_cast<std::uint32_t>(
+                        impl_->configuration.elementCount));
+        }
         const cudaError_t launchResult = cudaGetLastError();
         if (launchResult != cudaSuccess)
         {

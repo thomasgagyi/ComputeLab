@@ -65,6 +65,11 @@ if(TARGET ComputeLabEx2CudaA1)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2CudaA1 CUDA::cudart)
 endif()
 
+if(TARGET ComputeLabEx2CudaA2)
+    target_sources(ComputeLabTests PRIVATE Ex2CudaA2Tests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2CudaA2 CUDA::cudart)
+endif()
+
 include(GoogleTest)
 
 if(TARGET ComputeLabVulkanTransform)
@@ -88,12 +93,22 @@ if(TARGET ComputeLabEx2VulkanA1)
         COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}")
 endif()
 
+if(TARGET ComputeLabEx2VulkanA2)
+    target_sources(ComputeLabTests PRIVATE Ex2VulkanA2Tests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2VulkanA2)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}")
+endif()
+
 if(TARGET ComputeLabEx2A1Integration AND TARGET ComputeLabEx2A1)
-    target_sources(ComputeLabTests PRIVATE Ex2A1IntegrationTests.cpp)
+    target_sources(ComputeLabTests PRIVATE
+        Ex2A1IntegrationTests.cpp
+        Ex2A2IntegrationTests.cpp)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2A1Integration)
     add_dependencies(ComputeLabTests ComputeLabEx2A1)
     target_compile_definitions(ComputeLabTests PRIVATE
         COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
         COMPUTELAB_EX2_A1_EXE="$<TARGET_FILE:ComputeLabEx2A1>"
         COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
     )

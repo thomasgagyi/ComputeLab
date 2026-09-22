@@ -210,6 +210,9 @@ evidence::SampleRecord SampleFromObservation(
 evidence::InitializationRecord SetupObservation(
     const evidence::CorrectnessPlan& plan)
 {
+    const auto& linear = std::get<LinearConfiguration>(
+        plan.seriesIdentity.condition.workload.parameters);
+    const std::string variant{ToString(linear.variant)};
     return {
         plan.runId,
         plan.seriesIdentity.backend,
@@ -217,27 +220,33 @@ evidence::InitializationRecord SetupObservation(
         0U,
         "backend_setup",
         std::string{"A"},
-        std::string{"A1"},
-        std::get<LinearConfiguration>(
-            plan.seriesIdentity.condition.workload.parameters).elementCount,
+        variant,
+        linear.elementCount,
         "setup_complete",
         std::nullopt,
-        std::string{"native_a1_resources_created"}};
+        std::string{"native_"} +
+            (linear.variant == LinearVariant::A1 ? "a1" : "a2") +
+            "_resources_created"};
 }
 
-evidence::BackendDiagnostics CudaDiagnostics()
+evidence::BackendDiagnostics CudaDiagnostics(LinearVariant variant)
 {
     evidence::BackendDiagnostics result;
-    result.implementation = "native_cuda_a1";
+    result.implementation = variant == LinearVariant::A1
+        ? "native_cuda_a1"
+        : "native_cuda_a2";
     result.streamFlags = "nonblocking";
     return result;
 }
 
 evidence::BackendDiagnostics VulkanDiagnostics(
-    const vulkan::Ex2VulkanA1Diagnostics& native)
+    const vulkan::Ex2VulkanA1Diagnostics& native,
+    LinearVariant variant)
 {
     evidence::BackendDiagnostics result;
-    result.implementation = "native_vulkan_a1";
+    result.implementation = variant == LinearVariant::A1
+        ? "native_vulkan_a1"
+        : "native_vulkan_a2";
     result.queueFamilyIndex = native.queueFamilyIndex;
     result.queueFlags = native.queueFamily.queueFlags;
     result.queueCount = native.queueFamily.queueCount;
@@ -575,6 +584,8 @@ SerializedEvidencePair BuildEvidence(
     const CrossBackendObservation& observation,
     EvidenceBuildContext context)
 {
+    const auto variant = std::get<LinearConfiguration>(
+        observation.configuration.parameters).variant;
     if (!observation.physicalIdentityVerified
         || FormatDeviceUuid(observation.verifiedDeviceUuid)
             != observation.verifiedDeviceUuidText)
@@ -629,14 +640,14 @@ SerializedEvidencePair BuildEvidence(
             observation.cuda,
             observation.inputSha256,
             observation.expectedOutputSha256,
-            CudaDiagnostics()),
+            CudaDiagnostics(variant)),
         BuildSeries(
             std::move(vulkanPlan),
             std::move(context.vulkanEnvironment),
             observation.vulkan,
             observation.inputSha256,
             observation.expectedOutputSha256,
-            VulkanDiagnostics(observation.vulkanDiagnostics))};
+            VulkanDiagnostics(observation.vulkanDiagnostics, variant))};
 }
 
 } // namespace computelab::ex2::a1

@@ -37,6 +37,8 @@ endif()
 
 if(TARGET ComputeLabEx2CudaA1
     AND TARGET ComputeLabEx2VulkanA1
+    AND TARGET ComputeLabEx2CudaA2
+    AND TARGET ComputeLabEx2VulkanA2
     AND TARGET ComputeLabEx2CpuOracles
     AND TARGET ComputeLabEx2Evidence
     AND TARGET ComputeLabEnvironment)
@@ -45,6 +47,8 @@ if(TARGET ComputeLabEx2CudaA1
         STATIC
         Ex2A1Integration.cpp
         Ex2A1Integration.hpp
+        Ex2A2Integration.cpp
+        Ex2A2Integration.hpp
     )
     target_compile_features(ComputeLabEx2A1Integration PUBLIC cxx_std_20)
     target_include_directories(ComputeLabEx2A1Integration
@@ -59,6 +63,8 @@ if(TARGET ComputeLabEx2CudaA1
             ComputeLabEx2Evidence
             ComputeLabEx2CudaA1
             ComputeLabEx2VulkanA1
+            ComputeLabEx2CudaA2
+            ComputeLabEx2VulkanA2
             ComputeLabEnvironment
     )
 
@@ -69,6 +75,7 @@ if(TARGET ComputeLabEx2CudaA1
     target_compile_features(ComputeLabEx2A1 PRIVATE cxx_std_20)
     target_compile_definitions(ComputeLabEx2A1 PRIVATE
         COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
         COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
     )
     target_link_libraries(ComputeLabEx2A1

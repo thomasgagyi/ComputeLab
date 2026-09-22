@@ -18,6 +18,8 @@
 namespace computelab::vulkan
 {
 
+class Ex2VulkanA2Operation;
+
 inline constexpr std::uint32_t Ex2VulkanA1LocalSizeX = 256U;
 
 enum class Ex2VulkanA1NativePhase
@@ -199,6 +201,14 @@ public:
     [[nodiscard]] bool LastCompletionExecutedShader() const;
 
 private:
+    friend class Ex2VulkanA2Operation;
+
+    Ex2VulkanA1Operation(
+        const ex2::LinearConfiguration& configuration,
+        const std::filesystem::path& spirvPath,
+        std::uint32_t physicalDeviceIndex,
+        ex2::LinearVariant requiredVariant);
+
     struct Resources;
     std::unique_ptr<Resources> resources_;
 };

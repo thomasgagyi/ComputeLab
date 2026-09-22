@@ -74,3 +74,20 @@ set_target_properties(ComputeLabEx2CudaA1
 )
 
 target_compile_features(ComputeLabEx2CudaA1 PUBLIC cxx_std_20)
+
+add_library(ComputeLabEx2CudaA2 STATIC
+    Ex2CudaA2.cpp
+    Ex2CudaA2.hpp
+)
+
+target_include_directories(ComputeLabEx2CudaA2
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(ComputeLabEx2CudaA2
+    PUBLIC
+        ComputeLabEx2CudaA1
+)
+
+target_compile_features(ComputeLabEx2CudaA2 PUBLIC cxx_std_20)

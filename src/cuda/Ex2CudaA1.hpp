@@ -15,6 +15,8 @@
 namespace computelab::cuda
 {
 
+class Ex2CudaA2Operation;
+
 inline constexpr std::uint32_t Ex2CudaA1ThreadsPerBlock = 256U;
 
 enum class Ex2CudaA1NativePhase
@@ -129,6 +131,13 @@ public:
     [[nodiscard]] bool LastCompletionExecutedKernel() const;
 
 private:
+    friend class Ex2CudaA2Operation;
+
+    Ex2CudaA1Operation(
+        int deviceOrdinal,
+        const ex2::LinearConfiguration& configuration,
+        ex2::LinearVariant requiredVariant);
+
     class Impl;
     std::unique_ptr<Impl> impl_;
 };

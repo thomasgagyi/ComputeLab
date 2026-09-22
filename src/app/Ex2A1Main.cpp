@@ -1,4 +1,5 @@
 #include "app/Ex2A1Integration.hpp"
+#include "app/Ex2A2Integration.hpp"
 
 #include "ex2/Ex2Input.hpp"
 #include "ex2/Ex2Sha256.hpp"
@@ -28,6 +29,7 @@ namespace
 {
 
 namespace a1 = computelab::ex2::a1;
+namespace a2 = computelab::ex2::a2;
 namespace environment = computelab::environment;
 namespace ex2 = computelab::ex2;
 
@@ -35,6 +37,7 @@ constexpr std::uint64_t kMaximumCorrectnessElementCount = 16'777'216U;
 
 struct Configuration
 {
+    ex2::LinearVariant variant{ex2::LinearVariant::A1};
     std::uint64_t elementCount{};
     std::uint64_t seed{ex2::CoreInputSeed};
     int cudaDeviceOrdinal{};
@@ -42,6 +45,11 @@ struct Configuration
     std::string machineId;
     std::string sessionId;
 };
+
+std::string_view VariantName(ex2::LinearVariant variant) noexcept
+{
+    return variant == ex2::LinearVariant::A1 ? "A1" : "A2";
+}
 
 struct GitState
 {
@@ -167,6 +175,15 @@ Configuration ParseArguments(int argc, char** argv)
             result.elementCount = ParseUnsigned(value, "element-count");
             hasElementCount = true;
         }
+        else if (key == "--variant")
+        {
+            if (value == "A1" || value == "a1")
+                result.variant = ex2::LinearVariant::A1;
+            else if (value == "A2" || value == "a2")
+                result.variant = ex2::LinearVariant::A2;
+            else
+                throw std::invalid_argument("variant must be A1 or A2");
+        }
         else if (key == "--seed")
         {
             result.seed = ParseUnsigned(value, "seed");
@@ -200,7 +217,8 @@ Configuration ParseArguments(int argc, char** argv)
         }
         else
         {
-            throw std::invalid_argument("unknown EX-2 A1 option: " + std::string(key));
+            throw std::invalid_argument(
+                "unknown EX-2 linear option: " + std::string(key));
         }
     }
     if (!hasElementCount || !hasCudaDevice || !hasVulkanDevice
@@ -211,10 +229,10 @@ Configuration ParseArguments(int argc, char** argv)
     }
     if (result.elementCount > kMaximumCorrectnessElementCount)
         throw std::invalid_argument(
-            "element-count exceeds the bounded A1 correctness limit");
+            "element-count exceeds the bounded linear correctness limit");
     if (result.seed != ex2::CoreInputSeed)
         throw std::invalid_argument(
-            "the minimal A1 correctness path requires seed 0x0123456789ABCDEF");
+            "the minimal linear correctness path requires seed 0x0123456789ABCDEF");
     if (!ex2::IsValidAnonymousIdentifier(result.machineId)
         || !ex2::IsValidAnonymousIdentifier(result.sessionId))
     {
@@ -228,8 +246,9 @@ void PrintUsage()
 {
     std::cout
         << "ComputeLabEx2A1 --element-count N --cuda-device N --vulkan-device N "
-           "--machine-id ID --session-id ID [--seed 0x0123456789ABCDEF]\n"
-           "Runs one sequential, correctness-only native A1 operation per backend.\n"
+           "--machine-id ID --session-id ID [--variant A1|A2] "
+           "[--seed 0x0123456789ABCDEF]\n"
+           "Runs one sequential, correctness-only native A1 or A2 operation per backend.\n"
            "No performance timings or qualification evidence are collected.\n";
 }
 
@@ -247,13 +266,13 @@ std::array<std::filesystem::path, 2> ValidateOutputPlan(
         {cudaRunId, destinations[0]},
         {vulkanRunId, destinations[1]}}};
     if (!ex2::ValidateRunPlan(runs, localRoot).IsValid())
-        throw std::invalid_argument("EX-2 A1 output run plan is invalid");
+        throw std::invalid_argument("EX-2 linear output run plan is invalid");
     for (const auto& destination : destinations)
     {
         std::error_code error;
         if (std::filesystem::exists(destination, error) || error)
             throw std::invalid_argument(
-                "EX-2 A1 output destination exists or cannot be checked");
+                "EX-2 linear output destination exists or cannot be checked");
     }
     return destinations;
 }
@@ -264,7 +283,7 @@ void WriteText(const std::filesystem::path& path, std::string_view content)
     if (!stream || !stream.write(
             content.data(), static_cast<std::streamsize>(content.size())))
     {
-        throw std::runtime_error("EX-2 A1 evidence file write failed");
+        throw std::runtime_error("EX-2 linear evidence file write failed");
     }
 }
 
@@ -273,7 +292,7 @@ void PublishSeries(
     const a1::SerializedSeries& series)
 {
     if (!std::filesystem::create_directories(destination))
-        throw std::runtime_error("EX-2 A1 evidence directory creation failed");
+        throw std::runtime_error("EX-2 linear evidence directory creation failed");
     WriteText(destination / "environment.json", series.environmentJson);
     WriteText(destination / "initialization.csv", series.initializationCsv);
     WriteText(destination / "samples.csv", series.samplesCsv);
@@ -289,7 +308,10 @@ int Run(const Configuration& configuration)
     const GitState gitBefore = ReadGitState();
     const auto executable = RunningExecutablePath();
     const std::string executableHash = ex2::Sha256File(executable);
-    const std::filesystem::path spirv = COMPUTELAB_EX2_A1_SPIRV_PATH;
+    const std::filesystem::path spirv =
+        configuration.variant == ex2::LinearVariant::A1
+        ? COMPUTELAB_EX2_A1_SPIRV_PATH
+        : COMPUTELAB_EX2_A2_SPIRV_PATH;
     const std::string shaderHash = ex2::Sha256File(spirv);
     const std::string timestamp = TimestampUtc();
 
@@ -326,12 +348,25 @@ int Run(const Configuration& configuration)
         configuration.vulkanPhysicalDeviceIndex,
         preflightVulkanUuid);
 
-    const auto observation = a1::RunCrossBackendCorrectness(
-        configuration.elementCount,
-        configuration.seed,
-        configuration.cudaDeviceOrdinal,
-        configuration.vulkanPhysicalDeviceIndex,
-        spirv);
+    a1::CrossBackendObservation observation;
+    if (configuration.variant == ex2::LinearVariant::A1)
+    {
+        observation = a1::RunCrossBackendCorrectness(
+            configuration.elementCount,
+            configuration.seed,
+            configuration.cudaDeviceOrdinal,
+            configuration.vulkanPhysicalDeviceIndex,
+            spirv);
+    }
+    else
+    {
+        observation = a2::RunCrossBackendCorrectness(
+            configuration.elementCount,
+            configuration.seed,
+            configuration.cudaDeviceOrdinal,
+            configuration.vulkanPhysicalDeviceIndex,
+            spirv);
+    }
     if (observation.verifiedDeviceUuid != preflightCudaUuid
         || observation.verifiedDeviceUuid != preflightVulkanUuid)
     {
@@ -344,7 +379,7 @@ int Run(const Configuration& configuration)
         || gitAfter.workingTreeState != gitBefore.workingTreeState)
     {
         throw std::runtime_error(
-            "source revision or working-tree state changed during A1 correctness execution");
+            "source revision or working-tree state changed during linear correctness execution");
     }
 
     const auto evidence = a1::BuildEvidence(
@@ -362,10 +397,12 @@ int Run(const Configuration& configuration)
 
     if (!observation.Passed())
     {
-        std::cerr << "EX-2 A1 correctness failed; exploratory failure evidence was retained.\n";
+        std::cerr << "EX-2 " << VariantName(configuration.variant)
+            << " correctness failed; exploratory failure evidence was retained.\n";
         return 3;
     }
-    std::cout << "EX-2 A1 correctness passed on verified GPU "
+    std::cout << "EX-2 " << VariantName(configuration.variant)
+        << " correctness passed on verified GPU "
         << observation.verifiedDeviceUuidText << "\n"
         << "CUDA series: " << evidence.cuda.environment.plan.seriesId << "\n"
         << "Vulkan series: " << evidence.vulkan.environment.plan.seriesId << "\n"
@@ -389,13 +426,20 @@ int main(int argc, char** argv)
     }
     catch (const std::invalid_argument& error)
     {
-        std::cerr << "EX-2 A1 configuration/identity failure: "
+        std::cerr << "EX-2 linear configuration/identity failure: "
             << error.what() << '\n';
         return 2;
     }
     catch (const computelab::cuda::Ex2CudaA1NativeError& error)
     {
         std::cerr << "EX-2 A1 CUDA initialization failure at "
+            << computelab::cuda::ToString(error.Phase()) << ": "
+            << error.NativeErrorName() << '\n';
+        return 4;
+    }
+    catch (const computelab::cuda::Ex2CudaA2NativeError& error)
+    {
+        std::cerr << "EX-2 A2 CUDA initialization failure at "
             << computelab::cuda::ToString(error.Phase()) << ": "
             << error.NativeErrorName() << '\n';
         return 4;
@@ -407,9 +451,16 @@ int main(int argc, char** argv)
             << static_cast<int>(error.NativeResult()) << '\n';
         return 4;
     }
+    catch (const computelab::vulkan::Ex2VulkanA2NativeError& error)
+    {
+        std::cerr << "EX-2 A2 Vulkan initialization failure at "
+            << computelab::vulkan::ToString(error.Phase()) << ": VkResult "
+            << static_cast<int>(error.NativeResult()) << '\n';
+        return 4;
+    }
     catch (const std::exception& error)
     {
-        std::cerr << "EX-2 A1 evidence/provenance failure: "
+        std::cerr << "EX-2 linear evidence/provenance failure: "
             << error.what() << '\n';
         return 5;
     }

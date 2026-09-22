@@ -568,8 +568,10 @@ struct Ex2VulkanA1Operation::Resources
             detail::SelectEx2VulkanA1Queue(families);
         diagnostics.queueFamily = families[diagnostics.queueFamilyIndex];
 
+        auto dispatchConfiguration = configuration;
+        dispatchConfiguration.variant = ex2::LinearVariant::A1;
         dispatchShape = detail::ValidateEx2VulkanA1DispatchShape(
-            configuration,
+            dispatchConfiguration,
             diagnostics.properties.limits,
             maximumBufferSize);
         if (diagnostics.properties.limits.maxMemoryAllocationCount < 4U)
@@ -1110,6 +1112,19 @@ Ex2VulkanA1Operation::Ex2VulkanA1Operation(
     const ex2::LinearConfiguration& configuration,
     const std::filesystem::path& spirvPath,
     std::uint32_t physicalDeviceIndex)
+    : Ex2VulkanA1Operation{
+          configuration,
+          spirvPath,
+          physicalDeviceIndex,
+          ex2::LinearVariant::A1}
+{
+}
+
+Ex2VulkanA1Operation::Ex2VulkanA1Operation(
+    const ex2::LinearConfiguration& configuration,
+    const std::filesystem::path& spirvPath,
+    std::uint32_t physicalDeviceIndex,
+    ex2::LinearVariant requiredVariant)
     : resources_{std::make_unique<Resources>()}
 {
     const auto semanticConfiguration = ex2::MakeConfiguration(configuration);
@@ -1118,7 +1133,7 @@ Ex2VulkanA1Operation::Ex2VulkanA1Operation(
         throw std::invalid_argument(
             "EX-2 Vulkan A1 configuration violates the I2-C semantic contract");
     }
-    if (configuration.variant != ex2::LinearVariant::A1)
+    if (configuration.variant != requiredVariant)
     {
         throw std::invalid_argument(
             "EX-2 Vulkan A1 operation requires the A1 linear variant");
