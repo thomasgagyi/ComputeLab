@@ -109,6 +109,31 @@ if(TARGET ComputeLabEx2CudaB
     )
 endif()
 
+if(TARGET ComputeLabEx2CudaC
+    AND TARGET ComputeLabEx2VulkanC
+    AND TARGET ComputeLabEx2CpuOracles
+    AND TARGET ComputeLabEx2Configuration)
+    add_library(
+        ComputeLabEx2CIntegration
+        STATIC
+        Ex2CIntegration.cpp
+        Ex2CIntegration.hpp
+    )
+    target_compile_features(ComputeLabEx2CIntegration PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2CIntegration
+        PUBLIC
+            ${PROJECT_SOURCE_DIR}/src
+    )
+    target_link_libraries(ComputeLabEx2CIntegration
+        PUBLIC
+            ComputeLabEx2Foundation
+            ComputeLabEx2CpuOracles
+            ComputeLabEx2Configuration
+            ComputeLabEx2CudaC
+            ComputeLabEx2VulkanC
+    )
+endif()
+
 if(TARGET ComputeLabEx2Gate0Support
     AND TARGET ComputeLabCudaQualification
     AND TARGET ComputeLabVulkanQualification

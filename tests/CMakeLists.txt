@@ -147,6 +147,13 @@ if(TARGET ComputeLabEx2BIntegration)
         COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}")
 endif()
 
+if(TARGET ComputeLabEx2CIntegration)
+    target_sources(ComputeLabTests PRIVATE Ex2CIntegrationTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2CIntegration)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}")
+endif()
+
 if(TARGET ComputeLabEx2Gate0)
     target_sources(ComputeLabTests PRIVATE Ex2Gate0ChildSmokeTests.cpp)
     add_dependencies(ComputeLabTests ComputeLabEx2Gate0)
