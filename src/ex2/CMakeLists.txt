@@ -1,4 +1,6 @@
 add_library(ComputeLabEx2Foundation STATIC
+    Ex2ContentionTargets.cpp
+    Ex2ContentionTargets.hpp
     Ex2IndexPermutation.cpp
     Ex2IndexPermutation.hpp
     Ex2Input.cpp

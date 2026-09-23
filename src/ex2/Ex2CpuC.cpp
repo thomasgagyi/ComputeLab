@@ -2,7 +2,6 @@
 
 #include <cstddef>
 #include <limits>
-#include <numeric>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -30,60 +29,7 @@ std::size_t CheckedCounterCount(
     return converted;
 }
 
-void ValidateContentionParameters(
-    std::uint64_t elementCount,
-    std::uint64_t activeCounterCount)
-{
-    static_cast<void>(CheckedCounterCount(elementCount, "EX-2 C element count"));
-    if (elementCount == 0U)
-    {
-        if (activeCounterCount != 0U)
-        {
-            throw std::invalid_argument(
-                "EX-2 C zero elements require zero active counters");
-        }
-        return;
-    }
-    if (activeCounterCount == 0U || activeCounterCount > elementCount)
-    {
-        throw std::invalid_argument(
-            "EX-2 C active counter count must be in [1, N]");
-    }
-    if (elementCount % activeCounterCount != 0U)
-    {
-        throw std::invalid_argument(
-            "EX-2 C active counter count must divide N exactly");
-    }
-    if (std::gcd(8191ULL, elementCount) != 1U)
-    {
-        throw std::invalid_argument(
-            "EX-2 C target permutation requires gcd(8191, N) == 1");
-    }
-}
-
 } // namespace
-
-std::vector<std::uint32_t> GenerateContentionTargets(
-    std::uint64_t elementCount,
-    std::uint64_t activeCounterCount)
-{
-    ValidateContentionParameters(elementCount, activeCounterCount);
-    if (elementCount == 0U)
-    {
-        return {};
-    }
-
-    std::vector<std::uint32_t> targets(
-        static_cast<std::size_t>(elementCount));
-    for (std::uint64_t index = 0U; index < elementCount; ++index)
-    {
-        const std::uint64_t permutation =
-            (8191ULL * index + 17ULL) % elementCount;
-        targets[static_cast<std::size_t>(index)] =
-            static_cast<std::uint32_t>(permutation % activeCounterCount);
-    }
-    return targets;
-}
 
 std::vector<std::uint32_t> ReferenceContentionHistogram(
     std::span<const std::uint32_t> targets,

@@ -75,6 +75,31 @@ TEST(Ex2CpuC, RepeatedReferenceConstructionIsDeterministic)
     EXPECT_EQ(first.counters, second.counters);
 }
 
+TEST(Ex2CpuC, ExactGeneratedTargetsPassSharedSemanticValidation)
+{
+    const auto targets = computelab::ex2::GenerateContentionTargets(128U, 64U);
+    EXPECT_NO_THROW(computelab::ex2::ValidateContentionTargets(
+        targets, 128U, 64U));
+}
+
+TEST(Ex2CpuC, SharedSemanticValidationRejectsWrongOrAlteredTargets)
+{
+    const auto exact = computelab::ex2::GenerateContentionTargets(8U, 2U);
+    const std::vector<std::uint32_t> shortTargets{
+        exact.begin(), exact.end() - 1};
+    auto outOfRange = exact;
+    outOfRange[0] = 2U;
+    auto alteredInRange = exact;
+    alteredInRange[0] = 0U;
+
+    EXPECT_THROW(computelab::ex2::ValidateContentionTargets(
+        shortTargets, 8U, 2U), std::invalid_argument);
+    EXPECT_THROW(computelab::ex2::ValidateContentionTargets(
+        outOfRange, 8U, 2U), std::invalid_argument);
+    EXPECT_THROW(computelab::ex2::ValidateContentionTargets(
+        alteredInRange, 8U, 2U), std::invalid_argument);
+}
+
 TEST(Ex2CpuC, RejectsMalformedTargetsParametersAndOverflowingCounts)
 {
     const std::vector<std::uint32_t> oneTarget{0U};

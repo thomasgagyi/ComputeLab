@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ex2/Ex2ContentionTargets.hpp"
 #include "ex2/Ex2IndexPermutation.hpp"
 #include "ex2/Ex2SemanticTypes.hpp"
 
@@ -34,12 +35,6 @@ void ValidateUint32IndexedOracleElementCount(std::uint64_t elementCount);
     std::span<const std::uint32_t> input,
     std::span<const std::uint32_t> indices);
 
-inline constexpr std::uint64_t ContentionElementCount = 1'048'576ULL;
-inline constexpr std::uint64_t ContentionActiveAll = ContentionElementCount;
-inline constexpr std::uint64_t ContentionActiveOnePer32 =
-    ContentionElementCount / 32ULL;
-inline constexpr std::uint64_t ContentionActive64 = 64ULL;
-
 struct ContentionReference
 {
     std::vector<std::uint32_t> targets;
@@ -47,9 +42,6 @@ struct ContentionReference
     std::uint32_t activeCounterCount{};
 };
 
-[[nodiscard]] std::vector<std::uint32_t> GenerateContentionTargets(
-    std::uint64_t elementCount,
-    std::uint64_t activeCounterCount);
 [[nodiscard]] std::vector<std::uint32_t> ReferenceContentionHistogram(
     std::span<const std::uint32_t> targets,
     std::uint64_t counterCount);

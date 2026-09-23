@@ -75,6 +75,11 @@ if(TARGET ComputeLabEx2CudaB)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2CudaB CUDA::cudart)
 endif()
 
+if(TARGET ComputeLabEx2CudaC)
+    target_sources(ComputeLabTests PRIVATE Ex2CudaCTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2CudaC CUDA::cudart)
+endif()
+
 include(GoogleTest)
 
 if(TARGET ComputeLabVulkanTransform)
