@@ -105,6 +105,14 @@ if(TARGET ComputeLabEx2VulkanA2)
         COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}")
 endif()
 
+if(TARGET ComputeLabEx2VulkanB)
+    target_sources(ComputeLabTests PRIVATE Ex2VulkanBTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2VulkanB)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}")
+endif()
+
 if(TARGET ComputeLabEx2A1Integration AND TARGET ComputeLabEx2A1)
     target_sources(ComputeLabTests PRIVATE
         Ex2A1IntegrationTests.cpp
