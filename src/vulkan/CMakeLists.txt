@@ -134,3 +134,34 @@ set(COMPUTELAB_EX2_B1_SPIRV_PATH
     "${COMPUTELAB_EX2_B1_SPIRV_PATH}" PARENT_SCOPE)
 set(COMPUTELAB_EX2_B2_SPIRV_PATH
     "${COMPUTELAB_EX2_B2_SPIRV_PATH}" PARENT_SCOPE)
+
+set(COMPUTELAB_EX2_C_SPIRV_PATH
+    "${CMAKE_CURRENT_BINARY_DIR}/Ex2C.comp.spv")
+add_custom_command(
+    OUTPUT "${COMPUTELAB_EX2_C_SPIRV_PATH}"
+    COMMAND Vulkan::glslc --target-env=vulkan1.3 --target-spv=spv1.3
+        "${CMAKE_CURRENT_SOURCE_DIR}/Ex2C.comp"
+        -o "${COMPUTELAB_EX2_C_SPIRV_PATH}"
+    DEPENDS Ex2C.comp
+    VERBATIM
+)
+
+add_library(ComputeLabEx2VulkanC STATIC
+    Ex2VulkanC.cpp
+    Ex2VulkanC.hpp
+    "${COMPUTELAB_EX2_C_SPIRV_PATH}"
+)
+target_compile_features(ComputeLabEx2VulkanC PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2VulkanC
+    PUBLIC
+        "${PROJECT_SOURCE_DIR}/src"
+)
+target_link_libraries(ComputeLabEx2VulkanC
+    PUBLIC
+        Vulkan::Vulkan
+        ComputeLabEx2Configuration
+    PRIVATE
+        ComputeLabEx2Foundation
+)
+set(COMPUTELAB_EX2_C_SPIRV_PATH
+    "${COMPUTELAB_EX2_C_SPIRV_PATH}" PARENT_SCOPE)
