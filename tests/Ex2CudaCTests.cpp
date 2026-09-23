@@ -345,6 +345,34 @@ TEST(Ex2CudaC, DeviceIdentityAndInvalidSelectorRemainExplicit)
     }
 }
 
+TEST(Ex2CudaCErrorState,
+    InvalidSelectorCannotContaminateFollowingValidLaunch)
+{
+    constexpr std::uint64_t elementCount = 257U;
+    const auto targets = ex2::GenerateContentionTargets(
+        elementCount, elementCount);
+    const auto reference = ex2::ReferenceContention(
+        elementCount, elementCount);
+
+    try
+    {
+        cuda::Ex2CudaCOperation invalid{
+            -1, CConfiguration(elementCount, elementCount)};
+        FAIL() << "expected invalid CUDA device selection to fail";
+    }
+    catch (const cuda::Ex2CudaCNativeError& error)
+    {
+        EXPECT_EQ(error.Phase(), cuda::Ex2CudaCNativePhase::DeviceSelection);
+    }
+
+    cuda::Ex2CudaCOperation operation{
+        0, CConfiguration(elementCount, elementCount)};
+    const auto counters = ExecuteOne(operation, targets);
+    EXPECT_EQ(counters, reference.counters);
+    EXPECT_EQ(operation.RetrieveDeviceTargets(), targets);
+    EXPECT_TRUE(operation.LastCompletionExecutedKernel());
+}
+
 TEST(Ex2CudaC,
     NativePhasesResourceLifetimeAndUncertainCompletionAreExplicit)
 {

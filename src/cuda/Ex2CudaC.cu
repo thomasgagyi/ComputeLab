@@ -642,6 +642,7 @@ void Ex2CudaCOperation::SubmitAtomic()
     impl_->submittedKernel = impl_->configuration.elementCount != 0U;
     if (impl_->submittedKernel)
     {
+        static_cast<void>(cudaGetLastError());
         Ex2CudaCAtomicKernel<<<
             impl_->launchShape.blockCount,
             impl_->launchShape.threadsPerBlock,
