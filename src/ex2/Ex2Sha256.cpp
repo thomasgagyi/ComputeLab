@@ -5,6 +5,8 @@
 #include <bit>
 #include <cstdint>
 #include <fstream>
+#include <limits>
+#include <memory>
 #include <stdexcept>
 
 namespace computelab::ex2
@@ -22,6 +24,13 @@ class Sha256State final
 public:
     void Update(std::span<const std::byte> bytes)
     {
+        constexpr std::uint64_t maximumByteCount =
+            std::numeric_limits<std::uint64_t>::max() / 8U;
+        if (bytes.size() > maximumByteCount - byteCount_)
+        {
+            throw std::length_error(
+                "SHA-256 input exceeds the representable bit length");
+        }
         for (const std::byte byte : bytes)
         {
             buffer_[bufferSize_++] = static_cast<std::uint8_t>(byte);
@@ -148,11 +157,41 @@ std::string HexDigest(const std::array<std::uint8_t, 32>& digest)
 
 } // namespace
 
-std::string Sha256(std::span<const std::byte> bytes)
+struct Sha256Hasher::Impl
 {
     Sha256State state;
-    state.Update(bytes);
-    return HexDigest(state.Finish());
+};
+
+Sha256Hasher::Sha256Hasher()
+    : impl_(std::make_unique<Impl>())
+{
+}
+
+Sha256Hasher::~Sha256Hasher() = default;
+Sha256Hasher::Sha256Hasher(Sha256Hasher&&) noexcept = default;
+Sha256Hasher& Sha256Hasher::operator=(Sha256Hasher&&) noexcept = default;
+
+void Sha256Hasher::Update(std::span<const std::byte> bytes)
+{
+    if (!impl_)
+        throw std::logic_error("SHA-256 state has already been finalized");
+    impl_->state.Update(bytes);
+}
+
+std::string Sha256Hasher::Finish()
+{
+    if (!impl_)
+        throw std::logic_error("SHA-256 state has already been finalized");
+    const auto digest = HexDigest(impl_->state.Finish());
+    impl_.reset();
+    return digest;
+}
+
+std::string Sha256(std::span<const std::byte> bytes)
+{
+    Sha256Hasher hasher;
+    hasher.Update(bytes);
+    return hasher.Finish();
 }
 
 std::string Sha256(std::string_view bytes)
@@ -168,7 +207,7 @@ std::string Sha256File(const std::filesystem::path& path)
         throw std::runtime_error("required provenance file is unavailable");
     }
 
-    Sha256State state;
+    Sha256Hasher hasher;
     std::array<char, 64U * 1024U> buffer{};
     while (stream)
     {
@@ -176,7 +215,7 @@ std::string Sha256File(const std::filesystem::path& path)
         const auto count = stream.gcount();
         if (count > 0)
         {
-            state.Update(std::as_bytes(std::span{
+            hasher.Update(std::as_bytes(std::span{
                 buffer.data(), static_cast<std::size_t>(count)}));
         }
     }
@@ -184,7 +223,7 @@ std::string Sha256File(const std::filesystem::path& path)
     {
         throw std::runtime_error("required provenance file could not be read");
     }
-    return HexDigest(state.Finish());
+    return hasher.Finish();
 }
 
 } // namespace computelab::ex2

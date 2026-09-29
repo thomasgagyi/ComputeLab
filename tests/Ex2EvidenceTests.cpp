@@ -1,5 +1,11 @@
+#include "ex2/Ex2ContentionTargets.hpp"
+#include "ex2/Ex2CorrectnessFoundation.hpp"
+#include "ex2/Ex2CpuOracles.hpp"
 #include "ex2/Ex2Evidence.hpp"
 #include "ex2/Ex2Gate0.hpp"
+#include "ex2/Ex2IndexPermutation.hpp"
+#include "ex2/Ex2Input.hpp"
+#include "ex2/Ex2LogicalInput.hpp"
 
 #include <gtest/gtest.h>
 
@@ -94,6 +100,29 @@ evidence::SampleRecord Mismatch(
     return result;
 }
 
+evidence::I7CorrectnessFoundation I7AFoundation(
+    ex2::Backend backend = ex2::Backend::Cuda,
+    std::string runId = "i7-a-cuda")
+{
+    const auto workload = ex2::MakeConfiguration(
+        ex2::LinearConfiguration{ex2::LinearVariant::A1, 256U});
+    const auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 256U);
+    const auto expected = ex2::ReferenceA1(input);
+    auto identity = evidence::MakeI7WordInputIdentity(workload, input);
+    ex2::ComparisonConditionContext condition{
+        "1.1", "anonymous-machine", {std::string(kUuid), true},
+        workload, ex2::InstrumentMode::H};
+    ex2::SeriesIdentityContext series{
+        std::move(condition), backend, 0U, 0U,
+        backend == ex2::Backend::Cuda ? 0U : 1U,
+        0U, 1U, std::string(40U, 'a'), std::string(64U, 'b'),
+        backend == ex2::Backend::Vulkan
+            ? std::optional<std::string>{std::string(64U, 'c')}
+            : std::nullopt};
+    return evidence::MakeI7WordCorrectnessFoundation(
+        std::move(runId), std::move(series), std::move(identity), expected);
+}
+
 TEST(Ex2EvidenceSchema, PreservesVersionAndExactExistingHeaders)
 {
     EXPECT_EQ(evidence::SchemaVersion, 2U);
@@ -144,6 +173,329 @@ TEST(Ex2EvidenceSchema, UsesOnlyApprovedStatusStringsAndStableLocalPhases)
         "evidence_publication");
     EXPECT_EQ(evidence::ToString(evidence::FailurePhase::Interrupted),
         "interrupted");
+}
+
+TEST(Ex2I7Foundation, RequiresProtocolOnePointOneAndAnApprovedCoreCell)
+{
+    const auto core = ex2::MakeConfiguration(
+        ex2::LinearConfiguration{ex2::LinearVariant::A1, 256U});
+    const auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 256U);
+    const auto expected = ex2::ReferenceA1(input);
+    auto identity = evidence::MakeI7WordInputIdentity(core, input);
+    ex2::SeriesIdentityContext v10{
+        {"1.0", "anonymous-machine", {std::string(kUuid), true}, core,
+            ex2::InstrumentMode::H},
+        ex2::Backend::Cuda, 0U, 0U, 0U, 0U, 1U,
+        std::string(40U, 'a'), std::string(64U, 'b'), std::nullopt};
+    EXPECT_THROW(static_cast<void>(evidence::MakeI7WordCorrectnessFoundation(
+        "i7-v10", v10, identity, expected)), std::invalid_argument);
+
+    const auto correctnessOnly = ex2::MakeConfiguration(
+        ex2::LinearConfiguration{ex2::LinearVariant::A1, 257U});
+    auto smallIdentity = evidence::MakeI7WordInputIdentity(
+        correctnessOnly,
+        ex2::GenerateWordInput(ex2::CoreInputSeed, 257U));
+    const auto smallExpected = ex2::ReferenceA1(
+        ex2::GenerateWordInput(ex2::CoreInputSeed, 257U));
+    v10.condition.protocolVersion = "1.1";
+    v10.condition.workload = correctnessOnly;
+    EXPECT_THROW(static_cast<void>(evidence::MakeI7WordCorrectnessFoundation(
+        "i7-not-core", v10, std::move(smallIdentity), smallExpected)),
+        std::invalid_argument);
+
+    const auto d2 = ex2::MakeConfiguration(ex2::IterativeConfiguration{
+        ex2::IterativeVariant::D2, 262'144U, 16U});
+    const auto d2Input = ex2::GenerateWordInput(ex2::CoreInputSeed, 262'144U);
+    EXPECT_THROW(static_cast<void>(
+        evidence::MakeI7WordInputIdentity(d2, d2Input)),
+        std::invalid_argument);
+}
+
+TEST(Ex2I7Foundation, TypedBAndCIdentityRequiresEveryDeclaredInitialBuffer)
+{
+    const auto indexed = ex2::MakeConfiguration(ex2::IndexedConfiguration{
+        ex2::IndexedVariant::B1, 262'144U,
+        ex2::IndexPattern::StructuredV1});
+    const auto primary = ex2::GenerateWordInput(
+        ex2::CoreInputSeed, 262'144U);
+    const auto permutation = ex2::GenerateStructuredPermutation(262'144U);
+    const auto indexedIdentity = evidence::MakeI7IndexedInputIdentity(
+        indexed, primary, permutation);
+    EXPECT_EQ(indexedIdentity.Sha256(),
+        ex2::IndexedLogicalInputSha256(primary, permutation));
+    const auto indexedExpected = ex2::ReferenceB1Gather(primary, permutation);
+    ex2::SeriesIdentityContext indexedSeries{
+        {"1.1", "anonymous-machine", {std::string(kUuid), true}, indexed,
+            ex2::InstrumentMode::H},
+        ex2::Backend::Cuda, 0U, 0U, 0U, 0U, 1U,
+        std::string(40U, 'a'), std::string(64U, 'b'), std::nullopt};
+    const auto indexedFoundation =
+        evidence::MakeI7WordCorrectnessFoundation(
+            "i7-b-cuda", std::move(indexedSeries), indexedIdentity,
+            indexedExpected);
+    EXPECT_EQ(indexedFoundation.InputIdentity().Sha256(),
+        ex2::IndexedLogicalInputSha256(primary, permutation));
+
+    auto changedPermutation = permutation;
+    std::swap(changedPermutation[0], changedPermutation[1]);
+    EXPECT_THROW(static_cast<void>(evidence::MakeI7IndexedInputIdentity(
+        indexed, primary, changedPermutation)), std::invalid_argument);
+
+    const auto contention = ex2::MakeConfiguration(
+        ex2::ContentionConfiguration{
+            ex2::ContentionElementCount, ex2::ContentionActive64,
+            ex2::ContentionElementCount});
+    const auto targets = ex2::GenerateContentionTargets(
+        ex2::ContentionElementCount, ex2::ContentionActive64);
+    auto initial = ex2::MakeZeroInitialCounterState(
+        ex2::ContentionElementCount);
+    const auto contentionIdentity = evidence::MakeI7ContentionInputIdentity(
+        contention, targets, initial);
+    EXPECT_EQ(contentionIdentity.Sha256(),
+        ex2::ContentionLogicalInputSha256(targets, initial));
+    const auto counters = ex2::ReferenceContentionHistogram(
+        targets, ex2::ContentionElementCount);
+    ex2::SeriesIdentityContext contentionSeries{
+        {"1.1", "anonymous-machine", {std::string(kUuid), true}, contention,
+            ex2::InstrumentMode::H},
+        ex2::Backend::Cuda, 0U, 0U, 0U, 0U, 1U,
+        std::string(40U, 'a'), std::string(64U, 'b'), std::nullopt};
+    const auto contentionFoundation =
+        evidence::MakeI7WordCorrectnessFoundation(
+            "i7-c-cuda", std::move(contentionSeries), contentionIdentity,
+            counters);
+    EXPECT_EQ(contentionFoundation.InputIdentity().Sha256(),
+        ex2::ContentionLogicalInputSha256(targets, initial));
+    initial.back() = 1U;
+    EXPECT_THROW(static_cast<void>(evidence::MakeI7ContentionInputIdentity(
+        contention, targets, initial)), std::invalid_argument);
+}
+
+TEST(Ex2I7Foundation, BackendIdentityProvenanceAndRunIdsRemainSeparated)
+{
+    const auto cuda = I7AFoundation(ex2::Backend::Cuda, "i7-a-cuda");
+    const auto vulkan = I7AFoundation(ex2::Backend::Vulkan, "i7-a-vulkan");
+    EXPECT_EQ(cuda.Plan().comparisonConditionId,
+        vulkan.Plan().comparisonConditionId);
+    EXPECT_NE(cuda.Plan().seriesId, vulkan.Plan().seriesId);
+    EXPECT_NE(cuda.Plan().runId, vulkan.Plan().runId);
+    EXPECT_EQ(cuda.InputIdentity().Sha256(),
+        vulkan.InputIdentity().Sha256());
+
+    auto changed = cuda.Plan().seriesIdentity;
+    changed.sourceRevision[0] = 'd';
+    EXPECT_NE(ex2::SeriesId(changed), cuda.Plan().seriesId);
+    changed = cuda.Plan().seriesIdentity;
+    changed.executableSha256[0] = 'e';
+    EXPECT_NE(ex2::SeriesId(changed), cuda.Plan().seriesId);
+    changed = vulkan.Plan().seriesIdentity;
+    (*changed.shaderSha256)[0] = 'f';
+    EXPECT_NE(ex2::SeriesId(changed), vulkan.Plan().seriesId);
+}
+
+TEST(Ex2I7Foundation, DAndEKeepTypedSingleBufferInputSemantics)
+{
+    const auto d = ex2::MakeConfiguration(ex2::IterativeConfiguration{
+        ex2::IterativeVariant::D1, 262'144U, 16U});
+    const auto dInput = ex2::GenerateWordInput(ex2::CoreInputSeed, 262'144U);
+    const auto dExpected = ex2::ReferenceD1(dInput, 16U).finalState;
+    auto dIdentity = evidence::MakeI7WordInputIdentity(d, dInput);
+    EXPECT_EQ(dIdentity.Sha256(), ex2::WordInputSha256(dInput));
+    ex2::SeriesIdentityContext dSeries{
+        {"1.1", "anonymous-machine", {std::string(kUuid), true}, d,
+            ex2::InstrumentMode::H},
+        ex2::Backend::Cuda, 0U, 0U, 0U, 0U, 1U,
+        std::string(40U, 'a'), std::string(64U, 'b'), std::nullopt};
+    EXPECT_NO_THROW(static_cast<void>(
+        evidence::MakeI7WordCorrectnessFoundation(
+            "i7-d-cuda", std::move(dSeries), std::move(dIdentity), dExpected)));
+
+    const auto e = ex2::MakeConfiguration(ex2::TransferConfiguration{
+        ex2::TransferVariant::E1, 1'024U,
+        ex2::TransferDirection::HostToDevice});
+    const auto eInput = ex2::GenerateByteInput(ex2::CoreInputSeed, 1'024U);
+    auto eIdentity = evidence::MakeI7ByteInputIdentity(e, eInput);
+    EXPECT_EQ(eIdentity.Sha256(), ex2::ByteInputSha256(eInput));
+    ex2::SeriesIdentityContext eSeries{
+        {"1.1", "anonymous-machine", {std::string(kUuid), true}, e,
+            ex2::InstrumentMode::H},
+        ex2::Backend::Cuda, 0U, 0U, 0U, 0U, 1U,
+        std::string(40U, 'a'), std::string(64U, 'b'), std::nullopt};
+    const auto eFoundation = evidence::MakeI7ByteCorrectnessFoundation(
+        "i7-e-cuda", std::move(eSeries), std::move(eIdentity), eInput);
+    const auto eSample = evidence::MakeI7ComparedByteSample(
+        eFoundation, 0U, eInput, eInput);
+    EXPECT_EQ(eSample.status, evidence::OperationStatus::Ok);
+}
+
+TEST(Ex2I7Foundation, ComparisonFailureMappingAndUntimedBundleAreDerived)
+{
+    const auto foundation = I7AFoundation();
+    const auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 256U);
+    const auto expected = ex2::ReferenceA1(input);
+    auto observed = expected;
+    const auto passing = evidence::MakeI7ComparedWordSample(
+        foundation, 0U, expected, observed);
+    EXPECT_EQ(passing.status, evidence::OperationStatus::Ok);
+    EXPECT_EQ(passing.correctness.validationPassed, true);
+    observed.back() ^= 1U;
+    const auto mismatch = evidence::MakeI7ComparedWordSample(
+        foundation, 0U, expected, observed);
+    EXPECT_EQ(mismatch.status, evidence::OperationStatus::ValidationFailed);
+    EXPECT_EQ(mismatch.correctness.validationPassed, false);
+    auto contradictoryExpected = expected;
+    contradictoryExpected.front() ^= 1U;
+    EXPECT_THROW(static_cast<void>(evidence::MakeI7ComparedWordSample(
+        foundation, 0U, contradictoryExpected, contradictoryExpected)),
+        std::invalid_argument);
+
+    const auto readback = evidence::MakeI7FailureObservation(
+        foundation, 0U, evidence::I7FailureKind::ReadbackFailed,
+        "native-readback-code");
+    EXPECT_EQ(readback.sample.status, evidence::OperationStatus::Incomplete);
+    EXPECT_TRUE(readback.sample.correctness.operationCompleted);
+    EXPECT_FALSE(readback.sample.correctness.outputObserved);
+    EXPECT_EQ(readback.nativeDetail, "native-readback-code");
+    const auto deviceLost = evidence::MakeI7FailureObservation(
+        foundation, 0U, evidence::I7FailureKind::DeviceLostDuringReadback);
+    EXPECT_EQ(deviceLost.sample.status, evidence::OperationStatus::DeviceLost);
+    EXPECT_TRUE(deviceLost.sample.correctness.operationCompleted);
+
+    auto common = CommonEnvironment();
+    common.runId = foundation.Plan().runId;
+    common.machineId = foundation.Plan().seriesIdentity.condition.machineId;
+    common.gitCommit = foundation.Plan().seriesIdentity.sourceRevision;
+    const auto environment = evidence::MakeI7EnvironmentRecord(
+        std::move(common), foundation,
+        {.implementation = "synthetic-i7-cuda-fixture"});
+    EXPECT_EQ(environment.inputSha256, foundation.InputIdentity().Sha256());
+    EXPECT_EQ(environment.expectedOutputSha256,
+        ex2::WordInputSha256(expected));
+    const auto initialization = evidence::MakeI7SetupCompleteInitialization(
+        foundation, "actual fixture setup completed without timing");
+    EXPECT_FALSE(initialization.durationNanoseconds.has_value());
+
+    const std::vector initializationRows{initialization};
+    const std::vector samples{passing};
+    const auto summary = evidence::SummarizeSamples(
+        foundation.Plan(), samples, evidence::OperationStatus::Ok);
+    EXPECT_NO_THROW(evidence::ValidateEvidenceBundle(
+        environment, initializationRows, samples, summary));
+    const std::string csv = evidence::SerializeSamplesCsv(
+        foundation.Plan(), samples);
+    EXPECT_TRUE(csv.starts_with(evidence::SamplesCsvHeader() + "\r\n"));
+    EXPECT_FALSE(passing.hostSubmissionNanoseconds.has_value());
+    EXPECT_FALSE(passing.hostWaitNanoseconds.has_value());
+    EXPECT_FALSE(passing.hostCompletionNanoseconds.has_value());
+    EXPECT_FALSE(passing.nativeDeviceIntervalNanoseconds.has_value());
+    EXPECT_NE(evidence::SerializeSummaryJson(summary, samples).find(
+        "\"native_device_interval_ns\":null"), std::string::npos);
+}
+
+TEST(Ex2I7Foundation, PostFoundationFailureMappingsPreservePhaseAndProgress)
+{
+    struct ExpectedFailure
+    {
+        evidence::I7FailureKind kind;
+        evidence::OperationStatus status;
+        evidence::FailurePhase phase;
+        std::string_view errorCode;
+        bool operationCompleted;
+        bool outputObserved;
+    };
+    const std::vector<ExpectedFailure> cases{
+        {evidence::I7FailureKind::BackendInitializationFailed,
+            evidence::OperationStatus::Incomplete,
+            evidence::FailurePhase::BackendInitialization,
+            evidence::error_code::BackendInitializationFailed, false, false},
+        {evidence::I7FailureKind::ResourceAllocationFailed,
+            evidence::OperationStatus::Incomplete,
+            evidence::FailurePhase::ResourceAllocation,
+            evidence::error_code::ResourceAllocationFailed, false, false},
+        {evidence::I7FailureKind::SubmissionFailed,
+            evidence::OperationStatus::SubmitFailed,
+            evidence::FailurePhase::Submission,
+            evidence::error_code::SubmissionFailed, false, false},
+        {evidence::I7FailureKind::CompletionFailed,
+            evidence::OperationStatus::WaitFailed,
+            evidence::FailurePhase::CompletionWait,
+            evidence::error_code::CompletionFailed, false, false},
+        {evidence::I7FailureKind::SubmissionTimeout,
+            evidence::OperationStatus::Timeout,
+            evidence::FailurePhase::Submission,
+            evidence::error_code::OperationTimeout, false, false},
+        {evidence::I7FailureKind::CompletionTimeout,
+            evidence::OperationStatus::Timeout,
+            evidence::FailurePhase::CompletionWait,
+            evidence::error_code::OperationTimeout, false, false},
+        {evidence::I7FailureKind::DeviceLostDuringInitialization,
+            evidence::OperationStatus::DeviceLost,
+            evidence::FailurePhase::BackendInitialization,
+            evidence::error_code::DeviceLost, false, false},
+        {evidence::I7FailureKind::DeviceLostDuringSubmission,
+            evidence::OperationStatus::DeviceLost,
+            evidence::FailurePhase::Submission,
+            evidence::error_code::DeviceLost, false, false},
+        {evidence::I7FailureKind::DeviceLostDuringCompletion,
+            evidence::OperationStatus::DeviceLost,
+            evidence::FailurePhase::CompletionWait,
+            evidence::error_code::DeviceLost, false, false},
+        {evidence::I7FailureKind::DeviceLostDuringReadback,
+            evidence::OperationStatus::DeviceLost,
+            evidence::FailurePhase::Readback,
+            evidence::error_code::DeviceLost, true, false},
+        {evidence::I7FailureKind::ReadbackFailed,
+            evidence::OperationStatus::Incomplete,
+            evidence::FailurePhase::Readback,
+            evidence::error_code::ReadbackFailed, true, false},
+        {evidence::I7FailureKind::InterruptedBeforeCompletion,
+            evidence::OperationStatus::Incomplete,
+            evidence::FailurePhase::Interrupted,
+            evidence::error_code::Interrupted, false, false},
+        {evidence::I7FailureKind::InterruptedAfterCompletion,
+            evidence::OperationStatus::Incomplete,
+            evidence::FailurePhase::Interrupted,
+            evidence::error_code::Interrupted, true, false},
+        {evidence::I7FailureKind::InterruptedAfterOutput,
+            evidence::OperationStatus::Incomplete,
+            evidence::FailurePhase::Interrupted,
+            evidence::error_code::Interrupted, true, true},
+    };
+
+    const auto foundation = I7AFoundation();
+    for (std::size_t index = 0U; index < cases.size(); ++index)
+    {
+        const auto& expected = cases[index];
+        const auto failure = evidence::MakeI7FailureObservation(
+            foundation, index, expected.kind, "bounded-native-detail");
+        const auto& sample = failure.sample;
+        EXPECT_EQ(sample.status, expected.status) << index;
+        ASSERT_TRUE(sample.failurePhase.has_value()) << index;
+        EXPECT_EQ(*sample.failurePhase, expected.phase) << index;
+        ASSERT_TRUE(sample.errorCode.has_value()) << index;
+        EXPECT_EQ(*sample.errorCode, expected.errorCode) << index;
+        EXPECT_TRUE(sample.correctness.expectedOutputGenerated) << index;
+        EXPECT_EQ(sample.correctness.operationCompleted,
+            expected.operationCompleted) << index;
+        EXPECT_EQ(sample.correctness.outputObserved,
+            expected.outputObserved) << index;
+        EXPECT_FALSE(sample.correctness.comparisonPerformed) << index;
+        EXPECT_FALSE(sample.correctness.validationPassed.has_value()) << index;
+        EXPECT_EQ(failure.nativeDetail, "bounded-native-detail") << index;
+    }
+
+    EXPECT_THROW(static_cast<void>(evidence::MakeI7FailureObservation(
+        foundation, 0U, static_cast<evidence::I7FailureKind>(-1))),
+        std::invalid_argument);
+}
+
+TEST(Ex2I7Foundation, HistoricalV10BAndCPlansRemainValid)
+{
+    EXPECT_NO_THROW(static_cast<void>(Plan(ex2::MakeConfiguration(
+        ex2::IndexedConfiguration{ex2::IndexedVariant::B1, 4U,
+            ex2::IndexPattern::StructuredV1}), 1U)));
+    EXPECT_NO_THROW(static_cast<void>(Plan(ex2::MakeConfiguration(
+        ex2::ContentionConfiguration{257U, 1U, 257U}), 1U)));
 }
 
 TEST(Ex2EvidenceSerialization, EnvironmentMatchesIndependentLiteralFixture)

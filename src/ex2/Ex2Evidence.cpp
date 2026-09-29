@@ -313,6 +313,24 @@ void ValidateCorrectnessProgress(const SampleRecord& record)
     case OperationStatus::TimestampInvalid:
         throw std::invalid_argument(
             "timestamp_invalid is not applicable to correctness-only evidence");
+    case OperationStatus::DeviceLost:
+        if (record.failurePhase == FailurePhase::Readback)
+        {
+            if (!value.expectedOutputGenerated || value.outputObserved
+                || value.comparisonPerformed
+                || value.validationPassed.has_value())
+            {
+                throw std::invalid_argument(
+                    "device loss during readback cannot claim observed or compared output");
+            }
+        }
+        else if (value.operationCompleted || value.outputObserved
+            || value.comparisonPerformed || value.validationPassed.has_value())
+        {
+            throw std::invalid_argument(
+                "device loss before readback cannot claim completed or observed output");
+        }
+        break;
     case OperationStatus::Incomplete:
         if (value.comparisonPerformed || value.validationPassed.has_value())
             throw std::invalid_argument(

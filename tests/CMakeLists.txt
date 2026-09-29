@@ -8,6 +8,7 @@ add_executable(ComputeLabTests
     HostTimingTests.cpp
     Ex2HostTimingTests.cpp
     Ex2InputTests.cpp
+    Ex2LogicalInputTests.cpp
     Ex2Sha256Tests.cpp
     Ex2CpuATests.cpp
     Ex2CpuBTests.cpp

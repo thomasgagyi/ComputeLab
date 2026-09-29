@@ -5,6 +5,8 @@ add_library(ComputeLabEx2Foundation STATIC
     Ex2IndexPermutation.hpp
     Ex2Input.cpp
     Ex2Input.hpp
+    Ex2LogicalInput.cpp
+    Ex2LogicalInput.hpp
     Ex2Sha256.cpp
     Ex2Sha256.hpp
     Ex2SemanticTypes.hpp
@@ -56,6 +58,8 @@ target_link_libraries(ComputeLabEx2Configuration
 )
 
 add_library(ComputeLabEx2Evidence STATIC
+    Ex2CorrectnessFoundation.cpp
+    Ex2CorrectnessFoundation.hpp
     Ex2Evidence.cpp
     Ex2Evidence.hpp
 )
