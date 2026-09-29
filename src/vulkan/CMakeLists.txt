@@ -196,3 +196,20 @@ target_link_libraries(ComputeLabEx2VulkanD1
 )
 set(COMPUTELAB_EX2_D1_SPIRV_PATH
     "${COMPUTELAB_EX2_D1_SPIRV_PATH}" PARENT_SCOPE)
+
+add_library(ComputeLabEx2VulkanE STATIC
+    Ex2VulkanE.cpp
+    Ex2VulkanE.hpp
+)
+target_compile_features(ComputeLabEx2VulkanE PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2VulkanE
+    PUBLIC
+        "${PROJECT_SOURCE_DIR}/src"
+)
+target_link_libraries(ComputeLabEx2VulkanE
+    PUBLIC
+        Vulkan::Vulkan
+        ComputeLabEx2Configuration
+    PRIVATE
+        ComputeLabEx2Foundation
+)

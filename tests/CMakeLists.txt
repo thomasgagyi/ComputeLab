@@ -88,6 +88,14 @@ if(TARGET ComputeLabEx2CudaD1)
         CUDA::cudart)
 endif()
 
+if(TARGET ComputeLabEx2CudaE)
+    target_sources(ComputeLabTests PRIVATE Ex2CudaETests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE
+        ComputeLabEx2CudaE
+        ComputeLabEx2CpuOracles
+        CUDA::cudart)
+endif()
+
 include(GoogleTest)
 
 if(TARGET ComputeLabVulkanTransform)
@@ -140,6 +148,13 @@ if(TARGET ComputeLabEx2VulkanD1)
         ComputeLabEx2CpuOracles)
     target_compile_definitions(ComputeLabTests PRIVATE
         COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+endif()
+
+if(TARGET ComputeLabEx2VulkanE)
+    target_sources(ComputeLabTests PRIVATE Ex2VulkanETests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE
+        ComputeLabEx2VulkanE
+        ComputeLabEx2CpuOracles)
 endif()
 
 if(TARGET ComputeLabEx2A1Integration AND TARGET ComputeLabEx2A1)
