@@ -134,6 +134,31 @@ if(TARGET ComputeLabEx2CudaC
     )
 endif()
 
+if(TARGET ComputeLabEx2CudaD1
+    AND TARGET ComputeLabEx2VulkanD1
+    AND TARGET ComputeLabEx2CpuOracles
+    AND TARGET ComputeLabEx2Configuration)
+    add_library(
+        ComputeLabEx2D1Integration
+        STATIC
+        Ex2D1Integration.cpp
+        Ex2D1Integration.hpp
+    )
+    target_compile_features(ComputeLabEx2D1Integration PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2D1Integration
+        PUBLIC
+            ${PROJECT_SOURCE_DIR}/src
+    )
+    target_link_libraries(ComputeLabEx2D1Integration
+        PUBLIC
+            ComputeLabEx2Foundation
+            ComputeLabEx2CpuOracles
+            ComputeLabEx2Configuration
+            ComputeLabEx2CudaD1
+            ComputeLabEx2VulkanD1
+    )
+endif()
+
 if(TARGET ComputeLabEx2Gate0Support
     AND TARGET ComputeLabCudaQualification
     AND TARGET ComputeLabVulkanQualification
