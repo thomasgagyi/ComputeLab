@@ -9,4 +9,10 @@ enum class TransferDirection
     DeviceToHost,
 };
 
+enum class IterativeFinalBuffer
+{
+    StateA,
+    StateB,
+};
+
 } // namespace computelab::ex2

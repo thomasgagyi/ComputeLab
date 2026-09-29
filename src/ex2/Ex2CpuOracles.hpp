@@ -52,12 +52,6 @@ struct ContentionReference
     const ContentionReference& reference,
     std::span<const std::uint32_t> actualCounters) noexcept;
 
-enum class IterativeFinalBuffer
-{
-    StateA,
-    StateB,
-};
-
 struct IterativeReference
 {
     std::vector<std::uint32_t> finalState;
