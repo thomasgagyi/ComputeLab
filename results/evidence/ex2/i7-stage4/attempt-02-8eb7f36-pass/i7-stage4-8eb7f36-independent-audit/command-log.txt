@@ -1,0 +1,90 @@
+Replacement Stage-4 campaign command and observation log
+Source: 8eb7f3654e83073ece4d7ef2a8a5c2301cafe793
+Scope: one new campaign; source read-only; historical 343e0db evidence immutable.
+
+Preflight: git branch --show-current; git rev-parse HEAD; git rev-parse origin/main;
+git log -1 --oneline; git status --porcelain=v1 --untracked-files=all; git diff --check.
+Result: main; exact new source/origin; clean status; diff check exit 0.
+New namespace: all 71 reserved paths absent before any artifact creation.
+Historical snapshot: 143 files plus 52 directories; stored for later exact comparison.
+Historical c17..c21 absent; old manifest canonical hash and preservation anchors verified.
+Authority and relevant producer/adapter/supervisor/inspector contracts reviewed read-only.
+
+PRE BUILD: .\scripts\build.ps1
+Result: exit 0; configured successfully; ninja: no work to do.
+LIVE INVENTORY: ctest --preset x64-debug --show-only=json-v1
+Result: 683 tests; EX-1 39; I7 Foundation 7; I7 Correctness 17; I7 Supervisor 85;
+full selected D1+E validation grouping 43; both real correctness child smokes present.
+
+PRE CANONICAL: .\scripts\test.ps1
+Result: exit 0; 683 passed, 0 failed, 0 skipped; real test time 215.23 seconds.
+Included EX-1 39; I7 Foundation 7; I7 Correctness 17; I7 Supervisor 85.
+Corrected E UUID pure tests 2/2, six approved E integration cells 6/6,
+real A1 and E1 correctness child smokes 2/2. Test-owned E smoke artifacts absent.
+PRE STANDARD and PRE SYNC:
+ctest --preset x64-debug -R '^(Ex2Vulkan(D1|E).*\.|Ex2D1Integration(Literal|Core)\.|Ex2EIntegrationReal\.|SixApprovedCells/Ex2EIntegrationCore\.)' --verbose --output-on-failure
+Both COMPUTELAB_EX2_D1_VALIDATION and COMPUTELAB_EX2_E_VALIDATION set to the
+named mode in try/finally and removed after each. Each mode: exit 0; 43 passed,
+0 failed, 0 skipped; zero Validation Error, VUID-, or SYNC-HAZARD diagnostics.
+Standard 43.89 seconds; sync 44.28 seconds. Diagnostic counters/layer enablement
+are asserted by the selected native and real integration regressions.
+SOURCE/READINESS before manifest: exact main HEAD/origin, clean porcelain,
+git diff --check exit 0; .\scripts\assert-curated-evidence-ready.ps1 exit 0.
+HARDWARE: nvidia-smi query index/name/uuid/driver and vulkaninfo --summary exit 0.
+CUDA/NVIDIA index 0 and Vulkan GPU0: RTX 2060 SUPER; target canonical UUID;
+driver 616.92; Vulkan API 1.4.351. Metadata only, no extra workload execution.
+FROZEN PROVENANCE: eight ordinary artifacts hashed after final pre-build/tests;
+see frozen-provenance.json. No build between freeze and campaign launch.
+MANIFEST: exact 21-key v1, 22 exact four-key children, distinct new sessions.
+HASH-PRINT call 1 (placeholder): exit 0, 15e75febf36ef31585a2466f184040ddc54ab0cf2a1644256c7a766157de3c6d.
+Only embedded manifest_sha256 replaced; HASH-PRINT call 2: same hash, exit 0.
+Independent strict manifest audit: python -B audit.py --manifest-only.
+Result: exit 0; 22 children; eight frozen artifacts match; canonical hash exact;
+physical manifest SHA 90f0a9b66a76ffde5ab96073ca0c30d46846b6e66bcef56caabe4e0b6bd16f46.
+PRELAUNCH: readiness rerun exit 0; exact HEAD/origin/main, clean source;
+all eight frozen hash/size pairs unchanged; all 69 ledger/session output paths
+absent (the console status label incorrectly said 66; loop checked 3 + 22*3).
+Historical full 195-entry snapshot unchanged; historical c17..c21 absent.
+Both validation mode environment variables absent.
+
+FINAL NEW SUPERVISOR INVOCATION COUNT: 1
+out/build/x64-debug/src/app/ComputeLabEx2CorrectnessSupervisor.exe --manifest results/local/i7-stage4-8eb7f36-manifest.json
+Launched once with stdout/stderr redirected to this new audit directory.
+No old manifest invocation; no manual replacement child; no retry.
+SUPERVISOR RESULT: exit 0; stdout 0 bytes; stderr 0 bytes.
+Final ledger execution_complete; failure_reason null; 22 scheduled / 22 actual;
+22 complete-pass packages. Start 2026-09-30T15:44:04.734Z;
+end 2026-09-30T15:52:03.164Z. Wall-clock control interval is not performance data.
+INDEPENDENT FINAL AUDIT: python -B results/local/i7-stage4-8eb7f36-independent-audit/audit.py
+Audit attempt 1: exit 1 after all 44 series/176 artifact checks. The local helper
+mistakenly used BASE+'-c*', which matched the correctly present -control.json
+ledger as a cell sibling. Read-only directory inventory confirmed only 22 cell
+directories plus that ledger matched. Corrected ONLY the new local audit helper
+to BASE+'-c[0-9]*', still rejecting unexpected numeric-cell siblings. Original
+independent-audit.log retained unchanged. No source/control/manifest/package
+change; no campaign retry. Second read-only audit writes independent-audit-pass.log.
+Audit attempt 2: exit 0; strict manifest and ledger PASS; all 176 hash/size pairs
+match; 44 series and summaries PASS; 44 one-row raw samples true/ok; 22 unique
+condition IDs; zero timing values/incomplete sessions/sidecars/integrity errors;
+nine B/C cells independently reconstructed; both composite fixture goldens exact.
+Ledger SHA 7e5ce4f40d40f8c2f08794b7a02ad860ae4cef0de2e04d509b385c4920636d1c.
+The ledger's committed key is scope (not the attachment's descriptive
+execution_scope); value exactly correctness_control_only_no_stage4_verdict.
+POST CANONICAL: .\scripts\test.ps1
+Result: exit 0; 683 passed, 0 failed, 0 skipped; test time 211.91 seconds.
+EX-1 39/39; I7 Foundation 7/7; I7 Correctness 17/17; I7 Supervisor 85/85;
+both real child smokes pass; ninja no work to do in canonical rebuild.
+POST STANDARD/SYNC use the identical 43-test expression and try/finally
+environment-variable policy from the pre-firewall; logs retained separately.
+Post standard: exit 0; 43 passed / 0 failed / 0 skipped; 44.65 seconds.
+Post sync: exit 0; 43 passed / 0 failed / 0 skipped; 44.80 seconds.
+All four standard/sync logs: zero validation-error/VUID/SYNC-HAZARD diagnostics.
+FINAL RECONCILIATION: 176 hashes/sizes unchanged; manifest/ledger unchanged;
+eight frozen artifacts unchanged after canonical rebuild; all 22 final sessions,
+44 series, 176 files; no partial/sidecar/ledger partial or test-owned E smoke.
+Both validation variables removed. Historical 143 files/52 directories exact
+full snapshot unchanged; all old c17..c21 absent; old verdict INCOMPLETE.
+Final source guard: main; HEAD and origin/main exact 8eb7f3654e83073ece4d7ef2a8a5c2301cafe793;
+empty porcelain; git diff --check exit 0. See final-reconciliation.json.
+No source edit, promotion, Gate-0 qualification campaign, candidate-performance
+campaign, D2, Notion change, commit or push. Stop for human review.

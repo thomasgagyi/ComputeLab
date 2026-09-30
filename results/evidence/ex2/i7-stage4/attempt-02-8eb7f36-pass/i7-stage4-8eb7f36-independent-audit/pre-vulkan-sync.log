@@ -1,0 +1,874 @@
+UpdateCTestConfiguration  from :D:/ComputeLab/ComputeLab/DartConfiguration.tcl
+Test project D:/ComputeLab/ComputeLab/out/build/x64-debug
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 455
+      Start 455: Ex2VulkanD1.LiteralKOneUsesStateB
+
+455: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.LiteralKOneUsesStateB" "--gtest_also_run_disabled_tests"
+455: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+455: Test timeout computed to be: 10000000
+455: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+455: Note: Google Test filter = Ex2VulkanD1.LiteralKOneUsesStateB
+455: [==========] Running 1 test from 1 test suite.
+455: [----------] Global test environment set-up.
+455: [----------] 1 test from Ex2VulkanD1
+455: [ RUN      ] Ex2VulkanD1.LiteralKOneUsesStateB
+455: [       OK ] Ex2VulkanD1.LiteralKOneUsesStateB (267 ms)
+455: [----------] 1 test from Ex2VulkanD1 (267 ms total)
+455: 
+455: [----------] Global test environment tear-down
+455: [==========] 1 test from 1 test suite ran. (267 ms total)
+455: [  PASSED  ] 1 test.
+ 1/43 Test #455: Ex2VulkanD1.LiteralKOneUsesStateB ......................................................................   Passed    0.31 sec
+test 456
+      Start 456: Ex2VulkanD1.LiteralKTwoUsesStateA
+
+456: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.LiteralKTwoUsesStateA" "--gtest_also_run_disabled_tests"
+456: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+456: Test timeout computed to be: 10000000
+456: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+456: Note: Google Test filter = Ex2VulkanD1.LiteralKTwoUsesStateA
+456: [==========] Running 1 test from 1 test suite.
+456: [----------] Global test environment set-up.
+456: [----------] 1 test from Ex2VulkanD1
+456: [ RUN      ] Ex2VulkanD1.LiteralKTwoUsesStateA
+456: [       OK ] Ex2VulkanD1.LiteralKTwoUsesStateA (227 ms)
+456: [----------] 1 test from Ex2VulkanD1 (227 ms total)
+456: 
+456: [----------] Global test environment tear-down
+456: [==========] 1 test from 1 test suite ran. (227 ms total)
+456: [  PASSED  ] 1 test.
+ 2/43 Test #456: Ex2VulkanD1.LiteralKTwoUsesStateA ......................................................................   Passed    0.26 sec
+test 457
+      Start 457: Ex2VulkanD1.PaddedN257MatchesIndependentCpuReference
+
+457: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.PaddedN257MatchesIndependentCpuReference" "--gtest_also_run_disabled_tests"
+457: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+457: Test timeout computed to be: 10000000
+457: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+457: Note: Google Test filter = Ex2VulkanD1.PaddedN257MatchesIndependentCpuReference
+457: [==========] Running 1 test from 1 test suite.
+457: [----------] Global test environment set-up.
+457: [----------] 1 test from Ex2VulkanD1
+457: [ RUN      ] Ex2VulkanD1.PaddedN257MatchesIndependentCpuReference
+457: [       OK ] Ex2VulkanD1.PaddedN257MatchesIndependentCpuReference (230 ms)
+457: [----------] 1 test from Ex2VulkanD1 (231 ms total)
+457: 
+457: [----------] Global test environment tear-down
+457: [==========] 1 test from 1 test suite ran. (231 ms total)
+457: [  PASSED  ] 1 test.
+ 3/43 Test #457: Ex2VulkanD1.PaddedN257MatchesIndependentCpuReference ...................................................   Passed    0.27 sec
+test 458
+      Start 458: Ex2VulkanD1.KZeroSubmitsEmptySequenceAndReturnsStateA
+
+458: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.KZeroSubmitsEmptySequenceAndReturnsStateA" "--gtest_also_run_disabled_tests"
+458: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+458: Test timeout computed to be: 10000000
+458: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+458: Note: Google Test filter = Ex2VulkanD1.KZeroSubmitsEmptySequenceAndReturnsStateA
+458: [==========] Running 1 test from 1 test suite.
+458: [----------] Global test environment set-up.
+458: [----------] 1 test from Ex2VulkanD1
+458: [ RUN      ] Ex2VulkanD1.KZeroSubmitsEmptySequenceAndReturnsStateA
+458: [       OK ] Ex2VulkanD1.KZeroSubmitsEmptySequenceAndReturnsStateA (218 ms)
+458: [----------] 1 test from Ex2VulkanD1 (218 ms total)
+458: 
+458: [----------] Global test environment tear-down
+458: [==========] 1 test from 1 test suite ran. (218 ms total)
+458: [  PASSED  ] 1 test.
+ 4/43 Test #458: Ex2VulkanD1.KZeroSubmitsEmptySequenceAndReturnsStateA ..................................................   Passed    0.26 sec
+test 459
+      Start 459: Ex2VulkanD1.NZeroSubmitsEmptySequenceAndPreservesParity
+
+459: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.NZeroSubmitsEmptySequenceAndPreservesParity" "--gtest_also_run_disabled_tests"
+459: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+459: Test timeout computed to be: 10000000
+459: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+459: Note: Google Test filter = Ex2VulkanD1.NZeroSubmitsEmptySequenceAndPreservesParity
+459: [==========] Running 1 test from 1 test suite.
+459: [----------] Global test environment set-up.
+459: [----------] 1 test from Ex2VulkanD1
+459: [ RUN      ] Ex2VulkanD1.NZeroSubmitsEmptySequenceAndPreservesParity
+459: [       OK ] Ex2VulkanD1.NZeroSubmitsEmptySequenceAndPreservesParity (278 ms)
+459: [----------] 1 test from Ex2VulkanD1 (278 ms total)
+459: 
+459: [----------] Global test environment tear-down
+459: [==========] 1 test from 1 test suite ran. (279 ms total)
+459: [  PASSED  ] 1 test.
+ 5/43 Test #459: Ex2VulkanD1.NZeroSubmitsEmptySequenceAndPreservesParity ................................................   Passed    0.32 sec
+test 460
+      Start 460: Ex2VulkanD1.LifecycleRejectsOutOfOrderDuplicateAndTimedOutReuse
+
+460: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.LifecycleRejectsOutOfOrderDuplicateAndTimedOutReuse" "--gtest_also_run_disabled_tests"
+460: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+460: Test timeout computed to be: 10000000
+460: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+460: Note: Google Test filter = Ex2VulkanD1.LifecycleRejectsOutOfOrderDuplicateAndTimedOutReuse
+460: [==========] Running 1 test from 1 test suite.
+460: [----------] Global test environment set-up.
+460: [----------] 1 test from Ex2VulkanD1
+460: [ RUN      ] Ex2VulkanD1.LifecycleRejectsOutOfOrderDuplicateAndTimedOutReuse
+460: [       OK ] Ex2VulkanD1.LifecycleRejectsOutOfOrderDuplicateAndTimedOutReuse (227 ms)
+460: [----------] 1 test from Ex2VulkanD1 (227 ms total)
+460: 
+460: [----------] Global test environment tear-down
+460: [==========] 1 test from 1 test suite ran. (227 ms total)
+460: [  PASSED  ] 1 test.
+ 6/43 Test #460: Ex2VulkanD1.LifecycleRejectsOutOfOrderDuplicateAndTimedOutReuse ........................................   Passed    0.38 sec
+test 461
+      Start 461: Ex2VulkanD1.FailedReplacementUploadInvalidatesPriorReadiness
+
+461: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.FailedReplacementUploadInvalidatesPriorReadiness" "--gtest_also_run_disabled_tests"
+461: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+461: Test timeout computed to be: 10000000
+461: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+461: Note: Google Test filter = Ex2VulkanD1.FailedReplacementUploadInvalidatesPriorReadiness
+461: [==========] Running 1 test from 1 test suite.
+461: [----------] Global test environment set-up.
+461: [----------] 1 test from Ex2VulkanD1
+461: [ RUN      ] Ex2VulkanD1.FailedReplacementUploadInvalidatesPriorReadiness
+461: [       OK ] Ex2VulkanD1.FailedReplacementUploadInvalidatesPriorReadiness (222 ms)
+461: [----------] 1 test from Ex2VulkanD1 (222 ms total)
+461: 
+461: [----------] Global test environment tear-down
+461: [==========] 1 test from 1 test suite ran. (222 ms total)
+461: [  PASSED  ] 1 test.
+ 7/43 Test #461: Ex2VulkanD1.FailedReplacementUploadInvalidatesPriorReadiness ...........................................   Passed    0.26 sec
+test 462
+      Start 462: Ex2VulkanD1.CoreN262144K16MatchesCpuAndRepeats
+
+462: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.CoreN262144K16MatchesCpuAndRepeats" "--gtest_also_run_disabled_tests"
+462: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+462: Test timeout computed to be: 10000000
+462: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+462: Note: Google Test filter = Ex2VulkanD1.CoreN262144K16MatchesCpuAndRepeats
+462: [==========] Running 1 test from 1 test suite.
+462: [----------] Global test environment set-up.
+462: [----------] 1 test from Ex2VulkanD1
+462: [ RUN      ] Ex2VulkanD1.CoreN262144K16MatchesCpuAndRepeats
+462: [       OK ] Ex2VulkanD1.CoreN262144K16MatchesCpuAndRepeats (273 ms)
+462: [----------] 1 test from Ex2VulkanD1 (273 ms total)
+462: 
+462: [----------] Global test environment tear-down
+462: [==========] 1 test from 1 test suite ran. (273 ms total)
+462: [  PASSED  ] 1 test.
+ 8/43 Test #462: Ex2VulkanD1.CoreN262144K16MatchesCpuAndRepeats .........................................................   Passed    0.31 sec
+test 463
+      Start 463: Ex2VulkanD1.CoreN1048576K64MatchesCpuAndRepeats
+
+463: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.CoreN1048576K64MatchesCpuAndRepeats" "--gtest_also_run_disabled_tests"
+463: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+463: Test timeout computed to be: 10000000
+463: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+463: Note: Google Test filter = Ex2VulkanD1.CoreN1048576K64MatchesCpuAndRepeats
+463: [==========] Running 1 test from 1 test suite.
+463: [----------] Global test environment set-up.
+463: [----------] 1 test from Ex2VulkanD1
+463: [ RUN      ] Ex2VulkanD1.CoreN1048576K64MatchesCpuAndRepeats
+463: [       OK ] Ex2VulkanD1.CoreN1048576K64MatchesCpuAndRepeats (826 ms)
+463: [----------] 1 test from Ex2VulkanD1 (826 ms total)
+463: 
+463: [----------] Global test environment tear-down
+463: [==========] 1 test from 1 test suite ran. (826 ms total)
+463: [  PASSED  ] 1 test.
+ 9/43 Test #463: Ex2VulkanD1.CoreN1048576K64MatchesCpuAndRepeats ........................................................   Passed    0.86 sec
+test 464
+      Start 464: Ex2VulkanD1.TimedOperationProducesCorrectEnvelopeAndMetadata
+
+464: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.TimedOperationProducesCorrectEnvelopeAndMetadata" "--gtest_also_run_disabled_tests"
+464: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+464: Test timeout computed to be: 10000000
+464: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+464: Note: Google Test filter = Ex2VulkanD1.TimedOperationProducesCorrectEnvelopeAndMetadata
+464: [==========] Running 1 test from 1 test suite.
+464: [----------] Global test environment set-up.
+464: [----------] 1 test from Ex2VulkanD1
+464: [ RUN      ] Ex2VulkanD1.TimedOperationProducesCorrectEnvelopeAndMetadata
+464: [       OK ] Ex2VulkanD1.TimedOperationProducesCorrectEnvelopeAndMetadata (217 ms)
+464: [----------] 1 test from Ex2VulkanD1 (217 ms total)
+464: 
+464: [----------] Global test environment tear-down
+464: [==========] 1 test from 1 test suite ran. (217 ms total)
+464: [  PASSED  ] 1 test.
+10/43 Test #464: Ex2VulkanD1.TimedOperationProducesCorrectEnvelopeAndMetadata ...........................................   Passed    0.25 sec
+test 465
+      Start 465: Ex2VulkanD1.TimedNoWorkIsNotApplicable
+
+465: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.TimedNoWorkIsNotApplicable" "--gtest_also_run_disabled_tests"
+465: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+465: Test timeout computed to be: 10000000
+465: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+465: Note: Google Test filter = Ex2VulkanD1.TimedNoWorkIsNotApplicable
+465: [==========] Running 1 test from 1 test suite.
+465: [----------] Global test environment set-up.
+465: [----------] 1 test from Ex2VulkanD1
+465: [ RUN      ] Ex2VulkanD1.TimedNoWorkIsNotApplicable
+465: [       OK ] Ex2VulkanD1.TimedNoWorkIsNotApplicable (220 ms)
+465: [----------] 1 test from Ex2VulkanD1 (220 ms total)
+465: 
+465: [----------] Global test environment tear-down
+465: [==========] 1 test from 1 test suite ran. (220 ms total)
+465: [  PASSED  ] 1 test.
+11/43 Test #465: Ex2VulkanD1.TimedNoWorkIsNotApplicable .................................................................   Passed    0.26 sec
+test 466
+      Start 466: Ex2VulkanD1.InvalidPhysicalDeviceAndD2AreRejected
+
+466: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1.InvalidPhysicalDeviceAndD2AreRejected" "--gtest_also_run_disabled_tests"
+466: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+466: Test timeout computed to be: 10000000
+466: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+466: Note: Google Test filter = Ex2VulkanD1.InvalidPhysicalDeviceAndD2AreRejected
+466: [==========] Running 1 test from 1 test suite.
+466: [----------] Global test environment set-up.
+466: [----------] 1 test from Ex2VulkanD1
+466: [ RUN      ] Ex2VulkanD1.InvalidPhysicalDeviceAndD2AreRejected
+466: [       OK ] Ex2VulkanD1.InvalidPhysicalDeviceAndD2AreRejected (170 ms)
+466: [----------] 1 test from Ex2VulkanD1 (170 ms total)
+466: 
+466: [----------] Global test environment tear-down
+466: [==========] 1 test from 1 test suite ran. (170 ms total)
+466: [  PASSED  ] 1 test.
+12/43 Test #466: Ex2VulkanD1.InvalidPhysicalDeviceAndD2AreRejected ......................................................   Passed    0.21 sec
+test 467
+      Start 467: Ex2VulkanD1Pure.ConfigurationDispatchAndCommandCountSeams
+
+467: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1Pure.ConfigurationDispatchAndCommandCountSeams" "--gtest_also_run_disabled_tests"
+467: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+467: Test timeout computed to be: 10000000
+467: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+467: Note: Google Test filter = Ex2VulkanD1Pure.ConfigurationDispatchAndCommandCountSeams
+467: [==========] Running 1 test from 1 test suite.
+467: [----------] Global test environment set-up.
+467: [----------] 1 test from Ex2VulkanD1Pure
+467: [ RUN      ] Ex2VulkanD1Pure.ConfigurationDispatchAndCommandCountSeams
+467: [       OK ] Ex2VulkanD1Pure.ConfigurationDispatchAndCommandCountSeams (0 ms)
+467: [----------] 1 test from Ex2VulkanD1Pure (0 ms total)
+467: 
+467: [----------] Global test environment tear-down
+467: [==========] 1 test from 1 test suite ran. (0 ms total)
+467: [  PASSED  ] 1 test.
+13/43 Test #467: Ex2VulkanD1Pure.ConfigurationDispatchAndCommandCountSeams ..............................................   Passed    0.03 sec
+test 468
+      Start 468: Ex2VulkanD1Pure.ResourceAlignmentTimingAndFailureSeams
+
+468: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1Pure.ResourceAlignmentTimingAndFailureSeams" "--gtest_also_run_disabled_tests"
+468: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+468: Test timeout computed to be: 10000000
+468: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+468: Note: Google Test filter = Ex2VulkanD1Pure.ResourceAlignmentTimingAndFailureSeams
+468: [==========] Running 1 test from 1 test suite.
+468: [----------] Global test environment set-up.
+468: [----------] 1 test from Ex2VulkanD1Pure
+468: [ RUN      ] Ex2VulkanD1Pure.ResourceAlignmentTimingAndFailureSeams
+468: [       OK ] Ex2VulkanD1Pure.ResourceAlignmentTimingAndFailureSeams (0 ms)
+468: [----------] 1 test from Ex2VulkanD1Pure (0 ms total)
+468: 
+468: [----------] Global test environment tear-down
+468: [==========] 1 test from 1 test suite ran. (0 ms total)
+468: [  PASSED  ] 1 test.
+14/43 Test #468: Ex2VulkanD1Pure.ResourceAlignmentTimingAndFailureSeams .................................................   Passed    0.03 sec
+test 469
+      Start 469: Ex2VulkanD1Pure.QueueAndMemorySelectionAreExplicit
+
+469: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanD1Pure.QueueAndMemorySelectionAreExplicit" "--gtest_also_run_disabled_tests"
+469: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+469: Test timeout computed to be: 10000000
+469: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+469: Note: Google Test filter = Ex2VulkanD1Pure.QueueAndMemorySelectionAreExplicit
+469: [==========] Running 1 test from 1 test suite.
+469: [----------] Global test environment set-up.
+469: [----------] 1 test from Ex2VulkanD1Pure
+469: [ RUN      ] Ex2VulkanD1Pure.QueueAndMemorySelectionAreExplicit
+469: [       OK ] Ex2VulkanD1Pure.QueueAndMemorySelectionAreExplicit (0 ms)
+469: [----------] 1 test from Ex2VulkanD1Pure (0 ms total)
+469: 
+469: [----------] Global test environment tear-down
+469: [==========] 1 test from 1 test suite ran. (0 ms total)
+469: [  PASSED  ] 1 test.
+15/43 Test #469: Ex2VulkanD1Pure.QueueAndMemorySelectionAreExplicit .....................................................   Passed    0.03 sec
+test 470
+      Start 470: Ex2VulkanECore.E1S1024MatchesCompleteCpuReferenceAndRepeats
+
+470: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECore.E1S1024MatchesCompleteCpuReferenceAndRepeats" "--gtest_also_run_disabled_tests"
+470: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+470: Test timeout computed to be: 10000000
+470: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+470: Note: Google Test filter = Ex2VulkanECore.E1S1024MatchesCompleteCpuReferenceAndRepeats
+470: [==========] Running 1 test from 1 test suite.
+470: [----------] Global test environment set-up.
+470: [----------] 1 test from Ex2VulkanECore
+470: [ RUN      ] Ex2VulkanECore.E1S1024MatchesCompleteCpuReferenceAndRepeats
+470: [       OK ] Ex2VulkanECore.E1S1024MatchesCompleteCpuReferenceAndRepeats (221 ms)
+470: [----------] 1 test from Ex2VulkanECore (221 ms total)
+470: 
+470: [----------] Global test environment tear-down
+470: [==========] 1 test from 1 test suite ran. (222 ms total)
+470: [  PASSED  ] 1 test.
+16/43 Test #470: Ex2VulkanECore.E1S1024MatchesCompleteCpuReferenceAndRepeats ............................................   Passed    0.26 sec
+test 471
+      Start 471: Ex2VulkanECore.E1S1048576MatchesCompleteCpuReferenceAndRepeats
+
+471: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECore.E1S1048576MatchesCompleteCpuReferenceAndRepeats" "--gtest_also_run_disabled_tests"
+471: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+471: Test timeout computed to be: 10000000
+471: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+471: Note: Google Test filter = Ex2VulkanECore.E1S1048576MatchesCompleteCpuReferenceAndRepeats
+471: [==========] Running 1 test from 1 test suite.
+471: [----------] Global test environment set-up.
+471: [----------] 1 test from Ex2VulkanECore
+471: [ RUN      ] Ex2VulkanECore.E1S1048576MatchesCompleteCpuReferenceAndRepeats
+471: [       OK ] Ex2VulkanECore.E1S1048576MatchesCompleteCpuReferenceAndRepeats (219 ms)
+471: [----------] 1 test from Ex2VulkanECore (220 ms total)
+471: 
+471: [----------] Global test environment tear-down
+471: [==========] 1 test from 1 test suite ran. (220 ms total)
+471: [  PASSED  ] 1 test.
+17/43 Test #471: Ex2VulkanECore.E1S1048576MatchesCompleteCpuReferenceAndRepeats .........................................   Passed    0.26 sec
+test 472
+      Start 472: Ex2VulkanECore.E1S67108864MatchesCompleteCpuReferenceAndRepeats
+
+472: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECore.E1S67108864MatchesCompleteCpuReferenceAndRepeats" "--gtest_also_run_disabled_tests"
+472: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+472: Test timeout computed to be: 10000000
+472: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+472: Note: Google Test filter = Ex2VulkanECore.E1S67108864MatchesCompleteCpuReferenceAndRepeats
+472: [==========] Running 1 test from 1 test suite.
+472: [----------] Global test environment set-up.
+472: [----------] 1 test from Ex2VulkanECore
+472: [ RUN      ] Ex2VulkanECore.E1S67108864MatchesCompleteCpuReferenceAndRepeats
+472: [       OK ] Ex2VulkanECore.E1S67108864MatchesCompleteCpuReferenceAndRepeats (861 ms)
+472: [----------] 1 test from Ex2VulkanECore (861 ms total)
+472: 
+472: [----------] Global test environment tear-down
+472: [==========] 1 test from 1 test suite ran. (861 ms total)
+472: [  PASSED  ] 1 test.
+18/43 Test #472: Ex2VulkanECore.E1S67108864MatchesCompleteCpuReferenceAndRepeats ........................................   Passed    0.93 sec
+test 473
+      Start 473: Ex2VulkanECore.E2S1024MatchesCompleteCpuReferenceAndRepeats
+
+473: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECore.E2S1024MatchesCompleteCpuReferenceAndRepeats" "--gtest_also_run_disabled_tests"
+473: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+473: Test timeout computed to be: 10000000
+473: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+473: Note: Google Test filter = Ex2VulkanECore.E2S1024MatchesCompleteCpuReferenceAndRepeats
+473: [==========] Running 1 test from 1 test suite.
+473: [----------] Global test environment set-up.
+473: [----------] 1 test from Ex2VulkanECore
+473: [ RUN      ] Ex2VulkanECore.E2S1024MatchesCompleteCpuReferenceAndRepeats
+473: [       OK ] Ex2VulkanECore.E2S1024MatchesCompleteCpuReferenceAndRepeats (216 ms)
+473: [----------] 1 test from Ex2VulkanECore (217 ms total)
+473: 
+473: [----------] Global test environment tear-down
+473: [==========] 1 test from 1 test suite ran. (217 ms total)
+473: [  PASSED  ] 1 test.
+19/43 Test #473: Ex2VulkanECore.E2S1024MatchesCompleteCpuReferenceAndRepeats ............................................   Passed    0.25 sec
+test 474
+      Start 474: Ex2VulkanECore.E2S1048576MatchesCompleteCpuReferenceAndRepeats
+
+474: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECore.E2S1048576MatchesCompleteCpuReferenceAndRepeats" "--gtest_also_run_disabled_tests"
+474: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+474: Test timeout computed to be: 10000000
+474: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+474: Note: Google Test filter = Ex2VulkanECore.E2S1048576MatchesCompleteCpuReferenceAndRepeats
+474: [==========] Running 1 test from 1 test suite.
+474: [----------] Global test environment set-up.
+474: [----------] 1 test from Ex2VulkanECore
+474: [ RUN      ] Ex2VulkanECore.E2S1048576MatchesCompleteCpuReferenceAndRepeats
+474: [       OK ] Ex2VulkanECore.E2S1048576MatchesCompleteCpuReferenceAndRepeats (228 ms)
+474: [----------] 1 test from Ex2VulkanECore (228 ms total)
+474: 
+474: [----------] Global test environment tear-down
+474: [==========] 1 test from 1 test suite ran. (229 ms total)
+474: [  PASSED  ] 1 test.
+20/43 Test #474: Ex2VulkanECore.E2S1048576MatchesCompleteCpuReferenceAndRepeats .........................................   Passed    0.27 sec
+test 475
+      Start 475: Ex2VulkanECore.E2S67108864MatchesCompleteCpuReferenceAndRepeats
+
+475: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECore.E2S67108864MatchesCompleteCpuReferenceAndRepeats" "--gtest_also_run_disabled_tests"
+475: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+475: Test timeout computed to be: 10000000
+475: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+475: Note: Google Test filter = Ex2VulkanECore.E2S67108864MatchesCompleteCpuReferenceAndRepeats
+475: [==========] Running 1 test from 1 test suite.
+475: [----------] Global test environment set-up.
+475: [----------] 1 test from Ex2VulkanECore
+475: [ RUN      ] Ex2VulkanECore.E2S67108864MatchesCompleteCpuReferenceAndRepeats
+475: [       OK ] Ex2VulkanECore.E2S67108864MatchesCompleteCpuReferenceAndRepeats (853 ms)
+475: [----------] 1 test from Ex2VulkanECore (853 ms total)
+475: 
+475: [----------] Global test environment tear-down
+475: [==========] 1 test from 1 test suite ran. (853 ms total)
+475: [  PASSED  ] 1 test.
+21/43 Test #475: Ex2VulkanECore.E2S67108864MatchesCompleteCpuReferenceAndRepeats ........................................   Passed    0.90 sec
+test 476
+      Start 476: Ex2VulkanECorrectnessOnly.LiteralBytesAreIndependentForBothDirections
+
+476: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECorrectnessOnly.LiteralBytesAreIndependentForBothDirections" "--gtest_also_run_disabled_tests"
+476: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+476: Test timeout computed to be: 10000000
+476: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+476: Note: Google Test filter = Ex2VulkanECorrectnessOnly.LiteralBytesAreIndependentForBothDirections
+476: [==========] Running 1 test from 1 test suite.
+476: [----------] Global test environment set-up.
+476: [----------] 1 test from Ex2VulkanECorrectnessOnly
+476: [ RUN      ] Ex2VulkanECorrectnessOnly.LiteralBytesAreIndependentForBothDirections
+476: [       OK ] Ex2VulkanECorrectnessOnly.LiteralBytesAreIndependentForBothDirections (274 ms)
+476: [----------] 1 test from Ex2VulkanECorrectnessOnly (274 ms total)
+476: 
+476: [----------] Global test environment tear-down
+476: [==========] 1 test from 1 test suite ran. (275 ms total)
+476: [  PASSED  ] 1 test.
+22/43 Test #476: Ex2VulkanECorrectnessOnly.LiteralBytesAreIndependentForBothDirections ..................................   Passed    0.31 sec
+test 477
+      Start 477: Ex2VulkanECorrectnessOnly.ZeroOneAndOdd257AreByteExact
+
+477: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanECorrectnessOnly.ZeroOneAndOdd257AreByteExact" "--gtest_also_run_disabled_tests"
+477: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+477: Test timeout computed to be: 10000000
+477: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+477: Note: Google Test filter = Ex2VulkanECorrectnessOnly.ZeroOneAndOdd257AreByteExact
+477: [==========] Running 1 test from 1 test suite.
+477: [----------] Global test environment set-up.
+477: [----------] 1 test from Ex2VulkanECorrectnessOnly
+477: [ RUN      ] Ex2VulkanECorrectnessOnly.ZeroOneAndOdd257AreByteExact
+477: [       OK ] Ex2VulkanECorrectnessOnly.ZeroOneAndOdd257AreByteExact (479 ms)
+477: [----------] 1 test from Ex2VulkanECorrectnessOnly (479 ms total)
+477: 
+477: [----------] Global test environment tear-down
+477: [==========] 1 test from 1 test suite ran. (479 ms total)
+477: [  PASSED  ] 1 test.
+23/43 Test #477: Ex2VulkanECorrectnessOnly.ZeroOneAndOdd257AreByteExact .................................................   Passed    0.52 sec
+test 478
+      Start 478: Ex2VulkanE.SameObjectRepeatUsesReplacementSourceAndPreparedCommand
+
+478: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanE.SameObjectRepeatUsesReplacementSourceAndPreparedCommand" "--gtest_also_run_disabled_tests"
+478: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+478: Test timeout computed to be: 10000000
+478: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+478: Note: Google Test filter = Ex2VulkanE.SameObjectRepeatUsesReplacementSourceAndPreparedCommand
+478: [==========] Running 1 test from 1 test suite.
+478: [----------] Global test environment set-up.
+478: [----------] 1 test from Ex2VulkanE
+478: [ RUN      ] Ex2VulkanE.SameObjectRepeatUsesReplacementSourceAndPreparedCommand
+478: [       OK ] Ex2VulkanE.SameObjectRepeatUsesReplacementSourceAndPreparedCommand (368 ms)
+478: [----------] 1 test from Ex2VulkanE (368 ms total)
+478: 
+478: [----------] Global test environment tear-down
+478: [==========] 1 test from 1 test suite ran. (369 ms total)
+478: [  PASSED  ] 1 test.
+24/43 Test #478: Ex2VulkanE.SameObjectRepeatUsesReplacementSourceAndPreparedCommand .....................................   Passed    0.41 sec
+test 479
+      Start 479: Ex2VulkanE.LifecycleRejectsOutOfOrderAndDuplicateSubmission
+
+479: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanE.LifecycleRejectsOutOfOrderAndDuplicateSubmission" "--gtest_also_run_disabled_tests"
+479: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+479: Test timeout computed to be: 10000000
+479: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+479: Note: Google Test filter = Ex2VulkanE.LifecycleRejectsOutOfOrderAndDuplicateSubmission
+479: [==========] Running 1 test from 1 test suite.
+479: [----------] Global test environment set-up.
+479: [----------] 1 test from Ex2VulkanE
+479: [ RUN      ] Ex2VulkanE.LifecycleRejectsOutOfOrderAndDuplicateSubmission
+479: [       OK ] Ex2VulkanE.LifecycleRejectsOutOfOrderAndDuplicateSubmission (215 ms)
+479: [----------] 1 test from Ex2VulkanE (215 ms total)
+479: 
+479: [----------] Global test environment tear-down
+479: [==========] 1 test from 1 test suite ran. (216 ms total)
+479: [  PASSED  ] 1 test.
+25/43 Test #479: Ex2VulkanE.LifecycleRejectsOutOfOrderAndDuplicateSubmission ............................................   Passed    0.25 sec
+test 480
+      Start 480: Ex2VulkanE.FailedReplacementPreparationInvalidatesPriorReadiness
+
+480: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanE.FailedReplacementPreparationInvalidatesPriorReadiness" "--gtest_also_run_disabled_tests"
+480: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+480: Test timeout computed to be: 10000000
+480: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+480: Note: Google Test filter = Ex2VulkanE.FailedReplacementPreparationInvalidatesPriorReadiness
+480: [==========] Running 1 test from 1 test suite.
+480: [----------] Global test environment set-up.
+480: [----------] 1 test from Ex2VulkanE
+480: [ RUN      ] Ex2VulkanE.FailedReplacementPreparationInvalidatesPriorReadiness
+480: [       OK ] Ex2VulkanE.FailedReplacementPreparationInvalidatesPriorReadiness (220 ms)
+480: [----------] 1 test from Ex2VulkanE (220 ms total)
+480: 
+480: [----------] Global test environment tear-down
+480: [==========] 1 test from 1 test suite ran. (220 ms total)
+480: [  PASSED  ] 1 test.
+26/43 Test #480: Ex2VulkanE.FailedReplacementPreparationInvalidatesPriorReadiness .......................................   Passed    0.26 sec
+test 481
+      Start 481: Ex2VulkanE.TimedE1AndE2MarkOnlyThePreparedNamedCopy
+
+481: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanE.TimedE1AndE2MarkOnlyThePreparedNamedCopy" "--gtest_also_run_disabled_tests"
+481: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+481: Test timeout computed to be: 10000000
+481: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+481: Note: Google Test filter = Ex2VulkanE.TimedE1AndE2MarkOnlyThePreparedNamedCopy
+481: [==========] Running 1 test from 1 test suite.
+481: [----------] Global test environment set-up.
+481: [----------] 1 test from Ex2VulkanE
+481: [ RUN      ] Ex2VulkanE.TimedE1AndE2MarkOnlyThePreparedNamedCopy
+481: [       OK ] Ex2VulkanE.TimedE1AndE2MarkOnlyThePreparedNamedCopy (269 ms)
+481: [----------] 1 test from Ex2VulkanE (270 ms total)
+481: 
+481: [----------] Global test environment tear-down
+481: [==========] 1 test from 1 test suite ran. (270 ms total)
+481: [  PASSED  ] 1 test.
+27/43 Test #481: Ex2VulkanE.TimedE1AndE2MarkOnlyThePreparedNamedCopy ....................................................   Passed    0.31 sec
+test 482
+      Start 482: Ex2VulkanE.TimedZeroByteTransferIsNotApplicable
+
+482: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanE.TimedZeroByteTransferIsNotApplicable" "--gtest_also_run_disabled_tests"
+482: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+482: Test timeout computed to be: 10000000
+482: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+482: Note: Google Test filter = Ex2VulkanE.TimedZeroByteTransferIsNotApplicable
+482: [==========] Running 1 test from 1 test suite.
+482: [----------] Global test environment set-up.
+482: [----------] 1 test from Ex2VulkanE
+482: [ RUN      ] Ex2VulkanE.TimedZeroByteTransferIsNotApplicable
+482: [       OK ] Ex2VulkanE.TimedZeroByteTransferIsNotApplicable (217 ms)
+482: [----------] 1 test from Ex2VulkanE (217 ms total)
+482: 
+482: [----------] Global test environment tear-down
+482: [==========] 1 test from 1 test suite ran. (217 ms total)
+482: [  PASSED  ] 1 test.
+28/43 Test #482: Ex2VulkanE.TimedZeroByteTransferIsNotApplicable ........................................................   Passed    0.26 sec
+test 483
+      Start 483: Ex2VulkanE.InvalidPhysicalDeviceIsRejected
+
+483: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanE.InvalidPhysicalDeviceIsRejected" "--gtest_also_run_disabled_tests"
+483: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+483: Test timeout computed to be: 10000000
+483: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+483: Note: Google Test filter = Ex2VulkanE.InvalidPhysicalDeviceIsRejected
+483: [==========] Running 1 test from 1 test suite.
+483: [----------] Global test environment set-up.
+483: [----------] 1 test from Ex2VulkanE
+483: [ RUN      ] Ex2VulkanE.InvalidPhysicalDeviceIsRejected
+483: [       OK ] Ex2VulkanE.InvalidPhysicalDeviceIsRejected (169 ms)
+483: [----------] 1 test from Ex2VulkanE (169 ms total)
+483: 
+483: [----------] Global test environment tear-down
+483: [==========] 1 test from 1 test suite ran. (169 ms total)
+483: [  PASSED  ] 1 test.
+29/43 Test #483: Ex2VulkanE.InvalidPhysicalDeviceIsRejected .............................................................   Passed    0.20 sec
+test 484
+      Start 484: Ex2VulkanEPure.ConfigurationResourceAndFailureSeams
+
+484: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanEPure.ConfigurationResourceAndFailureSeams" "--gtest_also_run_disabled_tests"
+484: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+484: Test timeout computed to be: 10000000
+484: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+484: Note: Google Test filter = Ex2VulkanEPure.ConfigurationResourceAndFailureSeams
+484: [==========] Running 1 test from 1 test suite.
+484: [----------] Global test environment set-up.
+484: [----------] 1 test from Ex2VulkanEPure
+484: [ RUN      ] Ex2VulkanEPure.ConfigurationResourceAndFailureSeams
+484: [       OK ] Ex2VulkanEPure.ConfigurationResourceAndFailureSeams (0 ms)
+484: [----------] 1 test from Ex2VulkanEPure (0 ms total)
+484: 
+484: [----------] Global test environment tear-down
+484: [==========] 1 test from 1 test suite ran. (0 ms total)
+484: [  PASSED  ] 1 test.
+30/43 Test #484: Ex2VulkanEPure.ConfigurationResourceAndFailureSeams ....................................................   Passed    0.03 sec
+test 485
+      Start 485: Ex2VulkanEPure.QueueMemoryAlignmentAndTimingSelectionAreExplicit
+
+485: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanEPure.QueueMemoryAlignmentAndTimingSelectionAreExplicit" "--gtest_also_run_disabled_tests"
+485: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+485: Test timeout computed to be: 10000000
+485: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+485: Note: Google Test filter = Ex2VulkanEPure.QueueMemoryAlignmentAndTimingSelectionAreExplicit
+485: [==========] Running 1 test from 1 test suite.
+485: [----------] Global test environment set-up.
+485: [----------] 1 test from Ex2VulkanEPure
+485: [ RUN      ] Ex2VulkanEPure.QueueMemoryAlignmentAndTimingSelectionAreExplicit
+485: [       OK ] Ex2VulkanEPure.QueueMemoryAlignmentAndTimingSelectionAreExplicit (0 ms)
+485: [----------] 1 test from Ex2VulkanEPure (0 ms total)
+485: 
+485: [----------] Global test environment tear-down
+485: [==========] 1 test from 1 test suite ran. (0 ms total)
+485: [  PASSED  ] 1 test.
+31/43 Test #485: Ex2VulkanEPure.QueueMemoryAlignmentAndTimingSelectionAreExplicit .......................................   Passed    0.03 sec
+test 486
+      Start 486: Ex2VulkanEPure.NoncoherentReadbackPoisonRequiresAtomAlignedFlushBeforeGpuWrite
+
+486: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2VulkanEPure.NoncoherentReadbackPoisonRequiresAtomAlignedFlushBeforeGpuWrite" "--gtest_also_run_disabled_tests"
+486: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+486: Test timeout computed to be: 10000000
+486: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+486: Note: Google Test filter = Ex2VulkanEPure.NoncoherentReadbackPoisonRequiresAtomAlignedFlushBeforeGpuWrite
+486: [==========] Running 1 test from 1 test suite.
+486: [----------] Global test environment set-up.
+486: [----------] 1 test from Ex2VulkanEPure
+486: [ RUN      ] Ex2VulkanEPure.NoncoherentReadbackPoisonRequiresAtomAlignedFlushBeforeGpuWrite
+486: [       OK ] Ex2VulkanEPure.NoncoherentReadbackPoisonRequiresAtomAlignedFlushBeforeGpuWrite (0 ms)
+486: [----------] 1 test from Ex2VulkanEPure (0 ms total)
+486: 
+486: [----------] Global test environment tear-down
+486: [==========] 1 test from 1 test suite ran. (0 ms total)
+486: [  PASSED  ] 1 test.
+32/43 Test #486: Ex2VulkanEPure.NoncoherentReadbackPoisonRequiresAtomAlignedFlushBeforeGpuWrite .........................   Passed    0.03 sec
+test 536
+      Start 536: Ex2D1IntegrationLiteral.IndependentOddParityFixtureAnchorsCpuCudaVulkanAndPairEquality
+
+536: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2D1IntegrationLiteral.IndependentOddParityFixtureAnchorsCpuCudaVulkanAndPairEquality" "--gtest_also_run_disabled_tests"
+536: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+536: Test timeout computed to be: 10000000
+536: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+536: Note: Google Test filter = Ex2D1IntegrationLiteral.IndependentOddParityFixtureAnchorsCpuCudaVulkanAndPairEquality
+536: [==========] Running 1 test from 1 test suite.
+536: [----------] Global test environment set-up.
+536: [----------] 1 test from Ex2D1IntegrationLiteral
+536: [ RUN      ] Ex2D1IntegrationLiteral.IndependentOddParityFixtureAnchorsCpuCudaVulkanAndPairEquality
+536: [       OK ] Ex2D1IntegrationLiteral.IndependentOddParityFixtureAnchorsCpuCudaVulkanAndPairEquality (297 ms)
+536: [----------] 1 test from Ex2D1IntegrationLiteral (297 ms total)
+536: 
+536: [----------] Global test environment tear-down
+536: [==========] 1 test from 1 test suite ran. (297 ms total)
+536: [  PASSED  ] 1 test.
+33/43 Test #536: Ex2D1IntegrationLiteral.IndependentOddParityFixtureAnchorsCpuCudaVulkanAndPairEquality .................   Passed    0.37 sec
+test 537
+      Start 537: Ex2D1IntegrationCore.BothApprovedCorePairsPassWithoutSkips
+
+537: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2D1IntegrationCore.BothApprovedCorePairsPassWithoutSkips" "--gtest_also_run_disabled_tests"
+537: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+537: Test timeout computed to be: 10000000
+537: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+537: Note: Google Test filter = Ex2D1IntegrationCore.BothApprovedCorePairsPassWithoutSkips
+537: [==========] Running 1 test from 1 test suite.
+537: [----------] Global test environment set-up.
+537: [----------] 1 test from Ex2D1IntegrationCore
+537: [ RUN      ] Ex2D1IntegrationCore.BothApprovedCorePairsPassWithoutSkips
+537: [       OK ] Ex2D1IntegrationCore.BothApprovedCorePairsPassWithoutSkips (1989 ms)
+537: [----------] 1 test from Ex2D1IntegrationCore (1990 ms total)
+537: 
+537: [----------] Global test environment tear-down
+537: [==========] 1 test from 1 test suite ran. (1990 ms total)
+537: [  PASSED  ] 1 test.
+34/43 Test #537: Ex2D1IntegrationCore.BothApprovedCorePairsPassWithoutSkips .............................................   Passed    2.06 sec
+test 553
+      Start 553: Ex2EIntegrationReal.IndependentLiteralFixturePassesBothDirections
+
+553: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2EIntegrationReal.IndependentLiteralFixturePassesBothDirections" "--gtest_also_run_disabled_tests"
+553: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+553: Test timeout computed to be: 10000000
+553: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+553: Note: Google Test filter = Ex2EIntegrationReal.IndependentLiteralFixturePassesBothDirections
+553: [==========] Running 1 test from 1 test suite.
+553: [----------] Global test environment set-up.
+553: [----------] 1 test from Ex2EIntegrationReal
+553: [ RUN      ] Ex2EIntegrationReal.IndependentLiteralFixturePassesBothDirections
+553: [       OK ] Ex2EIntegrationReal.IndependentLiteralFixturePassesBothDirections (345 ms)
+553: [----------] 1 test from Ex2EIntegrationReal (345 ms total)
+553: 
+553: [----------] Global test environment tear-down
+553: [==========] 1 test from 1 test suite ran. (345 ms total)
+553: [  PASSED  ] 1 test.
+35/43 Test #553: Ex2EIntegrationReal.IndependentLiteralFixturePassesBothDirections ......................................   Passed    0.41 sec
+test 554
+      Start 554: Ex2EIntegrationReal.ZeroOneAnd257PassBothDirections
+
+554: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2EIntegrationReal.ZeroOneAnd257PassBothDirections" "--gtest_also_run_disabled_tests"
+554: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+554: Test timeout computed to be: 10000000
+554: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+554: Note: Google Test filter = Ex2EIntegrationReal.ZeroOneAnd257PassBothDirections
+554: [==========] Running 1 test from 1 test suite.
+554: [----------] Global test environment set-up.
+554: [----------] 1 test from Ex2EIntegrationReal
+554: [ RUN      ] Ex2EIntegrationReal.ZeroOneAnd257PassBothDirections
+554: [       OK ] Ex2EIntegrationReal.ZeroOneAnd257PassBothDirections (552 ms)
+554: [----------] 1 test from Ex2EIntegrationReal (552 ms total)
+554: 
+554: [----------] Global test environment tear-down
+554: [==========] 1 test from 1 test suite ran. (552 ms total)
+554: [  PASSED  ] 1 test.
+36/43 Test #554: Ex2EIntegrationReal.ZeroOneAnd257PassBothDirections ....................................................   Passed    0.62 sec
+test 555
+      Start 555: Ex2EIntegrationReal.ValidationPairReportsNoLayerErrors
+
+555: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=Ex2EIntegrationReal.ValidationPairReportsNoLayerErrors" "--gtest_also_run_disabled_tests"
+555: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+555: Test timeout computed to be: 10000000
+555: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+555: Note: Google Test filter = Ex2EIntegrationReal.ValidationPairReportsNoLayerErrors
+555: [==========] Running 1 test from 1 test suite.
+555: [----------] Global test environment set-up.
+555: [----------] 1 test from Ex2EIntegrationReal
+555: [ RUN      ] Ex2EIntegrationReal.ValidationPairReportsNoLayerErrors
+555: [       OK ] Ex2EIntegrationReal.ValidationPairReportsNoLayerErrors (289 ms)
+555: [----------] 1 test from Ex2EIntegrationReal (289 ms total)
+555: 
+555: [----------] Global test environment tear-down
+555: [==========] 1 test from 1 test suite ran. (289 ms total)
+555: [  PASSED  ] 1 test.
+37/43 Test #555: Ex2EIntegrationReal.ValidationPairReportsNoLayerErrors .................................................   Passed    0.35 sec
+test 605
+      Start 605: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 1024)
+
+605: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1024" "--gtest_also_run_disabled_tests"
+605: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+605: Test timeout computed to be: 10000000
+605: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+605: Note: Google Test filter = SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1024
+605: [==========] Running 1 test from 1 test suite.
+605: [----------] Global test environment set-up.
+605: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore
+605: [ RUN      ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1024
+605: [       OK ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1024 (275 ms)
+605: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore (275 ms total)
+605: 
+605: [----------] Global test environment tear-down
+605: [==========] 1 test from 1 test suite ran. (276 ms total)
+605: [  PASSED  ] 1 test.
+38/43 Test #605: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 1024) .......   Passed    0.34 sec
+test 606
+      Start 606: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 1048576)
+
+606: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1048576" "--gtest_also_run_disabled_tests"
+606: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+606: Test timeout computed to be: 10000000
+606: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+606: Note: Google Test filter = SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1048576
+606: [==========] Running 1 test from 1 test suite.
+606: [----------] Global test environment set-up.
+606: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore
+606: [ RUN      ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1048576
+606: [       OK ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_1048576 (503 ms)
+606: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore (503 ms total)
+606: 
+606: [----------] Global test environment tear-down
+606: [==========] 1 test from 1 test suite ran. (503 ms total)
+606: [  PASSED  ] 1 test.
+39/43 Test #606: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 1048576) ....   Passed    0.57 sec
+test 607
+      Start 607: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 67108864)
+
+607: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_67108864" "--gtest_also_run_disabled_tests"
+607: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+607: Test timeout computed to be: 10000000
+607: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+607: Note: Google Test filter = SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_67108864
+607: [==========] Running 1 test from 1 test suite.
+607: [----------] Global test environment set-up.
+607: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore
+607: [ RUN      ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_67108864
+607: [       OK ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E1_67108864 (14450 ms)
+607: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore (14450 ms total)
+607: 
+607: [----------] Global test environment tear-down
+607: [==========] 1 test from 1 test suite ran. (14451 ms total)
+607: [  PASSED  ] 1 test.
+40/43 Test #607: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 67108864) ...   Passed   14.54 sec
+test 608
+      Start 608: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 1024)
+
+608: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1024" "--gtest_also_run_disabled_tests"
+608: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+608: Test timeout computed to be: 10000000
+608: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+608: Note: Google Test filter = SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1024
+608: [==========] Running 1 test from 1 test suite.
+608: [----------] Global test environment set-up.
+608: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore
+608: [ RUN      ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1024
+608: [       OK ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1024 (313 ms)
+608: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore (313 ms total)
+608: 
+608: [----------] Global test environment tear-down
+608: [==========] 1 test from 1 test suite ran. (313 ms total)
+608: [  PASSED  ] 1 test.
+41/43 Test #608: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 1024) .......   Passed    0.38 sec
+test 609
+      Start 609: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 1048576)
+
+609: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1048576" "--gtest_also_run_disabled_tests"
+609: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+609: Test timeout computed to be: 10000000
+609: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+609: Note: Google Test filter = SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1048576
+609: [==========] Running 1 test from 1 test suite.
+609: [----------] Global test environment set-up.
+609: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore
+609: [ RUN      ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1048576
+609: [       OK ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_1048576 (523 ms)
+609: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore (523 ms total)
+609: 
+609: [----------] Global test environment tear-down
+609: [==========] 1 test from 1 test suite ran. (523 ms total)
+609: [  PASSED  ] 1 test.
+42/43 Test #609: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 1048576) ....   Passed    0.59 sec
+test 610
+      Start 610: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 67108864)
+
+610: Test command: D:\ComputeLab\ComputeLab\out\build\x64-debug\tests\ComputeLabTests.exe "--gtest_filter=SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_67108864" "--gtest_also_run_disabled_tests"
+610: Working Directory: D:/ComputeLab/ComputeLab/out/build/x64-debug/tests
+610: Test timeout computed to be: 10000000
+610: Running main() from D:\ComputeLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+610: Note: Google Test filter = SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_67108864
+610: [==========] Running 1 test from 1 test suite.
+610: [----------] Global test environment set-up.
+610: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore
+610: [ RUN      ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_67108864
+610: [       OK ] SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/E2_67108864 (14384 ms)
+610: [----------] 1 test from SixApprovedCells/Ex2EIntegrationCore (14384 ms total)
+610: 
+610: [----------] Global test environment tear-down
+610: [==========] 1 test from 1 test suite ran. (14384 ms total)
+610: [  PASSED  ] 1 test.
+43/43 Test #610: SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 67108864) ...   Passed   14.47 sec
+
+The following tests passed:
+	Ex2VulkanD1.LiteralKOneUsesStateB
+	Ex2VulkanD1.LiteralKTwoUsesStateA
+	Ex2VulkanD1.PaddedN257MatchesIndependentCpuReference
+	Ex2VulkanD1.KZeroSubmitsEmptySequenceAndReturnsStateA
+	Ex2VulkanD1.NZeroSubmitsEmptySequenceAndPreservesParity
+	Ex2VulkanD1.LifecycleRejectsOutOfOrderDuplicateAndTimedOutReuse
+	Ex2VulkanD1.FailedReplacementUploadInvalidatesPriorReadiness
+	Ex2VulkanD1.CoreN262144K16MatchesCpuAndRepeats
+	Ex2VulkanD1.CoreN1048576K64MatchesCpuAndRepeats
+	Ex2VulkanD1.TimedOperationProducesCorrectEnvelopeAndMetadata
+	Ex2VulkanD1.TimedNoWorkIsNotApplicable
+	Ex2VulkanD1.InvalidPhysicalDeviceAndD2AreRejected
+	Ex2VulkanD1Pure.ConfigurationDispatchAndCommandCountSeams
+	Ex2VulkanD1Pure.ResourceAlignmentTimingAndFailureSeams
+	Ex2VulkanD1Pure.QueueAndMemorySelectionAreExplicit
+	Ex2VulkanECore.E1S1024MatchesCompleteCpuReferenceAndRepeats
+	Ex2VulkanECore.E1S1048576MatchesCompleteCpuReferenceAndRepeats
+	Ex2VulkanECore.E1S67108864MatchesCompleteCpuReferenceAndRepeats
+	Ex2VulkanECore.E2S1024MatchesCompleteCpuReferenceAndRepeats
+	Ex2VulkanECore.E2S1048576MatchesCompleteCpuReferenceAndRepeats
+	Ex2VulkanECore.E2S67108864MatchesCompleteCpuReferenceAndRepeats
+	Ex2VulkanECorrectnessOnly.LiteralBytesAreIndependentForBothDirections
+	Ex2VulkanECorrectnessOnly.ZeroOneAndOdd257AreByteExact
+	Ex2VulkanE.SameObjectRepeatUsesReplacementSourceAndPreparedCommand
+	Ex2VulkanE.LifecycleRejectsOutOfOrderAndDuplicateSubmission
+	Ex2VulkanE.FailedReplacementPreparationInvalidatesPriorReadiness
+	Ex2VulkanE.TimedE1AndE2MarkOnlyThePreparedNamedCopy
+	Ex2VulkanE.TimedZeroByteTransferIsNotApplicable
+	Ex2VulkanE.InvalidPhysicalDeviceIsRejected
+	Ex2VulkanEPure.ConfigurationResourceAndFailureSeams
+	Ex2VulkanEPure.QueueMemoryAlignmentAndTimingSelectionAreExplicit
+	Ex2VulkanEPure.NoncoherentReadbackPoisonRequiresAtomAlignedFlushBeforeGpuWrite
+	Ex2D1IntegrationLiteral.IndependentOddParityFixtureAnchorsCpuCudaVulkanAndPairEquality
+	Ex2D1IntegrationCore.BothApprovedCorePairsPassWithoutSkips
+	Ex2EIntegrationReal.IndependentLiteralFixturePassesBothDirections
+	Ex2EIntegrationReal.ZeroOneAnd257PassBothDirections
+	Ex2EIntegrationReal.ValidationPairReportsNoLayerErrors
+	SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 1024)
+	SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 1048576)
+	SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <00-00 00-00>, 67108864)
+	SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 1024)
+	SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 1048576)
+	SixApprovedCells/Ex2EIntegrationCore.ExecutesRealSameGpuPair/(4-byte object <01-00 00-00>, 67108864)
+
+100% tests passed, 0 tests failed out of 43
+
+Total Test time (real) =  44.28 sec

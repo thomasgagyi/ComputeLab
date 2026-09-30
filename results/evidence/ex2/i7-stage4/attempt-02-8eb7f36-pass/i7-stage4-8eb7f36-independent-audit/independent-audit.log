@@ -1,0 +1,36 @@
+AUDITED c00: 2 series / 8 artifact matches
+AUDITED c01: 2 series / 8 artifact matches
+AUDITED c02: 2 series / 8 artifact matches
+AUDITED c03: 2 series / 8 artifact matches
+AUDITED c04: 2 series / 8 artifact matches
+AUDITED c05: 2 series / 8 artifact matches
+AUDITED c06: 2 series / 8 artifact matches
+AUDITED c07: 2 series / 8 artifact matches
+AUDITED c08: 2 series / 8 artifact matches
+AUDITED c09: 2 series / 8 artifact matches
+AUDITED c10: 2 series / 8 artifact matches
+AUDITED c11: 2 series / 8 artifact matches
+AUDITED c12: 2 series / 8 artifact matches
+AUDITED c13: 2 series / 8 artifact matches
+AUDITED c14: 2 series / 8 artifact matches
+AUDITED c15: 2 series / 8 artifact matches
+AUDITED c16: 2 series / 8 artifact matches
+AUDITED c17: 2 series / 8 artifact matches
+AUDITED c18: 2 series / 8 artifact matches
+AUDITED c19: 2 series / 8 artifact matches
+AUDITED c20: 2 series / 8 artifact matches
+AUDITED c21: 2 series / 8 artifact matches
+AUDIT FAILED: exact replacement campaign topology value mismatch
+Traceback (most recent call last):
+  File "D:\ComputeLab\ComputeLab\results\local\i7-stage4-8eb7f36-independent-audit\audit.py", line 417, in <module>
+    result, artifacts, series = audit()
+                                ~~~~~^^
+  File "D:\ComputeLab\ComputeLab\results\local\i7-stage4-8eb7f36-independent-audit\audit.py", line 385, in audit
+    equal({p.name for p in LOCAL.glob(BASE+'-c*')}, {c['session_id'] for c in children}, 'exact replacement campaign topology')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ComputeLab\ComputeLab\results\local\i7-stage4-8eb7f36-independent-audit\audit.py", line 91, in equal
+    require(actual == expected, context + ' value mismatch')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ComputeLab\ComputeLab\results\local\i7-stage4-8eb7f36-independent-audit\audit.py", line 49, in require
+    raise ValueError(message)
+ValueError: exact replacement campaign topology value mismatch

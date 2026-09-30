@@ -1,0 +1,101 @@
+{
+  "audit_result": "PASS_FOR_RETAINED_ARTIFACTS_ONLY",
+  "stage4_outcome": "INCOMPLETE",
+  "canonical_manifest_sha256": "5bbecef2058d4998de917839030f4402d1800a01dfc6bcc15332a0f0275def6d",
+  "manifest_file_sha256": "b61991b97509d365040f91360b7825785271c1ae5277e484eec6dea8a2554cbe",
+  "ledger_sha256": "e56d6f33cd0f88de4bbb23b49786fee3b35016ef378be27bc9817b2d85001b6e",
+  "scheduled_children": 22,
+  "actual_children": 17,
+  "completed_pairs": 16,
+  "backend_series": 32,
+  "standard_artifacts": 128,
+  "artifact_hash_matches": 129,
+  "summary_regenerations": 32,
+  "passing_raw_rows": 32,
+  "initialization_rows": 32,
+  "distinct_run_ids": 32,
+  "distinct_series_ids": 32,
+  "distinct_condition_ids": 16,
+  "timing_values_present": 0,
+  "incomplete_sessions": 1,
+  "failure_sidecars": 1,
+  "integrity_errors": 0,
+  "b_golden_sha256": "c1b25198fd9f902e15f42b3d0080e893d4101f113855602720a63bf063a9e2de",
+  "c_golden_sha256": "57cdcea826ef422677831a21be364ee2c44d203e533ac40c53b16f6d697fa9b7",
+  "independently_reconstructed_bc_cells": [
+    {
+      "core_cell_index": 5,
+      "session_id": "i7-stage4-c05",
+      "variant": "B1",
+      "input_sha256": "2a03725dd258244bfd5788a4ddb6473d0c04025a27c3edb975f50b08dbbc9c1a",
+      "expected_output_sha256": "71f3690626ec04e27b0a9f7937ea2f689c9d9daa55a16fc544015445933532be",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 6,
+      "session_id": "i7-stage4-c06",
+      "variant": "B1",
+      "input_sha256": "e5dd3781f3cd1ed6cca993a3460f37570bb5985915b0f685594c85d03ba1f7f6",
+      "expected_output_sha256": "007eb595f2603160598c159235e13077b89b3ee33d4f0ea219d40f1ed1329c3c",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 7,
+      "session_id": "i7-stage4-c07",
+      "variant": "B1",
+      "input_sha256": "4e942dd8be515eac338ba152898b55497a730ecd2e4ce5b4e6660e473758218b",
+      "expected_output_sha256": "f0e87d54a692f52b2b4d42bf0169b05f74e28ea65ff57a8cf047bf19c2bc7619",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 8,
+      "session_id": "i7-stage4-c08",
+      "variant": "B2",
+      "input_sha256": "2a03725dd258244bfd5788a4ddb6473d0c04025a27c3edb975f50b08dbbc9c1a",
+      "expected_output_sha256": "47c74de141ffa63a7067f8f39ca428fab8d9308fa5c4a2582139670a554060cc",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 9,
+      "session_id": "i7-stage4-c09",
+      "variant": "B2",
+      "input_sha256": "e5dd3781f3cd1ed6cca993a3460f37570bb5985915b0f685594c85d03ba1f7f6",
+      "expected_output_sha256": "f784e0ab02753bfd6dfc5428612e9fc2c26c7d8b07bf1e6af9aaf67708a6d5f7",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 10,
+      "session_id": "i7-stage4-c10",
+      "variant": "B2",
+      "input_sha256": "4e942dd8be515eac338ba152898b55497a730ecd2e4ce5b4e6660e473758218b",
+      "expected_output_sha256": "344f361eb2980da18b71888c501ad5546e4ceb139d329f3f432c213a8291af48",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 11,
+      "session_id": "i7-stage4-c11",
+      "variant": "C",
+      "input_sha256": "d1c441af717d01460c7d21d9f3022772fbe55c6c7e7a8c4d5712fced96d28e4d",
+      "expected_output_sha256": "0abd34e81866c56a09904565070e9e929e0ae889e79b6dd186510030f6e1478c",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 12,
+      "session_id": "i7-stage4-c12",
+      "variant": "C",
+      "input_sha256": "1d3afa805e940177af62285303d6e68fd5178d9658728cb7b70b64195204eb48",
+      "expected_output_sha256": "33d122b54c483a137b74d01ca43ee115382117f241ca790f405d90f238a1e23a",
+      "independent_reconstruction": "PASS"
+    },
+    {
+      "core_cell_index": 13,
+      "session_id": "i7-stage4-c13",
+      "variant": "C",
+      "input_sha256": "e652a928b013d1978912bc9f7b65af9cc217a243305d9ab255c1c22b961ba4ef",
+      "expected_output_sha256": "034641ece0e3f0e88139e9e68e8b471f18fae8b6cf66f0f9e13e8fda8a5caed7",
+      "independent_reconstruction": "PASS"
+    }
+  ],
+  "cpu_semantic_authority": "Committed Prompt-3 independent inspector regenerated input/expected-output digests for the 16 complete-pass cells. The c16 E child failed before standard evidence serialization; c17..c21 did not launch.",
+  "observed_output_limitation": "Schema v2 retains no observed GPU output bytes/digest/length. No independent disk reconstruction of wrong GPU output is claimed."
+}

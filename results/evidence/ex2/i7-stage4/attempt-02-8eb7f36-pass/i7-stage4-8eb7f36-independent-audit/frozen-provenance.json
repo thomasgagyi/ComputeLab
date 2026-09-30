@@ -1,0 +1,49 @@
+{
+  "source_revision": "8eb7f3654e83073ece4d7ef2a8a5c2301cafe793",
+  "git_dirty": false,
+  "gpu_uuid": "0340eaac-dc67-f450-d558-d47c55cc4417",
+  "cuda_device_ordinal": 0,
+  "vulkan_physical_device_index": 0,
+  "artifacts": [
+    {
+      "Path": "out/build/x64-debug/src/app/ComputeLabEx2Correctness.exe",
+      "SizeBytes": 3385856,
+      "Sha256": "a7d289ae77ae40fba0e2ed3783f87fd665de32cc5a67522c03724fbb76ab4a23"
+    },
+    {
+      "Path": "out/build/x64-debug/src/app/ComputeLabEx2CorrectnessSupervisor.exe",
+      "SizeBytes": 2273280,
+      "Sha256": "1ad25840df454d0618d9ca6198755cf1939d187c73e989543fbcf855b931a66b"
+    },
+    {
+      "Path": "out/build/x64-debug/src/vulkan/Ex2A1.comp.spv",
+      "SizeBytes": 1552,
+      "Sha256": "c40c5ef608254d7763aa244d1ca6403605f750212a038ccf1913cff2bd61c63a"
+    },
+    {
+      "Path": "out/build/x64-debug/src/vulkan/Ex2A2.comp.spv",
+      "SizeBytes": 2188,
+      "Sha256": "bfda73b6abe562facaba4fa265b281144e2c8761517ffad71c8176184cf17f3f"
+    },
+    {
+      "Path": "out/build/x64-debug/src/vulkan/Ex2B1.comp.spv",
+      "SizeBytes": 1880,
+      "Sha256": "7eb4a7d40c2ea5aa133821290318b18b45c49f5284cb6ffc8ebda5f9b35e933c"
+    },
+    {
+      "Path": "out/build/x64-debug/src/vulkan/Ex2B2.comp.spv",
+      "SizeBytes": 1880,
+      "Sha256": "2761fe5fab23630ce7ed47a93afe74cd769d1b154fa13a33a49601ed02120a26"
+    },
+    {
+      "Path": "out/build/x64-debug/src/vulkan/Ex2C.comp.spv",
+      "SizeBytes": 1436,
+      "Sha256": "7e4643308689eb49ee19a205ad126cf616e57f2c613b2e11007ad5a95446a4aa"
+    },
+    {
+      "Path": "out/build/x64-debug/src/vulkan/Ex2D1.comp.spv",
+      "SizeBytes": 1912,
+      "Sha256": "3d0787c7ce83802caca54cd9bc107d506949a509ba0ffe5f0604bf72ed9e7d61"
+    }
+  ]
+}

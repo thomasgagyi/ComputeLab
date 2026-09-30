@@ -1,0 +1,103 @@
+{
+  "branch": "main",
+  "head": "8eb7f3654e83073ece4d7ef2a8a5c2301cafe793",
+  "origin_main": "8eb7f3654e83073ece4d7ef2a8a5c2301cafe793",
+  "porcelain_count": 0,
+  "diff_check_exit": 0,
+  "frozen_artifact_matches": 8,
+  "standard_artifact_matches": 176,
+  "standard_artifact_mismatches": 0,
+  "final_sessions": 22,
+  "backend_series": 44,
+  "standard_files": 176,
+  "failure_siblings": 0,
+  "ledger_partial_siblings": 0,
+  "old_c17_c21_absent": true,
+  "test_owned_e_smoke_artifacts": 0,
+  "validation_environment_variables_removed": true,
+  "manifest_file_sha256": "90f0a9b66a76ffde5ab96073ca0c30d46846b6e66bcef56caabe4e0b6bd16f46",
+  "ledger_sha256": "7e5ce4f40d40f8c2f08794b7a02ad860ae4cef0de2e04d509b385c4920636d1c",
+  "current_audit_files": [
+    "artifact-hashes.csv",
+    "audit.py",
+    "command-log.txt",
+    "final-reconciliation.json",
+    "frozen-provenance.json",
+    "independent-audit-pass.log",
+    "independent-audit.log",
+    "manifest-check.json",
+    "post-canonical-ctest.log",
+    "post-vulkan-standard.log",
+    "post-vulkan-sync.log",
+    "pre-canonical-ctest.log",
+    "pre-vulkan-standard.log",
+    "pre-vulkan-sync.log",
+    "retained-inventory.txt",
+    "series-audit.csv",
+    "stage4-acceptance.md",
+    "supervisor-stderr.txt",
+    "supervisor-stdout.txt"
+  ],
+  "historical_preservation": {
+    "files": 143,
+    "directories": 52,
+    "all_entries_unchanged": true,
+    "canonical_manifest_sha256": "5bbecef2058d4998de917839030f4402d1800a01dfc6bcc15332a0f0275def6d",
+    "manifest_file_sha256": "b61991b97509d365040f91360b7825785271c1ae5277e484eec6dea8a2554cbe",
+    "ledger_sha256": "e56d6f33cd0f88de4bbb23b49786fee3b35016ef378be27bc9817b2d85001b6e",
+    "c16_failure_sidecar_sha256": "d2b6104b489d228ce62541587a46c8d6125bd953b6252e9f8572cef3eecf9fef",
+    "verdict": "INCOMPLETE"
+  },
+  "supervisor_invocations": 1,
+  "supervisor_exit": 0,
+  "canonical_manifest_sha256": "15e75febf36ef31585a2466f184040ddc54ab0cf2a1644256c7a766157de3c6d",
+  "pre_canonical": {
+    "passed": 683,
+    "failed": 0,
+    "skipped": 0
+  },
+  "post_canonical": {
+    "passed": 683,
+    "failed": 0,
+    "skipped": 0
+  },
+  "vulkan_validation": {
+    "pre_standard": {
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "hazards": 0
+    },
+    "pre_sync": {
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "hazards": 0
+    },
+    "post_standard": {
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "hazards": 0
+    },
+    "post_sync": {
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "hazards": 0
+    }
+  },
+  "final_new_file_count": 197,
+  "final_new_directory_count": 67,
+  "final_audit_file_count": 19,
+  "stage4_verdict": "PASS",
+  "acceptance_matrix": {
+    "passed": 96,
+    "failed": 0,
+    "not_evaluable": 0
+  }
+}

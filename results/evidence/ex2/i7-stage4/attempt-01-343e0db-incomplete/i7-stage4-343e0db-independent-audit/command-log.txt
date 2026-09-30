@@ -1,0 +1,26 @@
+Prompt-4 command/result log (2026-09-30 UTC; no source changes)
+Baseline: main; HEAD/origin/main 343e0dbcb28c46b6bbfa5309d72d6a5b0c5ffac7; clean full porcelain; git diff --check exit 0.
+Initial and repeated campaign ownership checks: all 71 exact campaign paths absent before creation.
+.\scripts\build.ps1 (sandbox): exit 1; vcpkg registry permission denied / cl.exe inaccessible.
+.\scripts\build.ps1 (approved unchanged host execution): exit 0; ninja: no work to do.
+.\scripts\test.ps1 (host): exit 0; 681 passed, 0 failed, 0 skipped; CTest real time 217.13 s.
+ctest --preset x64-debug --show-only=json-v1: 681 tests.
+Canonical inventory: historical Ex1-prefixed support/native 39, Ex2I7Foundation 7, Ex2I7Correctness 16, Ex2I7Supervisor 85, Ex2Gate0 57. These are canonical subset counts, not extra invocations.
+Validation selector: ^(Ex2Vulkan(D1|E).*\.|Ex2D1Integration(Literal|Core)\.|Ex2EIntegrationReal\.|SixApprovedCells/Ex2EIntegrationCore\.)
+Both validation variables standard: CTest exit 0; 43 passed, 0 failed, 0 skipped; 44.33 s; 0 errors/hazards.
+Both validation variables sync: CTest exit 0; 43 passed, 0 failed, 0 skipped; 46.60 s; 0 errors/hazards.
+Variables removed in finally after each run; campaign environment had no validation overrides.
+.\scripts\assert-curated-evidence-ready.ps1: exit 0 before construction and immediately before launch; exact clean baseline.
+Get-FileHash -Algorithm SHA256: eight actual built files frozen, rechecked before launch and after stopped campaign; all unchanged.
+ComputeLabEx2CorrectnessSupervisor.exe --print-manifest-hash results/local/i7-stage4-343e0db-manifest.json: twice, exit 0 each; embedded hash equals printed 5bbecef2058d4998de917839030f4402d1800a01dfc6bcc15332a0f0275def6d.
+Immediately before launch: 69 output paths absent (manifest/audit now owned and created after all-71 absence check).
+ONE campaign invocation:
+out/build/x64-debug/src/app/ComputeLabEx2CorrectnessSupervisor.exe --manifest results/local/i7-stage4-343e0db-manifest.json
+stdout/stderr redirected to the two retained supervisor logs; both empty.
+Supervisor exit 4; start 2026-09-30T14:04:39.275Z; end 2026-09-30T14:10:30.969Z.
+Final ledger stopped_incomplete_or_unsafe; 17 launches; c00..c15 complete-pass; c16 exit 3/incomplete; c17..c21 not launched.
+c16 sidecar validation/completed_validation_failed; foundation_established true; staging_retained true; detail native observation contradicts the preconstructed I7 identity.
+Read-only diagnosis: Ex2EIntegration.cpp:708 produces 32 undashed UUID characters; Ex2CorrectnessExecution.cpp:590 compares against dashed FormatUuid. No retry, reproducer GPU launch, source patch, or manual child.
+python audit.py: exit 0; stdlib only; 129 artifacts rehashed, 32 series/summary reconstructions pass; 9 B/C semantic reconstructions and both golden digests pass.
+Post-campaign build/test/validation NOT RUN: source defect exposed; explicit STOP for human review governs.
+Final git branch/HEAD/origin/status/diff --check unchanged/clean; no tracked diff; no commit/push/Notion/curation.

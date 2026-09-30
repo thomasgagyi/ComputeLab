@@ -1,0 +1,156 @@
+{
+  "manifest_version": 1,
+  "manifest_type": "i7-correctness",
+  "manifest_id": "i7-stage4-343e0db",
+  "manifest_sha256": "5bbecef2058d4998de917839030f4402d1800a01dfc6bcc15332a0f0275def6d",
+  "protocol_version": "1.1",
+  "machine_id": "i7-stage4-machine",
+  "child_executable_path": "out/build/x64-debug/src/app/ComputeLabEx2Correctness.exe",
+  "supervisor_record_path": "results/local/i7-stage4-343e0db-control.json",
+  "expected_source_revision": "343e0dbcb28c46b6bbfa5309d72d6a5b0c5ffac7",
+  "expected_git_dirty": false,
+  "expected_child_executable_sha256": "cdb3b2b504bae0016117fc7f37cbeb777e42d1fc3cba917627679c8a5f513f29",
+  "expected_supervisor_executable_sha256": "1ad25840df454d0618d9ca6198755cf1939d187c73e989543fbcf855b931a66b",
+  "expected_gpu_uuid": "0340eaac-dc67-f450-d558-d47c55cc4417",
+  "cuda_device_ordinal": 0,
+  "vulkan_physical_device_index": 0,
+  "operation_timeout_ms": 60000,
+  "child_timeout_ms": 1200000,
+  "campaign_timeout_ms": 86400000,
+  "continuation_policy": "completed-validation-only",
+  "declared_child_count": 22,
+  "children": [
+    {
+      "sequence_index": 0,
+      "core_cell_index": 0,
+      "session_id": "i7-stage4-c00",
+      "expected_vulkan_shader_sha256": "c40c5ef608254d7763aa244d1ca6403605f750212a038ccf1913cff2bd61c63a"
+    },
+    {
+      "sequence_index": 1,
+      "core_cell_index": 1,
+      "session_id": "i7-stage4-c01",
+      "expected_vulkan_shader_sha256": "c40c5ef608254d7763aa244d1ca6403605f750212a038ccf1913cff2bd61c63a"
+    },
+    {
+      "sequence_index": 2,
+      "core_cell_index": 2,
+      "session_id": "i7-stage4-c02",
+      "expected_vulkan_shader_sha256": "c40c5ef608254d7763aa244d1ca6403605f750212a038ccf1913cff2bd61c63a"
+    },
+    {
+      "sequence_index": 3,
+      "core_cell_index": 3,
+      "session_id": "i7-stage4-c03",
+      "expected_vulkan_shader_sha256": "bfda73b6abe562facaba4fa265b281144e2c8761517ffad71c8176184cf17f3f"
+    },
+    {
+      "sequence_index": 4,
+      "core_cell_index": 4,
+      "session_id": "i7-stage4-c04",
+      "expected_vulkan_shader_sha256": "bfda73b6abe562facaba4fa265b281144e2c8761517ffad71c8176184cf17f3f"
+    },
+    {
+      "sequence_index": 5,
+      "core_cell_index": 5,
+      "session_id": "i7-stage4-c05",
+      "expected_vulkan_shader_sha256": "7eb4a7d40c2ea5aa133821290318b18b45c49f5284cb6ffc8ebda5f9b35e933c"
+    },
+    {
+      "sequence_index": 6,
+      "core_cell_index": 6,
+      "session_id": "i7-stage4-c06",
+      "expected_vulkan_shader_sha256": "7eb4a7d40c2ea5aa133821290318b18b45c49f5284cb6ffc8ebda5f9b35e933c"
+    },
+    {
+      "sequence_index": 7,
+      "core_cell_index": 7,
+      "session_id": "i7-stage4-c07",
+      "expected_vulkan_shader_sha256": "7eb4a7d40c2ea5aa133821290318b18b45c49f5284cb6ffc8ebda5f9b35e933c"
+    },
+    {
+      "sequence_index": 8,
+      "core_cell_index": 8,
+      "session_id": "i7-stage4-c08",
+      "expected_vulkan_shader_sha256": "2761fe5fab23630ce7ed47a93afe74cd769d1b154fa13a33a49601ed02120a26"
+    },
+    {
+      "sequence_index": 9,
+      "core_cell_index": 9,
+      "session_id": "i7-stage4-c09",
+      "expected_vulkan_shader_sha256": "2761fe5fab23630ce7ed47a93afe74cd769d1b154fa13a33a49601ed02120a26"
+    },
+    {
+      "sequence_index": 10,
+      "core_cell_index": 10,
+      "session_id": "i7-stage4-c10",
+      "expected_vulkan_shader_sha256": "2761fe5fab23630ce7ed47a93afe74cd769d1b154fa13a33a49601ed02120a26"
+    },
+    {
+      "sequence_index": 11,
+      "core_cell_index": 11,
+      "session_id": "i7-stage4-c11",
+      "expected_vulkan_shader_sha256": "7e4643308689eb49ee19a205ad126cf616e57f2c613b2e11007ad5a95446a4aa"
+    },
+    {
+      "sequence_index": 12,
+      "core_cell_index": 12,
+      "session_id": "i7-stage4-c12",
+      "expected_vulkan_shader_sha256": "7e4643308689eb49ee19a205ad126cf616e57f2c613b2e11007ad5a95446a4aa"
+    },
+    {
+      "sequence_index": 13,
+      "core_cell_index": 13,
+      "session_id": "i7-stage4-c13",
+      "expected_vulkan_shader_sha256": "7e4643308689eb49ee19a205ad126cf616e57f2c613b2e11007ad5a95446a4aa"
+    },
+    {
+      "sequence_index": 14,
+      "core_cell_index": 14,
+      "session_id": "i7-stage4-c14",
+      "expected_vulkan_shader_sha256": "3d0787c7ce83802caca54cd9bc107d506949a509ba0ffe5f0604bf72ed9e7d61"
+    },
+    {
+      "sequence_index": 15,
+      "core_cell_index": 15,
+      "session_id": "i7-stage4-c15",
+      "expected_vulkan_shader_sha256": "3d0787c7ce83802caca54cd9bc107d506949a509ba0ffe5f0604bf72ed9e7d61"
+    },
+    {
+      "sequence_index": 16,
+      "core_cell_index": 16,
+      "session_id": "i7-stage4-c16",
+      "expected_vulkan_shader_sha256": null
+    },
+    {
+      "sequence_index": 17,
+      "core_cell_index": 17,
+      "session_id": "i7-stage4-c17",
+      "expected_vulkan_shader_sha256": null
+    },
+    {
+      "sequence_index": 18,
+      "core_cell_index": 18,
+      "session_id": "i7-stage4-c18",
+      "expected_vulkan_shader_sha256": null
+    },
+    {
+      "sequence_index": 19,
+      "core_cell_index": 19,
+      "session_id": "i7-stage4-c19",
+      "expected_vulkan_shader_sha256": null
+    },
+    {
+      "sequence_index": 20,
+      "core_cell_index": 20,
+      "session_id": "i7-stage4-c20",
+      "expected_vulkan_shader_sha256": null
+    },
+    {
+      "sequence_index": 21,
+      "core_cell_index": 21,
+      "session_id": "i7-stage4-c21",
+      "expected_vulkan_shader_sha256": null
+    }
+  ]
+}
