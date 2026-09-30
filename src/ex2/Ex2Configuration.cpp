@@ -615,10 +615,21 @@ std::string SeriesCanonicalJson(const SeriesIdentityContext& context)
         throw std::invalid_argument("EX-2 executable SHA-256 must be 64 lowercase hexadecimal characters");
     if (context.backend == Backend::Cuda && context.shaderSha256.has_value())
         throw std::invalid_argument("EX-2 CUDA series must represent shader_sha256 as inapplicable");
-    if (context.backend == Backend::Vulkan
+    const bool shaderlessVulkanTransfer = context.backend == Backend::Vulkan
+        && std::holds_alternative<TransferConfiguration>(
+            context.condition.workload.parameters);
+    if (shaderlessVulkanTransfer && context.shaderSha256.has_value())
+    {
+        throw std::invalid_argument(
+            "EX-2 Vulkan transfer series must represent shader_sha256 as inapplicable");
+    }
+    if (context.backend == Backend::Vulkan && !shaderlessVulkanTransfer
         && (!context.shaderSha256.has_value()
             || !IsLowerHex(*context.shaderSha256, 64U)))
-        throw std::invalid_argument("EX-2 Vulkan series requires an exact shader SHA-256");
+    {
+        throw std::invalid_argument(
+            "EX-2 Vulkan shader workload requires an exact shader SHA-256");
+    }
 
     auto fields = ConditionFields(context.condition);
     fields.emplace_back("backend", std::string(ToString(context.backend)));

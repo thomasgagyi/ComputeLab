@@ -522,6 +522,46 @@ TEST(Ex2Identity, RequiresVerifiedHardwareAndExactProvenanceFormats)
         std::invalid_argument);
 }
 
+TEST(Ex2Identity, ShaderIdentityIsRequiredOnlyForVulkanShaderWorkloads)
+{
+    auto series = CudaSeries(Condition(ex2::MakeConfiguration(
+        ex2::LinearConfiguration{ex2::LinearVariant::A1, 256U})));
+    series.backend = ex2::Backend::Vulkan;
+    series.shaderSha256.reset();
+    EXPECT_THROW(static_cast<void>(ex2::SeriesId(series)),
+        std::invalid_argument);
+
+    const std::vector<ex2::WorkloadConfiguration> shaderWorkloads{
+        ex2::MakeConfiguration(ex2::LinearConfiguration{
+            ex2::LinearVariant::A1, 256U}),
+        ex2::MakeConfiguration(ex2::IndexedConfiguration{
+            ex2::IndexedVariant::B1, 262'144U,
+            ex2::IndexPattern::StructuredV1}),
+        ex2::MakeConfiguration(ex2::ContentionConfiguration{
+            1'048'576U, 64U, 1'048'576U}),
+        ex2::MakeConfiguration(ex2::IterativeConfiguration{
+            ex2::IterativeVariant::D1, 262'144U, 16U}),
+    };
+    for (const auto& workload : shaderWorkloads)
+    {
+        series.condition.workload = workload;
+        EXPECT_THROW(static_cast<void>(ex2::SeriesId(series)),
+            std::invalid_argument);
+    }
+
+    series.condition.workload = ex2::MakeConfiguration(
+        ex2::TransferConfiguration{ex2::TransferVariant::E1, 1'024U,
+            ex2::TransferDirection::HostToDevice});
+    EXPECT_NO_THROW(static_cast<void>(ex2::SeriesId(series)));
+    series.shaderSha256 = std::string(64U, 'c');
+    EXPECT_THROW(static_cast<void>(ex2::SeriesId(series)),
+        std::invalid_argument);
+
+    series.backend = ex2::Backend::Cuda;
+    EXPECT_THROW(static_cast<void>(ex2::SeriesId(series)),
+        std::invalid_argument);
+}
+
 TEST(Ex2RunIdentity, AcceptsOnlyAnonymousPathSafeIdentifiers)
 {
     EXPECT_TRUE(ex2::IsValidAnonymousIdentifier("ex2-a1-run_001.test"));

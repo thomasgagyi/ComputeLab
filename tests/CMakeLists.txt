@@ -199,6 +199,19 @@ if(TARGET ComputeLabEx2EIntegration)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2EIntegration)
 endif()
 
+if(TARGET ComputeLabEx2CorrectnessExecution AND TARGET ComputeLabEx2Correctness)
+    target_sources(ComputeLabTests PRIVATE
+        Ex2CorrectnessExecutionTests.cpp
+        Ex2CorrectnessChildSmokeTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE
+        ComputeLabEx2CorrectnessExecution)
+    add_dependencies(ComputeLabTests ComputeLabEx2Correctness)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_EX2_CORRECTNESS_EXE="$<TARGET_FILE:ComputeLabEx2Correctness>"
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+    )
+endif()
+
 if(TARGET ComputeLabEx2Gate0)
     target_sources(ComputeLabTests PRIVATE Ex2Gate0ChildSmokeTests.cpp)
     add_dependencies(ComputeLabTests ComputeLabEx2Gate0)

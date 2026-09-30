@@ -186,6 +186,50 @@ if(TARGET ComputeLabEx2CudaE
     )
 endif()
 
+if(TARGET ComputeLabEx2A1Integration
+    AND TARGET ComputeLabEx2BIntegration
+    AND TARGET ComputeLabEx2CIntegration
+    AND TARGET ComputeLabEx2D1Integration
+    AND TARGET ComputeLabEx2EIntegration
+    AND TARGET ComputeLabEnvironment)
+    add_library(
+        ComputeLabEx2CorrectnessExecution
+        STATIC
+        Ex2CorrectnessExecution.cpp
+        Ex2CorrectnessExecution.hpp
+    )
+    target_compile_features(ComputeLabEx2CorrectnessExecution PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2CorrectnessExecution
+        PUBLIC ${PROJECT_SOURCE_DIR}/src)
+    target_link_libraries(ComputeLabEx2CorrectnessExecution
+        PUBLIC
+            ComputeLabEx2A1Integration
+            ComputeLabEx2BIntegration
+            ComputeLabEx2CIntegration
+            ComputeLabEx2D1Integration
+            ComputeLabEx2EIntegration
+            ComputeLabEx2Evidence
+            ComputeLabEnvironment
+    )
+
+    add_executable(
+        ComputeLabEx2Correctness
+        Ex2CorrectnessMain.cpp
+    )
+    target_compile_features(ComputeLabEx2Correctness PRIVATE cxx_std_20)
+    target_compile_definitions(ComputeLabEx2Correctness PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}"
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}"
+    )
+    target_link_libraries(ComputeLabEx2Correctness
+        PRIVATE ComputeLabEx2CorrectnessExecution)
+endif()
+
 if(TARGET ComputeLabEx2Gate0Support
     AND TARGET ComputeLabCudaQualification
     AND TARGET ComputeLabVulkanQualification
