@@ -1369,7 +1369,8 @@ void WriteExternalFailureRecord(
 
 ExitCode RunCorrectnessChild(
     const CorrectnessChildConfiguration& configuration,
-    const CorrectnessRuntimePaths& paths)
+    const CorrectnessRuntimePaths& paths,
+    control::AttemptObserver observer)
 {
     ExitCode failureExit = ExitCode::PreFoundationFailure;
     std::optional<SessionPlan> plan;
@@ -1526,10 +1527,10 @@ ExitCode RunCorrectnessChild(
             const auto observation = cell.route == CoreCellRoute::A1
                 ? a1::RunCrossBackendCorrectness(parameters.elementCount,
                     CoreInputSeed, configuration.cudaDeviceOrdinal,
-                    configuration.vulkanPhysicalDeviceIndex, shaderPath)
+                    configuration.vulkanPhysicalDeviceIndex, shaderPath, observer)
                 : a2::RunCrossBackendCorrectness(parameters.elementCount,
                     CoreInputSeed, configuration.cudaDeviceOrdinal,
-                    configuration.vulkanPhysicalDeviceIndex, shaderPath);
+                    configuration.vulkanPhysicalDeviceIndex, shaderPath, observer);
             classifyReturnedPair(observation.cuda.operationCompleted,
                 observation.vulkan.operationCompleted,
                 observation.cuda.outputObserved, observation.vulkan.outputObserved,
@@ -1574,7 +1575,7 @@ ExitCode RunCorrectnessChild(
                 parameters.indexPattern, CoreInputSeed,
                 configuration.cudaDeviceOrdinal,
                 configuration.vulkanPhysicalDeviceIndex,
-                paths.b1Spirv, paths.b2Spirv);
+                paths.b1Spirv, paths.b2Spirv, observer);
             classifyReturnedPair(observation.cuda.nativeOperationCompleted,
                 observation.vulkan.nativeOperationCompleted,
                 observation.cuda.outputObserved, observation.vulkan.outputObserved,
@@ -1621,7 +1622,7 @@ ExitCode RunCorrectnessChild(
             const auto observation = c::RunCrossBackendCorrectness(
                 parameters.elementCount, parameters.activeCounterCount,
                 configuration.cudaDeviceOrdinal,
-                configuration.vulkanPhysicalDeviceIndex, paths.cSpirv);
+                configuration.vulkanPhysicalDeviceIndex, paths.cSpirv, observer);
             classifyReturnedPair(observation.cuda.nativeOperationCompleted,
                 observation.vulkan.nativeOperationCompleted,
                 observation.cuda.countersObserved, observation.vulkan.countersObserved,
@@ -1668,7 +1669,7 @@ ExitCode RunCorrectnessChild(
             const auto observation = d1::RunCrossBackendCorrectness(
                 parameters.elementCount, parameters.iterationCount,
                 configuration.cudaDeviceOrdinal,
-                configuration.vulkanPhysicalDeviceIndex, paths.d1Spirv);
+                configuration.vulkanPhysicalDeviceIndex, paths.d1Spirv, observer);
             classifyReturnedPair(observation.cuda.nativeSequenceCompleted,
                 observation.vulkan.nativeSequenceCompleted,
                 observation.cuda.finalStateObserved,
@@ -1714,7 +1715,7 @@ ExitCode RunCorrectnessChild(
             const auto observation = e::RunCrossBackendCorrectness(
                 parameters.direction, parameters.byteCount,
                 configuration.cudaDeviceOrdinal,
-                configuration.vulkanPhysicalDeviceIndex);
+                configuration.vulkanPhysicalDeviceIndex, observer);
             classifyReturnedPair(observation.cuda.nativeTransferCompleted,
                 observation.vulkan.nativeTransferCompleted,
                 observation.cuda.destinationObserved,

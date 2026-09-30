@@ -82,6 +82,17 @@ add_library(ComputeLabEx2HostTiming STATIC
     Ex2HostTiming.hpp
 )
 
+if(Q0_ENABLE_CUDA AND Q0_ENABLE_VULKAN)
+add_library(ComputeLabEx2CorrectnessControl STATIC
+    Ex2CorrectnessProgress.hpp
+    Ex2CorrectnessSupervisor.hpp
+    Ex2CorrectnessSupervisor.cpp)
+target_compile_features(ComputeLabEx2CorrectnessControl PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2CorrectnessControl PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_link_libraries(ComputeLabEx2CorrectnessControl PUBLIC
+    ComputeLabEx2Evidence ComputeLabEx2CpuOracles ComputeLabEnvironment)
+endif()
+
 target_compile_features(ComputeLabEx2HostTiming PUBLIC cxx_std_20)
 
 target_include_directories(ComputeLabEx2HostTiming

@@ -1,4 +1,5 @@
 #include "app/Ex2CorrectnessExecution.hpp"
+#include "ex2/Ex2CorrectnessSupervisor.hpp"
 
 #ifndef NOMINMAX
 #define NOMINMAX
@@ -52,16 +53,16 @@ std::filesystem::path RunningExecutablePath()
     return std::filesystem::path(buffer);
 }
 
-CorrectnessChildConfiguration Parse(int argc, char** argv)
+CorrectnessChildConfiguration Parse(const std::vector<std::string_view>& arguments)
 {
-    if (argc != 11)
+    if (arguments.size() != 10U)
         throw std::invalid_argument("exactly five named options are required");
     CorrectnessChildConfiguration result;
     bool core = false, cuda = false, vulkan = false, machine = false, session = false;
-    for (int index = 1; index < argc; index += 2)
+    for (std::size_t index = 0; index < arguments.size(); index += 2U)
     {
-        const std::string_view name = argv[index];
-        const std::string_view value = argv[index + 1];
+        const std::string_view name = arguments[index];
+        const std::string_view value = arguments[index + 1U];
         if (name == "--core-cell-index" && !core)
         {
             result.coreCellIndex = ParseUnsigned<std::size_t>(value, name);
@@ -108,7 +109,9 @@ int main(int argc, char** argv)
     }
     try
     {
-        const auto configuration = Parse(argc, argv);
+        std::vector<std::string_view> arguments(argv + 1, argv + argc);
+        auto reporter = computelab::ex2::correctness::control::ExtractProgressReporter(arguments);
+        const auto configuration = Parse(arguments);
         const CorrectnessRuntimePaths paths{
             COMPUTELAB_REPOSITORY_ROOT,
             std::filesystem::path(COMPUTELAB_REPOSITORY_ROOT) / "results" / "local",
@@ -120,7 +123,7 @@ int main(int argc, char** argv)
             COMPUTELAB_EX2_C_SPIRV_PATH,
             COMPUTELAB_EX2_D1_SPIRV_PATH};
         const auto result = computelab::ex2::correctness::RunCorrectnessChild(
-            configuration, paths);
+            configuration, paths, reporter.Observer());
         if (result == computelab::ex2::correctness::ExitCode::Completed)
             std::cout << "I7 paired correctness package completed.\n";
         else

@@ -525,7 +525,8 @@ CrossBackendObservation RunCrossBackendCorrectness(
     int cudaDeviceOrdinal,
     std::uint32_t vulkanPhysicalDeviceIndex,
     const std::filesystem::path& b1SpirvPath,
-    const std::filesystem::path& b2SpirvPath)
+    const std::filesystem::path& b2SpirvPath,
+    correctness::control::AttemptObserver observer)
 {
     if (seed != CoreInputSeed)
         throw std::invalid_argument(
@@ -588,11 +589,15 @@ CrossBackendObservation RunCrossBackendCorrectness(
     result.permutation = std::move(permutation);
     result.expectedOutput = std::move(expectedOutput);
 
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Started);
     result.cuda = ExecuteCuda(
         *cudaOperation,
         result.primaryInput,
         result.permutation,
         result.expectedOutput);
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Returned);
     if (result.cuda.status != IntegrationStatus::Ok)
     {
         result.vulkan = MakeInterruptedObservation(
@@ -606,11 +611,15 @@ CrossBackendObservation RunCrossBackendCorrectness(
         return result;
     }
 
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Started);
     result.vulkan = ExecuteVulkan(
         *vulkanOperation,
         result.primaryInput,
         result.permutation,
         result.expectedOutput);
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Returned);
     ReconcileCrossBackendOutputs(result);
     if (!result.vulkan.safeForFurtherGpuCalls)
     {

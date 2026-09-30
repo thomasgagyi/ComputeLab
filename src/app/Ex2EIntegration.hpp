@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ex2/Ex2CorrectnessProgress.hpp"
+
 #include "cuda/Ex2CudaE.hpp"
 #include "ex2/Ex2Configuration.hpp"
 #include "ex2/Ex2HostTiming.hpp"
@@ -250,7 +252,8 @@ ClassifyFailedSessionResourceDisposition(
     TransferDirection direction,
     std::uint64_t byteCount,
     int cudaDeviceOrdinal = 0,
-    std::uint32_t vulkanPhysicalDeviceIndex = 0U);
+    std::uint32_t vulkanPhysicalDeviceIndex = 0U,
+    correctness::control::AttemptObserver observer = {});
 
 [[nodiscard]] CrossBackendObservation
 RunCrossBackendCorrectnessWithDeclaredData(
@@ -258,7 +261,8 @@ RunCrossBackendCorrectnessWithDeclaredData(
     std::span<const std::uint8_t> source,
     std::span<const std::uint8_t> expectedDestination,
     int cudaDeviceOrdinal = 0,
-    std::uint32_t vulkanPhysicalDeviceIndex = 0U);
+    std::uint32_t vulkanPhysicalDeviceIndex = 0U,
+    correctness::control::AttemptObserver observer = {});
 
 [[nodiscard]] NativeInstrumentationSmokeObservation
 RunNativeInstrumentationSmoke(

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ex2/Ex2CorrectnessProgress.hpp"
+
 #include "app/Ex2A1Integration.hpp"
 #include "cuda/Ex2CudaA2.hpp"
 #include "vulkan/Ex2VulkanA2.hpp"
@@ -37,6 +39,7 @@ using a1::VerifySamePhysicalDevice;
     std::uint64_t seed,
     int cudaDeviceOrdinal,
     std::uint32_t vulkanPhysicalDeviceIndex,
-    const std::filesystem::path& spirvPath);
+    const std::filesystem::path& spirvPath,
+    correctness::control::AttemptObserver observer = {});
 
 } // namespace computelab::ex2::a2

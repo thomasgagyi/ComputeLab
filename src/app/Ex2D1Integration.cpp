@@ -659,7 +659,8 @@ CrossBackendObservation RunCrossBackendCorrectness(
     std::uint64_t iterationCount,
     int cudaDeviceOrdinal,
     std::uint32_t vulkanPhysicalDeviceIndex,
-    const std::filesystem::path& d1SpirvPath)
+    const std::filesystem::path& d1SpirvPath,
+    correctness::control::AttemptObserver observer)
 {
     const IterativeConfiguration iterative{
         IterativeVariant::D1, elementCount, iterationCount};
@@ -728,12 +729,16 @@ CrossBackendObservation RunCrossBackendCorrectness(
     result.initialState = std::move(initialState);
     result.expectedFinalState = std::move(expected.finalState);
 
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Started);
     result.cuda = ExecuteCuda(
         *cudaOperation,
         result.initialState,
         result.expectedFinalState,
         result.expectedFinalBuffer,
         iterationCount);
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Returned);
     if (result.cuda.status != IntegrationStatus::Ok)
     {
         result.vulkan = MakeInterruptedObservation(
@@ -752,12 +757,16 @@ CrossBackendObservation RunCrossBackendCorrectness(
         return result;
     }
 
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Started);
     result.vulkan = ExecuteVulkan(
         *vulkanOperation,
         result.initialState,
         result.expectedFinalState,
         result.expectedFinalBuffer,
         iterationCount);
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Returned);
     result.vulkanDiagnostics = vulkanOperation->Diagnostics();
     ReconcileCrossBackendFinalStates(result);
     if (ClassifyFailedSessionResourceDisposition(result.vulkan)

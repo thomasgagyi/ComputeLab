@@ -227,7 +227,19 @@ if(TARGET ComputeLabEx2A1Integration
         COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}"
     )
     target_link_libraries(ComputeLabEx2Correctness
-        PRIVATE ComputeLabEx2CorrectnessExecution)
+        PRIVATE ComputeLabEx2CorrectnessExecution ComputeLabEx2CorrectnessControl)
+
+    add_executable(ComputeLabEx2CorrectnessSupervisor Ex2CorrectnessSupervisorMain.cpp)
+    target_compile_features(ComputeLabEx2CorrectnessSupervisor PRIVATE cxx_std_20)
+    target_compile_definitions(ComputeLabEx2CorrectnessSupervisor PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}"
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+    target_link_libraries(ComputeLabEx2CorrectnessSupervisor PRIVATE ComputeLabEx2CorrectnessControl)
 endif()
 
 if(TARGET ComputeLabEx2Gate0Support

@@ -261,6 +261,7 @@ void WriteExternalFailureRecord(
 
 [[nodiscard]] ExitCode RunCorrectnessChild(
     const CorrectnessChildConfiguration& configuration,
-    const CorrectnessRuntimePaths& paths);
+    const CorrectnessRuntimePaths& paths,
+    control::AttemptObserver observer = {});
 
 } // namespace computelab::ex2::correctness

@@ -466,7 +466,8 @@ CrossBackendObservation RunCrossBackendCorrectness(
     std::uint64_t activeCounterCount,
     int cudaDeviceOrdinal,
     std::uint32_t vulkanPhysicalDeviceIndex,
-    const std::filesystem::path& cSpirvPath)
+    const std::filesystem::path& cSpirvPath,
+    correctness::control::AttemptObserver observer)
 {
     const ContentionConfiguration contention{
         elementCount, activeCounterCount, elementCount};
@@ -520,8 +521,12 @@ CrossBackendObservation RunCrossBackendCorrectness(
     result.targets = std::move(targets);
     result.expectedCounters = std::move(expectedCounters);
 
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Started);
     result.cuda = ExecuteCuda(
         *cudaOperation, result.targets, result.expectedCounters);
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Returned);
     if (result.cuda.status != IntegrationStatus::Ok)
     {
         result.vulkan = MakeInterruptedObservation(
@@ -535,8 +540,12 @@ CrossBackendObservation RunCrossBackendCorrectness(
         return result;
     }
 
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Started);
     result.vulkan = ExecuteVulkan(
         *vulkanOperation, result.targets, result.expectedCounters);
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Returned);
     ReconcileCrossBackendCounters(result);
     if (ClassifyFailedSessionResourceDisposition(result.vulkan)
         == FailedSessionResourceDisposition::PreserveForProcessTeardown)

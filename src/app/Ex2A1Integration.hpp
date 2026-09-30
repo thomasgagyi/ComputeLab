@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ex2/Ex2CorrectnessProgress.hpp"
+
 #include "cuda/Ex2CudaA1.hpp"
 #include "environment/EnvironmentCollector.hpp"
 #include "ex2/Ex2Evidence.hpp"
@@ -150,7 +152,8 @@ ClassifyFailedSessionResourceDisposition(
     std::uint64_t seed,
     int cudaDeviceOrdinal,
     std::uint32_t vulkanPhysicalDeviceIndex,
-    const std::filesystem::path& spirvPath);
+    const std::filesystem::path& spirvPath,
+    correctness::control::AttemptObserver observer = {});
 
 [[nodiscard]] SerializedEvidencePair BuildEvidence(
     const CrossBackendObservation& observation,

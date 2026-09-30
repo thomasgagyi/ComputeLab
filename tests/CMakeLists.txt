@@ -232,4 +232,35 @@ target_compile_definitions(ComputeLabTests PRIVATE
     COMPUTELAB_EX2_GATE0_SUPERVISOR_TEST_CHILD="$<TARGET_FILE:ComputeLabEx2Gate0SupervisorTestChild>"
 )
 
+if(TARGET ComputeLabEx2CorrectnessControl AND TARGET ComputeLabEx2Correctness)
+    add_executable(ComputeLabEx2CorrectnessSupervisorTestChild Ex2CorrectnessSupervisorTestChild.cpp)
+    target_link_libraries(ComputeLabEx2CorrectnessSupervisorTestChild PRIVATE ComputeLabEx2CorrectnessControl)
+    target_sources(ComputeLabTests PRIVATE
+        Ex2CorrectnessSupervisorTests.cpp
+        Ex2CorrectnessSupervisorProcessTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2CorrectnessControl)
+    add_dependencies(ComputeLabTests ComputeLabEx2CorrectnessSupervisorTestChild ComputeLabEx2CorrectnessSupervisor)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_I7_TEST_CHILD="$<TARGET_FILE:ComputeLabEx2CorrectnessSupervisorTestChild>"
+        COMPUTELAB_I7_SUPERVISOR_EXE="$<TARGET_FILE:ComputeLabEx2CorrectnessSupervisor>")
+
+    # Explicit one-shot Prompt-3 control smoke. Not discovered into CTest:
+    # running focused tests then the canonical suite must not launch it twice.
+    add_executable(ComputeLabEx2CorrectnessSupervisorSmokeTests Ex2CorrectnessSupervisorSmokeTests.cpp)
+    target_link_libraries(ComputeLabEx2CorrectnessSupervisorSmokeTests PRIVATE
+        ComputeLabEx2CorrectnessControl GTest::gtest_main)
+    add_dependencies(ComputeLabEx2CorrectnessSupervisorSmokeTests
+        ComputeLabEx2Correctness ComputeLabEx2CorrectnessSupervisor)
+    target_compile_definitions(ComputeLabEx2CorrectnessSupervisorSmokeTests PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_CORRECTNESS_EXE="$<TARGET_FILE:ComputeLabEx2Correctness>"
+        COMPUTELAB_I7_SUPERVISOR_EXE="$<TARGET_FILE:ComputeLabEx2CorrectnessSupervisor>"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}"
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+endif()
+
 gtest_discover_tests(ComputeLabTests)

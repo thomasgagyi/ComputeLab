@@ -555,7 +555,8 @@ void PreserveUnsafeTimedOperations(
     std::vector<std::uint8_t> source,
     std::vector<std::uint8_t> expectedDestination,
     int cudaDeviceOrdinal,
-    std::uint32_t vulkanPhysicalDeviceIndex)
+    std::uint32_t vulkanPhysicalDeviceIndex,
+    correctness::control::AttemptObserver observer)
 {
     if (source.size() != expectedDestination.size())
         throw std::invalid_argument("EX-2 E source/expectation length mismatch");
@@ -587,6 +588,8 @@ void PreserveUnsafeTimedOperations(
         result.expectedDestination);
     const std::vector<std::uint8_t> originalSource = result.source;
 
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Started);
     result.cuda = ExecuteCudaTransfer(
         *cudaOperation,
         result.source,
@@ -594,6 +597,8 @@ void PreserveUnsafeTimedOperations(
         result.expectedDestination,
         true,
         nullptr);
+    observer.Report(correctness::control::AttemptBackend::Cuda,
+        correctness::control::AttemptEvent::Returned);
     if (result.cuda.status != IntegrationStatus::Ok)
     {
         result.vulkan = MakeInterruptedObservation(
@@ -603,6 +608,8 @@ void PreserveUnsafeTimedOperations(
         return result;
     }
 
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Started);
     result.vulkan = ExecuteVulkanTransfer(
         *vulkanOperation,
         result.source,
@@ -610,6 +617,8 @@ void PreserveUnsafeTimedOperations(
         result.expectedDestination,
         true,
         nullptr);
+    observer.Report(correctness::control::AttemptBackend::Vulkan,
+        correctness::control::AttemptEvent::Returned);
     result.vulkanDiagnostics = vulkanOperation->Diagnostics();
     ReconcileCrossBackendDestinations(result);
     if (!result.vulkan.safeForFurtherGpuCalls)
@@ -966,7 +975,8 @@ CrossBackendObservation RunCrossBackendCorrectness(
     TransferDirection direction,
     std::uint64_t byteCount,
     int cudaDeviceOrdinal,
-    std::uint32_t vulkanPhysicalDeviceIndex)
+    std::uint32_t vulkanPhysicalDeviceIndex,
+    correctness::control::AttemptObserver observer)
 {
     TransferReference reference = ReferenceTransfer(
         CoreInputSeed, byteCount, direction);
@@ -975,7 +985,7 @@ CrossBackendObservation RunCrossBackendCorrectness(
         std::move(reference.source),
         std::move(reference.expectedDestination),
         cudaDeviceOrdinal,
-        vulkanPhysicalDeviceIndex);
+        vulkanPhysicalDeviceIndex, observer);
 }
 
 CrossBackendObservation RunCrossBackendCorrectnessWithDeclaredData(
@@ -983,7 +993,8 @@ CrossBackendObservation RunCrossBackendCorrectnessWithDeclaredData(
     std::span<const std::uint8_t> source,
     std::span<const std::uint8_t> expectedDestination,
     int cudaDeviceOrdinal,
-    std::uint32_t vulkanPhysicalDeviceIndex)
+    std::uint32_t vulkanPhysicalDeviceIndex,
+    correctness::control::AttemptObserver observer)
 {
     return RunCrossBackendWithOwnedData(
         direction,
@@ -991,7 +1002,7 @@ CrossBackendObservation RunCrossBackendCorrectnessWithDeclaredData(
         std::vector<std::uint8_t>{
             expectedDestination.begin(), expectedDestination.end()},
         cudaDeviceOrdinal,
-        vulkanPhysicalDeviceIndex);
+        vulkanPhysicalDeviceIndex, observer);
 }
 
 NativeInstrumentationSmokeObservation RunNativeInstrumentationSmoke(

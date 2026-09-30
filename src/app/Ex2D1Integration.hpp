@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ex2/Ex2CorrectnessProgress.hpp"
+
 #include "cuda/Ex2CudaD1.hpp"
 #include "ex2/Ex2Configuration.hpp"
 #include "vulkan/Ex2VulkanD1.hpp"
@@ -214,6 +216,7 @@ ClassifyFailedSessionResourceDisposition(
     std::uint64_t iterationCount,
     int cudaDeviceOrdinal,
     std::uint32_t vulkanPhysicalDeviceIndex,
-    const std::filesystem::path& d1SpirvPath);
+    const std::filesystem::path& d1SpirvPath,
+    correctness::control::AttemptObserver observer = {});
 
 } // namespace computelab::ex2::d1
