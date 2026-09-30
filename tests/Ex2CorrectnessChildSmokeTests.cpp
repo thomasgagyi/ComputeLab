@@ -112,4 +112,64 @@ TEST(Ex2I7CorrectnessChildSmoke, ExecutesRealA1AndPublishesVerifiedPair)
     }
 }
 
+TEST(Ex2I7CorrectnessChildSmoke, ExecutesRealE1CanonicalUuidAndPublishesVerifiedPair)
+{
+    const std::string session = "i7-e-uuid-canonical-smoke";
+    const auto localRoot = std::filesystem::path(COMPUTELAB_REPOSITORY_ROOT)
+        / "results" / "local";
+    // Never adopt a preexisting session, including any retained Stage-4 evidence.
+    ASSERT_FALSE(std::filesystem::exists(localRoot / session));
+    ASSERT_FALSE(std::filesystem::exists(localRoot / (session + ".incomplete")));
+    ASSERT_FALSE(std::filesystem::exists(localRoot / (session + ".failure.json")));
+    ExactSmokeCleanup cleanup{localRoot, session};
+
+    std::vector<std::string> arguments{
+        COMPUTELAB_EX2_CORRECTNESS_EXE,
+        "--core-cell-index", "16",
+        "--cuda-device", "0",
+        "--vulkan-device", "0",
+        "--machine-id", "i7-smoke-machine",
+        "--session-id", session};
+    std::vector<const char*> argv;
+    for (const auto& argument : arguments) argv.push_back(argument.c_str());
+    argv.push_back(nullptr);
+    const intptr_t exitCode = _spawnv(_P_WAIT, argv.front(), argv.data());
+    ASSERT_EQ(exitCode, 0) << "real CUDA/Vulkan E1 canonical UUID child failed";
+
+    const auto final = localRoot / session;
+    EXPECT_TRUE(std::filesystem::is_directory(final));
+    EXPECT_FALSE(std::filesystem::exists(localRoot / (session + ".incomplete")));
+    EXPECT_FALSE(std::filesystem::exists(localRoot / (session + ".failure.json")));
+    for (const auto& directory : {
+        final / (session + "-cuda"), final / (session + "-vulkan")})
+    {
+        ASSERT_TRUE(std::filesystem::is_directory(directory));
+        EXPECT_EQ(std::distance(std::filesystem::directory_iterator(directory),
+            std::filesystem::directory_iterator{}), 4);
+        for (const auto* name : {"environment.json", "initialization.csv",
+                 "samples.csv", "summary.json"})
+            ASSERT_TRUE(std::filesystem::is_regular_file(directory / name));
+
+        const auto environment = ReadAll(directory / "environment.json");
+        for (const auto* field : {"\"schema_version\":2",
+                 "\"protocol_version\":\"1.1\"", "\"instrument_mode\":\"P\"",
+                 "\"planned_sample_count\":1", "\"workload\":\"E\"",
+                 "\"variant\":\"E1\"", "\"byte_count\":1024",
+                 "\"transfer_direction\":\"H2D\"", "\"shader_sha256\":null"})
+            EXPECT_NE(environment.find(field), std::string::npos) << field;
+
+        const auto samples = ReadAll(directory / "samples.csv");
+        EXPECT_EQ(std::count(samples.begin(), samples.end(), '\n'), 2);
+        // Sample zero, validation true/status ok, empty failure fields and
+        // all four correctness timing fields null (six empty fields after ok).
+        EXPECT_TRUE(samples.ends_with(",0,true,ok,,,,,,\r\n"));
+        const auto summary = ReadAll(directory / "summary.json");
+        for (const auto* field : {"\"recorded_sample_count\":1",
+                 "\"validation_failures\":0", "\"failed_sample_count\":0",
+                 "\"host_submission_ns\":null", "\"host_wait_ns\":null",
+                 "\"host_completion_ns\":null", "\"native_device_interval_ns\":null"})
+            EXPECT_NE(summary.find(field), std::string::npos) << field;
+    }
+}
+
 } // namespace

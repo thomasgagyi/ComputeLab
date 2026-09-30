@@ -711,11 +711,17 @@ bool IsZeroDeviceUuid(const DeviceUuid& uuid) noexcept
 
 std::string FormatDeviceUuid(const DeviceUuid& uuid)
 {
+    if (IsZeroDeviceUuid(uuid))
+        throw std::invalid_argument("EX-2 E device UUID must not be all zero");
+
     constexpr char Hex[] = "0123456789abcdef";
     std::string result;
-    result.reserve(32U);
-    for (const auto byte : uuid)
+    result.reserve(36U);
+    for (std::size_t index = 0U; index < uuid.size(); ++index)
     {
+        if (index == 4U || index == 6U || index == 8U || index == 10U)
+            result.push_back('-');
+        const auto byte = uuid[index];
         result.push_back(Hex[byte >> 4U]);
         result.push_back(Hex[byte & 0x0FU]);
     }

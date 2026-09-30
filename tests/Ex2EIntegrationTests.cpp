@@ -74,7 +74,9 @@ void ExpectSuccessfulPair(
 {
     EXPECT_TRUE(observation.physicalIdentityVerified);
     EXPECT_FALSE(IsZeroDeviceUuid(observation.verifiedDeviceUuid));
-    EXPECT_EQ(observation.verifiedDeviceUuidText.size(), 32U);
+    EXPECT_EQ(observation.verifiedDeviceUuidText.size(), 36U);
+    EXPECT_EQ(observation.verifiedDeviceUuidText,
+        FormatDeviceUuid(observation.verifiedDeviceUuid));
     EXPECT_EQ(observation.vulkanDiagnostics.deviceUuid, observation.verifiedDeviceUuid);
     EXPECT_EQ(observation.source.size(), byteCount);
     EXPECT_EQ(observation.expectedDestination.size(), byteCount);
@@ -224,6 +226,21 @@ AcceptedNativeSmokeObservation(std::uint64_t byteCount)
     return observation;
 }
 
+TEST(Ex2EIntegrationPure, FormatsCanonicalDeviceUuidFixture)
+{
+    const DeviceUuid uuid{
+        0x00U, 0x11U, 0x22U, 0x33U, 0x44U, 0x55U, 0x66U, 0x77U,
+        0x88U, 0x99U, 0xaaU, 0xbbU, 0xccU, 0xddU, 0xeeU, 0xffU};
+    constexpr std::string_view expected =
+        "00112233-4455-6677-8899-aabbccddeeff";
+    const auto formatted = FormatDeviceUuid(uuid);
+    EXPECT_EQ(formatted, expected);
+    ASSERT_EQ(formatted.size(), 36U);
+    for (const std::size_t offset : {8U, 13U, 18U, 23U})
+        EXPECT_EQ(formatted[offset], '-');
+    EXPECT_EQ(VerifySamePhysicalDevice(uuid, uuid), expected);
+}
+
 TEST(Ex2EIntegrationPure, RejectsZeroAndMismatchedDeviceUuids)
 {
     DeviceUuid zero{};
@@ -232,9 +249,11 @@ TEST(Ex2EIntegrationPure, RejectsZeroAndMismatchedDeviceUuids)
     DeviceUuid second = first;
     EXPECT_TRUE(IsZeroDeviceUuid(zero));
     EXPECT_FALSE(IsZeroDeviceUuid(first));
+    EXPECT_THROW(static_cast<void>(FormatDeviceUuid(zero)), std::invalid_argument);
     EXPECT_EQ(VerifySamePhysicalDevice(first, second), FormatDeviceUuid(first));
     second[15] = 2U;
     EXPECT_THROW(static_cast<void>(VerifySamePhysicalDevice(zero, first)), std::runtime_error);
+    EXPECT_THROW(static_cast<void>(VerifySamePhysicalDevice(first, zero)), std::runtime_error);
     EXPECT_THROW(static_cast<void>(VerifySamePhysicalDevice(first, second)), std::runtime_error);
 }
 
