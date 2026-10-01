@@ -121,6 +121,8 @@ public:
     [[nodiscard]] std::uint64_t ElementCount() const noexcept;
 
     void Upload(std::span<const std::uint32_t> input);
+    // Explicit A1-only reuse after safe completion; no native operation/upload.
+    void PrepareNextA1WithoutUpload();
     void SubmitA1();
     void WaitForCompletion();
 

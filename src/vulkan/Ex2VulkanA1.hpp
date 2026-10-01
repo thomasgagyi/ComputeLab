@@ -191,6 +191,8 @@ public:
 
     void Upload(std::span<const std::uint32_t> input);
     void Prepare();
+    // Explicit A1-only reuse of immutable uploaded input after safe completion.
+    void PrepareNextA1WithoutUpload();
     void SubmitA1();
     void WaitForCompletion(
         std::uint64_t timeoutNanoseconds = 30'000'000'000ULL);

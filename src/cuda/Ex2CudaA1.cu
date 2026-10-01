@@ -596,6 +596,20 @@ void Ex2CudaA1Operation::Upload(std::span<const std::uint32_t> input)
     impl_->lastCompletionExecutedKernel = false;
 }
 
+void Ex2CudaA1Operation::PrepareNextA1WithoutUpload()
+{
+    impl_->RequireReusable("retained-input preparation");
+    if (impl_->configuration.variant != ex2::LinearVariant::A1
+        || impl_->state != OperationState::Complete)
+    {
+        throw std::logic_error(
+            "EX-2 CUDA A1 retained-input preparation requires safe A1 completion");
+    }
+    impl_->submittedKernel = false;
+    impl_->lastCompletionExecutedKernel = false;
+    impl_->state = OperationState::Ready;
+}
+
 void Ex2CudaA1Operation::SubmitA1()
 {
     impl_->RequireReusable("submission");

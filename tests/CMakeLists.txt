@@ -268,4 +268,9 @@ if(TARGET ComputeLabEx2CorrectnessControl AND TARGET ComputeLabEx2Correctness)
         COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
 endif()
 
+if(TARGET ComputeLabEx2Stage5Execution)
+    target_sources(ComputeLabTests PRIVATE Ex2Stage5ExecutionTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2Stage5Execution)
+endif()
+
 gtest_discover_tests(ComputeLabTests)

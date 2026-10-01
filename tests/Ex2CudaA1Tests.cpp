@@ -56,6 +56,56 @@ TEST(Ex2CudaA1, ExactBoundedSizesMatchIndependentCpuOracleAndPreserveInput)
     }
 }
 
+TEST(Ex2CudaA1, OneUploadSupports48ExplicitRetainedInputOperations)
+{
+    const auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 256);
+    const auto expected = ex2::ReferenceA1(input);
+    cuda::Ex2CudaA1Operation operation{0, A1Configuration(256)};
+    operation.Upload(input);
+    for (unsigned i = 0; i < 48; ++i)
+    {
+        SCOPED_TRACE(i);
+        if (i != 0) operation.PrepareNextA1WithoutUpload();
+        operation.SubmitA1();
+        operation.WaitForCompletion();
+        EXPECT_EQ(operation.RetrieveOutput(), expected);
+        EXPECT_TRUE(operation.LastCompletionExecutedKernel());
+    }
+    EXPECT_EQ(operation.RetrieveDeviceInput(), input);
+}
+
+TEST(Ex2CudaA1, ExplicitRetainedInputPreparationRequiresComplete)
+{
+    const auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 256);
+    cuda::Ex2CudaA1Operation operation{0, A1Configuration(256)};
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    operation.Upload(input);
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    operation.SubmitA1();
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    operation.WaitForCompletion();
+    EXPECT_EQ(operation.RetrieveOutput(), ex2::ReferenceA1(input));
+    EXPECT_THROW(operation.SubmitA1(), std::logic_error);
+    operation.PrepareNextA1WithoutUpload();
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    EXPECT_THROW(static_cast<void>(operation.LastCompletionExecutedKernel()), std::logic_error);
+    operation.SubmitA1(); operation.WaitForCompletion();
+    EXPECT_EQ(operation.RetrieveOutput(), ex2::ReferenceA1(input));
+}
+
+TEST(Ex2CudaA1, ExplicitNewUploadRemainsValidAfterRetainedInputRepeat)
+{
+    const auto first = ex2::GenerateWordInput(ex2::CoreInputSeed, 256);
+    const auto second = ex2::GenerateWordInput(ex2::CoreInputSeed + 1, 256);
+    cuda::Ex2CudaA1Operation operation{0, A1Configuration(256)};
+    EXPECT_EQ(Execute(operation, first), ex2::ReferenceA1(first));
+    operation.PrepareNextA1WithoutUpload();
+    operation.SubmitA1(); operation.WaitForCompletion();
+    EXPECT_EQ(operation.RetrieveOutput(), ex2::ReferenceA1(first));
+    EXPECT_EQ(Execute(operation, second), ex2::ReferenceA1(second));
+    EXPECT_EQ(operation.RetrieveDeviceInput(), second);
+}
+
 TEST(Ex2CudaA1, LiteralFourWordFixtureIndependentlyAnchorsOracleAndGpu)
 {
     const std::vector<std::uint32_t> input{

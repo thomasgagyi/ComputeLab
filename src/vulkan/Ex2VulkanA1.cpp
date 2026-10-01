@@ -1279,6 +1279,27 @@ void Ex2VulkanA1Operation::Prepare()
     resources.state = OperationState::Prepared;
 }
 
+void Ex2VulkanA1Operation::PrepareNextA1WithoutUpload()
+{
+    auto& resources = *resources_;
+    resources.RequireReusable("retained-input preparation");
+    if (resources.configuration.variant != ex2::LinearVariant::A1
+        || resources.state != OperationState::Complete
+        || resources.computePending || resources.transferPending)
+    {
+        throw std::logic_error(
+            "EX-2 Vulkan A1 retained-input preparation requires safe A1 completion");
+    }
+    resources.state = OperationState::Failed;
+    resources.lastCompletionExecutedShader = false;
+    CheckVulkan(
+        vkResetFences(resources.device, 1U, &resources.computeFence),
+        Ex2VulkanA1NativePhase::Preparation,
+        "vkResetFences for EX-2 Vulkan A1 retained-input compute");
+    resources.RecordCompute();
+    resources.state = OperationState::Prepared;
+}
+
 void Ex2VulkanA1Operation::SubmitA1()
 {
     auto& resources = *resources_;

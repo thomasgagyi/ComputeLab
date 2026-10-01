@@ -242,6 +242,24 @@ if(TARGET ComputeLabEx2A1Integration
     target_link_libraries(ComputeLabEx2CorrectnessSupervisor PRIVATE ComputeLabEx2CorrectnessControl)
 endif()
 
+if(TARGET ComputeLabEx2CudaA1 AND TARGET ComputeLabEx2VulkanA1
+    AND TARGET ComputeLabEx2CudaD1 AND TARGET ComputeLabEx2VulkanD1
+    AND TARGET ComputeLabEx2Stage5Evidence AND TARGET ComputeLabEnvironment)
+    add_library(ComputeLabEx2Stage5Execution STATIC Ex2Stage5Execution.cpp Ex2Stage5Execution.hpp)
+    target_compile_features(ComputeLabEx2Stage5Execution PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2Stage5Execution PUBLIC ${PROJECT_SOURCE_DIR}/src)
+    target_link_libraries(ComputeLabEx2Stage5Execution PUBLIC
+        ComputeLabEx2Stage5Evidence ComputeLabEx2HostTiming ComputeLabEnvironment
+        ComputeLabEx2CudaA1 ComputeLabEx2VulkanA1 ComputeLabEx2CudaD1 ComputeLabEx2VulkanD1)
+    add_executable(ComputeLabEx2Stage5 Ex2Stage5Main.cpp)
+    target_compile_features(ComputeLabEx2Stage5 PRIVATE cxx_std_20)
+    target_compile_definitions(ComputeLabEx2Stage5 PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+    target_link_libraries(ComputeLabEx2Stage5 PRIVATE ComputeLabEx2Stage5Execution)
+endif()
+
 if(TARGET ComputeLabEx2Gate0Support
     AND TARGET ComputeLabCudaQualification
     AND TARGET ComputeLabVulkanQualification

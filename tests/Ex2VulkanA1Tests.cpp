@@ -58,6 +58,59 @@ TEST(Ex2VulkanA1, ExactBoundedSizesMatchIndependentCpuOracleAndPreserveDeviceInp
     }
 }
 
+TEST(Ex2VulkanA1, OneUploadSupports48ExplicitRetainedInputOperations)
+{
+    const auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 256);
+    const auto expected = ex2::ReferenceA1(input);
+    vulkan::Ex2VulkanA1Operation operation{A1Configuration(256), COMPUTELAB_EX2_A1_SPIRV_PATH, 0U};
+    operation.Upload(input);
+    for (unsigned i = 0; i < 48; ++i)
+    {
+        SCOPED_TRACE(i);
+        if (i == 0) operation.Prepare();
+        else operation.PrepareNextA1WithoutUpload();
+        operation.SubmitA1(); operation.WaitForCompletion();
+        EXPECT_EQ(operation.RetrieveOutput(), expected);
+        EXPECT_TRUE(operation.LastCompletionExecutedShader());
+    }
+    EXPECT_EQ(operation.RetrieveDeviceInput(), input);
+}
+
+TEST(Ex2VulkanA1, ExplicitRetainedInputPreparationRequiresComplete)
+{
+    const auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 256);
+    vulkan::Ex2VulkanA1Operation operation{A1Configuration(256), COMPUTELAB_EX2_A1_SPIRV_PATH, 0U};
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    operation.Upload(input);
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    operation.Prepare();
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    operation.SubmitA1();
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    operation.WaitForCompletion();
+    EXPECT_EQ(operation.RetrieveOutput(), ex2::ReferenceA1(input));
+    EXPECT_THROW(operation.Prepare(), std::logic_error);
+    EXPECT_THROW(operation.SubmitA1(), std::logic_error);
+    operation.PrepareNextA1WithoutUpload();
+    EXPECT_THROW(operation.PrepareNextA1WithoutUpload(), std::logic_error);
+    EXPECT_THROW(static_cast<void>(operation.LastCompletionExecutedShader()), std::logic_error);
+    operation.SubmitA1(); operation.WaitForCompletion();
+    EXPECT_EQ(operation.RetrieveOutput(), ex2::ReferenceA1(input));
+}
+
+TEST(Ex2VulkanA1, ExplicitNewUploadRemainsValidAfterRetainedInputRepeat)
+{
+    const auto first = ex2::GenerateWordInput(ex2::CoreInputSeed, 256);
+    const auto second = ex2::GenerateWordInput(ex2::CoreInputSeed + 1, 256);
+    vulkan::Ex2VulkanA1Operation operation{A1Configuration(256), COMPUTELAB_EX2_A1_SPIRV_PATH, 0U};
+    EXPECT_EQ(Execute(operation, first), ex2::ReferenceA1(first));
+    operation.PrepareNextA1WithoutUpload();
+    operation.SubmitA1(); operation.WaitForCompletion();
+    EXPECT_EQ(operation.RetrieveOutput(), ex2::ReferenceA1(first));
+    EXPECT_EQ(Execute(operation, second), ex2::ReferenceA1(second));
+    EXPECT_EQ(operation.RetrieveDeviceInput(), second);
+}
+
 TEST(Ex2VulkanA1, LiteralFourWordFixtureIndependentlyAnchorsOracleAndGpu)
 {
     const std::vector<std::uint32_t> input{
