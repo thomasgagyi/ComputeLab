@@ -4,6 +4,7 @@
 #include <charconv>
 #include <cmath>
 #include <stdexcept>
+#include <type_traits>
 
 namespace computelab::ex2::stage5
 {
@@ -31,6 +32,8 @@ std::vector<std::string> ValidateInput(const ProcessInput& input, Stage5Phase ph
     if (!ValidProcess(input.process)) reasons.emplace_back("invalid_process_identity");
     if (input.expectedObservationCount != count || input.observations.size() != count)
         reasons.emplace_back("invalid_observation_count");
+    if (!AssessClockCalibration(input.clockCalibration).InputValid())
+        reasons.emplace_back("invalid_clock_calibration");
     for (std::size_t i = 0U; i < input.observations.size(); ++i)
     {
         const auto& observation = input.observations[i];
@@ -62,36 +65,19 @@ std::vector<std::uint64_t> Values(const ProcessInput& input)
     return values;
 }
 
-MedianNanoseconds Difference(MedianNanoseconds a, MedianNanoseconds b) noexcept
+MedianNanoseconds DecisionScale(const OrderedStateAssessment& state, MedianNanoseconds reference)
 {
-    if (a < b) std::swap(a, b);
-    auto whole = a.whole - b.whole;
-    if (!a.half && b.half) --whole;
-    return {whole, a.half != b.half};
+    for (const auto median : *state.Medians()) reference = std::min(reference, median);
+    return reference;
 }
 
-// Exact abs(a/b-1) <= 1/divisor. Dividing first avoids uint64 multiplication
-// overflow, cancellation in ratio-1, and any epsilon at the inclusive boundary.
-bool Within(MedianNanoseconds a, MedianNanoseconds b, std::uint64_t divisor) noexcept
+void AddGates(const ClockAdequacyAssessment& clock, const OrderedStateAssessment& state,
+    std::vector<std::string>& reasons)
 {
-    const auto difference = Difference(a, b);
-    const auto quotient = b.whole / divisor;
-    if (difference.whole != quotient) return difference.whole < quotient;
-    return (difference.half ? divisor : 0U)
-        <= 2U * (b.whole % divisor) + (b.half ? 1U : 0U);
-}
-
-double RelativeDifference(MedianNanoseconds a, MedianNanoseconds b) noexcept
-{
-    return Difference(a, b).AsDouble() / b.AsDouble();
-}
-
-void AddGates(const ProcessInput& input, std::vector<std::string>& reasons)
-{
-    if (!input.hostClockResolutionAdequate)
+    if (!clock.Adequate())
         reasons.emplace_back("host_clock_resolution_inadequate");
-    if (input.persistentTrendOrAbruptStateSwitch)
-        reasons.emplace_back("persistent_trend_or_abrupt_state_switch");
+    if (state.PersistentTrend()) reasons.emplace_back("persistent_trend");
+    if (state.AbruptStateSwitch()) reasons.emplace_back("abrupt_state_switch");
 }
 
 template <typename T>
@@ -197,6 +183,80 @@ void AppendOptional(std::string& output, const std::optional<T>& value)
     else output += "null";
 }
 
+void AppendMedian(std::string& output, MedianNanoseconds median)
+{
+    output += "{\"whole_ns\":"; AppendNumber(output, median.whole);
+    output += ",\"half_ns\":"; AppendValue(output, median.half); output.push_back('}');
+}
+
+void AppendOperationalFacts(std::string& output, const OrderedStateAssessment& state,
+    const ClockAdequacyAssessment& clock)
+{
+    if (!state.InputValid() || !clock.InputValid()) { output += "null"; return; }
+    output += "{\"decision_scale\":"; AppendMedian(output, *clock.DecisionScale());
+    output += ",\"clock_adequate\":"; AppendValue(output, clock.Adequate());
+    output += ",\"windows\":[";
+    for (std::size_t i = 0U; i < 4U; ++i)
+    {
+        if (i != 0U) output.push_back(',');
+        const auto window = (*state.Windows())[i];
+        output += "{\"begin\":"; AppendNumber(output, window.begin);
+        output += ",\"count\":"; AppendNumber(output, window.count);
+        output += ",\"median\":"; AppendMedian(output, (*state.Medians())[i]); output.push_back('}');
+    }
+    output += "],\"persistent_trend\":"; AppendValue(output, state.PersistentTrend());
+    output += ",\"abrupt_state_switch\":"; AppendValue(output, state.AbruptStateSwitch());
+    output += ",\"state_structure\":"; AppendValue(output, state.StateStructure()); output.push_back('}');
+}
+
+template <typename T>
+void AppendProcesses(std::string& output, const std::vector<T>& processes)
+{
+    std::vector<const T*> ordered;
+    for (const auto& process : processes) ordered.push_back(&process);
+    std::stable_sort(ordered.begin(), ordered.end(), [](const auto* a, const auto* b) {
+        if (a->Process().backend != b->Process().backend) return a->Process().backend < b->Process().backend;
+        return a->Process().processIndex < b->Process().processIndex;
+    });
+    output.push_back('[');
+    for (std::size_t i = 0U; i < ordered.size(); ++i)
+    {
+        if (i != 0U) output.push_back(',');
+        const auto& process = *ordered[i];
+        output += "{\"backend\":";
+        AppendString(output, process.Process().backend == Stage5Backend::Cuda ? "cuda"
+            : process.Process().backend == Stage5Backend::Vulkan ? "vulkan" : "invalid");
+        output += ",\"process_index\":"; AppendNumber(output, process.Process().processIndex);
+        output += ",\"input_valid\":"; AppendValue(output, process.InputValid());
+        output += ",\"clock_calibration_valid\":"; AppendValue(output, process.ClockCalibration().InputValid());
+        output += ",\"effective_step_ns\":"; AppendOptional(output, process.ClockCalibration().EffectiveStep());
+        if constexpr (std::is_same_v<T, WarmupProcessAssessment>)
+        {
+            output += ",\"candidates\":[";
+            for (std::size_t j = 0U; j < process.Candidates().size(); ++j)
+            {
+                if (j != 0U) output.push_back(',');
+                const auto& candidate = process.Candidates()[j];
+                output += "{\"w\":"; AppendNumber(output, candidate.w);
+                output += ",\"qualified\":"; AppendValue(output, candidate.qualified);
+                output += ",\"operational_facts\":";
+                AppendOperationalFacts(output, candidate.orderedState, candidate.clockAdequacy);
+                output.push_back('}');
+            }
+            output.push_back(']');
+        }
+        else
+        {
+            output += ",\"operational_facts\":";
+            if (process.Diagnostics()) AppendOperationalFacts(output,
+                process.Diagnostics()->orderedState, process.Diagnostics()->clockAdequacy);
+            else output += "null";
+        }
+        output.push_back('}');
+    }
+    output.push_back(']');
+}
+
 } // namespace
 
 bool IsCandidateWarmup(std::uint64_t value) noexcept
@@ -242,27 +302,11 @@ bool ValidateProcessPlan(std::span<const PlannedProcess> processes) noexcept
     return std::equal(processes.begin(), processes.end(), expected.begin(), expected.end());
 }
 
-double MedianNanoseconds::AsDouble() const noexcept
-{
-    return static_cast<double>(whole) + (half ? 0.5 : 0.0);
-}
-
-MedianNanoseconds Median(std::span<const std::uint64_t> values)
-{
-    if (values.empty()) throw std::invalid_argument("median requires observations");
-    std::vector<std::uint64_t> sorted(values.begin(), values.end());
-    std::sort(sorted.begin(), sorted.end());
-    const auto middle = sorted.size() / 2U;
-    if (sorted.size() % 2U != 0U) return {sorted[middle], false};
-    const auto a = sorted[middle - 1U], b = sorted[middle];
-    const auto remainder = a % 2U + b % 2U;
-    return {a / 2U + b / 2U + remainder / 2U, remainder % 2U != 0U};
-}
-
 WarmupProcessAssessment AssessWarmupProcess(const ProcessInput& input)
 {
     WarmupProcessAssessment result;
     result.process_ = input.process;
+    result.calibration_ = AssessClockCalibration(input.clockCalibration);
     result.reasons_ = ValidateInput(input, Stage5Phase::D1Warmup, DiagnosticObservationCount);
     if (!result.reasons_.empty()) return result;
     result.inputValid_ = true;
@@ -274,16 +318,28 @@ WarmupProcessAssessment AssessWarmupProcess(const ProcessInput& input)
     {
         const auto earlyA = Median(timings.subspan(static_cast<std::size_t>(w), 8U));
         const auto earlyB = Median(timings.subspan(static_cast<std::size_t>(w) + 8U, 8U));
-        const bool qualified = input.hostClockResolutionAdequate
-            && !input.persistentTrendOrAbruptStateSwitch && Within(earlyA, reference, 20U)
-            && Within(earlyB, reference, 20U) && Within(lateA, reference, 20U);
+        const auto state = AssessOrderedState(timings, static_cast<std::size_t>(w));
+        const auto clock = AssessClockAdequacy(result.calibration_, DecisionScale(state, reference));
+        const bool qualified = clock.Adequate() && !state.StateStructure()
+            && WithinRelativeTolerance(earlyA, reference, 20U)
+            && WithinRelativeTolerance(earlyB, reference, 20U)
+            && WithinRelativeTolerance(lateA, reference, 20U);
         result.candidates_.push_back({w, earlyA, earlyB, reference, lateA,
             RelativeDifference(earlyA, reference), RelativeDifference(earlyB, reference),
-            RelativeDifference(lateA, reference), qualified});
+            RelativeDifference(lateA, reference), qualified, state, clock});
         if (qualified && !result.selectedW_) result.selectedW_ = w;
     }
-    AddGates(input, result.reasons_);
-    if (!result.Qualified()) result.reasons_.emplace_back("no_candidate_warmup_qualified");
+    if (!result.Qualified())
+    {
+        for (const auto& candidate : result.candidates_)
+        {
+            std::vector<std::string> gates;
+            AddGates(candidate.clockAdequacy, candidate.orderedState, gates);
+            for (const auto& reason : gates)
+                result.reasons_.push_back("w=" + std::to_string(candidate.w) + ":" + reason);
+        }
+        result.reasons_.emplace_back("no_candidate_warmup_qualified");
+    }
     return result;
 }
 
@@ -314,6 +370,7 @@ SampleCountProcessAssessment AssessSampleCountProcess(const ProcessInput& input)
     SampleCountProcessAssessment result;
     result.process_ = input.process;
     result.selectedW_ = input.condition.selectedW;
+    result.calibration_ = AssessClockCalibration(input.clockCalibration);
     result.reasons_ = ValidateInput(input, Stage5Phase::D1Sample, SampleObservationCount);
     if (!result.reasons_.empty()) return result;
     const auto values = Values(input);
@@ -324,16 +381,19 @@ SampleCountProcessAssessment AssessSampleCountProcess(const ProcessInput& input)
     diagnostics.median200 = Median(timings);
     for (std::size_t i = 0U; i < 4U; ++i)
         diagnostics.windows[i] = Median(timings.subspan(i * 50U, 50U));
+    diagnostics.orderedState = AssessOrderedState(timings);
+    diagnostics.clockAdequacy = AssessClockAdequacy(result.calibration_,
+        DecisionScale(diagnostics.orderedState, diagnostics.median200));
     diagnostics.prefix100RelativeDifference = RelativeDifference(diagnostics.median100, diagnostics.median200);
     diagnostics.prefix50RelativeDifference = RelativeDifference(diagnostics.median50, diagnostics.median200);
     diagnostics.firstLastRelativeDifference = RelativeDifference(diagnostics.windows[0], diagnostics.windows[3]);
-    if (!Within(diagnostics.median100, diagnostics.median200, 50U))
+    if (!WithinRelativeTolerance(diagnostics.median100, diagnostics.median200, 50U))
         result.reasons_.emplace_back("prefix100_not_converged");
-    if (!Within(diagnostics.median50, diagnostics.median200, 20U))
+    if (!WithinRelativeTolerance(diagnostics.median50, diagnostics.median200, 20U))
         result.reasons_.emplace_back("prefix50_not_converged");
-    if (!Within(diagnostics.windows[0], diagnostics.windows[3], 20U))
+    if (!WithinRelativeTolerance(diagnostics.windows[0], diagnostics.windows[3], 20U))
         result.reasons_.emplace_back("first_last_window_drift");
-    AddGates(input, result.reasons_);
+    AddGates(diagnostics.clockAdequacy, diagnostics.orderedState, result.reasons_);
     result.qualified_ = result.reasons_.empty();
     result.diagnostics_ = diagnostics;
     return result;
@@ -374,7 +434,7 @@ ProcessStabilityAssessment AssessProcessStability(Stage5Backend backend,
         maximum = std::max(maximum, median);
     }
     result.rProcess = maximum.AsDouble() / minimum.AsDouble();
-    result.qualified = Within(maximum, minimum, 10U);
+    result.qualified = WithinRelativeTolerance(maximum, minimum, 10U);
     if (!result.qualified) result.reasons.emplace_back("process_centers_exceed_1_10");
     return result;
 }
@@ -385,6 +445,7 @@ D1QualificationAssessment AssessD1Qualification(std::span<const ProcessInput> wa
     D1QualificationAssessment result;
     std::vector<WarmupProcessAssessment> warmupAssessments;
     for (const auto& process : warmup) warmupAssessments.push_back(AssessWarmupProcess(process));
+    result.warmupProcesses = warmupAssessments;
     const auto common = AssessCommonWarmup(warmupAssessments);
     result.warmupInputValid = common.inputValid;
     result.d1WarmupQualified = common.qualified;
@@ -393,13 +454,15 @@ D1QualificationAssessment AssessD1Qualification(std::span<const ProcessInput> wa
     result.sampleInputPresent = samples.has_value();
     if (!samples) return result;
     result.sampleInputValid = false;
+    result.sampleProcesses.emplace();
+    for (const auto& process : *samples)
+        result.sampleProcesses->push_back(AssessSampleCountProcess(process));
     if (!common.qualified)
     {
         result.reasons.emplace_back("samples_require_qualified_common_warmup");
         return result;
     }
-    std::vector<SampleCountProcessAssessment> sampleAssessments;
-    for (const auto& process : *samples) sampleAssessments.push_back(AssessSampleCountProcess(process));
+    const auto& sampleAssessments = *result.sampleProcesses;
     if (!ValidSet(std::span<const SampleCountProcessAssessment>{sampleAssessments}, std::nullopt))
     {
         result.reasons.emplace_back("invalid_sample_process_set");
@@ -433,6 +496,55 @@ D1QualificationAssessment AssessD1Qualification(std::span<const ProcessInput> wa
     return result;
 }
 
+A1ProcessAssessment AssessA1Process(const ProcessInput& input)
+{
+    A1ProcessAssessment result;
+    result.process_ = input.process;
+    result.calibration_ = AssessClockCalibration(input.clockCalibration);
+    result.reasons_ = ValidateInput(input, Stage5Phase::A1Sentinel, DiagnosticObservationCount);
+    if (!result.reasons_.empty()) return result;
+    const auto values = Values(input);
+    result.median48_ = Median(values);
+    result.state_ = AssessOrderedState(values);
+    result.adequacy_ = AssessClockAdequacy(result.calibration_,
+        *std::min_element(result.state_.Medians()->begin(), result.state_.Medians()->end()));
+    return result; // State and clock are descriptive, never A1 qualification.
+}
+
+A1BackendDescription DescribeA1Backend(Stage5Backend backend,
+    std::span<const A1ProcessAssessment> processes)
+{
+    A1BackendDescription result;
+    if (!ValidSet(processes, backend)) return result;
+    result.inputValid = true;
+    auto minimum = *processes.front().Median48(), maximum = minimum;
+    for (const auto& process : processes)
+    {
+        minimum = std::min(minimum, *process.Median48());
+        maximum = std::max(maximum, *process.Median48());
+    }
+    result.rA1Process = maximum.AsDouble() / minimum.AsDouble();
+    result.exceedsOnePointTen = !WithinRelativeTolerance(maximum, minimum, 10U);
+    return result;
+}
+
+A1SentinelAssessment AssessA1Sentinel(std::span<const ProcessInput> processes)
+{
+    A1SentinelAssessment result;
+    for (const auto& process : processes) result.processes.push_back(AssessA1Process(process));
+    result.inputValid = ValidSet(std::span<const A1ProcessAssessment>{result.processes}, std::nullopt);
+    if (!result.inputValid) result.reasons.emplace_back("invalid_a1_process_set");
+    AddProcessReasons(result.reasons, std::span<const A1ProcessAssessment>{result.processes}, "a1");
+    for (const auto backend : {Stage5Backend::Cuda, Stage5Backend::Vulkan})
+    {
+        std::vector<A1ProcessAssessment> group;
+        for (const auto& process : result.processes)
+            if (process.Process().backend == backend) group.push_back(process);
+        (backend == Stage5Backend::Cuda ? result.cuda : result.vulkan) = DescribeA1Backend(backend, group);
+    }
+    return result;
+}
+
 std::string SerializeAnalysisJson(const D1QualificationAssessment& assessment)
 {
     if (assessment.analysisVersion != AnalysisSchemaVersion || assessment.protocolVersion != ProtocolVersion)
@@ -441,7 +553,7 @@ std::string SerializeAnalysisJson(const D1QualificationAssessment& assessment)
     AppendNumber(output, assessment.analysisVersion);
     output += ",\"experiment_id\":\"EX-2\",\"protocol_version\":\"1.2\","
         "\"evidence_kind\":\"qualification\",\"analysis_kind\":\"d1-qualification\"";
-    // Key order is part of analysis schema version 1.
+    // Key order is part of analysis schema version 2.
     output += ",\"warmup_input_valid\":"; AppendValue(output, assessment.warmupInputValid);
     output += ",\"d1_warmup_qualified\":"; AppendValue(output, assessment.d1WarmupQualified);
     output += ",\"selected_common_w\":"; AppendOptional(output, assessment.selectedCommonW);
@@ -459,7 +571,11 @@ std::string SerializeAnalysisJson(const D1QualificationAssessment& assessment)
         if (i != 0U) output.push_back(',');
         AppendString(output, assessment.reasons[i]);
     }
-    output += "]}\n";
+    output += "],\"warmup_processes\":"; AppendProcesses(output, assessment.warmupProcesses);
+    output += ",\"sample_processes\":";
+    if (assessment.sampleProcesses) AppendProcesses(output, *assessment.sampleProcesses);
+    else output += "null";
+    output += "}\n";
     return output;
 }
 

@@ -108,6 +108,103 @@ Passing within-process convergence is not sufficient. For each backend independe
 
 D1 qualification does **not** require CUDA and Vulkan themselves to differ by 10%. Near-equal, stable backend distributions can qualify the ruler. Stage 5 does not issue a backend-performance winner or use paired process ratios as candidate-performance claims.
 
+#### Stage-5 operational fact freeze — host clock and ordered state
+
+No Stage-5 qualification evidence exists before this operational fact freeze.
+Protocol version remains `"1.2"`: this completes operational definitions already
+required by v1.2 and changes no workload, metric, hardware, H timing boundary,
+W/sample count, `R_process` threshold or verdict policy. If preexisting real
+v1.2 Stage-5 qualification evidence is discovered, STOP for human review rather
+than silently retaining protocol 1.2. Historical v1.0/v1.1 sections are unchanged.
+
+**Host-clock calibration:** every fresh Stage-5 process performs exactly 4,096
+consecutive captures using `computelab::timing::HostClock` (`steady_clock`), after
+normal process/setup initialization and before its A1/D1 observation sequence.
+No intentional sleep or GPU operation occurs between captures. The resulting
+4,095 consecutive integer-nanosecond deltas are outside every `t0/t1/t2` interval
+and do not count as warm-up or measured operations. Equal captures may produce
+zero deltas; a decreasing reading, invalid conversion or unrepresentable
+arithmetic is invalid. A later execution increment retains every delta in the
+additive qualification diagnostic artifact `host-clock.csv`, with exact header:
+
+```csv
+schema_version,run_id,series_id,process_index,sequence_index,delta_ns
+```
+
+S5-I2 implements pure analysis only, with no calibration execution or package
+publication. Raw analysis input contains exactly 4,095 optional unsigned integer
+nanosecond deltas in capture order; an absent delta explicitly represents a
+missing/decreasing reading or invalid/unrepresentable conversion. Wrong count,
+any absent delta, or no strictly positive delta makes calibration input invalid.
+Zero deltas are allowed when at least one positive delta exists. Let `q` be the
+minimum strictly positive observed delta. It is an operational effective-step
+proxy, not physical oscillator resolution or nominal API precision.
+
+For exact positive decision scale `S`, clock adequacy is `100*q <= S`, evaluated
+with overflow-safe exact arithmetic. Exactly 1% is adequate; over 1% is
+inadequate, with no floating epsilon. The 5% decision tolerance must span at
+least five observed effective steps. Malformed calibration is an input/evidence
+validity problem; valid but coarse calibration is scientific nonqualification.
+
+**Ordered-state windows:** partition every observation in the eligible range
+into exactly four contiguous, nonoverlapping windows covering that range in
+original order. Lengths differ by at most one; remainders go to earlier windows.
+
+| Eligible range | Window lengths |
+| --- | --- |
+| A1 `[0,48)`; D1-W W=0 | 12,12,12,12 |
+| D1-W W=1 `[1,48)` | 12,12,12,11 |
+| D1-W W=2 `[2,48)` | 12,12,11,11 |
+| D1-W W=4 `[4,48)` | 11,11,11,11 |
+| D1-W W=8 `[8,48)` | 10,10,10,10 |
+| D1-W W=16 `[16,48)` | 8,8,8,8 |
+| D1-S `[0,200)` | 50,50,50,50 |
+
+Calculate exact integer/half-nanosecond window medians `M0..M3`. Persistent trend
+is true only when these medians are monotonically nondecreasing or monotonically
+nonincreasing **and** `abs(M0/M3-1)>0.05`, using the existing exact 5% tolerance.
+Exactly 5% does not trigger; flat/equal sequences are not trends. This detects a
+clear sustained direction, not a statistical trend test or p-value.
+
+Abrupt state switch is true when any adjacent pair satisfies
+`max(Mi,Mi+1)/min(Mi,Mi+1)>1.10`, using exact overflow-safe arithmetic. Exactly
+1.10 is accepted. Window medians cover at least eight complete D1-W operations
+or fifty D1-S operations: this is interval-level state evidence, not rejection
+of an individual outlier. Never discard raw observations. The combined state
+fact is `persistent_trend || abrupt_state_switch`; no supplied conclusion
+boolean or override is accepted.
+
+**Decision scales and integration:** A1 uses the minimum positive median of its
+four windows. Each D1-W candidate independently analyzes `[W,48)` and uses the
+minimum of its four state medians and the existing `[40,48)` late-reference
+median. It qualifies only when the existing three inclusive 5% comparisons
+pass, the candidate clock is adequate, and neither state fact is detected. The
+first passing W remains selected; an early transient before W does not
+automatically fail a later candidate. No candidate beyond 16 is allowed.
+D1-S uses the minimum of `median200` and its four 50-sample window medians.
+It requires all existing 2%/5% convergence criteria plus adequate clock and no
+detected state structure; ordinary count 100 has no fallback. Backend-specific
+`R_process` still uses the first-100 process medians with inclusive `<=1.10`.
+
+Valid D1 clock inadequacy or state detection leaves input structurally valid
+but scientifically unqualified. Missing/malformed calibration or observations
+invalidate analysis input and are future execution/evidence-control concerns;
+they are never relabeled a scientific coarse-clock result.
+
+**A1 descriptive boundary:** each valid process reports its all-48 median,
+calibration/effective step, descriptive adequacy, four 12-observation medians,
+persistent trend, abrupt state switch and combined structure. For the exact
+five processes per backend, separately report
+`R_A1_process=max(all-48 process medians)/min(all-48 process medians)` and whether
+it exceeds 1.10. A1 instability never blocks D1 qualification or admits tiny
+host latency; malformed A1 evidence remains a later campaign evidence problem.
+No ranking, winner, speedup, admission or human verdict is derived here.
+
+Derived analysis uses `analysis_schema_version=2` for operational diagnostics,
+stable process/reason ordering, locale-independent finite numbers and explicit
+nulls. Evidence `schema_version=2`, protocol `"1.2"`, the exact `samples.csv`
+header, v1.1 logical-input identity and same-GPU requirements remain unchanged.
+
 #### Metric admission and instrumentation policy
 
 For Stage 5, **Mode H `host_completion_ns` is the sole decision-bearing metric**. `host_submission_ns` and `host_wait_ns` remain recorded diagnostics and do not inherit host-completion admission. Their direct CUDA/Vulkan comparison requires a future explicit justification.

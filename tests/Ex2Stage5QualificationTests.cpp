@@ -30,7 +30,7 @@ s5::ProcessInput Input(Phase phase = Phase::D1Warmup, std::size_t planIndex = 0U
     input.condition = Condition(phase, w);
     input.process = s5::FrozenProcessPlan()[planIndex];
     input.expectedObservationCount = phase == Phase::D1Sample ? 200U : 48U;
-    input.hostClockResolutionAdequate = true;
+    input.clockCalibration.deltasNanoseconds.assign(s5::ClockDeltaCount, 1U);
     for (std::uint64_t i = 0U; i < input.expectedObservationCount; ++i)
         input.observations.push_back({i, s5::OperationStatus::Ok, true, value});
     return input;
@@ -40,6 +40,17 @@ void Fill(s5::ProcessInput& input, std::size_t begin, std::size_t end, std::uint
 {
     for (std::size_t i = begin; i < end; ++i)
         input.observations[i].hostCompletionNanoseconds = value;
+}
+
+void CoarseClock(s5::ProcessInput& input)
+{
+    input.clockCalibration.deltasNanoseconds.assign(s5::ClockDeltaCount, 11U);
+}
+
+void StateSwitch(s5::ProcessInput& input)
+{
+    if (input.condition.phase == Phase::D1Sample) Fill(input, 50U, 100U, 1200U);
+    else Fill(input, 40U, 48U, 1200U);
 }
 
 s5::ProcessInput WarmupFor(std::uint64_t w, std::size_t planIndex = 0U)
@@ -82,10 +93,63 @@ bool HasReason(const std::vector<std::string>& reasons, std::string_view reason)
     return std::find(reasons.begin(), reasons.end(), reason) != reasons.end();
 }
 
+// Independently specified schema-2 golden operational diagnostics for the
+// constant 1000 ns fixtures, including every frozen window and process.
+std::string GoldenFacts(std::size_t candidate, bool adequate = true)
+{
+    const std::array<std::array<unsigned, 4>, 6> lengths{{
+        {12,12,12,12}, {12,12,12,11}, {12,12,11,11},
+        {11,11,11,11}, {10,10,10,10}, {8,8,8,8}}};
+    const std::array<unsigned, 6> starts{0,1,2,4,8,16};
+    std::string output = "{\"decision_scale\":{\"whole_ns\":1000,\"half_ns\":false},\"clock_adequate\":";
+    output += adequate ? "true" : "false";
+    output += ",\"windows\":[";
+    unsigned begin = candidate == 6U ? 0U : starts[candidate];
+    for (std::size_t i = 0U; i < 4U; ++i)
+    {
+        if (i != 0U) output.push_back(',');
+        const auto count = candidate == 6U ? 50U : lengths[candidate][i];
+        output += "{\"begin\":" + std::to_string(begin) + ",\"count\":" + std::to_string(count)
+            + ",\"median\":{\"whole_ns\":1000,\"half_ns\":false}}";
+        begin += count;
+    }
+    return output + "],\"persistent_trend\":false,\"abrupt_state_switch\":false,\"state_structure\":false}";
+}
+
+std::string GoldenProcesses(bool samples = false, bool coarseFirst = false)
+{
+    const std::array<unsigned, 6> warmups{0,1,2,4,8,16};
+    std::string output = "[";
+    for (const auto backend : {"cuda", "vulkan"})
+        for (unsigned i = 0U; i < 5U; ++i)
+        {
+            if (output.size() != 1U) output.push_back(',');
+            const bool coarse = coarseFirst && std::string_view(backend) == "cuda" && i == 0U;
+            output += "{\"backend\":\"" + std::string(backend) + "\",\"process_index\":" + std::to_string(i)
+                + ",\"input_valid\":true,\"clock_calibration_valid\":true,\"effective_step_ns\":";
+            output += coarse ? "11" : "1";
+            if (samples) output += ",\"operational_facts\":" + GoldenFacts(6U);
+            else
+            {
+                output += ",\"candidates\":[";
+                for (std::size_t j = 0U; j < 6U; ++j)
+                {
+                    if (j != 0U) output.push_back(',');
+                    output += "{\"w\":" + std::to_string(warmups[j]) + ",\"qualified\":";
+                    output += coarse ? "false" : "true";
+                    output += ",\"operational_facts\":" + GoldenFacts(j, !coarse) + "}";
+                }
+                output.push_back(']');
+            }
+            output.push_back('}');
+        }
+    return output + "]";
+}
+
 TEST(Ex2Stage5QualificationPlan, FrozenVocabulary)
 {
     EXPECT_EQ(s5::SchemaVersion, 2U);
-    EXPECT_EQ(s5::AnalysisSchemaVersion, 1U);
+    EXPECT_EQ(s5::AnalysisSchemaVersion, 2U);
     EXPECT_EQ(s5::ExperimentId, "EX-2");
     EXPECT_EQ(s5::ProtocolVersion, "1.2");
     EXPECT_EQ(s5::EvidenceKind, "qualification");
@@ -241,8 +305,8 @@ TEST(Ex2Stage5QualificationWarmup, ResolutionAndStateFactsBlockQualification)
     for (int gate = 0; gate < 2; ++gate)
     {
         auto input = Input();
-        if (gate == 0) input.hostClockResolutionAdequate = false;
-        else input.persistentTrendOrAbruptStateSwitch = true;
+        if (gate == 0) CoarseClock(input);
+        else StateSwitch(input);
         const auto result = s5::AssessWarmupProcess(input);
         EXPECT_TRUE(result.InputValid()); EXPECT_FALSE(result.Qualified());
         EXPECT_FALSE(result.SelectedW()); ASSERT_EQ(result.Candidates().size(), 6U);
@@ -311,10 +375,10 @@ TEST(Ex2Stage5QualificationWarmup, EarlyAAndEarlyBAndLateWindowsIndependentlyGat
 
 TEST(Ex2Stage5QualificationWarmup, HalfNanosecondThresholdDecisionIsExact)
 {
-    auto input = Input(Phase::D1Warmup, 0U, 10U);
-    Fill(input, 0U, 4U, 11U); // median 10.5 versus 10: exactly 5%.
+    auto input = Input(Phase::D1Warmup, 0U, 110U);
+    Fill(input, 0U, 4U, 121U); // median 115.5 versus 110: exactly 5%.
     EXPECT_TRUE(s5::AssessWarmupProcess(input).Candidates()[0].qualified);
-    Fill(input, 0U, 5U, 11U); // median 11: 10%.
+    Fill(input, 0U, 5U, 121U); // median 121: 10%.
     EXPECT_FALSE(s5::AssessWarmupProcess(input).Candidates()[0].qualified);
 }
 
@@ -328,7 +392,7 @@ TEST(Ex2Stage5QualificationCommonW, ExactlyTenAndMaximumSelectedWarmup)
 
 TEST(Ex2Stage5QualificationCommonW, SingleScientificNonqualificationIsValid)
 {
-    auto inputs = Group(Phase::D1Warmup); inputs[3].persistentTrendOrAbruptStateSwitch = true;
+    auto inputs = Group(Phase::D1Warmup); StateSwitch(inputs[3]);
     const auto result = s5::AssessCommonWarmup(Warmups(inputs));
     EXPECT_TRUE(result.inputValid); EXPECT_FALSE(result.qualified); EXPECT_FALSE(result.selectedCommonW);
 }
@@ -428,18 +492,18 @@ TEST(Ex2Stage5QualificationSample, ExactFivePercentPrefixAndWindowInclusive)
     for (const auto first : {950U, 1050U})
     {
         auto input = Input(Phase::D1Sample); Fill(input, 0U, 50U, first);
-        Fill(input, 50U, 100U, 2000U - first);
+        Fill(input, 50U, 100U, first == 950U ? 1010U : 990U);
         const auto result = s5::AssessSampleCountProcess(input);
         ASSERT_TRUE(result.InputValid()); EXPECT_TRUE(result.Qualified());
         EXPECT_DOUBLE_EQ(result.Diagnostics()->prefix50RelativeDifference, 0.05);
         EXPECT_DOUBLE_EQ(result.Diagnostics()->firstLastRelativeDifference, 0.05);
-        EXPECT_DOUBLE_EQ(result.Diagnostics()->prefix100RelativeDifference, 0.0);
+        EXPECT_DOUBLE_EQ(result.Diagnostics()->prefix100RelativeDifference, 0.02);
     }
 }
 
 TEST(Ex2Stage5QualificationSample, OverFivePercentPrefixAndWindowFails)
 {
-    auto input = Input(Phase::D1Sample); Fill(input, 0U, 50U, 1051U); Fill(input, 50U, 100U, 949U);
+    auto input = Input(Phase::D1Sample); Fill(input, 0U, 50U, 1051U); Fill(input, 50U, 100U, 989U);
     const auto result = s5::AssessSampleCountProcess(input);
     EXPECT_TRUE(result.InputValid()); EXPECT_FALSE(result.Qualified());
     EXPECT_TRUE(HasReason(result.Reasons(), "prefix50_not_converged"));
@@ -452,7 +516,8 @@ TEST(Ex2Stage5QualificationSample, FirstLastWindowCanFailWithBothPrefixesPassing
     auto input = Input(Phase::D1Sample); Fill(input, 150U, 200U, 1060U);
     const auto result = s5::AssessSampleCountProcess(input);
     EXPECT_TRUE(result.InputValid()); EXPECT_FALSE(result.Qualified());
-    EXPECT_EQ(result.Reasons(), (std::vector<std::string>{"first_last_window_drift"}));
+    EXPECT_TRUE(HasReason(result.Reasons(), "first_last_window_drift"));
+    EXPECT_TRUE(HasReason(result.Reasons(), "persistent_trend"));
 }
 
 TEST(Ex2Stage5QualificationSample, ResolutionAndStateFactsGateValidInputs)
@@ -460,8 +525,8 @@ TEST(Ex2Stage5QualificationSample, ResolutionAndStateFactsGateValidInputs)
     for (int gate = 0; gate < 2; ++gate)
     {
         auto input = Input(Phase::D1Sample);
-        if (gate == 0) input.hostClockResolutionAdequate = false;
-        else input.persistentTrendOrAbruptStateSwitch = true;
+        if (gate == 0) CoarseClock(input);
+        else StateSwitch(input);
         const auto result = s5::AssessSampleCountProcess(input);
         EXPECT_TRUE(result.InputValid()); EXPECT_FALSE(result.Qualified()); EXPECT_TRUE(result.Diagnostics());
     }
@@ -527,7 +592,7 @@ TEST(Ex2Stage5QualificationStability, InvalidUnderlyingInputAndZeroMedianAreInva
 TEST(Ex2Stage5QualificationStability, UnqualifiedProcessCannotContributeRatio)
 {
     auto assessments = Samples(Backend::Cuda);
-    auto input = Input(Phase::D1Sample); input.hostClockResolutionAdequate = false;
+    auto input = Input(Phase::D1Sample); CoarseClock(input);
     assessments[0] = s5::AssessSampleCountProcess(input);
     const auto result = s5::AssessProcessStability(Backend::Cuda, assessments);
     EXPECT_TRUE(result.inputValid); EXPECT_FALSE(result.qualified); EXPECT_FALSE(result.rProcess);
@@ -553,7 +618,7 @@ TEST(Ex2Stage5QualificationD1, WarmupOnlyFieldsAreNotEvaluated)
 
 TEST(Ex2Stage5QualificationD1, ScientificWarmupFailureIsCompleteAnalysisFact)
 {
-    auto warmup = Group(Phase::D1Warmup); warmup[0].persistentTrendOrAbruptStateSwitch = true;
+    auto warmup = Group(Phase::D1Warmup); StateSwitch(warmup[0]);
     const auto result = s5::AssessD1Qualification(warmup);
     EXPECT_TRUE(result.warmupInputValid); EXPECT_FALSE(result.d1WarmupQualified);
     EXPECT_FALSE(result.selectedCommonW); EXPECT_FALSE(result.sampleInputPresent);
@@ -574,7 +639,7 @@ TEST(Ex2Stage5QualificationD1, FullScopeQualifiedOnlyWithAllScientificCriteria)
 
 TEST(Ex2Stage5QualificationD1, SamplesRequireQualifiedCommonWarmup)
 {
-    auto warmup = Group(Phase::D1Warmup); warmup[0].hostClockResolutionAdequate = false;
+    auto warmup = Group(Phase::D1Warmup); CoarseClock(warmup[0]);
     const auto samples = Group(Phase::D1Sample);
     auto result = s5::AssessD1Qualification(warmup, samples);
     EXPECT_TRUE(result.warmupInputValid); EXPECT_EQ(result.sampleInputValid, false);
@@ -610,7 +675,7 @@ TEST(Ex2Stage5QualificationD1, PresentEmptyMalformedAndDuplicateSamplesAreInvali
 TEST(Ex2Stage5QualificationD1, SingleSampleScientificFailureBlocksScope)
 {
     const auto warmup = Group(Phase::D1Warmup); auto samples = Group(Phase::D1Sample);
-    samples[0].persistentTrendOrAbruptStateSwitch = true;
+    StateSwitch(samples[0]);
     const auto result = s5::AssessD1Qualification(warmup, samples);
     EXPECT_EQ(result.sampleInputValid, true); EXPECT_EQ(result.d1SampleCountQualified, false);
     EXPECT_EQ(result.cudaProcessStabilityQualified, false);
@@ -636,7 +701,7 @@ TEST(Ex2Stage5QualificationD1, BackendStabilityAssessedSeparately)
 TEST(Ex2Stage5QualificationD1, ReasonsStableAcrossProcessSetOrdering)
 {
     auto warmup = Group(Phase::D1Warmup); auto samples = Group(Phase::D1Sample);
-    samples[0].hostClockResolutionAdequate = false; samples[7].persistentTrendOrAbruptStateSwitch = true;
+    CoarseClock(samples[0]); StateSwitch(samples[7]);
     const auto first = s5::SerializeAnalysisJson(s5::AssessD1Qualification(warmup, samples));
     std::reverse(warmup.begin(), warmup.end()); std::reverse(samples.begin(), samples.end());
     EXPECT_EQ(s5::SerializeAnalysisJson(s5::AssessD1Qualification(warmup, samples)), first);
@@ -646,13 +711,14 @@ TEST(Ex2Stage5QualificationJson, ExactWarmupOnlyGolden)
 {
     const auto result = s5::AssessD1Qualification(Group(Phase::D1Warmup));
     EXPECT_EQ(s5::SerializeAnalysisJson(result),
-        "{\"analysis_schema_version\":1,\"experiment_id\":\"EX-2\",\"protocol_version\":\"1.2\","
+        "{\"analysis_schema_version\":2,\"experiment_id\":\"EX-2\",\"protocol_version\":\"1.2\","
         "\"evidence_kind\":\"qualification\",\"analysis_kind\":\"d1-qualification\","
         "\"warmup_input_valid\":true,\"d1_warmup_qualified\":true,\"selected_common_w\":0,"
         "\"sample_input_present\":false,\"sample_input_valid\":null,\"d1_sample_count_qualified\":null,"
         "\"cuda_r_process\":null,\"cuda_process_stability_qualified\":null,"
         "\"vulkan_r_process\":null,\"vulkan_process_stability_qualified\":null,"
-        "\"d1_scope_qualified\":false,\"reasons\":[]}\n");
+        "\"d1_scope_qualified\":false,\"reasons\":[],\"warmup_processes\":"
+        + GoldenProcesses() + ",\"sample_processes\":null}\n");
 }
 
 TEST(Ex2Stage5QualificationJson, ExactFullScopeGolden)
@@ -660,28 +726,35 @@ TEST(Ex2Stage5QualificationJson, ExactFullScopeGolden)
     const auto warmup = Group(Phase::D1Warmup); const auto samples = Group(Phase::D1Sample);
     const auto result = s5::AssessD1Qualification(warmup, samples);
     EXPECT_EQ(s5::SerializeAnalysisJson(result),
-        "{\"analysis_schema_version\":1,\"experiment_id\":\"EX-2\",\"protocol_version\":\"1.2\","
+        "{\"analysis_schema_version\":2,\"experiment_id\":\"EX-2\",\"protocol_version\":\"1.2\","
         "\"evidence_kind\":\"qualification\",\"analysis_kind\":\"d1-qualification\","
         "\"warmup_input_valid\":true,\"d1_warmup_qualified\":true,\"selected_common_w\":0,"
         "\"sample_input_present\":true,\"sample_input_valid\":true,\"d1_sample_count_qualified\":true,"
         "\"cuda_r_process\":1,\"cuda_process_stability_qualified\":true,"
         "\"vulkan_r_process\":1,\"vulkan_process_stability_qualified\":true,"
-        "\"d1_scope_qualified\":true,\"reasons\":[]}\n");
+        "\"d1_scope_qualified\":true,\"reasons\":[],\"warmup_processes\":"
+        + GoldenProcesses() + ",\"sample_processes\":" + GoldenProcesses(true) + "}\n");
 }
 
 TEST(Ex2Stage5QualificationJson, ExactWarmupScientificFailureGolden)
 {
-    auto warmup = Group(Phase::D1Warmup); warmup[0].hostClockResolutionAdequate = false;
+    auto warmup = Group(Phase::D1Warmup); CoarseClock(warmup[0]);
     EXPECT_EQ(s5::SerializeAnalysisJson(s5::AssessD1Qualification(warmup)),
-        "{\"analysis_schema_version\":1,\"experiment_id\":\"EX-2\",\"protocol_version\":\"1.2\","
+        "{\"analysis_schema_version\":2,\"experiment_id\":\"EX-2\",\"protocol_version\":\"1.2\","
         "\"evidence_kind\":\"qualification\",\"analysis_kind\":\"d1-qualification\","
         "\"warmup_input_valid\":true,\"d1_warmup_qualified\":false,\"selected_common_w\":null,"
         "\"sample_input_present\":false,\"sample_input_valid\":null,\"d1_sample_count_qualified\":null,"
         "\"cuda_r_process\":null,\"cuda_process_stability_qualified\":null,"
         "\"vulkan_r_process\":null,\"vulkan_process_stability_qualified\":null,"
         "\"d1_scope_qualified\":false,\"reasons\":["
-        "\"warmup:cuda:0:host_clock_resolution_inadequate\","
-        "\"warmup:cuda:0:no_candidate_warmup_qualified\"]}\n");
+        "\"warmup:cuda:0:w=0:host_clock_resolution_inadequate\","
+        "\"warmup:cuda:0:w=1:host_clock_resolution_inadequate\","
+        "\"warmup:cuda:0:w=2:host_clock_resolution_inadequate\","
+        "\"warmup:cuda:0:w=4:host_clock_resolution_inadequate\","
+        "\"warmup:cuda:0:w=8:host_clock_resolution_inadequate\","
+        "\"warmup:cuda:0:w=16:host_clock_resolution_inadequate\","
+        "\"warmup:cuda:0:no_candidate_warmup_qualified\"],\"warmup_processes\":"
+        + GoldenProcesses(false, true) + ",\"sample_processes\":null}\n");
 }
 
 TEST(Ex2Stage5QualificationJson, EscapesControlsQuotesBackslashesAndRetainsUtf8)
@@ -703,9 +776,9 @@ TEST(Ex2Stage5QualificationJson, RejectsNanInfinityAndUnsupportedVersions)
         assessment.cudaRProcess = value;
         EXPECT_THROW((void)s5::SerializeAnalysisJson(assessment), std::invalid_argument);
     }
-    assessment.cudaRProcess.reset(); assessment.analysisVersion = 2U;
+    assessment.cudaRProcess.reset(); assessment.analysisVersion = 3U;
     EXPECT_THROW((void)s5::SerializeAnalysisJson(assessment), std::invalid_argument);
-    assessment.analysisVersion = 1U; assessment.protocolVersion = "1.0";
+    assessment.analysisVersion = 2U; assessment.protocolVersion = "1.0";
     EXPECT_THROW((void)s5::SerializeAnalysisJson(assessment), std::invalid_argument);
 }
 

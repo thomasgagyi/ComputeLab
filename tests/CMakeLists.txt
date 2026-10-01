@@ -21,6 +21,7 @@ add_executable(ComputeLabTests
     Ex2Gate0Tests.cpp
     Ex2Gate0SupervisorTests.cpp
     Ex2Stage5QualificationTests.cpp
+    Ex2Stage5OperationalFactsTests.cpp
 )
 
 target_link_libraries(ComputeLabTests

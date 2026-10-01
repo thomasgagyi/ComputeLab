@@ -106,6 +106,8 @@ target_link_libraries(ComputeLabEx2HostTiming
 )
 
 add_library(ComputeLabEx2Stage5Qualification STATIC
+    Ex2Stage5OperationalFacts.cpp
+    Ex2Stage5OperationalFacts.hpp
     Ex2Stage5Qualification.cpp
     Ex2Stage5Qualification.hpp
 )

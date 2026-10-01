@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ex2/Ex2Stage5OperationalFacts.hpp"
+
 #include <array>
 #include <compare>
 #include <cstddef>
@@ -14,7 +16,7 @@ namespace computelab::ex2::stage5
 {
 
 inline constexpr std::uint32_t SchemaVersion = 2U;
-inline constexpr std::uint32_t AnalysisSchemaVersion = 1U;
+inline constexpr std::uint32_t AnalysisSchemaVersion = 2U;
 inline constexpr std::string_view ExperimentId = "EX-2";
 inline constexpr std::string_view ProtocolVersion = "1.2";
 inline constexpr std::string_view EvidenceKind = "qualification";
@@ -89,21 +91,8 @@ struct ProcessInput
     PlannedProcess process;
     std::uint64_t expectedObservationCount{};
     std::vector<Observation> observations;
-    // Supplied facts: I1 does not invent clock or state-detection heuristics.
-    bool hostClockResolutionAdequate{};
-    bool persistentTrendOrAbruptStateSwitch{};
+    ClockCalibrationInput clockCalibration;
 };
-
-// Exact integer/half-nanosecond median, including near UINT64_MAX. Binary64
-// conversion is only for diagnostics; threshold decisions use the exact value.
-struct MedianNanoseconds
-{
-    std::uint64_t whole{};
-    bool half{};
-    auto operator<=>(const MedianNanoseconds&) const = default;
-    [[nodiscard]] double AsDouble() const noexcept;
-};
-[[nodiscard]] MedianNanoseconds Median(std::span<const std::uint64_t> values);
 
 struct WarmupCandidateDiagnostics
 {
@@ -111,6 +100,8 @@ struct WarmupCandidateDiagnostics
     MedianNanoseconds earlyA, earlyB, reference, lateA;
     double earlyARelativeDifference{}, earlyBRelativeDifference{}, lateRelativeDifference{};
     bool qualified{};
+    OrderedStateAssessment orderedState;
+    ClockAdequacyAssessment clockAdequacy;
 };
 
 struct CommonWarmupAssessment;
@@ -128,6 +119,7 @@ public:
     [[nodiscard]] std::optional<std::uint64_t> SelectedW() const noexcept { return selectedW_; }
     [[nodiscard]] const auto& Candidates() const noexcept { return candidates_; }
     [[nodiscard]] const auto& Reasons() const noexcept { return reasons_; }
+    [[nodiscard]] const auto& ClockCalibration() const noexcept { return calibration_; }
 private:
     friend WarmupProcessAssessment AssessWarmupProcess(const ProcessInput&);
     PlannedProcess process_;
@@ -135,6 +127,7 @@ private:
     std::optional<std::uint64_t> selectedW_;
     std::vector<WarmupCandidateDiagnostics> candidates_;
     std::vector<std::string> reasons_;
+    ClockCalibrationAssessment calibration_;
 };
 
 struct CommonWarmupAssessment
@@ -152,6 +145,8 @@ struct SampleCountDiagnostics
     MedianNanoseconds median50, median100, median200;
     std::array<MedianNanoseconds, 4> windows;
     double prefix100RelativeDifference{}, prefix50RelativeDifference{}, firstLastRelativeDifference{};
+    OrderedStateAssessment orderedState;
+    ClockAdequacyAssessment clockAdequacy;
 };
 class SampleCountProcessAssessment;
 [[nodiscard]] SampleCountProcessAssessment AssessSampleCountProcess(const ProcessInput& input);
@@ -164,6 +159,7 @@ public:
     [[nodiscard]] std::optional<std::uint64_t> SelectedW() const noexcept { return selectedW_; }
     [[nodiscard]] const auto& Diagnostics() const noexcept { return diagnostics_; }
     [[nodiscard]] const auto& Reasons() const noexcept { return reasons_; }
+    [[nodiscard]] const auto& ClockCalibration() const noexcept { return calibration_; }
 private:
     friend SampleCountProcessAssessment AssessSampleCountProcess(const ProcessInput&);
     PlannedProcess process_;
@@ -171,6 +167,7 @@ private:
     std::optional<SampleCountDiagnostics> diagnostics_;
     bool qualified_{};
     std::vector<std::string> reasons_;
+    ClockCalibrationAssessment calibration_;
 };
 
 struct ProcessStabilityAssessment
@@ -201,7 +198,49 @@ struct D1QualificationAssessment
     std::optional<bool> vulkanProcessStabilityQualified;
     bool d1ScopeQualified{};
     std::vector<std::string> reasons;
+    std::vector<WarmupProcessAssessment> warmupProcesses;
+    std::optional<std::vector<SampleCountProcessAssessment>> sampleProcesses;
 };
+
+class A1ProcessAssessment;
+[[nodiscard]] A1ProcessAssessment AssessA1Process(const ProcessInput& input);
+class A1ProcessAssessment final
+{
+public:
+    [[nodiscard]] const PlannedProcess& Process() const noexcept { return process_; }
+    [[nodiscard]] bool InputValid() const noexcept { return median48_.has_value(); }
+    [[nodiscard]] const auto& Median48() const noexcept { return median48_; }
+    [[nodiscard]] const auto& ClockCalibration() const noexcept { return calibration_; }
+    [[nodiscard]] const auto& ClockAdequacy() const noexcept { return adequacy_; }
+    [[nodiscard]] const auto& OrderedState() const noexcept { return state_; }
+    [[nodiscard]] const auto& Reasons() const noexcept { return reasons_; }
+private:
+    friend A1ProcessAssessment AssessA1Process(const ProcessInput&);
+    PlannedProcess process_;
+    std::optional<MedianNanoseconds> median48_;
+    ClockCalibrationAssessment calibration_;
+    ClockAdequacyAssessment adequacy_;
+    OrderedStateAssessment state_;
+    std::vector<std::string> reasons_;
+};
+
+struct A1BackendDescription
+{
+    bool inputValid{};
+    std::optional<double> rA1Process;
+    std::optional<bool> exceedsOnePointTen;
+};
+struct A1SentinelAssessment
+{
+    bool inputValid{};
+    std::vector<A1ProcessAssessment> processes;
+    A1BackendDescription cuda, vulkan;
+    std::vector<std::string> reasons;
+};
+// Descriptive only, independent of D1 qualification. No tiny-host admission.
+[[nodiscard]] A1BackendDescription DescribeA1Backend(Stage5Backend backend,
+    std::span<const A1ProcessAssessment> processes);
+[[nodiscard]] A1SentinelAssessment AssessA1Sentinel(std::span<const ProcessInput> processes);
 
 [[nodiscard]] D1QualificationAssessment AssessD1Qualification(
     std::span<const ProcessInput> warmup,
