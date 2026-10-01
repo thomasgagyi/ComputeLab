@@ -280,8 +280,9 @@ bool IsCanonicalUuid(std::string_view value) noexcept
 
 void ValidateConditionContext(const ComparisonConditionContext& context)
 {
-    if (context.protocolVersion != "1.0" && context.protocolVersion != "1.1")
-        throw std::invalid_argument("EX-2 protocol version must be 1.0 or 1.1");
+    if (context.protocolVersion != "1.0" && context.protocolVersion != "1.1"
+        && context.protocolVersion != "1.2")
+        throw std::invalid_argument("EX-2 protocol version must be 1.0, 1.1 or 1.2");
     if (!IsValidAnonymousIdentifier(context.machineId))
         throw std::invalid_argument("EX-2 machine_id is not an anonymous identifier");
     if (!context.gpuIdentity.externallyVerified)

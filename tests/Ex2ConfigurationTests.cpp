@@ -307,7 +307,7 @@ TEST(Ex2Identity, AFixtureMatchesIndependentLiteralCanonicalJsonAndSha256)
         "4d7f59d82a16d18a7738e43eaa236ce233f1384e749da092c813793265b22ffa");
 }
 
-TEST(Ex2Identity, ScopedProtocolVersionPolicyAcceptsOnlyOnePointZeroAndOnePointOne)
+TEST(Ex2Identity, ScopedProtocolVersionPolicyAcceptsOnlyOnePointZeroOnePointOneAndOnePointTwo)
 {
     const auto v10 = Condition(ex2::MakeConfiguration(
         ex2::LinearConfiguration{ex2::LinearVariant::A1, 257U}));
@@ -324,12 +324,28 @@ TEST(Ex2Identity, ScopedProtocolVersionPolicyAcceptsOnlyOnePointZeroAndOnePointO
 
     auto arbitrary = v10;
     arbitrary.protocolVersion = "1.2";
-    EXPECT_THROW(static_cast<void>(
-        ex2::ComparisonConditionCanonicalJson(arbitrary)),
-        std::invalid_argument);
-    arbitrary.protocolVersion = "2.0";
-    EXPECT_THROW(static_cast<void>(ex2::ComparisonConditionId(arbitrary)),
-        std::invalid_argument);
+    EXPECT_NO_THROW(static_cast<void>(ex2::ComparisonConditionCanonicalJson(arbitrary)));
+    EXPECT_NE(ex2::ComparisonConditionId(arbitrary), ex2::ComparisonConditionId(v11));
+    for (const auto version : {"", "1", "1.00", "1.3", "2.0"})
+    {
+        arbitrary.protocolVersion = version;
+        EXPECT_THROW(static_cast<void>(ex2::ComparisonConditionId(arbitrary)), std::invalid_argument);
+    }
+}
+
+TEST(Ex2Identity, HistoricalOnePointOneLiteralAndDigestRemainFrozen)
+{
+    auto condition = Condition(ex2::MakeConfiguration(ex2::LinearConfiguration{ex2::LinearVariant::A1, 257U}));
+    condition.protocolVersion = "1.1";
+    // Independently hashed literal bytes using .NET SHA256; v1.0's existing
+    // literal condition and series fixtures above are retained unchanged.
+    EXPECT_EQ(ex2::ComparisonConditionCanonicalJson(condition),
+        "{\"byte_count\":null,\"counter_count\":null,\"element_count\":257,\"execution_mode\":\"ordinary\","
+        "\"generator_revision\":\"ex2-mix64-v1\",\"gpu_uuid_identity\":\"00112233-4455-6677-8899-aabbccddeeff\","
+        "\"index_pattern\":null,\"instrument_mode\":\"H\",\"iteration_count\":null,\"machine_id\":\"anonymous-machine\","
+        "\"operation_boundary\":\"single-dispatch-completion\",\"protocol_version\":\"1.1\",\"seed\":81985529216486895,"
+        "\"transfer_direction\":null,\"variant\":\"A1\",\"workload\":\"A\"}");
+    EXPECT_EQ(ex2::ComparisonConditionId(condition), "c6c2eb1f7aad2678724845b761084872c9ece0960429f424d590c3c848921da0");
 }
 
 TEST(Ex2Identity, IndexedFixtureAnchorsApplicableOptionalSemanticParameter)

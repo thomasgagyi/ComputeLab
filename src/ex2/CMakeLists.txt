@@ -114,6 +114,15 @@ add_library(ComputeLabEx2Stage5Qualification STATIC
 target_compile_features(ComputeLabEx2Stage5Qualification PUBLIC cxx_std_20)
 target_include_directories(ComputeLabEx2Stage5Qualification PUBLIC ${PROJECT_SOURCE_DIR}/src)
 
+add_library(ComputeLabEx2Stage5Evidence STATIC
+    Ex2Stage5Evidence.cpp
+    Ex2Stage5Evidence.hpp
+)
+target_compile_features(ComputeLabEx2Stage5Evidence PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2Stage5Evidence PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_link_libraries(ComputeLabEx2Stage5Evidence PUBLIC
+    ComputeLabEx2Stage5Qualification ComputeLabEx2Evidence ComputeLabEx2CpuOracles)
+
 add_library(ComputeLabEx2Gate0Support STATIC
     Ex2Gate0.cpp
     Ex2Gate0.hpp
