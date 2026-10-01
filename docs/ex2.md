@@ -2,15 +2,17 @@
 
 ## Status and authorization
 
-**Specification v1.0 — approved design baseline; measurement qualification pending.** Design freeze date: 2026-09-17. This version fixes the generic workload definitions, implementation boundary, initial experiment matrix, record contract and proposed qualification procedure. It is suitable for separately authorized qualification support and for correctness-first EX-2 implementation under the sequencing decision below. A future amendment must document changes to the protocol before affected evidence is collected.
+**Specification v1.0 — approved base design; historical measurement clauses where amended.** Design freeze date: 2026-09-17. v1.0 fixes the generic workload definitions, implementation boundary, maximum initial matrix, schema-v2 record contract and original bounded qualification procedure. Its A–E semantic design remains authoritative except where a later amendment explicitly says otherwise; historical v1.0 evidence and meanings remain immutable. Later amendments must name exactly what they add or supersede before affected evidence is collected.
 
-**EX-2 experiment state: Proposed. Gate 0: NOT PASSED. Stage-2 execution-protocol authorization: NOT GRANTED. EX-2 candidate-performance collection: PROHIBITED.** Design approval does not turn uncollected qualification evidence into a PASS. The Stage-2 completion checkpoint is marked complete only after Gate 0, review of resulting applicability, clean committed specification and explicit execution authorization. A Gate-0 FAIL blocks comparative collection; a LIMITED PASS admits only named conditions/metrics. Codex may implement EX-2 workloads and correctness support under the sequencing decision below, but must not execute candidate-performance campaigns or silently change this contract.
+**Current EX-2 state:** I7 implementation/control/acceptance is complete; Stage 3 implementation is complete; Stage 4 integrated correctness is **PASS** for clean source `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793`, RTX 2060 SUPER UUID `0340eaac-dc67-f450-d558-d47c55cc4417`, and the exact 22 approved A–E correctness cells. The first clean Stage-4 attempt at `343e0dbcb28c46b6bbfa5309d72d6a5b0c5ffac7` remains preserved as historical **INCOMPLETE** evidence after stopping at E1 cell 16 on the E textual UUID-format contract. After the bounded producer correction, the replacement campaign at `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793` passed 22/22 cells, 44/44 backend series and 176/176 standard package-artifact reconciliation, with 683/683 canonical tests before and after and 43/43 Vulkan standard plus 43/43 synchronization validation. Both Stage-4 attempts are curated at evidence commit `24558d0d121a41e3d92f407f804ffbd1154c24b3` under `results/evidence/ex2/i7-stage4/`.
 
-EX-1's final outcome was **measurement methodology not qualified for downstream comparison**. Its correctness/provenance evidence is useful; fresh-process host-visible CUDA/256 states, universally justified warm-up, and instrumentation-perturbation control are unresolved. We do **not** investigate the CUDA/256 root cause as a prerequisite. Tiny host-visible CUDA/Vulkan comparisons are excluded from the initial authorized scope; a later qualification can amend that exclusion. A fresh set of tidy results alone does not resolve the anomaly.
+**Measurement authorization remains separate:** EX-2 experiment state remains Proposed for performance work. Gate 0 is **NOT PASSED**. DR-41 remains Proposed. Stage-2 measurement-execution authorization is **NOT GRANTED**. EX-2 candidate-performance collection remains **PROHIBITED**. D2 remains conditional and unimplemented. Step 10b is not passed. Correctness completion does not admit a measurement metric or authorize a candidate-performance campaign.
 
-**Authority:** `AGENTS.md`, `docs/charter.md`, `docs/methodology.md`, and `docs/results-format.md` define common rules; this approved EX-2 design narrows them without changing EX-1's historical interpretation. EX-1 source, frozen executable/SPIR-V, evidence and schema v1 remain intact. A contradiction with a common rule blocks implementation until reviewed, not silently overridden.
+EX-1's final outcome remains **measurement methodology not qualified for downstream comparison**. Its correctness/provenance evidence is useful; fresh-process host-visible CUDA/256 states, universally justified warm-up, and instrumentation-perturbation control remain unresolved. We do **not** investigate the CUDA/256 root cause as a prerequisite. Tiny host-visible CUDA/Vulkan ranking remains excluded. A tidy later run does not erase the historical anomaly.
 
-**Implementation sequencing decision (2026-09-18; measurement procedure unchanged):** EX-2 implementation and correctness qualification may proceed independently of unresolved Gate-0 measurement qualification. The existing A–E semantic design remains authoritative. Gate 0 and the final measurement-protocol review are deferred until implementation and correctness qualification have progressed sufficiently. Comparative candidate-performance collection remains separately authorized and cannot be inferred from implementation completion. This sequencing decision does not constitute Gate-0 admission or Stage-2 measurement-protocol authorization.
+**Authority:** `AGENTS.md`, `docs/charter.md`, `docs/methodology.md`, and `docs/results-format.md` define common rules; this EX-2 specification narrows them without changing EX-1's historical interpretation. EX-1 source, frozen executable/SPIR-V, evidence and schema v1 remain intact. A contradiction with a common rule blocks execution until reviewed, not silently overridden.
+
+**Implementation sequencing decision (2026-09-18):** EX-2 implementation and correctness qualification were allowed to proceed independently of unresolved Gate-0 measurement qualification. That correctness-first path subsequently completed through I7 and Stage 4. The existing A–E semantic design remains authoritative. Comparative candidate-performance collection remains separately authorized and cannot be inferred from implementation or correctness completion. The scoped v1.2 amendment below now defines the bounded Stage-5 qualification path used to decide the still-open Gate-0 measurement scope.
 
 ### Scoped v1.1 correctness logical-input identity amendment
 
@@ -24,11 +26,142 @@ The composite digest deliberately excludes workload variant, generator revision,
 
 Independent byte-packing fixtures are: B `primary_words=[0x12345678,0,0xffffffff,0xabcdef01]`, `permutation_words=[2,0,3,1]`, 123 encoded bytes, SHA-256 `c1b25198fd9f902e15f42b3d0080e893d4101f113855602720a63bf063a9e2de`; and C `targets_words=[3,0,3,1]`, `initial_counters_words=[0,0,0,0]`, 128 encoded bytes, SHA-256 `57cdcea826ef422677831a21be364ee2c44d203e533ac40c53b16f6d697fa9b7`. These identities anchor domain/NUL framing, little-endian widths, names, component order, payload lengths and word encoding.
 
-Compatibility is one-way and explicit. Historical v1.0 schema-v2 packages, fixtures and their recorded B/C `input_sha256` meanings remain unchanged: do not relabel, rewrite, backfill, reinterpret or retroactively curate them. New I7 B/C correctness construction requires v1.1 and only the complete composite digest above; a new publisher cannot select v1.0 and supply an arbitrary single-buffer digest. Gate-0 qualification remains governed by its frozen v1.0 contract. The four required files and exact existing `samples.csv` v2 header remain unchanged.
+Compatibility is one-way and explicit. Historical v1.0 schema-v2 packages, fixtures and their recorded B/C `input_sha256` meanings remain unchanged: do not relabel, rewrite, backfill, reinterpret or retroactively curate them. New I7 B/C correctness construction requires v1.1 and only the complete composite digest above; a new publisher cannot select v1.0 and supply an arbitrary single-buffer digest. At v1.1 publication, Gate-0 qualification still followed the v1.0 contract; the later scoped v1.2 amendment below supersedes only the named Stage-5/Gate-0 clauses for new qualification evidence. The four required files and exact existing `samples.csv` v2 header remain unchanged.
 
-An I7 configuration or input-generation failure that occurs before a valid correctness foundation exists cannot produce a plan-bound schema-v2 sample row. Future Prompt 2 execution/package handling must retain that pre-foundation failure externally without fabricating a plan, expected output, GPU identity or sample record. The typed failure adapter begins only after successful foundation construction.
+An I7 configuration or input-generation failure that occurs before a valid correctness foundation exists cannot produce a plan-bound schema-v2 sample row. The implemented I7 execution/package path therefore retains that pre-foundation failure externally without fabricating a plan, expected output, GPU identity or sample record. The typed failure adapter begins only after successful foundation construction.
 
-Schema v2 records expected-output SHA-256 and validation status, but it does not retain the actual bytes, length or digest of a failed observed output. This amendment adds no observed-output field, no extra mandatory artifact and no diagnostic archival scheme. Consequently, a future disk package can establish the retained comparison result and expected digest but cannot independently reconstruct or verify unretained wrong GPU output bytes. I7 execution and control work must report that limitation and must not claim such a disk audit occurred. This scoped amendment remains subject to human review of the uncommitted diff and does not mark I7 or Stage 4 complete.
+Schema v2 records expected-output SHA-256 and validation status, but it does not retain the actual bytes, length or digest of a failed observed output. v1.1 added no observed-output field, no extra mandatory artifact and no diagnostic archival scheme. Consequently, retained packages can establish the recorded comparison result and expected digest but cannot independently reconstruct or verify unretained wrong GPU output bytes. This limitation remains active after I7 and Stage-4 completion and must be stated whenever relevant.
+
+### Scoped v1.2 bounded Stage-5 qualification and Gate-0 scope-admission amendment
+
+**Specification v1.2 scope — approved scientific design, not yet executed. Design freeze date: 2026-10-01.** This additive measurement amendment freezes the bounded Stage-5 qualification contract used to decide the still-open Gate-0 measurement scope after I7/Stage-4 correctness completion. It does **not** alter A–E workload semantics, the `ex2-mix64-v1` generator, schema version 2, the exact `samples.csv` v2 header, v1.1 logical-input identity, same-physical-GPU enforcement, the H `t0/t1/t2` boundary, correctness requirements, Gate 0A's native cross-API exclusion, EX-1 history, D2's conditional status, or any retained evidence meaning. New Stage-5 qualification packages use `protocol_version="1.2"` and `evidence_kind="qualification"`. Historical v1.0/v1.1 packages remain immutable and are never relabeled.
+
+**Sequencing amendment:** Stage 5 is now the bounded qualification campaign that supplies the evidence needed to decide Gate 0. The historical numerical stage labels are not renumbered. The current flow is `Stage 4 PASS -> Stage 5 qualification -> Gate-0 verdict -> Stage-2 measurement-scope review/explicit authorization -> Stage 6`. A Stage-5 result never by itself grants Stage-2 authorization or converts qualification evidence into candidate-performance evidence.
+
+#### Stage-5 frozen machine and conditions
+
+The initial Stage-5 qualification slice remains same-GPU and Turing-specific:
+
+- physical GPU: RTX 2060 SUPER UUID `0340eaac-dc67-f450-d558-d47c55cc4417`; compare CUDA/Vulkan only after exact UUID equality and do not substitute another adapter;
+- A1 diagnostic sentinel: `N=256`, ordinary logical execution, instrument mode H;
+- D1 sustained qualification target: `N=1048576`, `K=64`, ordinary logical execution, instrument mode H;
+- every Stage-5 package is qualification evidence and remains qualification evidence permanently;
+- no broad parameter sweep, CUDA/256 root-cause branch, profiler campaign, D2 implementation, A1 128-MiB extension or additional workload family is part of this amendment.
+
+The bounded Stage-5 campaign uses exactly three independent fresh-process groups when all gates are reached:
+
+1. A1 sentinel: five counterbalanced CUDA/Vulkan paired blocks = 10 fresh processes, 48 ordered diagnostic complete operations per process.
+2. D1 warm-up qualification: five new counterbalanced paired blocks = 10 fresh processes, 48 ordered diagnostic complete operations per process.
+3. D1 sample-count/process-repeatability qualification: five further new counterbalanced paired blocks = 10 fresh processes; each process applies the selected common D1 warm-up W, then records 200 ordered measured complete operations.
+
+Thus a Stage-5 slice that reaches D1-S contains 30 fresh processes. A protocol-directed stop after a valid D1-W scientific qualification failure is a complete Stage-5 **FAIL** outcome even though D1-S is not launched; it is not an INCOMPLETE campaign. Process groups are distinct and cannot be pooled or reused as interchangeable replicates. No automatic retry or unplanned extension is allowed.
+
+#### A1 diagnostic-sentinel contract
+
+A1/256 asks only whether the historical tiny-operation host/process-state instability recurs in the final EX-2 implementation. It is a diagnostic process-state sentinel, not a performance-ranking condition.
+
+Each of the five paired fresh-process blocks retains all 48 H observations, including `host_submission_ns`, `host_wait_ns` and `host_completion_ns`, plus process/block/order identity and normal correctness/provenance fields. The existing v1.0 candidate-W calculations may be regenerated descriptively from these observations, but A1 does **not** need a common qualifying W and cannot admit tiny host latency for CUDA/Vulkan ranking.
+
+Interpretation is intentionally bounded:
+
+- a sustained high/low fresh-process regime, abrupt within-process switch, drift or other state structure is retained and reported without root-cause escalation;
+- if the historical split does not recur, report only that it was not reproduced in this campaign;
+- a tidy A1 campaign does not erase EX-1 and does not qualify tiny CUDA/Vulkan host-visible ranking;
+- A1 timing instability does not make D1 fail;
+- an A1 correctness, provenance, GPU-identity, schema, timeout or execution-control failure makes Stage 5 incomplete until separately resolved because the frozen qualification campaign did not execute as specified.
+
+#### D1 sustained qualification contract
+
+D1 `(N=1048576,K=64)` is the primary Stage-5 Gate-0 qualification target. The scientific question is whether ordinary H `host_completion_ns` for the complete sustained device-resident D1 operation is interpretable across fresh processes on the named RTX 2060 SUPER.
+
+The logical operation and backend-native implementations remain unchanged. Before each D1 complete operation, restore initial state A and complete preparation outside `t0`. CUDA's K native launches and Vulkan's ordinary per-operation command reset/record, K dispatches, required inter-pass barriers and submit remain inside the existing `t0->t1` submission boundary; completion wait ends at `t2`; readback and validation remain outside `t2`. The comparison is the same logical complete operation, not a claim that the two APIs perform identical host-side work.
+
+D1 qualification has two mandatory, nonoverlapping process phases:
+
+- **D1-W:** five paired fresh-process blocks for warm-up qualification;
+- **D1-S:** only if D1-W succeeds, five new paired fresh-process blocks for sample-count and fresh-process stability qualification.
+
+No D1-W process may be reused in D1-S.
+
+#### D1 warm-up qualification
+
+The v1.0 bounded warm-up algorithm is inherited unchanged for D1 H `host_completion_ns`.
+
+Each D1-W process records 48 ordered complete-operation diagnostic timings. Candidate warm-ups are exactly `W={0,1,2,4,8,16}`. For each candidate W compare medians for `[W,W+8)` and `[W+8,W+16)` against the disjoint late reference `[40,48)`, and compare `[32,40)` against `[40,48)` for late drift. A candidate W qualifies within one process only when all three relative median differences are at most 5%, host-clock effective resolution permits a meaningful 5% distinction, and there is no clear persistent trend or abrupt state switch. The first qualifying candidate is that process's W.
+
+All ten D1-W processes—five CUDA and five Vulkan—must find some qualifying `W<=16`. The Stage-5 common D1 W is the maximum of the ten per-process qualifying W values. If any D1-W process has no qualifying W by 16, D1 H host completion is unqualified under v1.2. Do not try W=32/64/128, change thresholds, discard the process or start a root-cause campaign. Preserve all 48 observations.
+
+#### D1 sample-count and fresh-process qualification
+
+Only after D1-W succeeds, each D1-S process applies exactly the selected common W and then records exactly 200 ordered measured complete D1 operations. For H `host_completion_ns`, calculate each process's prefix medians at 50, 100 and 200 observations and four consecutive nonoverlapping 50-sample windows.
+
+Candidate ordinary count 100 qualifies within one process only when:
+
+- `abs(median100/median200 - 1) <= 0.02`;
+- `abs(median50/median200 - 1) <= 0.05`;
+- first-to-last 50-sample window drift is no more than 5% and there is no systematic within-process drift/state switch;
+- the 200-sample value is nonzero and resolved relative to the host clock's effective precision.
+
+All ten D1-S processes must satisfy the rule. Stage 5 has **no automatic 200-sample ordinary fallback**: if any process fails to qualify 100, D1 H host completion is unqualified under v1.2. Do not collect 400 observations, keep doubling, or choose a count after viewing the direction of results. A future different ordinary count requires a separately reviewed protocol amendment.
+
+Passing within-process convergence is not sufficient. For each backend independently, let the five process medians be the median of the first 100 accepted D1-S H `host_completion_ns` observations from each fresh process. Define `R_process = max(process_median)/min(process_median)` over positive, clock-resolved medians. Require `R_process <= 1.10` for CUDA and independently `R_process <= 1.10` for Vulkan, with no discarded process. This threshold is tied to the existing v1.0 10% minimum practically meaningful host-completion effect: a backend whose own qualified-process centers span more than that effect cannot support a 10% cross-backend claim under this scope.
+
+D1 qualification does **not** require CUDA and Vulkan themselves to differ by 10%. Near-equal, stable backend distributions can qualify the ruler. Stage 5 does not issue a backend-performance winner or use paired process ratios as candidate-performance claims.
+
+#### Metric admission and instrumentation policy
+
+For Stage 5, **Mode H `host_completion_ns` is the sole decision-bearing metric**. `host_submission_ns` and `host_wait_ns` remain recorded diagnostics and do not inherit host-completion admission. Their direct CUDA/Vulkan comparison requires a future explicit justification.
+
+Mode N and Mode P are non-decision-bearing in v1.2:
+
+- Mode N native CUDA event / Vulkan timestamp observations are optional backend-native explanatory or within-backend diagnostics only.
+- Gate 0A remains unchanged: CUDA event and Vulkan timestamp intervals are not admitted for direct cross-API scalar ranking.
+- Mode N never rescues failed H evidence, never substitutes for H and is never relabeled as ordinary candidate-performance evidence.
+- Mode P / profiler / validation instrumentation is diagnostic only and never supplies ordinary timing evidence.
+- Because N and P are excluded from the Stage-5 decision metric, H/N perturbation qualification is **not** a prerequisite for admitting H under v1.2. This does not claim EX-1 instrumentation perturbation was characterized; its downstream effect is resolved by scoping instrumented timing out of the admitted metric.
+
+The v1.0 five-block H/N perturbation campaign and the v1.0 one-time five-pair borderline-effect extension do not execute as part of Stage 5 v1.2. No extra process group is added merely because cross-backend ratios appear interesting or borderline.
+
+#### Stage-5 execution state and Gate-0 verdict
+
+`INCOMPLETE` is a Stage-5 execution state, not a Gate-0 scientific verdict. Stage 5 is INCOMPLETE if the frozen campaign cannot validly answer its question because of a crash, timeout, device loss, wrong/mismatched GPU, source/provenance drift, malformed evidence, supervisor/control failure, required-capability failure, incorrect output/correctness regression or another execution/evidence defect. Preserve all partial evidence; do not silently rerun. Gate 0 remains NOT PASSED until the execution defect is separately reviewed.
+
+The strongest Gate-0 verdict available from this bounded Stage-5 slice is **LIMITED PASS**. Full Gate-0 PASS is intentionally unavailable because tiny A1 ranking, direct native CUDA/Vulkan timing comparison, other workload families and other GPUs remain unqualified.
+
+Issue **LIMITED PASS** only if the Stage-5 campaign is complete and D1 satisfies all of the following:
+
+- every retained operation used for qualification is correct;
+- CUDA and Vulkan match the exact intended physical RTX 2060 SUPER;
+- H `t0/t1/t2` boundaries are valid and arithmetically consistent;
+- all ten D1-W processes qualify some `W<=16`;
+- the common W is the maximum of those ten values;
+- all ten D1-S processes qualify ordinary count 100 under the frozen prefix/window rules;
+- CUDA `R_process<=1.10`;
+- Vulkan `R_process<=1.10`;
+- host-clock resolution is adequate;
+- raw packages, summaries, provenance, process identities and derived qualification analysis independently reconcile.
+
+A LIMITED PASS admits only the named scope: the verified RTX 2060 SUPER, sustained D1-style device-resident sequences represented by D1 `(1048576,64)`, instrument mode H, metric `host_completion_ns`, the qualified common W, ordinary measured count 100, fresh OS process as the independent experimental unit, and the frozen counterbalanced same-GPU CUDA/Vulkan process-block procedure. It explicitly excludes A1/256 host-latency ranking, `host_submission_ns` ranking, `host_wait_ns` ranking, CUDA-event versus Vulkan-timestamp ranking, N/P timings as candidate-performance evidence, other GPUs and other A–E workload families until separately qualified.
+
+Issue **FAIL** for the proposed D1 H comparison scope when the campaign executes validly but D1 fails a scientific measurement-admission criterion—for example no common `W<=16`, failure of 100-sample convergence, persistent within-process drift/state switching, `R_process>1.10` for either backend, or inadequate host-clock resolution. A FAIL triggers no automatic root-cause investigation, threshold relaxation, additional warm-up, sample-count expansion or broader matrix.
+
+A Stage-5 LIMITED PASS does not itself grant Stage-2 measurement-execution authorization. Human review must still freeze the resulting admitted scope in a clean committed specification and explicitly authorize Stage-2 candidate-performance execution.
+
+#### Stage-6 consequence
+
+Gate 0 controls claim strength, not whether ComputeLab may learn anything further.
+
+- After a Stage-5 LIMITED PASS and explicit Stage-2 authorization, Stage 6 may collect candidate-performance evidence only inside the admitted D1/H host-completion scope and any additional workload-family scopes that later pass the same bounded applicability method.
+- D1 sustained is already the admitted reference class after LIMITED PASS. A/B/C/E representative classes require their own explicitly labeled bounded applicability qualification before their Stage-6 candidate cells may use H `host_completion_ns` comparatively.
+- A1/256 remains diagnostic-only unless a future amendment explicitly qualifies tiny host latency.
+- If Stage 5 yields Gate-0 FAIL for D1 H, comparative candidate-performance ranking remains blocked. Stage 6 may proceed only after a separate human-reviewed scope freeze as descriptive/diagnostic infrastructure characterization; such work may study process/driver behavior, resource/submission mechanics, within-backend scaling, contention, transfers, native explanatory timing and tooling, but cannot claim that CUDA is X% faster/slower than Vulkan.
+- Nothing in v1.2 authorizes D2, Step 10b, production backend selection or production-runtime architectural conclusions.
+
+#### v1.2 compatibility and evidence identity
+
+v1.2 changes no schema-v2 column or mandatory standard file. The existing four-file package remains authoritative; `warmup.csv` remains the additive qualification diagnostic artifact where warm-up characterization is performed. New Stage-5 packages and derived analysis must identify `protocol_version="1.2"` and `evidence_kind="qualification"` and must retain exact source/build/binary/shader/GPU/process provenance. Historical v1.0 and v1.1 package identities, B/C digest meanings and evidence remain unchanged.
+
+Where the historical v1.0 Gate-0 body below conflicts with this scoped amendment for new Stage-5 qualification evidence, **v1.2 governs only the named Stage-5/Gate-0 clauses above**. In particular v1.2 supersedes v1.0's Stage-5 sequencing, mandatory H/N perturbation prerequisite, optional 200-sample ordinary fallback, one-time borderline-effect extension for this Stage-5 slice, and the possibility of a full Gate-0 PASS from this bounded campaign. All other compatible v1.0 rules remain inherited.
 
 ## Question
 
@@ -184,9 +317,11 @@ Before every separately measured C operation, reset and complete counter initial
 
 An asynchronous API error may surface on submit, wait, timer retrieval or readback; retain its phase and native error. Timeouts are unsuccessful outcomes, never durations. A timed-out Vulkan/CUDA operation is not assumed safe for immediate resource reuse/destruction; a supervising process may terminate the child and retain independently written partial evidence.
 
-## Gate 0 — frozen qualification *procedure*, not a verdict
+## Gate 0 — historical v1.0 qualification procedure, amended by v1.2
 
-This section prespecifies the bounded method. **There is no Gate-0 PASS at v1.0 publication.** Root-cause diagnosis of EX-1 CUDA/256 is out of scope. EX-1's distinct process state remains visible, and tiny host-visible cross-backend claims are excluded by default. Gate 0 must independently establish a viable comparison scope on a representative generic operation or issue FAIL. Stage 5 must then confirm scope on actual EX-2 tiny/large cases before Stage 6.
+The body of this section preserves the v1.0 bounded measurement procedure and is retained as historical protocol text. **For new Stage-5 qualification evidence, the scoped v1.2 amendment above governs wherever it explicitly differs.** v1.0 still supplies inherited H timing boundaries, fresh-process pairing, warm-up/sample mathematics, evidence rules and other compatible mechanics.
+
+At v1.0 publication there was no Gate-0 PASS. Root-cause diagnosis of EX-1 CUDA/256 was out of scope. EX-1's distinct process state remained visible, and tiny host-visible cross-backend claims were excluded by default. v1.0 originally required Gate 0 to establish a representative comparison scope before Stage 5 rechecked applicability. v1.2 changes that sequencing: Stage 5 now supplies the bounded evidence used to decide Gate 0.
 
 ### Timing mode and exact boundaries
 
@@ -276,27 +411,29 @@ The 22-cell maximum corresponds to 220 fresh backend processes at five paired bl
 
 ## Implementation sequence and tests
 
-The strategic Notion roadmap retains Stages 0–9; implementation milestones I0–I7 refine them. **Implementation and correctness work may proceed while Gate 0 remains pending:** complete the I2 semantic foundation, then implement A–E backend-native workloads, correctness-only entry points, experiment-control support and tests under separately reviewed tasks. Preserve EX-1 behavior and serializers. No implementation, smoke test or correctness run qualifies a metric, grants Stage-2 measurement-protocol authorization or permits candidate-performance collection. Qualification campaigns still require their own authorization.
+The strategic Notion roadmap retains Stages 0–9; implementation milestones I0–I7 refine them. The correctness-first implementation path is now complete through I7: the semantic foundation, backend-native A–E workloads, correctness entry points, experiment-control support, fresh-process correctness supervisor, evidence publication and integrated Stage-4 acceptance have been implemented and reviewed. Stage 3 is complete and Stage 4 is PASS at source `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793`; curated Stage-4 evidence is anchored by commit `24558d0d121a41e3d92f407f804ffbd1154c24b3`. Preserve EX-1 behavior and serializers. No implementation, smoke test or correctness run qualifies a metric, grants Stage-2 measurement-protocol authorization or permits candidate-performance collection.
 
-Implementation order: independent Mix/fixture/oracle and generator tests; config/identity/schema v2; A1 CPU→CUDA→Vulkan vertical slice; A2; B; C; D1; E; conditional D2 only by amendment; integrated runner/fresh-process control and full correctness qualification. Preserve EX-1 tests. Do not prematurely add abstractions, dependencies or utility layers shared with consuming applications. Run ` .\scripts\test.ps1 ` locally after code changes; if host SDK or GPU access is unavailable, report rather than bypass.
+Historical implementation order was: independent Mix/fixture/oracle and generator tests; config/identity/schema v2; A1 CPU->CUDA->Vulkan vertical slice; A2; B; C; D1; E; integrated runner/fresh-process control and full correctness qualification. D2 remains conditional and unimplemented. The next implementation work, if separately approved, is only the bounded Stage-5 v1.2 qualification machinery required by the frozen A1/D1 campaign; do not broaden it into Stage-6 candidate-performance execution. Preserve EX-1 tests. Do not prematurely add abstractions, dependencies or utility layers shared with consuming applications. Run ` .\scripts\test.ps1 ` locally after code changes; if host SDK or GPU access is unavailable, report rather than bypass.
 
-Tests require: exact generator/golden constants and independently calculated expected outputs; permutation uniqueness and malformed-index rejection; unsigned and atomic correctness/overflow; N=0, N=1, N=257 and workgroup-boundary correctness; D K=0/1/16/64 parity and read-after-write/write-after-read barriers; C reset, output invariants and source preservation; E byte-exact copy and coherent/noncoherent memory visibility; event/timestamp validity and scope metadata; t0/t1/t2 arithmetic, failure, timeout and null behavior; schema header/version/identity collisions, sample ordering and independent summary regeneration; same physical GPU enforcement, true instrumentation declarations, all historical EX-1 tests and canonical Windows smoke tests.
+Tests continue to require: exact generator/golden constants and independently calculated expected outputs; permutation uniqueness and malformed-index rejection; unsigned and atomic correctness/overflow; N=0, N=1, N=257 and workgroup-boundary correctness; D K=0/1/16/64 parity and read-after-write/write-after-read barriers; C reset, output invariants and source preservation; E byte-exact copy and coherent/noncoherent memory visibility; event/timestamp validity and scope metadata; t0/t1/t2 arithmetic, failure, timeout and null behavior; schema header/version/identity collisions, sample ordering and independent summary regeneration; same physical GPU enforcement, true instrumentation declarations, all historical EX-1 tests and canonical Windows smoke tests. Stage-5-specific support must additionally test the exact three-group process plan, counterbalanced ordering, 48-operation warm-up analysis, selected-common-W rule, 50/100/200 prefix analysis, `R_process<=1.10`, no-fallback/no-extension stop rules, qualification-only evidence identity and independently regenerable verdict analysis.
 
 ## Acceptance checkpoints and revision policy
 
-- **Stage 0 design:** A–E portfolio, formulas, exclusions and initial cell ceiling are approved by the v1.0 design freeze. Retain D2 conditional.
-- **Stage 1 measurement Gate 0:** remains **PENDING** until reviewed qualification evidence yields PASS/LIMITED PASS/FAIL with exact admitted/excluded scopes. A formally reviewed exclusion is allowed; claiming exclusion alone qualifies the rest is not.
-- **Stage 2 protocol freeze:** the measurement-execution freeze still requires Gate 0, verified applicability of chosen measurements, clean committed `docs/ex2.md` with any required gate-driven amendment and explicit human authorization. Correctness-first implementation may proceed beforehand under the sequencing decision; this document is the approved **design baseline**, not a claim of Stage-2 completion.
-- **Stage 3 implementation:** EX-2 additive workloads/runner may be developed and correctness-tested before Gate 0 under the sequencing decision; no EX-1 semantic changes, all applicable tests passed, and no candidate-performance authorization is implied.
-- **Stage 4 correctness:** independently verified exact CPU/CUDA/Vulkan outputs and valid resource/synchronization behavior before performance interpretation.
-- **Stage 5:** RTX 2060 SUPER tiny A1/sustained D1 checks the qualified contract; failure stops Stage 6 and may revoke Gate-0 admission.
-- **Stages 6–9:** selected eligible cells, process-resolved raw evidence, accessible cross-generation subset, separate tooling observations, correctness-first bounded synthesis and provisional starting-path discussion only within tested scope.
+- **Stage 0 design:** **COMPLETE.** A–E portfolio, formulas, exclusions and maximum initial cell ceiling are approved by the v1.0 design freeze. D2 remains conditional and unimplemented.
+- **Stage 1 measurement Gate 0:** **PENDING.** v1.2 freezes the bounded Stage-5 path used to decide this gate. The strongest Stage-5 scientific verdict is LIMITED PASS; FAIL is issued for a validly executed D1 H scope that does not qualify; INCOMPLETE is an execution/evidence state and leaves Gate 0 not passed.
+- **Stage 2 measurement-execution freeze:** **NOT AUTHORIZED.** It still requires the reviewed Gate-0 outcome, exact admitted/excluded scope, a clean committed specification incorporating any required amendment, and explicit human authorization. A Stage-5 LIMITED PASS does not automatically complete Stage 2.
+- **Stage 3 implementation:** **COMPLETE.** EX-2 additive A–E semantics, backend-native implementations, correctness runner/control and evidence machinery are implemented; no candidate-performance authorization is implied.
+- **Stage 4 correctness:** **PASS.** The accepted clean campaign at source `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793` completed all 22 approved cells and 44 backend series; both the first historical INCOMPLETE attempt and the final PASS attempt are curated at evidence commit `24558d0d121a41e3d92f407f804ffbd1154c24b3`.
+- **Stage 5 bounded same-GPU qualification:** **DESIGNED / NOT EXECUTED.** Execute the v1.2 30-process RTX 2060 SUPER slice: A1/256 diagnostic sentinel, D1 `(1048576,64)` warm-up qualification, then—only if warm-up succeeds—D1 sample-count/fresh-process qualification. This evidence decides Gate 0; it is never candidate-performance evidence.
+- **Stage 6 full same-GPU screen:** **NOT AUTHORIZED FOR CANDIDATE-PERFORMANCE COLLECTION.** After a Gate-0 LIMITED PASS and explicit Stage-2 authorization, only named admitted family/metric scopes may collect comparative candidate-performance evidence. After a Gate-0 FAIL, Stage 6 requires a separate human-reviewed descriptive/diagnostic scope and may not make CUDA-versus-Vulkan performance rankings.
+- **Stage 7 cross-generation screen:** not started; any later RTX 3060 Ti / RTX 5060 subset requires a new approved matrix, machine-specific provenance and appropriate metric/family requalification.
+- **Stages 8–9:** not started; tooling/engineering observations remain separate from performance evidence, and final synthesis stays bounded to tested scopes.
 
-No EX-2 results exist in this design release. A documented amendment is necessary if measured qualifications require different W, sample counts, effect tolerance, metrics, hardware set, timing placement, shader/kernel formulas, schema or allowed cells. Record both the old and new revision; do not silently rewrite historical evidence or relabel qualification runs as performance runs. The operator must explicitly approve any actual commit or push.
+Existing EX-2 correctness results are authoritative only for correctness. Stage-5 qualification and later measurement evidence must use a clean committed revision of this v1.2 contract, exact new evidence identities and separately reviewed execution manifests. A documented amendment is necessary if qualification requires different W, sample counts, effect tolerance, metrics, hardware set, timing placement, shader/kernel formulas, schema or allowed cells. Record both old and new revisions; do not silently rewrite historical evidence, relax thresholds after seeing results, or relabel qualification runs as performance runs. The operator must explicitly approve any actual commit or push.
 
 ## References
 
-Internal: `AGENTS.md`, `docs/charter.md`, `docs/methodology.md`, `docs/results-format.md`, `docs/ex1.md`, and the EX-2 Notion Experiment/roadmap/DR-40/DR-41 records. This file contains the executable design details for agents without Notion access; Notion owns strategic decisions, not duplicate technical implementation text.
+Internal: `AGENTS.md`, `docs/charter.md`, `docs/methodology.md`, `docs/results-format.md`, `docs/ex1.md`, `docs/i7-correctness-supervisor.md`, and the EX-2 Notion Experiment/roadmap/DR-40/DR-41/DR-42 records. The planned DR-43 record owns the strategic decision to use bounded Stage-5 qualification as the Gate-0 scope-admission path once its Notion record is created; this file owns the exact executable protocol. This file contains executable design details for agents without Notion access; Notion owns strategic decisions, experiment narrative and roadmap state rather than duplicate technical implementation text.
 
 External API behavior, **not EX-2 qualification evidence**:
 
