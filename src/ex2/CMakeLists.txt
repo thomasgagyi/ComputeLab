@@ -105,6 +105,13 @@ target_link_libraries(ComputeLabEx2HostTiming
         ComputeLabHostTiming
 )
 
+add_library(ComputeLabEx2Stage5Qualification STATIC
+    Ex2Stage5Qualification.cpp
+    Ex2Stage5Qualification.hpp
+)
+target_compile_features(ComputeLabEx2Stage5Qualification PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2Stage5Qualification PUBLIC ${PROJECT_SOURCE_DIR}/src)
+
 add_library(ComputeLabEx2Gate0Support STATIC
     Ex2Gate0.cpp
     Ex2Gate0.hpp

@@ -20,6 +20,7 @@ add_executable(ComputeLabTests
     Ex2FoundationIntegrationTests.cpp
     Ex2Gate0Tests.cpp
     Ex2Gate0SupervisorTests.cpp
+    Ex2Stage5QualificationTests.cpp
 )
 
 target_link_libraries(ComputeLabTests
@@ -35,6 +36,7 @@ target_link_libraries(ComputeLabTests
         ComputeLabEx2Evidence
         ComputeLabEx2HostTiming
         ComputeLabEx2Gate0Support
+        ComputeLabEx2Stage5Qualification
 )
 
 if(TARGET ComputeLabEnvironment)
