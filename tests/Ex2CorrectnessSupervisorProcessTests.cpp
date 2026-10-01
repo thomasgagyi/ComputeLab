@@ -14,8 +14,11 @@ using namespace std::chrono_literals;
 c::ProcessResult RunHelper(std::vector<std::string> args, std::chrono::milliseconds op = 200ms,
     std::chrono::milliseconds child = 800ms)
 {
+    // This helper isolates protocol/backend/child behavior; campaign timeout is
+    // tested independently below. Child modes sleep at most 10s, so this remote
+    // test-only guard remains bounded if a local timeout breaks.
     return c::RunSupervisedProcess(COMPUTELAB_I7_TEST_CHILD, args, op, child,
-        std::chrono::steady_clock::now() + 5s);
+        std::chrono::steady_clock::now() + 30s);
 }
 
 TEST(Ex2I7SupervisorProgress, ExactOrderAndChildTimestampDeadline)
