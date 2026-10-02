@@ -20,13 +20,14 @@ int main(int argc, char** argv)
     {
         std::vector<std::string_view> args;
         for (int i = 1; i < argc; ++i) args.emplace_back(argv[i]);
+        auto reporter = computelab::ex2::stage5::control::ExtractProgressReporter(args);
         const auto config = child::ParseArguments(args);
         std::wstring executable(32768, L'\0');
         const auto length = GetModuleFileNameW(nullptr, executable.data(), static_cast<DWORD>(executable.size()));
         if (!length || length >= executable.size()) throw std::runtime_error("executable path unavailable");
         executable.resize(length);
         return static_cast<int>(child::RunChild(config, {COMPUTELAB_REPOSITORY_ROOT, executable,
-            COMPUTELAB_EX2_A1_SPIRV_PATH, COMPUTELAB_EX2_D1_SPIRV_PATH}));
+            COMPUTELAB_EX2_A1_SPIRV_PATH, COMPUTELAB_EX2_D1_SPIRV_PATH}, reporter.Observer()));
     }
     catch (const std::exception&)
     {

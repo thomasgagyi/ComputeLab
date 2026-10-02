@@ -249,7 +249,7 @@ if(TARGET ComputeLabEx2CudaA1 AND TARGET ComputeLabEx2VulkanA1
     target_compile_features(ComputeLabEx2Stage5Execution PUBLIC cxx_std_20)
     target_include_directories(ComputeLabEx2Stage5Execution PUBLIC ${PROJECT_SOURCE_DIR}/src)
     target_link_libraries(ComputeLabEx2Stage5Execution PUBLIC
-        ComputeLabEx2Stage5Evidence ComputeLabEx2HostTiming ComputeLabEnvironment
+        ComputeLabEx2Stage5Evidence ComputeLabEx2HostTiming ComputeLabEnvironment ComputeLabEx2Stage5Control
         ComputeLabEx2CudaA1 ComputeLabEx2VulkanA1 ComputeLabEx2CudaD1 ComputeLabEx2VulkanD1)
     add_executable(ComputeLabEx2Stage5 Ex2Stage5Main.cpp)
     target_compile_features(ComputeLabEx2Stage5 PRIVATE cxx_std_20)
@@ -258,6 +258,13 @@ if(TARGET ComputeLabEx2CudaA1 AND TARGET ComputeLabEx2VulkanA1
         COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
         COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
     target_link_libraries(ComputeLabEx2Stage5 PRIVATE ComputeLabEx2Stage5Execution)
+    add_executable(ComputeLabEx2Stage5Supervisor Ex2Stage5SupervisorMain.cpp)
+    target_compile_features(ComputeLabEx2Stage5Supervisor PRIVATE cxx_std_20)
+    target_compile_definitions(ComputeLabEx2Stage5Supervisor PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+    target_link_libraries(ComputeLabEx2Stage5Supervisor PRIVATE ComputeLabEx2Stage5Control)
 endif()
 
 if(TARGET ComputeLabEx2Gate0Support

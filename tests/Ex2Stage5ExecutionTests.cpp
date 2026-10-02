@@ -462,4 +462,33 @@ TEST(Ex2Stage5ExecutionControl, LiteralPreFoundationGoldenJson)
         "\"successful_wait\":null,\"validation_passed\":null,\"host_submission_ns\":null,\"host_wait_ns\":null,\"host_completion_ns\":null,"
         "\"detail\":\"synthetic failure\"}\n");
 }
+
+TEST(Ex2Stage5ExecutionControl, ObserverEnclosesPreparationReadbackValidationAndRetention)
+{
+    namespace control = s5::control;
+    std::vector<std::string> order; order.reserve(8);
+    control::AttemptObserver observer{&order, [](void* context, const control::AttemptIdentity& i, control::AttemptEvent e) noexcept {
+        auto& values = *static_cast<std::vector<std::string>*>(context);
+        values.push_back(e == control::AttemptEvent::Started ? "started" : "returned");
+        EXPECT_EQ(i.kind, control::AttemptKind::DiagnosticObservation);
+    }};
+    const control::AttemptIdentity i{Phase::A1Sentinel, s5::Stage5Backend::Cuda, control::AttemptKind::DiagnosticObservation, 0, 1};
+    EXPECT_TRUE(ex::ExecuteObservedAttempt(observer, i, [&] {
+        order.push_back("retained-input-preparation"); order.push_back("t0-t1-wait-t2"); order.push_back("readback"); return Success();
+    }, [&](const ex::Attempt& a) { EXPECT_TRUE(a.waitSucceeded); order.push_back("exact-validation"); order.push_back("raw-row-retained"); return true; }));
+    EXPECT_EQ(order, (std::vector<std::string>{"started", "retained-input-preparation", "t0-t1-wait-t2", "readback", "exact-validation", "raw-row-retained", "returned"}));
+}
+TEST(Ex2Stage5ExecutionControl, FailedPhysicalAttemptOrRetentionNeverReportsReturned)
+{
+    namespace control = s5::control;
+    unsigned started{}, returned{}; std::pair<unsigned*, unsigned*> context{&started, &returned};
+    control::AttemptObserver observer{&context, [](void* p, const control::AttemptIdentity&, control::AttemptEvent e) noexcept {
+        const auto c = *static_cast<std::pair<unsigned*, unsigned*>*>(p); if (e == control::AttemptEvent::Started) ++*c.first; else ++*c.second;
+    }};
+    const control::AttemptIdentity i{Phase::D1Sample, s5::Stage5Backend::Cuda, control::AttemptKind::SelectedWarmupPreparation, 0, 0};
+    EXPECT_THROW(ex::ExecuteObservedAttempt(observer, i, []() -> ex::Attempt { throw std::logic_error("preparation failed"); }, [](const auto&) { return true; }), std::logic_error);
+    EXPECT_FALSE(ex::ExecuteObservedAttempt(observer, i, [] { return Success(Phase::D1Sample); }, [](const auto&) { return false; }));
+    EXPECT_THROW(ex::ExecuteObservedAttempt(observer, i, [] { return Success(Phase::D1Sample); }, [](const auto&) -> bool { throw std::runtime_error("retention failed"); }), std::runtime_error);
+    EXPECT_EQ(started, 3U); EXPECT_EQ(returned, 0U);
+}
 } // namespace

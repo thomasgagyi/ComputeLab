@@ -273,4 +273,14 @@ if(TARGET ComputeLabEx2Stage5Execution)
     target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2Stage5Execution)
 endif()
 
+if(TARGET ComputeLabEx2Stage5Control)
+    add_executable(ComputeLabEx2Stage5SupervisorTestChild Ex2Stage5SupervisorTestChild.cpp)
+    target_link_libraries(ComputeLabEx2Stage5SupervisorTestChild PRIVATE ComputeLabEx2Stage5Control)
+    target_sources(ComputeLabTests PRIVATE Ex2Stage5SupervisorTests.cpp Ex2Stage5SupervisorProcessTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2Stage5Control)
+    add_dependencies(ComputeLabTests ComputeLabEx2Stage5SupervisorTestChild ComputeLabEx2Stage5Supervisor)
+    target_compile_definitions(ComputeLabTests PRIVATE
+        COMPUTELAB_S5_TEST_CHILD="$<TARGET_FILE:ComputeLabEx2Stage5SupervisorTestChild>")
+endif()
+
 gtest_discover_tests(ComputeLabTests)

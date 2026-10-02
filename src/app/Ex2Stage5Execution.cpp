@@ -561,7 +561,14 @@ std::string SerializeFailure(const FailureRecord& r)
 void WriteFailure(const SessionPaths& p, const FailureRecord& r)
 { Require(!Exists(p.final), "cannot attach failure to successful package"); WriteFileBytes(p.failure, SerializeFailure(r)); }
 
-ExitCode RunChild(const Configuration& c, const RuntimePaths& paths)
+bool ExecuteObservedAttempt(control::AttemptObserver observer, const control::AttemptIdentity& identity,
+    const std::function<Attempt()>& attempt, const std::function<bool(const Attempt&)>& retain)
+{
+    observer.Report(identity, control::AttemptEvent::Started);
+    if (!retain(attempt())) return false;
+    observer.Report(identity, control::AttemptEvent::Returned); return true;
+}
+ExitCode RunChild(const Configuration& c, const RuntimePaths& paths, control::AttemptObserver observer)
 {
     FailureRecord failure; failure.sessionId = c.sessionId;
     failure.failurePhase = "preflight"; failure.errorCode = "preflight_failed";
@@ -594,6 +601,14 @@ ExitCode RunChild(const Configuration& c, const RuntimePaths& paths)
         };
         std::optional<Bundle> bundle;
         bool completed = true;
+        const auto observed = [&](std::uint64_t index, bool preparation, const std::function<Attempt()>& attempt, Sink& sink) {
+            const control::AttemptIdentity identity{c.phase, route.process.backend,
+                preparation ? control::AttemptKind::SelectedWarmupPreparation : c.phase == Stage5Phase::D1Sample
+                    ? control::AttemptKind::MeasuredObservation : control::AttemptKind::DiagnosticObservation,
+                static_cast<std::uint32_t>(c.planIndex), static_cast<std::uint32_t>(index)};
+            return ExecuteObservedAttempt(observer, identity, attempt,
+                [&](const Attempt& a) { return sink.Accept(a, index, preparation); });
+        };
         // Each branch initializes and invokes only the selected native backend.
         if (route.process.backend == Stage5Backend::Cuda && c.phase == Stage5Phase::A1Sentinel)
         {
@@ -604,7 +619,7 @@ ExitCode RunChild(const Configuration& c, const RuntimePaths& paths)
             for (std::uint64_t i = 0; i < DiagnosticObservationCount; ++i)
             {
                 BeginA1Observation(failure, i);
-                if (!sink.Accept(ObserveCudaA1(operation, i != 0), i, false)) { completed = false; break; }
+                if (!observed(i, false, [&] { return ObserveCudaA1(operation, i != 0); }, sink)) { completed = false; break; }
             }
         }
         else if (route.process.backend == Stage5Backend::Vulkan && c.phase == Stage5Phase::A1Sentinel)
@@ -619,7 +634,7 @@ ExitCode RunChild(const Configuration& c, const RuntimePaths& paths)
             for (std::uint64_t i = 0; i < DiagnosticObservationCount; ++i)
             {
                 BeginA1Observation(failure, i);
-                if (!sink.Accept(ObserveVulkanA1(operation, i != 0), i, false)) { completed = false; break; }
+                if (!observed(i, false, [&] { return ObserveVulkanA1(operation, i != 0); }, sink)) { completed = false; break; }
             }
         }
         else if (route.process.backend == Stage5Backend::Cuda)
@@ -630,10 +645,10 @@ ExitCode RunChild(const Configuration& c, const RuntimePaths& paths)
             bundle = establish(operation.SelectedDeviceUuid(), {.implementation = "ex2-cuda-d1-native", .streamFlags = "nonblocking"});
             Sink sink(*bundle, *session, failure, expected); sink.Start();
             for (std::uint64_t i = 0; i < route.preparationCount; ++i)
-                if (!sink.Accept(ObserveCudaD1(operation, input), i, true)) { completed = false; break; }
+                if (!observed(i, true, [&] { return ObserveCudaD1(operation, input); }, sink)) { completed = false; break; }
             const auto count = route.condition.diagnosticCount + route.condition.measuredSampleCount;
             for (std::uint64_t i = 0; completed && i < count; ++i)
-                if (!sink.Accept(ObserveCudaD1(operation, input), i, false)) completed = false;
+                if (!observed(i, false, [&] { return ObserveCudaD1(operation, input); }, sink)) completed = false;
         }
         else
         {
@@ -649,10 +664,10 @@ ExitCode RunChild(const Configuration& c, const RuntimePaths& paths)
             bundle = establish(operation.SelectedDeviceUuid(), diag);
             Sink sink(*bundle, *session, failure, expected); sink.Start();
             for (std::uint64_t i = 0; i < route.preparationCount; ++i)
-                if (!sink.Accept(ObserveVulkanD1(operation, input), i, true)) { completed = false; break; }
+                if (!observed(i, true, [&] { return ObserveVulkanD1(operation, input); }, sink)) { completed = false; break; }
             const auto count = route.condition.diagnosticCount + route.condition.measuredSampleCount;
             for (std::uint64_t i = 0; completed && i < count; ++i)
-                if (!sink.Accept(ObserveVulkanD1(operation, input), i, false)) completed = false;
+                if (!observed(i, false, [&] { return ObserveVulkanD1(operation, input); }, sink)) completed = false;
         }
         if (!completed) throw std::runtime_error("operation did not complete the frozen process");
         failure.attemptIndex.reset(); failure.successfulWait.reset(); failure.preparationAttempt = false;

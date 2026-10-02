@@ -2,8 +2,10 @@
 
 #include "ex2/Ex2Stage5Evidence.hpp"
 #include "ex2/Ex2HostTiming.hpp"
+#include "ex2/Ex2Stage5Progress.hpp"
 
 #include <filesystem>
+#include <functional>
 
 namespace computelab::ex2::stage5::execution
 {
@@ -102,5 +104,9 @@ void BeginA1Observation(FailureRecord&, std::uint64_t index);
 [[nodiscard]] std::string SerializeFailure(const FailureRecord&);
 void WriteFailure(const SessionPaths&, const FailureRecord&);
 struct RuntimePaths { std::filesystem::path repository, executable, a1Shader, d1Shader; };
-[[nodiscard]] ExitCode RunChild(const Configuration&, const RuntimePaths&);
+// Control events enclose physical preparation, H operation, readback, exact
+// validation and row retention. Failure/exception never fabricates Returned.
+[[nodiscard]] bool ExecuteObservedAttempt(control::AttemptObserver, const control::AttemptIdentity&,
+    const std::function<Attempt()>&, const std::function<bool(const Attempt&)>&);
+[[nodiscard]] ExitCode RunChild(const Configuration&, const RuntimePaths&, control::AttemptObserver = {});
 } // namespace computelab::ex2::stage5::execution

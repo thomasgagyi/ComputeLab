@@ -123,6 +123,15 @@ target_include_directories(ComputeLabEx2Stage5Evidence PUBLIC ${PROJECT_SOURCE_D
 target_link_libraries(ComputeLabEx2Stage5Evidence PUBLIC
     ComputeLabEx2Stage5Qualification ComputeLabEx2Evidence ComputeLabEx2CpuOracles)
 
+if(Q0_ENABLE_CUDA AND Q0_ENABLE_VULKAN)
+    add_library(ComputeLabEx2Stage5Control STATIC
+        Ex2Stage5Progress.hpp Ex2Stage5Supervisor.hpp Ex2Stage5Supervisor.cpp)
+    target_compile_features(ComputeLabEx2Stage5Control PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2Stage5Control PUBLIC ${PROJECT_SOURCE_DIR}/src)
+    target_link_libraries(ComputeLabEx2Stage5Control PUBLIC
+        ComputeLabEx2Stage5Evidence ComputeLabEnvironment)
+endif()
+
 add_library(ComputeLabEx2Gate0Support STATIC
     Ex2Gate0.cpp
     Ex2Gate0.hpp
