@@ -6,13 +6,15 @@
 
 **Current EX-2 state:** I7 implementation/control/acceptance is complete; Stage 3 implementation is complete; Stage 4 integrated correctness is **PASS** for clean source `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793`, RTX 2060 SUPER UUID `0340eaac-dc67-f450-d558-d47c55cc4417`, and the exact 22 approved A–E correctness cells. The first clean Stage-4 attempt at `343e0dbcb28c46b6bbfa5309d72d6a5b0c5ffac7` remains preserved as historical **INCOMPLETE** evidence after stopping at E1 cell 16 on the E textual UUID-format contract. After the bounded producer correction, the replacement campaign at `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793` passed 22/22 cells, 44/44 backend series and 176/176 standard package-artifact reconciliation, with 683/683 canonical tests before and after and 43/43 Vulkan standard plus 43/43 synchronization validation. Both Stage-4 attempts are curated at evidence commit `24558d0d121a41e3d92f407f804ffbd1154c24b3` under `results/evidence/ex2/i7-stage4/`.
 
-**Measurement authorization remains separate:** EX-2 experiment state remains Proposed for performance work. Gate 0 is **NOT PASSED**. DR-41 remains Proposed. Stage-2 measurement-execution authorization is **NOT GRANTED**. EX-2 candidate-performance collection remains **PROHIBITED**. D2 remains conditional and unimplemented. Step 10b is not passed. Correctness completion does not admit a measurement metric or authorize a candidate-performance campaign.
+**Current Stage-5 / Gate-0 state:** S5-E1 is a valid complete qualification campaign, **COMPLETE — SCIENTIFICALLY NONQUALIFIED**. The Stage-5 v1.2 scientific protocol was frozen at `0f8a82838bd601f6662272b36d3acb15f4da10db`; S5-I5 / S5-E1 source is `70859055bf4280f5aeacd8039e9d3c41c9487e84`; curated S5-E1 evidence is committed at `a5694b6afa918499607949ec0c60d63d21be1270` under `results/evidence/ex2/stage5/ex2-s5-e1-7085905/`. All ten D1-W inputs are valid; five of ten have no qualifying `W<=16`; `selected_common_w=null`, `d1_warmup_qualified=false`, `d1_scope_qualified=false`, and D1-S is `skipped_by_protocol`. Gate 0 is **FAIL for the proposed D1/H `host_completion_ns` comparative scope**. The protocol-directed D1-S skip is a complete negative scientific outcome, not an execution defect.
+
+**Authorization and next branch:** DR-41 is **Retired**; DR-43 is **Accepted**, and its bounded Stage-5 path completed as designed; DR-44 is **Accepted** and owns the post-Gate-0 full descriptive/diagnostic Stage-6 branch. EX-2 remains active for bounded diagnostic engineering evidence. Stage-2 comparative measurement-execution authorization remains **NOT GRANTED**; comparative CUDA-versus-Vulkan candidate-performance remains **PROHIBITED under the failed ruler**. D2 remains conditional and unimplemented; Step 10b is **NOT PASSED**. The S6-C1 v1.3 amendment below is **READY FOR HUMAN REVIEW**, not self-accepted. Only after human acceptance does Stage 6 become **PROTOCOL FROZEN / IMPLEMENTATION NOT STARTED**. No Stage-6 implementation or campaign has begun.
 
 EX-1's final outcome remains **measurement methodology not qualified for downstream comparison**. Its correctness/provenance evidence is useful; fresh-process host-visible CUDA/256 states, universally justified warm-up, and instrumentation-perturbation control remain unresolved. We do **not** investigate the CUDA/256 root cause as a prerequisite. Tiny host-visible CUDA/Vulkan ranking remains excluded. A tidy later run does not erase the historical anomaly.
 
 **Authority:** `AGENTS.md`, `docs/charter.md`, `docs/methodology.md`, and `docs/results-format.md` define common rules; this EX-2 specification narrows them without changing EX-1's historical interpretation. EX-1 source, frozen executable/SPIR-V, evidence and schema v1 remain intact. A contradiction with a common rule blocks execution until reviewed, not silently overridden.
 
-**Implementation sequencing decision (2026-09-18):** EX-2 implementation and correctness qualification were allowed to proceed independently of unresolved Gate-0 measurement qualification. That correctness-first path subsequently completed through I7 and Stage 4. The existing A–E semantic design remains authoritative. Comparative candidate-performance collection remains separately authorized and cannot be inferred from implementation or correctness completion. The scoped v1.2 amendment below now defines the bounded Stage-5 qualification path used to decide the still-open Gate-0 measurement scope.
+**Implementation sequencing:** the 2026-09-18 correctness-first decision allowed implementation and correctness qualification independently of unresolved Gate-0 measurement qualification; that path completed through I7 and Stage 4. The v1.2 bounded Stage-5 path subsequently completed with Gate-0 FAIL. DR-44 now strategically authorizes the full Stage-6 diagnostic branch, subject to human acceptance of S6-C1 and separately reviewed implementation/execution increments. The future sequence is `S6-C1 -> S6-I1 -> S6-I2 -> S6-I3 -> S6-E1`. The existing A–E semantic design remains authoritative; implementation, correctness and diagnostic collection do not grant comparative candidate-performance authorization. Historical amendment prose below records its publication-time state and is preserved unchanged.
 
 ### Scoped v1.1 correctness logical-input identity amendment
 
@@ -259,6 +261,155 @@ Gate 0 controls claim strength, not whether ComputeLab may learn anything furthe
 v1.2 changes no schema-v2 column or mandatory standard file. The existing four-file package remains authoritative; `warmup.csv` remains the additive qualification diagnostic artifact where warm-up characterization is performed. New Stage-5 packages and derived analysis must identify `protocol_version="1.2"` and `evidence_kind="qualification"` and must retain exact source/build/binary/shader/GPU/process provenance. Historical v1.0 and v1.1 package identities, B/C digest meanings and evidence remain unchanged.
 
 Where the historical v1.0 Gate-0 body below conflicts with this scoped amendment for new Stage-5 qualification evidence, **v1.2 governs only the named Stage-5/Gate-0 clauses above**. In particular v1.2 supersedes v1.0's Stage-5 sequencing, mandatory H/N perturbation prerequisite, optional 200-sample ordinary fallback, one-time borderline-effect extension for this Stage-5 slice, and the possibility of a full Gate-0 PASS from this bounded campaign. All other compatible v1.0 rules remain inherited.
+
+### Scoped v1.3 Stage-6 full descriptive/diagnostic screen amendment
+
+**Specification v1.3 scope — additive revision, READY FOR HUMAN REVIEW. Design freeze date: 2026-10-02.** On human acceptance, this amendment freezes the accepted DR-44 Stage-6 diagnostic protocol and applies only to **new Stage-6 diagnostic evidence**. It does not reverse Gate-0 FAIL, grant Stage 2, admit comparative candidate-performance evidence, change A–E or generator semantics, change schema 2, rewrite v1.0/v1.1/v1.2 evidence, or implement or execute Stage 6. After human acceptance the exact state is **PROTOCOL FROZEN / IMPLEMENTATION NOT STARTED**.
+
+#### Historical evidence and decision anchors
+
+Stage 4 remains correctness PASS at source `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793`, with curated evidence at `24558d0d121a41e3d92f407f804ffbd1154c24b3`. Stage-5 v1.2 was frozen at `0f8a82838bd601f6662272b36d3acb15f4da10db`. S5-E1 source `70859055bf4280f5aeacd8039e9d3c41c9487e84` and curated evidence `a5694b6afa918499607949ec0c60d63d21be1270` establish a valid complete scientific nonqualification: ten valid D1-W inputs, five without qualifying `W<=16`, null common W, false warm-up/scope qualification and D1-S `skipped_by_protocol`. Gate 0 remains **FAIL for proposed D1/H `host_completion_ns` comparative scope**. DR-41 is Retired; DR-43 is Accepted/completed; DR-44 is Accepted. Stage 2 is NOT GRANTED, D2 is conditional/unimplemented, and Step 10b is not passed.
+
+Stage 6 is **not a Gate-0 retry**. A1 and D1 appear because they belong to the core portfolio. Their diagnostic observations do not rerun S5-E1, requalify W, replace Stage-5 evidence, repair Gate 0, create a new Gate-0 verdict or retroactively qualify D1/H for comparative inference.
+
+#### Complete portfolio, physical GPU and fresh-process topology
+
+The complete existing `ApprovedCoreCells()` set is mandatory for v1.3 diagnostic evidence, not a menu: **22 core cells** with unchanged variants, N/K/sizes, patterns, transfer directions and operation semantics.
+
+| Family | Cells | Existing conditions retained |
+| --- | ---: | --- |
+| A1 | 3 | N = 256, 262144, 16777216 |
+| A2 | 2 | N = 262144, 16777216 |
+| B1 | 3 | (262144, structured), (262144, shuffled), (16777216, shuffled) |
+| B2 | 3 | (262144, structured), (262144, shuffled), (16777216, shuffled) |
+| C | 3 | N = 1048576; active counters = N, N/32, 64 |
+| D1 | 2 | (N=262144,K=16), (N=1048576,K=64) |
+| E1 | 3 | H2D; S = 1024, 1048576, 67108864 bytes |
+| E2 | 3 | D2H; S = 1024, 1048576, 67108864 bytes |
+
+E3 is a view over real operations and adds no cell. D2 and the A1 128-MiB-per-buffer confirmation extension are excluded. The initial diagnostic GPU is exactly **RTX 2060 SUPER**, UUID `0340eaac-dc67-f450-d558-d47c55cc4417`. CUDA and Vulkan must resolve to that same physical UUID before later execution; no substitute GPU is allowed. Stage-7 cross-generation work remains separate.
+
+Each cell has five chronological paired blocks, with a fresh OS process for each backend/cell condition and sequential execution:
+
+| Block | Backend order |
+| ---: | --- |
+| 0 | CUDA -> Vulkan |
+| 1 | Vulkan -> CUDA |
+| 2 | CUDA -> Vulkan |
+| 3 | Vulkan -> CUDA |
+| 4 | CUDA -> Vulkan |
+
+This is **10 fresh processes/cell, 220 fresh processes total**. Preserve existing process/block/order identities. No process pooling, hand-picked subset, simultaneous backend load, unplanned extension or automatic retry is allowed.
+
+#### H-only instrument, production build and inherited timing
+
+The mandatory core freezes `instrument_mode="H"`. Mode N is excluded from the core: there is no 440-process H+N campaign and no currently planned native-Mode-N prompt. Future N diagnostics require a separate question, review and authorization.
+
+The sole curated S6-E1 production preset is **`x64-release`**. Debug may later support implementation/unit/smoke work but cannot produce the curated S6-E1 campaign. For ordinary curated H, external Vulkan/API validation layers, profiler collection and tracing are **OFF**, truthfully declared; external instrumentation cannot become timing evidence. Experiment-owned per-operation correctness validation remains **MANDATORY**, independently of those external flags.
+
+H retains the existing boundary without redefining it: capture `t0`; submit/enqueue the declared complete operation; capture `t1`; immediately wait for completion; capture `t2`. When valid:
+
+```text
+host_submission_ns = t1 - t0
+host_wait_ns       = t2 - t1
+host_completion_ns = t2 - t0
+host_completion_ns = host_submission_ns + host_wait_ns
+```
+
+Route-specific preparation remains before `t0`; readback/correctness remains after `t2`. A/B/C/D1/E operation boundaries and backend-native command/launch/copy semantics remain unchanged. The three host metrics are applicable when truthful. `native_device_interval_ns` is null/empty/inapplicable in H, **never zero**; no native interval is fabricated or inferred.
+
+#### Fixed diagnostic sequence and per-operation correctness
+
+Freeze **`warmup_count=0`** and **`planned_sample_count=100`**. Normal process/setup initialization occurs before the sequence; the first declared complete workload operation after normal setup is `sample_index=0`. A fully successful process records indices **0..99**. Zero warm-up deliberately preserves initial process-state behavior; it is not a claim that zero warm-up is adequate for comparative performance. Early behavior is data. No unrecorded workload iterations may be inserted to stabilize timing.
+
+There is no 48-operation qualification, W search, selected/common W, D1-W/D1-S, 50/100/200 convergence, 200 fallback, 400 doubling, timing-triggered extension or adaptive sampling. The fixed count 100 is diagnostic, not a new qualification verdict or stability gate.
+
+Every completed operation must be validated against the existing independent CPU oracle and frozen semantics, including complete output comparison and required input preservation/invariants. An incorrect operation is not successful timing evidence. If sample j fails validation, retain all prior rows and the failing row truthfully, stop that child, and do not execute j+1..99. Never delete or outlier-filter the failing row. Later predeclared slots may continue only under the safe-continuation criterion below.
+
+#### Diagnostic evidence identity, packages and raw retention
+
+New Stage-6 packages use exactly these protocol values:
+
+```text
+protocol_version = "1.3"
+schema_version = 2
+evidence_kind = "diagnostic"
+instrument_mode = "H"
+warmup_count = 0
+planned_sample_count = 100
+```
+
+`diagnostic` extends the `evidence_kind` vocabulary only for new v1.3 Stage-6 evidence. Historical `correctness`, `qualification` and `candidate-performance` meanings and identities remain unchanged; no relabeling or schema bump occurs. Preserve canonical logical-input/condition/series/run identities and exact source/build/binary/shader/GPU/process provenance.
+
+Exactly four standard files remain required: `environment.json`, `initialization.csv`, `samples.csv`, `summary.json`. Neither `warmup.csv` nor `host-clock.csv` is mandatory for Stage 6. Initialization remains separate from measured samples, with truthful observations and no invented zero setup durations. The exact existing `samples.csv` v2 header below is unchanged: no added, removed, reordered or renamed column; existing null semantics remain authoritative. H native-device fields remain empty/null.
+
+Separate **retention** from **summary eligibility**:
+
+| Class | Examples | Retain raw evidence | Successful-operation timing summaries |
+| --- | --- | --- | --- |
+| A: correctness/execution-invalid | `validation_failed`, `submit_failed`, `wait_failed`, `timeout`, `device_lost`, `incomplete` | YES | NO |
+| B: correctness-valid completed, unusual timing | very slow/fast, early/late state, drift, abrupt shift, multimodal behavior, extreme valid process median | YES | YES |
+
+All failed/missing/partial outcomes remain truthful evidence with applicable timing components or nulls. Only fully completed correctness-passing `ok` rows enter successful-operation summaries. Every valid unusual timing remains in its diagnostic distribution; Stage 6 has **no statistical-outlier deletion/filtering mechanism** and never drops an extreme valid process.
+
+A package may be **FINAL** with fewer than 100 successful operations. For example, `planned_sample_count=100`, `recorded_sample_count=18`, indices 0..16 `ok`, and index 17 `validation_failed` can form a truthful final diagnostic-failure package. **FINAL does not mean success**. `.incomplete` denotes lifecycle/publication/control uncertainty, not merely fewer than 100 successes. Pre-foundation failures cannot fabricate plan-bound rows, input/oracle identities or setup completion. Exact publication mechanics belong to S6-I2/I3.
+
+#### Slot resolution, safe continuation and campaign integrity
+
+Conceptual slot states are **`resolved_success`**, **`resolved_diagnostic_failure`**, **`unresolved_campaign_fatal`**, and **`not_launched`**; exact enum/member serialization is deferred. A campaign is **COMPLETE** only when all 220 declared slots are truthfully resolved; COMPLETE does not mean 220 successful processes. It is **INCOMPLETE** when campaign-integrity/control is lost before the complete schedule can be safely resolved. Coverage distinguishes `declared_slots`, `attempted_slots`, `resolved_slots`, `successful_slots`, `diagnostic_failure_slots`, and `unlaunched_slots`. No ambiguous global PASS is issued.
+
+A terminal slot-local diagnostic failure permits the next declared slot only if the future supervisor can establish **all** of: child terminated; no operation outstanding; completion state known; future GPU execution safe; progress/control prefix trustworthy; truthful terminal evidence durably captured; and supervisor control remains durable. Otherwise stop and mark the campaign INCOMPLETE. No automatic retry occurs.
+
+Potentially slot-local outcomes, only when safely resolved, include clean initialization failure; clean resource/capability failure; deterministic input/configuration failure; correctness failure after known completion; readback failure after known completion; clean pre-submission failure; and child-local evidence publication failure **only if trustworthy external evidence fully resolves that slot**. A failure name alone never grants continuation.
+
+Campaign-fatal classes include source/provenance drift; wrong/mismatched GPU; control identity corruption; malformed progress/control; operation/child timeout with uncertain completion; campaign deadline; device loss; completion uncertainty; abnormal death with work outstanding; containment failure; unknown descendant survival; inability to maintain durable supervisor state; and supervisor ledger publication failure. Preserve partial evidence and unlaunched slots truthfully.
+
+#### Pure descriptive analysis and claim firewall
+
+S6-I1 owns a **pure Stage-6 analysis layer** for descriptive/statistical logic. The future S6-I3 supervisor may determine when independently inspected inputs are ready, supply pure inputs, invoke analysis, and publish/hash-anchor outputs; it must **not own statistical formulas**.
+
+For each process, successful H rows use existing shared algorithms and null semantics for sample count, minimum, median, mean, sample standard deviation, coefficient of variation and p95 for `host_submission_ns`, `host_wait_ns`, and `host_completion_ns`. Preserve process grouping and original sample order; do not pool processes into a primary sample group. Four positional windows are fixed by original `sample_index`: **0..24, 25..49, 50..74, 75..99**. Each may report `successful_row_count` and the successful-row `host_completion_ns` median or null. Failed/missing rows do not shift later rows into earlier windows. No 5%/10% stability threshold or qualification verdict is attached.
+
+For each backend within one cell, canonical analysis may represent five process identities, five terminal states, recorded/successful/failure counts, process H summaries and diagnostic failure counts. The threshold-free diagnostic
+
+```text
+process_median_span_ratio = max(five process host_completion medians)
+                            / min(five process host_completion medians)
+```
+
+is applicable **only if all five processes have complete 100-successful-row H series and valid positive medians**; otherwise it is null/inapplicable. Do not call it `R_process` or attach `<=1.10` or any Stage-5 qualification threshold.
+
+Canonical Stage-6 derived analysis must not define cross-backend fields such as `cuda_over_vulkan`, `vulkan_over_cuda`, `speedup`, `percent_difference`, `winner`, `loser`, `paired_ratio`, `aggregate_backend_score`, or `backend_rank`. Raw evidence remains available. Canonical interpretation cannot claim a CUDA/Vulkan winner or speedup, production backend selection, Stage-2 comparative admission or production-runtime architecture/performance.
+
+Within one backend, diagnostic interpretation may describe A1 scaling across N, C contention regimes, E transfer-size behavior, submission/wait/completion structure, process-state variation and other frozen-cell scaling behavior. These observations do not become cross-backend candidate-performance claims.
+
+Future derived identities are **`cell-00-analysis.json` through `cell-21-analysis.json`**, plus **`campaign-analysis.json`**. Analysis must be independently regenerable from exact referenced raw-package hashes/resolved inputs and cannot replace raw evidence. C1 freezes identity/purpose only; full JSON member layout and exact serialization belong to S6-I1 and are not implemented here.
+
+#### Immutable manifest, ledger ownership and external safety ceilings
+
+The future campaign uses **one immutable full production manifest**, 22 cell groups, ten predeclared child identities per group and 220 declared children, sequential fresh-process execution, all-or-nothing preflight before child zero, no arbitrary subset, no dynamic addition and no retry. The manifest is control/provenance, not a scientific configuration surface: it cannot override cell definitions, sample/warm-up counts, H-only mode, backend order, thresholds, analysis formulas or continuation policy. Exact JSON schema belongs to S6-I3.
+
+The future supervisor ledger owns manifest identity/hash; source/build/GPU provenance; deadlines; all 220 slots; launch/exit; progress; package inspection; slot resolution; continuation decisions; cell-analysis hashes; campaign-analysis hash; and terminal campaign state/fatal reason. It does not duplicate 22,000 raw timing values or own statistics. Exact ledger schema and durable mechanics belong to S6-I3.
+
+Preserve external maxima: **operation <=60 seconds, child <=20 minutes, campaign <=24 hours**. These are maximum control envelopes, not exact S6-E1 production values. S6-E1 freezes those values after implementation review. No result automatically expands a deadline; no retry follows a deadline.
+
+#### Human-controlled increment sequence and future ownership
+
+| Increment | Purpose and future ownership | State after human acceptance of C1 |
+| --- | --- | --- |
+| S6-C1 — Protocol 1.3 diagnostic-contract freeze | This normative EX-2 amendment only | Protocol frozen |
+| S6-I1 — Diagnostic plan/evidence/analysis foundation | `Ex2Stage6Plan`, `Ex2Stage6Evidence`, `Ex2Stage6Analysis`; pure protocol/data/math, no GPU/process control | NOT STARTED |
+| S6-I2 — Full A–E Mode-H diagnostic child | `Ex2Stage6Execution`; one H child over existing routes, 100 attempted sample indices subject to terminal-failure stop, correctness, truthful package lifecycle, Started/Returned observer seam; no campaign | NOT STARTED |
+| S6-I3 — Diagnostic supervisor/control + independent inspection | `Ex2Stage6Progress`, `Ex2Stage6Supervisor`; immutable manifest/preflight, sequential fresh-process control, independent disk inspection, continuation state machine, durable ledger, analysis publication/hash anchors; no supervisor-owned statistics or campaign evidence | NOT STARTED |
+| S6-E1 — Full 22-cell / 220-process diagnostic campaign + acceptance | One clean reviewed implementation source, one immutable production manifest, one 220-process H attempt, independent audit, curation and bounded diagnostic interpretation | NOT EXECUTED |
+
+There is **no planned S6-E2** and **no planned native-Mode-N prompt**. Correction/continuation prompts occur only if human review finds a real defect. S6-I1 starts only after human review and a separate accepted commit. This amendment does not perform any later increment.
+
+#### v1.3 compatibility and explicit supersession
+
+For **new v1.3 Stage-6 diagnostic evidence only**, this amendment supersedes historical clauses that conflict with the accepted diagnostic branch: Stage-6 execution gated on Gate-0 LIMITED PASS; family-specific comparative admission before the full diagnostic screen; warm-up qualification and 100-vs-200 convergence prerequisites; H/N perturbation qualification for this H-only screen; the historical 10% cross-backend effect requirement as an execution gate; the borderline paired-block extension; candidate-performance failure-stop behavior conflicting with safe diagnostic continuation; omission of `diagnostic` from the evidence-kind vocabulary; and treating the 22 diagnostic core cells as an optional menu. Those historical rules and thresholds retain their meanings for historical evidence and comparative admission; they are not relaxed into new performance claims.
+
+This amendment does **not** supersede A–E semantics, `ex2-mix64-v1` constants/semantics, the exact 22 core cells, CPU oracles, logical-input identity, the same-GPU rule, H `t0/t1/t2`, route operation semantics, mandatory correctness, schema 2, the exact `samples.csv` v2 header, summary formulas/null rules, process-pair identities, historical v1.0/v1.1/v1.2 evidence, EX-1 history, Stage-4 correctness history, Stage-5 qualification history or curation principles. Compatible historical rules remain inherited. Gate-0 FAIL and the comparative-claim firewall remain authoritative.
 
 ## Question
 
@@ -510,27 +661,30 @@ The 22-cell maximum corresponds to 220 fresh backend processes at five paired bl
 
 The strategic Notion roadmap retains Stages 0–9; implementation milestones I0–I7 refine them. The correctness-first implementation path is now complete through I7: the semantic foundation, backend-native A–E workloads, correctness entry points, experiment-control support, fresh-process correctness supervisor, evidence publication and integrated Stage-4 acceptance have been implemented and reviewed. Stage 3 is complete and Stage 4 is PASS at source `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793`; curated Stage-4 evidence is anchored by commit `24558d0d121a41e3d92f407f804ffbd1154c24b3`. Preserve EX-1 behavior and serializers. No implementation, smoke test or correctness run qualifies a metric, grants Stage-2 measurement-protocol authorization or permits candidate-performance collection.
 
-Historical implementation order was: independent Mix/fixture/oracle and generator tests; config/identity/schema v2; A1 CPU->CUDA->Vulkan vertical slice; A2; B; C; D1; E; integrated runner/fresh-process control and full correctness qualification. D2 remains conditional and unimplemented. The next implementation work, if separately approved, is only the bounded Stage-5 v1.2 qualification machinery required by the frozen A1/D1 campaign; do not broaden it into Stage-6 candidate-performance execution. Preserve EX-1 tests. Do not prematurely add abstractions, dependencies or utility layers shared with consuming applications. Run ` .\scripts\test.ps1 ` locally after code changes; if host SDK or GPU access is unavailable, report rather than bypass.
+Historical implementation order was: independent Mix/fixture/oracle and generator tests; config/identity/schema v2; A1 CPU->CUDA->Vulkan vertical slice; A2; B; C; D1; E; integrated runner/fresh-process control and full correctness qualification. The bounded Stage-5 v1.2 machinery subsequently completed through S5-I5 and the S5-E1 campaign at source `70859055bf4280f5aeacd8039e9d3c41c9487e84`, with curated evidence at `a5694b6afa918499607949ec0c60d63d21be1270`. Its valid scientific nonqualification closed that path with Gate-0 FAIL. D2 remains conditional and unimplemented. Preserve EX-1 tests. Do not prematurely add abstractions, dependencies or utility layers shared with consuming applications. Run ` .\scripts\test.ps1 ` locally after code changes; if host SDK or GPU access is unavailable, report rather than bypass. S6-C1 is documentation-only and runs no build, CMake, CTest, canonical test script or GPU workload.
+
+The exact next sequence and future ownership are frozen in v1.3 above: **S6-C1 — Protocol 1.3 diagnostic-contract freeze -> S6-I1 — Diagnostic plan/evidence/analysis foundation -> S6-I2 — Full A–E Mode-H diagnostic child -> S6-I3 — Diagnostic supervisor/control + independent inspection -> S6-E1 — Full 22-cell / 220-process diagnostic campaign + acceptance**. C1 is currently READY FOR HUMAN REVIEW. After human acceptance, C1 is protocol frozen; I1/I2/I3 are NOT STARTED; E1 is NOT EXECUTED; the Stage-6 label is **PROTOCOL FROZEN / IMPLEMENTATION NOT STARTED**. No S6-E2 or native-Mode-N prompt is planned. Correction/continuation prompts require a real defect found by human review. Do not implement the later increments as part of C1.
 
 Tests continue to require: exact generator/golden constants and independently calculated expected outputs; permutation uniqueness and malformed-index rejection; unsigned and atomic correctness/overflow; N=0, N=1, N=257 and workgroup-boundary correctness; D K=0/1/16/64 parity and read-after-write/write-after-read barriers; C reset, output invariants and source preservation; E byte-exact copy and coherent/noncoherent memory visibility; event/timestamp validity and scope metadata; t0/t1/t2 arithmetic, failure, timeout and null behavior; schema header/version/identity collisions, sample ordering and independent summary regeneration; same physical GPU enforcement, true instrumentation declarations, all historical EX-1 tests and canonical Windows smoke tests. Stage-5-specific support must additionally test the exact three-group process plan, counterbalanced ordering, 48-operation warm-up analysis, selected-common-W rule, 50/100/200 prefix analysis, `R_process<=1.10`, no-fallback/no-extension stop rules, qualification-only evidence identity and independently regenerable verdict analysis.
 
 ## Acceptance checkpoints and revision policy
 
 - **Stage 0 design:** **COMPLETE.** A–E portfolio, formulas, exclusions and maximum initial cell ceiling are approved by the v1.0 design freeze. D2 remains conditional and unimplemented.
-- **Stage 1 measurement Gate 0:** **PENDING.** v1.2 freezes the bounded Stage-5 path used to decide this gate. The strongest Stage-5 scientific verdict is LIMITED PASS; FAIL is issued for a validly executed D1 H scope that does not qualify; INCOMPLETE is an execution/evidence state and leaves Gate 0 not passed.
-- **Stage 2 measurement-execution freeze:** **NOT AUTHORIZED.** It still requires the reviewed Gate-0 outcome, exact admitted/excluded scope, a clean committed specification incorporating any required amendment, and explicit human authorization. A Stage-5 LIMITED PASS does not automatically complete Stage 2.
+- **Stage 1 measurement Gate 0:** **COMPLETE — FAIL for proposed D1/H `host_completion_ns` comparative scope.** S5-E1 validly completed but D1-W did not qualify; D1-S was skipped by protocol. This scientific failure is distinct from INCOMPLETE execution/evidence.
+- **Stage 2 measurement-execution freeze:** **NOT AUTHORIZED for comparative candidate-performance; NOT GRANTED.** The failed ruler admits no CUDA-versus-Vulkan comparative candidate-performance scope. DR-44 diagnostic authorization does not grant Stage 2.
 - **Stage 3 implementation:** **COMPLETE.** EX-2 additive A–E semantics, backend-native implementations, correctness runner/control and evidence machinery are implemented; no candidate-performance authorization is implied.
 - **Stage 4 correctness:** **PASS.** The accepted clean campaign at source `8eb7f3654e83073ece4d7ef2a8a5c2301cafe793` completed all 22 approved cells and 44 backend series; both the first historical INCOMPLETE attempt and the final PASS attempt are curated at evidence commit `24558d0d121a41e3d92f407f804ffbd1154c24b3`.
-- **Stage 5 bounded same-GPU qualification:** **DESIGNED / NOT EXECUTED.** Execute the v1.2 30-process RTX 2060 SUPER slice: A1/256 diagnostic sentinel, D1 `(1048576,64)` warm-up qualification, then—only if warm-up succeeds—D1 sample-count/fresh-process qualification. This evidence decides Gate 0; it is never candidate-performance evidence.
-- **Stage 6 full same-GPU screen:** **NOT AUTHORIZED FOR CANDIDATE-PERFORMANCE COLLECTION.** After a Gate-0 LIMITED PASS and explicit Stage-2 authorization, only named admitted family/metric scopes may collect comparative candidate-performance evidence. After a Gate-0 FAIL, Stage 6 requires a separate human-reviewed descriptive/diagnostic scope and may not make CUDA-versus-Vulkan performance rankings.
+- **Stage 5 bounded same-GPU qualification:** **COMPLETE — SCIENTIFICALLY NONQUALIFIED.** S5-E1 source `70859055bf4280f5aeacd8039e9d3c41c9487e84`; curated evidence `a5694b6afa918499607949ec0c60d63d21be1270`. All ten D1-W inputs were valid; five had no qualifying `W<=16`; common W is null, warm-up/scope qualification false, and D1-S `skipped_by_protocol`. DR-43's bounded path completed as designed; qualification evidence remains qualification.
+- **Stage 6 full same-GPU descriptive/diagnostic screen:** S6-C1 is **READY FOR HUMAN REVIEW**. After human acceptance: **PROTOCOL FROZEN / IMPLEMENTATION NOT STARTED**. Diagnostic execution is strategically authorized by Accepted DR-44; implementation and campaign have not been performed and require the separate v1.3 increments. Comparative candidate-performance collection/ranking remains prohibited.
 - **Stage 7 cross-generation screen:** not started; any later RTX 3060 Ti / RTX 5060 subset requires a new approved matrix, machine-specific provenance and appropriate metric/family requalification.
 - **Stages 8–9:** not started; tooling/engineering observations remain separate from performance evidence, and final synthesis stays bounded to tested scopes.
+- **Step 10b:** **NOT PASSED.** No production backend selection or production-runtime conclusion is admitted by Stage-6 diagnostic work.
 
-Existing EX-2 correctness results are authoritative only for correctness. Stage-5 qualification and later measurement evidence must use a clean committed revision of this v1.2 contract, exact new evidence identities and separately reviewed execution manifests. A documented amendment is necessary if qualification requires different W, sample counts, effect tolerance, metrics, hardware set, timing placement, shader/kernel formulas, schema or allowed cells. Record both old and new revisions; do not silently rewrite historical evidence, relax thresholds after seeing results, or relabel qualification runs as performance runs. The operator must explicitly approve any actual commit or push.
+Existing EX-2 correctness results are authoritative only for correctness; historical Stage-5 v1.2 qualification remains authoritative for its complete negative result. New Stage-6 diagnostic evidence requires human acceptance and a clean committed v1.3 specification, a clean reviewed implementation source, exact new diagnostic identities and a separately reviewed immutable production manifest. A documented amendment is necessary for changes to qualification W, sample counts, effect tolerance, metrics, hardware, timing placement, shader/kernel formulas, schema or allowed cells, or to the frozen v1.3 diagnostic contract. Record old and new revisions; never rewrite historical evidence, relax thresholds after seeing results, or relabel qualification/diagnostic runs as candidate-performance. The operator controls acceptance, commit and push; C1 performs none of those transitions.
 
 ## References
 
-Internal: `AGENTS.md`, `docs/charter.md`, `docs/methodology.md`, `docs/results-format.md`, `docs/ex1.md`, `docs/i7-correctness-supervisor.md`, and the EX-2 Notion Experiment/roadmap/DR-40/DR-41/DR-42 records. The planned DR-43 record owns the strategic decision to use bounded Stage-5 qualification as the Gate-0 scope-admission path once its Notion record is created; this file owns the exact executable protocol. This file contains executable design details for agents without Notion access; Notion owns strategic decisions, experiment narrative and roadmap state rather than duplicate technical implementation text.
+Internal: `AGENTS.md`, `docs/charter.md`, `docs/methodology.md`, `docs/results-format.md`, `docs/ex1.md`, `docs/i7-correctness-supervisor.md`, `docs/stage5-qualification-supervisor.md`, the curated Stage-4 and S5-E1 evidence anchors above, and the EX-2 Notion Experiment/roadmap/DR-40/DR-41/DR-42/DR-43/DR-44 records. DR-41 is Retired. Accepted DR-43 owned the bounded Stage-5 Gate-0 path, now completed as designed. Accepted DR-44 owns the post-Gate-0 full descriptive/diagnostic Stage-6 branch. `docs/ex2.md` owns the exact executable scientific/protocol contract; supervisor documents own their implementation/control mechanics. Notion owns strategic decisions, experiment narrative, roadmap and progress state, without duplicating full technical decision bodies here. S6-C1 does not update Notion.
 
 External API behavior, **not EX-2 qualification evidence**:
 
