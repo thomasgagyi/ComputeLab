@@ -326,7 +326,7 @@ TEST(Ex2Identity, ScopedProtocolVersionPolicyAcceptsOnlyOnePointZeroOnePointOneA
     arbitrary.protocolVersion = "1.2";
     EXPECT_NO_THROW(static_cast<void>(ex2::ComparisonConditionCanonicalJson(arbitrary)));
     EXPECT_NE(ex2::ComparisonConditionId(arbitrary), ex2::ComparisonConditionId(v11));
-    for (const auto version : {"", "1", "1.00", "1.3", "2.0"})
+    for (const auto version : {"", "1", "1.00", "1.4", "2.0"})
     {
         arbitrary.protocolVersion = version;
         EXPECT_THROW(static_cast<void>(ex2::ComparisonConditionId(arbitrary)), std::invalid_argument);
@@ -620,4 +620,30 @@ TEST(Ex2RunIdentity, DetectsDuplicateIdsAndDestinationCollisionsWithoutIo)
     EXPECT_TRUE(Contains(outside, ex2::RunPlanError::DestinationLeafMismatch));
 }
 
+} // namespace
+
+namespace
+{
+TEST(Ex2Identity, Protocol13LiteralCanonicalConditionAndSeriesFixtures)
+{
+    auto condition = Condition(ex2::MakeConfiguration(ex2::LinearConfiguration{ex2::LinearVariant::A1, 256}));
+    condition.protocolVersion = "1.3";
+    // Independently specified literal bytes, hashed with .NET SHA256, without
+    // invoking the production canonicalization or hash implementation.
+    EXPECT_EQ(ex2::ComparisonConditionCanonicalJson(condition),
+        "{\"byte_count\":null,\"counter_count\":null,\"element_count\":256,\"execution_mode\":\"ordinary\","
+        "\"generator_revision\":\"ex2-mix64-v1\",\"gpu_uuid_identity\":\"00112233-4455-6677-8899-aabbccddeeff\","
+        "\"index_pattern\":null,\"instrument_mode\":\"H\",\"iteration_count\":null,\"machine_id\":\"anonymous-machine\","
+        "\"operation_boundary\":\"single-dispatch-completion\",\"protocol_version\":\"1.3\",\"seed\":81985529216486895,"
+        "\"transfer_direction\":null,\"variant\":\"A1\",\"workload\":\"A\"}");
+    EXPECT_EQ(ex2::ComparisonConditionId(condition), "5eddcf89ce5f3c609bb4cb36ce11ee0c366d8415b46b9e4a6b9519d032c75295");
+    auto series = CudaSeries(condition);
+    series.processIndex = 0; series.blockIndex = 0; series.orderSlot = 0; series.warmupCount = 0;
+    EXPECT_EQ(ex2::SeriesId(series), "c23fc6fa4c70cfa5dcfdde7f35d279a3f48c08225d4b43c5b21cbe3c62b7af39");
+    for (const auto version : {"1.0", "1.1", "1.2", "1.3"})
+    { condition.protocolVersion = version; EXPECT_NO_THROW((void)ex2::ComparisonConditionId(condition)); }
+    // General configuration does not acquire campaign controls.
+    series.warmupCount = 123; series.plannedSampleCount = 7; series.condition.instrumentMode = ex2::InstrumentMode::N;
+    EXPECT_NO_THROW((void)ex2::SeriesId(series));
+}
 } // namespace

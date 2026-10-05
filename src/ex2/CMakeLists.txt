@@ -123,6 +123,21 @@ target_include_directories(ComputeLabEx2Stage5Evidence PUBLIC ${PROJECT_SOURCE_D
 target_link_libraries(ComputeLabEx2Stage5Evidence PUBLIC
     ComputeLabEx2Stage5Qualification ComputeLabEx2Evidence ComputeLabEx2CpuOracles)
 
+add_library(ComputeLabEx2Stage6Plan STATIC Ex2Stage6Plan.cpp Ex2Stage6Plan.hpp)
+target_compile_features(ComputeLabEx2Stage6Plan PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2Stage6Plan PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_link_libraries(ComputeLabEx2Stage6Plan PUBLIC ComputeLabEx2Configuration)
+
+add_library(ComputeLabEx2Stage6Evidence STATIC Ex2Stage6Evidence.cpp Ex2Stage6Evidence.hpp)
+target_compile_features(ComputeLabEx2Stage6Evidence PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2Stage6Evidence PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_link_libraries(ComputeLabEx2Stage6Evidence PUBLIC ComputeLabEx2Stage6Plan ComputeLabEx2Evidence)
+
+add_library(ComputeLabEx2Stage6Analysis STATIC Ex2Stage6Analysis.cpp Ex2Stage6Analysis.hpp)
+target_compile_features(ComputeLabEx2Stage6Analysis PUBLIC cxx_std_20)
+target_include_directories(ComputeLabEx2Stage6Analysis PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_link_libraries(ComputeLabEx2Stage6Analysis PUBLIC ComputeLabEx2Stage6Evidence)
+
 if(Q0_ENABLE_CUDA AND Q0_ENABLE_VULKAN)
     add_library(ComputeLabEx2Stage5Control STATIC
         Ex2Stage5Progress.hpp Ex2Stage5Supervisor.hpp Ex2Stage5Supervisor.cpp)
