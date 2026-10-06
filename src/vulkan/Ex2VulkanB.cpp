@@ -1439,6 +1439,20 @@ void Ex2VulkanBOperation::Prepare()
     resources.state = OperationState::Prepared;
 }
 
+void Ex2VulkanBOperation::PrepareNextWithoutUpload()
+{
+    auto& resources = *resources_;
+    resources.RequireReusable("retained-input preparation");
+    if (resources.state != OperationState::Complete || resources.computePending || resources.transferPending)
+        throw std::logic_error("EX-2 Vulkan B retained-input preparation requires safe completion");
+    resources.state = OperationState::Failed;
+    resources.lastCompletionExecutedShader = false;
+    CheckVulkan(vkResetFences(resources.device, 1U, &resources.computeFence),
+        Ex2VulkanBNativePhase::Preparation, "vkResetFences for EX-2 Vulkan B retained input");
+    resources.RecordCompute();
+    resources.state = OperationState::Prepared;
+}
+
 void Ex2VulkanBOperation::Submit()
 {
     auto& resources = *resources_;

@@ -239,6 +239,13 @@ void Ex2CudaA2Operation::Upload(std::span<const std::uint32_t> input)
     catch (const std::logic_error& error) { RethrowA2(error); }
 }
 
+void Ex2CudaA2Operation::PrepareNextA2WithoutUpload()
+{
+    try { operation_->PrepareNextWithoutUpload(ex2::LinearVariant::A2); }
+    catch (const Ex2CudaA1NativeError& error) { RethrowA2(error); }
+    catch (const std::logic_error& error) { RethrowA2(error); }
+}
+
 void Ex2CudaA2Operation::SubmitA2()
 {
     try { operation_->SubmitA1(); }

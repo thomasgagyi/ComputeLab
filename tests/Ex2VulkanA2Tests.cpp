@@ -258,4 +258,30 @@ TEST(Ex2VulkanA2, PhaseConversionAndDiagnosticRelabelingAreExplicit)
         "unrelated A1 token; EX-2 Vulkan A2 submission");
 }
 
+TEST(Ex2VulkanA2, RetainedInputHundredOperationsAndReplacementUpload)
+{
+    auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 257U);
+    const auto expected = ex2::ReferenceA2(input);
+    computelab::vulkan::Ex2VulkanA2Operation operation{{ex2::LinearVariant::A2, 257U}, COMPUTELAB_EX2_A2_SPIRV_PATH, 0U};
+    EXPECT_THROW(operation.PrepareNextA2WithoutUpload(), std::logic_error);
+    operation.Upload(input);
+    EXPECT_THROW(operation.PrepareNextA2WithoutUpload(), std::logic_error);
+    for (unsigned j = 0; j < 100; ++j)
+    {
+        if (j) operation.PrepareNextA2WithoutUpload(); else { operation.Prepare(); }
+        EXPECT_THROW(operation.PrepareNextA2WithoutUpload(), std::logic_error);
+        operation.SubmitA2();
+        EXPECT_THROW(operation.PrepareNextA2WithoutUpload(), std::logic_error);
+        operation.WaitForCompletion();
+        EXPECT_EQ(operation.RetrieveOutput(), expected) << j;
+        EXPECT_EQ(operation.RetrieveDeviceInput(), input) << j;
+        EXPECT_TRUE(operation.LastCompletionExecutedShader()) << j;
+    }
+    input = ex2::GenerateWordInput(0xFEDCBA9876543210ULL, 257U);
+    operation.Upload(input); operation.Prepare();
+    operation.SubmitA2(); operation.WaitForCompletion();
+    EXPECT_EQ(operation.RetrieveOutput(), ex2::ReferenceA2(input));
+    EXPECT_EQ(operation.RetrieveDeviceInput(), input);
+}
+
 } // namespace

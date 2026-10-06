@@ -287,4 +287,23 @@ if(TARGET ComputeLabEx2Stage5Control)
         COMPUTELAB_S5_TEST_CHILD="$<TARGET_FILE:ComputeLabEx2Stage5SupervisorTestChild>")
 endif()
 
+if(TARGET ComputeLabEx2Stage6Execution)
+    target_sources(ComputeLabTests PRIVATE Ex2Stage6ExecutionTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2Stage6Execution)
+    # Explicit disposable child smoke only: never register this target with CTest.
+    add_executable(ComputeLabEx2Stage6ChildSmokeTests Ex2Stage6ChildSmokeTests.cpp)
+    target_compile_features(ComputeLabEx2Stage6ChildSmokeTests PRIVATE cxx_std_20)
+    target_link_libraries(ComputeLabEx2Stage6ChildSmokeTests PRIVATE ComputeLabEx2Stage6Execution GTest::gtest_main)
+    add_dependencies(ComputeLabEx2Stage6ChildSmokeTests ComputeLabEx2Stage6)
+    target_compile_definitions(ComputeLabEx2Stage6ChildSmokeTests PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_STAGE6_EXE="$<TARGET_FILE:ComputeLabEx2Stage6>"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}"
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+endif()
+
 gtest_discover_tests(ComputeLabTests)

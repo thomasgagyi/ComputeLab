@@ -723,6 +723,16 @@ void Ex2CudaBOperation::Upload(
     impl_->state = OperationState::Ready;
 }
 
+void Ex2CudaBOperation::PrepareNextWithoutUpload()
+{
+    impl_->RequireReusable("retained-input preparation");
+    if (impl_->state != OperationState::Complete)
+        throw std::logic_error("EX-2 CUDA B retained-input preparation requires safe completion");
+    impl_->submittedKernel = false;
+    impl_->lastCompletionExecutedKernel = false;
+    impl_->state = OperationState::Ready;
+}
+
 void Ex2CudaBOperation::Submit()
 {
     impl_->RequireReusable("submission");

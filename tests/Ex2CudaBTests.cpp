@@ -602,4 +602,36 @@ TEST(Ex2CudaBLarge, ApprovedShuffledCoreSizeRunsBothVariantsSerially)
     }
 }
 
+TEST(Ex2CudaB, RetainedInputsHundredOperationsBothVariantsAndReplacementUpload)
+{
+    for (const auto variant : {ex2::IndexedVariant::B1, ex2::IndexedVariant::B2})
+    {
+        auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 257U);
+        const auto indices = ex2::GenerateShuffledPermutation(ex2::CoreInputSeed, 257U);
+        const auto expected = Reference(variant, input, indices);
+        computelab::cuda::Ex2CudaBOperation operation{0, {variant, 257U, ex2::IndexPattern::ShuffledV1}, ex2::CoreInputSeed};
+        EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+        operation.Upload(input, indices);
+        EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+        for (unsigned j = 0; j < 100; ++j)
+        {
+            if (j) operation.PrepareNextWithoutUpload(); else {  }
+            EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+            operation.Submit();
+            EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+            operation.WaitForCompletion();
+            EXPECT_EQ(operation.RetrieveOutput(), expected) << j;
+            EXPECT_EQ(operation.RetrieveDeviceInput(), input) << j;
+            EXPECT_EQ(operation.RetrieveDeviceIndices(), indices) << j;
+            EXPECT_TRUE(operation.LastCompletionExecutedKernel()) << j;
+        }
+        input = ex2::GenerateWordInput(0xFEDCBA9876543210ULL, 257U);
+        operation.Upload(input, indices);
+        operation.Submit(); operation.WaitForCompletion();
+        EXPECT_EQ(operation.RetrieveOutput(), Reference(variant, input, indices));
+        EXPECT_EQ(operation.RetrieveDeviceInput(), input);
+        EXPECT_EQ(operation.RetrieveDeviceIndices(), indices);
+    }
+}
+
 } // namespace

@@ -170,6 +170,8 @@ public:
 
     void Upload(std::span<const std::uint32_t> input);
     void Prepare();
+    // Rearm only after known completion, retaining the immutable input.
+    void PrepareNextA2WithoutUpload();
     void SubmitA2();
     void WaitForCompletion(
         std::uint64_t timeoutNanoseconds = 30'000'000'000ULL);

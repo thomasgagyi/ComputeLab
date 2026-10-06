@@ -598,8 +598,13 @@ void Ex2CudaA1Operation::Upload(std::span<const std::uint32_t> input)
 
 void Ex2CudaA1Operation::PrepareNextA1WithoutUpload()
 {
+    PrepareNextWithoutUpload(ex2::LinearVariant::A1);
+}
+
+void Ex2CudaA1Operation::PrepareNextWithoutUpload(ex2::LinearVariant requiredVariant)
+{
     impl_->RequireReusable("retained-input preparation");
-    if (impl_->configuration.variant != ex2::LinearVariant::A1
+    if (impl_->configuration.variant != requiredVariant
         || impl_->state != OperationState::Complete)
     {
         throw std::logic_error(

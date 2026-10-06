@@ -205,6 +205,8 @@ public:
         std::span<const std::uint32_t> input,
         std::span<const std::uint32_t> indices);
     void Prepare();
+    // Retain input and indices; do not initialize the output again.
+    void PrepareNextWithoutUpload();
     void Submit();
     void WaitForCompletion(
         std::uint64_t timeoutNanoseconds = 30'000'000'000ULL);

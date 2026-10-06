@@ -122,6 +122,8 @@ public:
     [[nodiscard]] std::uint64_t ElementCount() const noexcept;
 
     void Upload(std::span<const std::uint32_t> input);
+    // Rearm only after known completion, retaining the immutable input.
+    void PrepareNextA2WithoutUpload();
     void SubmitA2();
     void WaitForCompletion();
     [[nodiscard]] std::vector<std::uint32_t> RetrieveOutput();

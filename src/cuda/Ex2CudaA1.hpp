@@ -134,6 +134,7 @@ public:
 
 private:
     friend class Ex2CudaA2Operation;
+    void PrepareNextWithoutUpload(ex2::LinearVariant requiredVariant);
 
     Ex2CudaA1Operation(
         int deviceOrdinal,

@@ -305,3 +305,30 @@ if(TARGET ComputeLabEx2Gate0Support
             ComputeLabEnvironment
     )
 endif()
+
+if(TARGET ComputeLabEx2Stage6Evidence AND TARGET ComputeLabEnvironment
+    AND TARGET ComputeLabEx2CudaA2 AND TARGET ComputeLabEx2VulkanA2
+    AND TARGET ComputeLabEx2CudaB AND TARGET ComputeLabEx2VulkanB
+    AND TARGET ComputeLabEx2CudaC AND TARGET ComputeLabEx2VulkanC
+    AND TARGET ComputeLabEx2CudaD1 AND TARGET ComputeLabEx2VulkanD1
+    AND TARGET ComputeLabEx2CudaE AND TARGET ComputeLabEx2VulkanE)
+    add_library(ComputeLabEx2Stage6Execution STATIC Ex2Stage6Execution.cpp Ex2Stage6Execution.hpp)
+    target_compile_features(ComputeLabEx2Stage6Execution PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2Stage6Execution PUBLIC ${PROJECT_SOURCE_DIR}/src)
+    target_link_libraries(ComputeLabEx2Stage6Execution PUBLIC
+        ComputeLabEx2Stage6Evidence ComputeLabEx2CpuOracles ComputeLabEx2HostTiming ComputeLabEnvironment
+        ComputeLabEx2CudaA1 ComputeLabEx2VulkanA1 ComputeLabEx2CudaA2 ComputeLabEx2VulkanA2
+        ComputeLabEx2CudaB ComputeLabEx2VulkanB ComputeLabEx2CudaC ComputeLabEx2VulkanC
+        ComputeLabEx2CudaD1 ComputeLabEx2VulkanD1 ComputeLabEx2CudaE ComputeLabEx2VulkanE)
+    add_executable(ComputeLabEx2Stage6 Ex2Stage6Main.cpp)
+    target_compile_features(ComputeLabEx2Stage6 PRIVATE cxx_std_20)
+    target_link_libraries(ComputeLabEx2Stage6 PRIVATE ComputeLabEx2Stage6Execution)
+    target_compile_definitions(ComputeLabEx2Stage6 PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}"
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+endif()

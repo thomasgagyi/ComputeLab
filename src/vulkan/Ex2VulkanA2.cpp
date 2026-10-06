@@ -282,6 +282,13 @@ void Ex2VulkanA2Operation::Prepare()
     catch (const std::logic_error& error) { RethrowA2(error); }
 }
 
+void Ex2VulkanA2Operation::PrepareNextA2WithoutUpload()
+{
+    try { operation_->PrepareNextWithoutUpload(ex2::LinearVariant::A2); }
+    catch (const Ex2VulkanA1NativeError& error) { RethrowA2(error); }
+    catch (const std::logic_error& error) { RethrowA2(error); }
+}
+
 void Ex2VulkanA2Operation::SubmitA2()
 {
     try { operation_->SubmitA1(); }

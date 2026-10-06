@@ -1281,9 +1281,14 @@ void Ex2VulkanA1Operation::Prepare()
 
 void Ex2VulkanA1Operation::PrepareNextA1WithoutUpload()
 {
+    PrepareNextWithoutUpload(ex2::LinearVariant::A1);
+}
+
+void Ex2VulkanA1Operation::PrepareNextWithoutUpload(ex2::LinearVariant requiredVariant)
+{
     auto& resources = *resources_;
     resources.RequireReusable("retained-input preparation");
-    if (resources.configuration.variant != ex2::LinearVariant::A1
+    if (resources.configuration.variant != requiredVariant
         || resources.state != OperationState::Complete
         || resources.computePending || resources.transferPending)
     {

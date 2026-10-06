@@ -205,6 +205,7 @@ public:
 
 private:
     friend class Ex2VulkanA2Operation;
+    void PrepareNextWithoutUpload(ex2::LinearVariant requiredVariant);
 
     Ex2VulkanA1Operation(
         const ex2::LinearConfiguration& configuration,

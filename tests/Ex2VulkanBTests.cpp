@@ -716,4 +716,36 @@ TEST(Ex2VulkanBLarge, ApprovedShuffledCoreSizeRunsBothVariantsSerially)
     }
 }
 
+TEST(Ex2VulkanB, RetainedInputsHundredOperationsBothVariantsAndReplacementUpload)
+{
+    for (const auto variant : {ex2::IndexedVariant::B1, ex2::IndexedVariant::B2})
+    {
+        auto input = ex2::GenerateWordInput(ex2::CoreInputSeed, 257U);
+        const auto indices = ex2::GenerateShuffledPermutation(ex2::CoreInputSeed, 257U);
+        const auto expected = Reference(variant, input, indices);
+        computelab::vulkan::Ex2VulkanBOperation operation{{variant, 257U, ex2::IndexPattern::ShuffledV1}, ex2::CoreInputSeed, COMPUTELAB_EX2_B1_SPIRV_PATH, COMPUTELAB_EX2_B2_SPIRV_PATH, 0U};
+        EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+        operation.Upload(input, indices);
+        EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+        for (unsigned j = 0; j < 100; ++j)
+        {
+            if (j) operation.PrepareNextWithoutUpload(); else { operation.Prepare(); }
+            EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+            operation.Submit();
+            EXPECT_THROW(operation.PrepareNextWithoutUpload(), std::logic_error);
+            operation.WaitForCompletion();
+            EXPECT_EQ(operation.RetrieveOutput(), expected) << j;
+            EXPECT_EQ(operation.RetrieveDeviceInput(), input) << j;
+            EXPECT_EQ(operation.RetrieveDeviceIndices(), indices) << j;
+            EXPECT_TRUE(operation.LastCompletionExecutedShader()) << j;
+        }
+        input = ex2::GenerateWordInput(0xFEDCBA9876543210ULL, 257U);
+        operation.Upload(input, indices); operation.Prepare();
+        operation.Submit(); operation.WaitForCompletion();
+        EXPECT_EQ(operation.RetrieveOutput(), Reference(variant, input, indices));
+        EXPECT_EQ(operation.RetrieveDeviceInput(), input);
+        EXPECT_EQ(operation.RetrieveDeviceIndices(), indices);
+    }
+}
+
 } // namespace

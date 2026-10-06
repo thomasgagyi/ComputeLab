@@ -159,6 +159,8 @@ public:
     void Upload(
         std::span<const std::uint32_t> input,
         std::span<const std::uint32_t> indices);
+    // Retain input and indices; do not initialize the output again.
+    void PrepareNextWithoutUpload();
     void Submit();
     void WaitForCompletion();
 
