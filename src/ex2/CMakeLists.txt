@@ -139,6 +139,17 @@ target_include_directories(ComputeLabEx2Stage6Analysis PUBLIC ${PROJECT_SOURCE_D
 target_link_libraries(ComputeLabEx2Stage6Analysis PUBLIC ComputeLabEx2Stage6Evidence)
 
 if(Q0_ENABLE_CUDA AND Q0_ENABLE_VULKAN)
+    add_library(ComputeLabEx2Stage6Progress STATIC Ex2Stage6Progress.cpp Ex2Stage6Progress.hpp)
+    target_compile_features(ComputeLabEx2Stage6Progress PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2Stage6Progress PUBLIC ${PROJECT_SOURCE_DIR}/src)
+    add_library(ComputeLabEx2Stage6Control STATIC Ex2Stage6Supervisor.cpp Ex2Stage6Supervisor.hpp)
+    target_compile_features(ComputeLabEx2Stage6Control PUBLIC cxx_std_20)
+    target_include_directories(ComputeLabEx2Stage6Control PUBLIC ${PROJECT_SOURCE_DIR}/src)
+    target_link_libraries(ComputeLabEx2Stage6Control PUBLIC
+        ComputeLabEx2Stage6Progress ComputeLabEx2Stage6Analysis ComputeLabEx2CpuOracles ComputeLabEnvironment)
+endif()
+
+if(Q0_ENABLE_CUDA AND Q0_ENABLE_VULKAN)
     add_library(ComputeLabEx2Stage5Control STATIC
         Ex2Stage5Progress.hpp Ex2Stage5Supervisor.hpp Ex2Stage5Supervisor.cpp)
     target_compile_features(ComputeLabEx2Stage5Control PUBLIC cxx_std_20)

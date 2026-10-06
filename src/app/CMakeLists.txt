@@ -322,8 +322,22 @@ if(TARGET ComputeLabEx2Stage6Evidence AND TARGET ComputeLabEnvironment
         ComputeLabEx2CudaD1 ComputeLabEx2VulkanD1 ComputeLabEx2CudaE ComputeLabEx2VulkanE)
     add_executable(ComputeLabEx2Stage6 Ex2Stage6Main.cpp)
     target_compile_features(ComputeLabEx2Stage6 PRIVATE cxx_std_20)
-    target_link_libraries(ComputeLabEx2Stage6 PRIVATE ComputeLabEx2Stage6Execution)
+    target_link_libraries(ComputeLabEx2Stage6 PRIVATE ComputeLabEx2Stage6Execution ComputeLabEx2Stage6Progress)
     target_compile_definitions(ComputeLabEx2Stage6 PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}"
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+endif()
+
+if(TARGET ComputeLabEx2Stage6Control)
+    add_executable(ComputeLabEx2Stage6Supervisor Ex2Stage6SupervisorMain.cpp)
+    target_compile_features(ComputeLabEx2Stage6Supervisor PRIVATE cxx_std_20)
+    target_link_libraries(ComputeLabEx2Stage6Supervisor PRIVATE ComputeLabEx2Stage6Control)
+    target_compile_definitions(ComputeLabEx2Stage6Supervisor PRIVATE
         COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
         COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
         COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"

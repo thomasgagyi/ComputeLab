@@ -306,4 +306,26 @@ if(TARGET ComputeLabEx2Stage6Execution)
         COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
 endif()
 
+if(TARGET ComputeLabEx2Stage6Control)
+    add_executable(ComputeLabEx2Stage6SupervisorTestChild Ex2Stage6SupervisorTestChild.cpp)
+    target_link_libraries(ComputeLabEx2Stage6SupervisorTestChild PRIVATE ComputeLabEx2Stage6Control)
+    target_sources(ComputeLabTests PRIVATE Ex2Stage6SupervisorTests.cpp Ex2Stage6SupervisorProcessTests.cpp)
+    target_link_libraries(ComputeLabTests PRIVATE ComputeLabEx2Stage6Control)
+    add_dependencies(ComputeLabTests ComputeLabEx2Stage6SupervisorTestChild ComputeLabEx2Stage6Supervisor)
+    target_compile_definitions(ComputeLabTests PRIVATE COMPUTELAB_S6_TEST_CHILD="$<TARGET_FILE:ComputeLabEx2Stage6SupervisorTestChild>")
+    # Exactly four disposable real Release children, only when explicitly invoked.
+    add_executable(ComputeLabEx2Stage6SupervisorSmokeTests Ex2Stage6SupervisorSmokeTests.cpp)
+    target_link_libraries(ComputeLabEx2Stage6SupervisorSmokeTests PRIVATE ComputeLabEx2Stage6Control GTest::gtest_main)
+    add_dependencies(ComputeLabEx2Stage6SupervisorSmokeTests ComputeLabEx2Stage6 ComputeLabEx2Stage6Supervisor)
+    target_compile_definitions(ComputeLabEx2Stage6SupervisorSmokeTests PRIVATE
+        COMPUTELAB_REPOSITORY_ROOT="${PROJECT_SOURCE_DIR}"
+        COMPUTELAB_EX2_STAGE6_EXE="$<TARGET_FILE:ComputeLabEx2Stage6>"
+        COMPUTELAB_EX2_A1_SPIRV_PATH="${COMPUTELAB_EX2_A1_SPIRV_PATH}"
+        COMPUTELAB_EX2_A2_SPIRV_PATH="${COMPUTELAB_EX2_A2_SPIRV_PATH}"
+        COMPUTELAB_EX2_B1_SPIRV_PATH="${COMPUTELAB_EX2_B1_SPIRV_PATH}"
+        COMPUTELAB_EX2_B2_SPIRV_PATH="${COMPUTELAB_EX2_B2_SPIRV_PATH}"
+        COMPUTELAB_EX2_C_SPIRV_PATH="${COMPUTELAB_EX2_C_SPIRV_PATH}"
+        COMPUTELAB_EX2_D1_SPIRV_PATH="${COMPUTELAB_EX2_D1_SPIRV_PATH}")
+endif()
+
 gtest_discover_tests(ComputeLabTests)

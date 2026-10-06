@@ -1,4 +1,5 @@
 #include "app/Ex2Stage6Execution.hpp"
+#include "ex2/Ex2Stage6Progress.hpp"
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -14,6 +15,7 @@ int main(int argc, char** argv)
     {
         std::vector<std::string_view> arguments;
         for (int i = 1; i < argc; ++i) arguments.emplace_back(argv[i]);
+        auto reporter = computelab::ex2::stage6::progress::ExtractReporter(arguments);
         const auto config = run::ParseConfiguration(arguments);
         std::vector<wchar_t> buffer(32768);
         const auto length = GetModuleFileNameW(nullptr, buffer.data(), static_cast<DWORD>(buffer.size()));
@@ -24,7 +26,7 @@ int main(int argc, char** argv)
             COMPUTELAB_EX2_B1_SPIRV_PATH, COMPUTELAB_EX2_B2_SPIRV_PATH,
             COMPUTELAB_EX2_C_SPIRV_PATH, COMPUTELAB_EX2_D1_SPIRV_PATH};
         executing = true;
-        const auto exit = run::RunChild(config, paths);
+        const auto exit = run::RunChild(config, paths, reporter.Observer());
         std::cout << "S6-I2 child exit=" << static_cast<int>(exit) << '\n';
         return static_cast<int>(exit);
     }
