@@ -1,0 +1,117 @@
+{
+  "receipt_version": 1,
+  "verdict": "ACCEPTED",
+  "recorded_utc": "2026-10-07T16:20:12.080305+00:00",
+  "exclusive_creation": true,
+  "final_outputs_readback_verified": true,
+  "post_publication_immutability_verified": true,
+  "retained_file_count": 930,
+  "accepted_index_records": 220,
+  "final_git_guard": [
+    {
+      "arguments": [
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "stdout": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "branch",
+        "--show-current"
+      ],
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "diff",
+        "--check"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "diff",
+        "--cached",
+        "--name-status"
+      ],
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "audit_artifacts": [
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/audit.py",
+      "size_bytes": 64061,
+      "sha256": "75850a4a5aa15e4173f7f80dd523c18204b0919ba1880467d267a7e92ea74843"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/audit-spec.json",
+      "size_bytes": 62231,
+      "sha256": "95c14afcef3a29ab214fd2342d02df5602d9c67cc8ffd802c4ba02aed3d2038e"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/independent-facts.json",
+      "size_bytes": 812840,
+      "sha256": "ca1d4a3cd802e60697de3f348fcae1fa7f7f87c5a8ee4d10a844e34581d9433c"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/logical-input-facts.json",
+      "size_bytes": 16085,
+      "sha256": "a64a79c6cb6f29ff3118bc259855d76b04d40094dcba91ca045a022d3a1fe8d4"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/supplemental-facts.json",
+      "size_bytes": 352,
+      "sha256": "9ec3691f856e8e8ae91a7810b74465beae2b930ad1a9ae06be1ae2b2be3b23b9"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/retained-files-before.json",
+      "size_bytes": 208001,
+      "sha256": "31a091fbcc0d3b27d41552f05fa244ccb98d2b661d27823bd50175dabdd94294"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/retained-files-after.json",
+      "size_bytes": 208001,
+      "sha256": "31a091fbcc0d3b27d41552f05fa244ccb98d2b661d27823bd50175dabdd94294"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/source-before.json",
+      "size_bytes": 644,
+      "sha256": "6fbe1c912463af9839a909ae8598504eb544efb9755362b24cadb5566d475674"
+    },
+    {
+      "path": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit/source-after.json",
+      "size_bytes": 644,
+      "sha256": "6fbe1c912463af9839a909ae8598504eb544efb9755362b24cadb5566d475674"
+    },
+    {
+      "path": "results/local/ex2-s6-e1b-8f1565f-stage6-postrun-audit.json",
+      "size_bytes": 39362,
+      "sha256": "a656270ae7117adaba7f0da2f5098cf13483147001eae54f057f2867cea5f20f"
+    },
+    {
+      "path": "results/local/ex2-s6-e1b-8f1565f-stage6-postrun-audit.md",
+      "size_bytes": 16732,
+      "sha256": "f3a565c5f8b983e7e5ce776c73329bb292ed513a661b41282f15872a7754d06a"
+    },
+    {
+      "path": "results/local/ex2-s6-e1b-8f1565f-stage6-accepted-process-index.json",
+      "size_bytes": 270359,
+      "sha256": "84782b83704c3582d48eea7288fb4d01d294e2a086f3e8e668060e04e80b2140"
+    }
+  ]
+}

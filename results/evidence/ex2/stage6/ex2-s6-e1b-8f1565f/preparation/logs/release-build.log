@@ -1,0 +1,62 @@
+**********************************************************************
+** Visual Studio 2026 Developer PowerShell v18.10.3
+** Copyright (c) 2026 Microsoft Corporation
+**********************************************************************
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe
+The following packages are already installed:
+    gtest:x64-windows@1.18.0
+  * vcpkg-cmake:x64-windows@2025-08-07
+  * vcpkg-cmake-config:x64-windows@2026-07-21
+The package gtest is compatible with built-in CMake targets:
+
+    enable_testing()
+    
+    find_package(GTest CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+    
+    add_test(AllTestsInMain main)
+
+All requested installations completed successfully in: 189 us
+-- Running vcpkg install - done
+-- Configuring done (25.2s)
+-- Generating done (0.2s)
+-- Build files have been written to: D:/ComputeLab/ComputeLab/out/build/x64-release
+[1/37] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Progress.dir\Ex2Stage6Progress.cpp.obj
+[2/37] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage6Supervisor.dir\Ex2Stage6SupervisorMain.cpp.obj
+[3/37] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Analysis.dir\Ex2Stage6Analysis.cpp.obj
+[4/37] Linking CXX static library src\ex2\ComputeLabEx2Stage6Progress.lib
+[5/37] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Evidence.dir\Ex2Stage6Evidence.cpp.obj
+[6/37] Building CXX object tests\CMakeFiles\ComputeLabEx2Stage6SupervisorTestChild.dir\Ex2Stage6SupervisorTestChild.cpp.obj
+[7/37] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Configuration.dir\Ex2Configuration.cpp.obj
+[8/37] Linking CXX static library src\ex2\ComputeLabEx2Configuration.lib
+[9/37] Linking CXX static library src\ex2\ComputeLabEx2Stage6Evidence.lib
+[10/37] Linking CXX static library src\ex2\ComputeLabEx2Stage6Analysis.lib
+[11/37] Linking CXX executable src\app\ComputeLabEx2A1.exe
+[12/37] Linking CXX executable src\app\ComputeLabEx2CorrectnessSupervisor.exe
+[13/37] Linking CXX executable src\app\ComputeLabEx2Correctness.exe
+[14/37] Linking CXX executable src\app\ComputeLabEx2Stage5Supervisor.exe
+[15/37] Linking CXX executable tests\ComputeLabEx2CorrectnessSupervisorTestChild.exe
+[16/37] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage6.dir\Ex2Stage6Main.cpp.obj
+[17/37] Linking CXX executable src\app\ComputeLabEx2Stage5.exe
+[18/37] Linking CXX executable tests\ComputeLabEx2Stage5SupervisorTestChild.exe
+[19/37] Linking CXX executable tests\ComputeLabEx2CorrectnessSupervisorSmokeTests.exe
+[20/37] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage6Execution.dir\Ex2Stage6Execution.cpp.obj
+[21/37] Linking CXX static library src\app\ComputeLabEx2Stage6Execution.lib
+[22/37] Linking CXX executable src\app\ComputeLabEx2Stage6.exe
+[23/37] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Control.dir\Ex2Stage6Supervisor.cpp.obj
+[24/37] Linking CXX static library src\ex2\ComputeLabEx2Stage6Control.lib
+[25/37] Linking CXX executable src\app\ComputeLabEx2Stage6Supervisor.exe
+[26/37] Linking CXX executable tests\ComputeLabEx2Stage6SupervisorTestChild.exe
+[27/37] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6AnalysisTests.cpp.obj
+[28/37] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6SupervisorProcessTests.cpp.obj
+[29/37] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2ConfigurationTests.cpp.obj
+[30/37] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6EvidenceTests.cpp.obj
+[31/37] Building CXX object tests\CMakeFiles\ComputeLabEx2Stage6ChildSmokeTests.dir\Ex2Stage6ChildSmokeTests.cpp.obj
+[32/37] Building CXX object tests\CMakeFiles\ComputeLabEx2Stage6SupervisorSmokeTests.dir\Ex2Stage6SupervisorSmokeTests.cpp.obj
+[33/37] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6ExecutionTests.cpp.obj
+[34/37] Linking CXX executable tests\ComputeLabEx2Stage6SupervisorSmokeTests.exe
+[35/37] Linking CXX executable tests\ComputeLabEx2Stage6ChildSmokeTests.exe
+[36/37] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6SupervisorTests.cpp.obj
+[37/37] Linking CXX executable tests\ComputeLabTests.exe

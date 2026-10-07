@@ -1,0 +1,45 @@
+[
+  {
+    "arguments": [
+      "rev-parse",
+      "--verify",
+      "HEAD"
+    ],
+    "stdout": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "branch",
+      "--show-current"
+    ],
+    "stdout": "main\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "status",
+      "--porcelain=v1",
+      "--untracked-files=all"
+    ],
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "diff",
+      "--check"
+    ],
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "diff",
+      "--cached",
+      "--name-status"
+    ],
+    "stdout": "",
+    "stderr": ""
+  }
+]

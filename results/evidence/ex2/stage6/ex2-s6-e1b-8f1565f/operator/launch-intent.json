@@ -1,0 +1,18 @@
+{
+    "manifest_id":  "ex2-s6-e1b-8f1565f",
+    "manifest_sha256":  "5a87f15ef384d3c8c1c0f43adf736e17a5e6cdc46fcd2e849f333ae3e07c0963",
+    "manifest_file_sha256":  "ad83b68e8ff430854325ec944c1317a348b087dd9daaf825f51100b7cdaa68b8",
+    "authorization":  "AUTHORIZE S6-E1B ex2-s6-e1b-8f1565f 5a87f15ef384d3c8c1c0f43adf736e17a5e6cdc46fcd2e849f333ae3e07c0963 ad83b68e8ff430854325ec944c1317a348b087dd9daaf825f51100b7cdaa68b8",
+    "executable":  "out/build/x64-release/src/app/ComputeLabEx2Stage6Supervisor.exe",
+    "arguments":  [
+                      "--manifest",
+                      "results/local/ex2-s6-e1b-8f1565f-stage6-manifest.json"
+                  ],
+    "working_directory":  "D:\\ComputeLab\\ComputeLab",
+    "read_only_guards":  "PASS",
+    "matching_live_processes":  0,
+    "namespace_paths_absent":  665,
+    "standalone_verifiers_rerun":  0,
+    "external_timeout":  false,
+    "intent_utc":  "2026-10-07T15:05:21.6748320Z"
+}

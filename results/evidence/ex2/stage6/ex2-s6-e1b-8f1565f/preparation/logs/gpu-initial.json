@@ -1,0 +1,9 @@
+{
+  "cuda_device_ordinal": 0,
+  "cuda_uuid": "0340eaac-dc67-f450-d558-d47c55cc4417",
+  "expected_gpu_uuid": "0340eaac-dc67-f450-d558-d47c55cc4417",
+  "reporter": "Python ctypes CUDA Driver/Vulkan identity APIs only",
+  "same_physical_gpu": true,
+  "vulkan_physical_device_index": 0,
+  "vulkan_uuid": "0340eaac-dc67-f450-d558-d47c55cc4417"
+}

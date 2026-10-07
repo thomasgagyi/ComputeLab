@@ -1,0 +1,958 @@
+{
+  "audit_version": 1,
+  "audit_type": "independent-s6-e1b-full-campaign-postrun-evidence-audit",
+  "verdict": "ACCEPTED",
+  "source_revision": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274",
+  "branch": "main",
+  "manifest_id": "ex2-s6-e1b-8f1565f",
+  "manifest_sha256": "5a87f15ef384d3c8c1c0f43adf736e17a5e6cdc46fcd2e849f333ae3e07c0963",
+  "manifest_file_sha256": "ad83b68e8ff430854325ec944c1317a348b087dd9daaf825f51100b7cdaa68b8",
+  "protocol_version": "1.4",
+  "preparation_chain_status": "PASS",
+  "artifact_hash_status": "PASS: 8/8 live frozen artifacts at start and end",
+  "schedule_status": "PASS: independent 22x10 schedule",
+  "filesystem_topology_status": "PASS",
+  "ledger_status": "PASS: canonical completed revision 905",
+  "global_counts": {
+    "Started": 22000,
+    "Returned": 22000,
+    "package_files": 880,
+    "sample_rows": 22000,
+    "successful_rows": 22000,
+    "validation_failures": 0,
+    "final_package_dirs": 220,
+    "ordinary_success": 218,
+    "cleanup_success": 2,
+    "cell_analyses": 22,
+    "campaign_analyses": 1,
+    "resolved_success": 220,
+    "resolved_diagnostic_failure": 0,
+    "unresolved_campaign_fatal": 0,
+    "not_launched": 0,
+    "progress_events": 44000,
+    "scientifically_successful_processes": 220
+  },
+  "cleanup_success_slots": [
+    {
+      "slot_sequence_index": 160,
+      "cell_index": 16,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-160",
+      "control": {
+        "active_attempt": null,
+        "campaign_timed_out": false,
+        "child_timed_out": false,
+        "clean_eof": true,
+        "containment_assigned": true,
+        "containment_verification_failed": false,
+        "containment_verified": true,
+        "control_error": null,
+        "descendant_survival_observed": true,
+        "exit_code": 0,
+        "exit_kind": "SupervisorForced",
+        "exit_time_utc": "2026-10-07T15:22:12.571Z",
+        "job_active_processes": 0,
+        "job_empty_confirmed": true,
+        "job_total_processes": 17,
+        "last_returned_attempt": {
+          "sample_index": 99,
+          "slot_sequence_index": 160
+        },
+        "launch_time_utc": "2026-10-07T15:22:09.798Z",
+        "operation_timed_out": false,
+        "primary_termination_confirmed": true,
+        "process_created": true,
+        "process_id": 2476,
+        "process_resumed": true,
+        "progress_form": "Full",
+        "progress_invalid": false,
+        "progress_transport_failed": false,
+        "supervisor_termination_requested": true,
+        "terminate_job_succeeded": true,
+        "timed_out_sample_index": null,
+        "trailing_bytes": 0
+      },
+      "reconciliation_reason": "resolved_success_post_completion_cleanup"
+    },
+    {
+      "slot_sequence_index": 162,
+      "cell_index": 16,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-162",
+      "control": {
+        "active_attempt": null,
+        "campaign_timed_out": false,
+        "child_timed_out": false,
+        "clean_eof": true,
+        "containment_assigned": true,
+        "containment_verification_failed": false,
+        "containment_verified": true,
+        "control_error": null,
+        "descendant_survival_observed": true,
+        "exit_code": 0,
+        "exit_kind": "SupervisorForced",
+        "exit_time_utc": "2026-10-07T15:22:22.338Z",
+        "job_active_processes": 0,
+        "job_empty_confirmed": true,
+        "job_total_processes": 17,
+        "last_returned_attempt": {
+          "sample_index": 99,
+          "slot_sequence_index": 162
+        },
+        "launch_time_utc": "2026-10-07T15:22:20.308Z",
+        "operation_timed_out": false,
+        "primary_termination_confirmed": true,
+        "process_created": true,
+        "process_id": 12472,
+        "process_resumed": true,
+        "progress_form": "Full",
+        "progress_invalid": false,
+        "progress_transport_failed": false,
+        "supervisor_termination_requested": true,
+        "terminate_job_succeeded": true,
+        "timed_out_sample_index": null,
+        "trailing_bytes": 0
+      },
+      "reconciliation_reason": "resolved_success_post_completion_cleanup"
+    }
+  ],
+  "cleanup_predicate_status": "PASS: both complete scientific Success and analysis eligible",
+  "progress_status": "PASS: all 220 exact 200-event transcripts",
+  "package_identity_status": "PASS: 220/220",
+  "package_hash_status": "PASS: 880 file hashes and 220 independent package hashes",
+  "sample_structure_status": "PASS: exact header and 100 ordered rows per package",
+  "correctness_evidence_status": "PASS: 22000 retained successful rows, zero validation failures; no GPU rerun",
+  "timing_arithmetic_status": "PASS: 22000 checked uint64 H tuples, native intervals null",
+  "logical_input_identity_status": "PASS: 22 independently regenerated input and expected-output conditions, all package condition/series IDs",
+  "process_summary_regeneration_status": "PASS: 220 semantic and exact canonical-byte matches; 880 positional windows",
+  "cell_analysis_status": "PASS: 22 independently reconstructed exact canonical files and ledger anchors",
+  "campaign_analysis_status": "PASS: exact independent canonical file and ledger anchor",
+  "claim_firewall_status": "PASS: exact authorized schemas; no ranking; false production_backend_selected is a denial flag, not a selection",
+  "sequential_execution_status": "PASS within retained evidence: 219 nonoverlapping primary-process boundaries plus ordered QPC",
+  "no_retry_status": "PASS within retained evidence: one launch record and one retained attempt/package per slot",
+  "before_after_immutability_status": "PASS: 930/930 paths, sizes, SHA256 and mtimes unchanged",
+  "accepted_process_index_path": "results/local/ex2-s6-e1b-8f1565f-stage6-accepted-process-index.json",
+  "accepted_process_index_sha256": "84782b83704c3582d48eea7288fb4d01d294e2a086f3e8e668060e04e80b2140",
+  "accepted_process_count": 220,
+  "limitations": [
+    "Recommended GPT-6 Astra and High UI selections are not independently exposed or attested. Matrix 002 and 003 are UNVERIFIED recommendations, not claimed passes. This does not waive any evidence-integrity check.",
+    "Retained correctness evidence consistency was audited, including independently regenerated input and expected-output digests. No GPU code ran; absent full GPU output buffers cannot be reconstructed as observations. Stage-4 remains deeper implementation-correctness evidence.",
+    "The two DR-45 cleanup-success cases satisfy protocol 1.4. The audit does not establish environmental root cause or explain descendant creation.",
+    "Sequential/no-retry conclusions are bounded to retained launch/exit/QPC, revision, namespace and operator evidence and the accepted source contract. This post-run audit is not independent continuous OS/process telemetry and cannot prove absence of unrecorded out-of-band activity.",
+    "Preparation snapshots describe their pre-launch phase; campaign_executed=false and launch_authorized=false there do not contradict later retained authorized launch records. No retrospective rewrite was performed.",
+    "Host/GPU/software metadata is retained provenance, not newly measured machine state. Eight live binary/shader artifacts were independently rehashed; GPU identity APIs were not invoked.",
+    "Every successful raw timing row and both cleanup processes participated unchanged. Extreme timings were retained without interpretation, deletion, trimming, winsorization or process exclusion.",
+    "Python standard library handled audit logic and binary64 statistics; installed NumPy 2.5.3 vectorized independently written fixed-width CPU identity formulas. No project helper or serializer was imported.",
+    "Gate 0 remains FAIL; Stage 2 NOT GRANTED; production backend UNSELECTED. Acceptance grants no cross-backend comparison, winner, speedup, ranking, scaling interpretation or Stage-7 selection."
+  ],
+  "discrepancies": [],
+  "acceptance_matrix": [
+    {
+      "id": "E1B-AUD-001",
+      "requirement": "fresh Codex chat.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-002",
+      "requirement": "GPT-6 Astra selected.",
+      "status": "UNVERIFIED_RECOMMENDATION",
+      "evidence": "Runtime UI selection not exposed"
+    },
+    {
+      "id": "E1B-AUD-003",
+      "requirement": "High reasoning selected.",
+      "status": "UNVERIFIED_RECOMMENDATION",
+      "evidence": "Runtime UI selection not exposed"
+    },
+    {
+      "id": "E1B-AUD-004",
+      "requirement": "exact source verified.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-005",
+      "requirement": "main branch verified.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-006",
+      "requirement": "tracked/staged source starts clean.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-007",
+      "requirement": "no GPU execution.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-008",
+      "requirement": "no build/configure/test.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-009",
+      "requirement": "no campaign retry.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-010",
+      "requirement": "no retained evidence edit.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-011",
+      "requirement": "audit namespace initially absent.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-012",
+      "requirement": "final audit JSON create-new.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-013",
+      "requirement": "final audit Markdown create-new.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-014",
+      "requirement": "accepted-process index only if ACCEPTED.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-015",
+      "requirement": "no results/evidence curation.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-016",
+      "requirement": "manifest physical hash verified.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-017",
+      "requirement": "manifest semantic hash independently regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-018",
+      "requirement": "manifest protocol 1.4.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-019",
+      "requirement": "manifest schema 2 diagnostic H.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-020",
+      "requirement": "manifest source exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-021",
+      "requirement": "GPU UUID exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-022",
+      "requirement": "CUDA selector exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-023",
+      "requirement": "Vulkan selector exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-024",
+      "requirement": "deadlines exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-025",
+      "requirement": "continuation policy exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-026",
+      "requirement": "22 groups independently reconstructed.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-027",
+      "requirement": "220 slots independently reconstructed.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-028",
+      "requirement": "sequence 0..219 exactly once.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-029",
+      "requirement": "session IDs exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-030",
+      "requirement": "backend/process order exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-031",
+      "requirement": "22 cell workload map exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-032",
+      "requirement": "220 final package dirs.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-033",
+      "requirement": "no process .incomplete dirs.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-034",
+      "requirement": "no failure sidecars.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-035",
+      "requirement": "exactly four files/package.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-036",
+      "requirement": "final control ledger exists.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-037",
+      "requirement": "no ledger staging/temp residue.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-038",
+      "requirement": "ledger record version exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-039",
+      "requirement": "ledger protocol 1.4.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-040",
+      "requirement": "ledger manifest hashes exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-041",
+      "requirement": "ledger exactly 220 slots.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-042",
+      "requirement": "ledger completed.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-043",
+      "requirement": "fatal sequence null.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-044",
+      "requirement": "fatal reason null.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-045",
+      "requirement": "dispositions independently count 220 success.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-046",
+      "requirement": "ordinary control-safe slots checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-047",
+      "requirement": "lifetime helper count not misread.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-048",
+      "requirement": "cleanup slots discovered by reason, not assumed.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-049",
+      "requirement": "exactly 2 cleanup slots.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-050",
+      "requirement": "both cleanup slots satisfy DR-45 control predicate.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-051",
+      "requirement": "cleanup slots exit code 0.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-052",
+      "requirement": "cleanup slots final Job empty.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-053",
+      "requirement": "cleanup slots ActiveProcesses 0.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-054",
+      "requirement": "cleanup termination succeeded.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-055",
+      "requirement": "cleanup slots no control error.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-056",
+      "requirement": "220 progress transcripts parsed.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-057",
+      "requirement": "22,000 Started.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-058",
+      "requirement": "22,000 Returned.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-059",
+      "requirement": "44,000 progress events.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-060",
+      "requirement": "no outstanding attempt.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-061",
+      "requirement": "clean EOF all slots.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-062",
+      "requirement": "no progress corruption.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-063",
+      "requirement": "no timeout flags.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-064",
+      "requirement": "package environment identity checked 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-065",
+      "requirement": "protocol 1.4 checked 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-066",
+      "requirement": "package file hashes calculated 880/880.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-067",
+      "requirement": "package hash independently reconstructed 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-068",
+      "requirement": "package hash anchors match.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-069",
+      "requirement": "samples headers exact.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-070",
+      "requirement": "100 rows/package.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-071",
+      "requirement": "total sample rows 22,000.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-072",
+      "requirement": "sample indexes 0..99 each.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-073",
+      "requirement": "successful rows 22,000.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-074",
+      "requirement": "validation failures zero.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-075",
+      "requirement": "scientific process status success 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-076",
+      "requirement": "H arithmetic checked 22,000 rows.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-077",
+      "requirement": "H native intervals null/inapplicable.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-078",
+      "requirement": "no sample deletion.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-079",
+      "requirement": "no process exclusion.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-080",
+      "requirement": "extreme values retained.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-081",
+      "requirement": "deterministic input identities independently checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-082",
+      "requirement": "B permutation identities checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-083",
+      "requirement": "C contention identities checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-084",
+      "requirement": "D1 configuration identity checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-085",
+      "requirement": "E transfer identity checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-086",
+      "requirement": "summaries independently regenerated 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-087",
+      "requirement": "medians regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-088",
+      "requirement": "means regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-089",
+      "requirement": "sample SD/CV regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-090",
+      "requirement": "p95 regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-091",
+      "requirement": "four positional windows regenerated 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-092",
+      "requirement": "retained summary.json agrees 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-093",
+      "requirement": "process descriptions regenerated 220/220.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-094",
+      "requirement": "cleanup processes remain scientific Success.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-095",
+      "requirement": "cleanup processes analysis-eligible.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-096",
+      "requirement": "five CUDA processes/cell.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-097",
+      "requirement": "five Vulkan processes/cell.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-098",
+      "requirement": "fresh-process identities preserved.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-099",
+      "requirement": "all 22 cell analyses independently regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-100",
+      "requirement": "all 22 cell analysis hashes match ledger anchors.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-101",
+      "requirement": "all cell analyses status complete.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-102",
+      "requirement": "each cell resolved/success = 10.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-103",
+      "requirement": "backend resolved/success = 5 each.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-104",
+      "requirement": "no cross-backend ratio regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-105",
+      "requirement": "allowed within-backend span reproduced where defined.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-106",
+      "requirement": "campaign analysis independently regenerated.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-107",
+      "requirement": "campaign analysis hash matches ledger anchor.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-108",
+      "requirement": "campaign complete coverage counts match.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-109",
+      "requirement": "claim firewall has no ranking fields.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-110",
+      "requirement": "no production-selection field.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-111",
+      "requirement": "sequential execution sanity checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-112",
+      "requirement": "one-attempt/no-retry semantics checked.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-113",
+      "requirement": "operator launch/terminal records reconciled.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-114",
+      "requirement": "before snapshot complete.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-115",
+      "requirement": "after snapshot complete.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-116",
+      "requirement": "before/after retained hashes identical.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-117",
+      "requirement": "accepted-process index has 220 entries if ACCEPTED.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-118",
+      "requirement": "accepted-process index SHA retained if ACCEPTED.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-119",
+      "requirement": "final Git tracked/staged state clean.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    },
+    {
+      "id": "E1B-AUD-120",
+      "requirement": "no curation/Notion/commit/push/benchmark interpretation performed.",
+      "status": "PASS",
+      "evidence": "Independent facts, supplemental facts, source snapshots and audit publication receipt; see report sections"
+    }
+  ],
+  "check_counts": {
+    "manifest": 29,
+    "preparation": 113,
+    "artifacts": 16,
+    "topology": 446,
+    "ledger": 29,
+    "logical": 661,
+    "schedule": 2200,
+    "control": 6380,
+    "sequential": 220,
+    "progress": 440220,
+    "package_hash": 4180,
+    "identity": 14740,
+    "timing": 155760,
+    "canonical_package": 660,
+    "samples": 704440,
+    "summary": 440,
+    "cleanup": 1,
+    "counts": 6,
+    "analysis": 176,
+    "campaign": 6,
+    "firewall": 12843,
+    "operator": 18
+  },
+  "supplemental_check_counts": {
+    "preparation": 56,
+    "operator": 14,
+    "artifacts": 16,
+    "sequential": 438,
+    "publication": 22,
+    "immutability": 2
+  },
+  "audit_root": "results/tmp/ex2-s6-e1b-8f1565f-postrun-audit",
+  "independent_facts_sha256": "ca1d4a3cd802e60697de3f348fcae1fa7f7f87c5a8ee4d10a844e34581d9433c",
+  "supplemental_facts_sha256": "9ec3691f856e8e8ae91a7810b74465beae2b930ad1a9ae06be1ae2b2be3b23b9",
+  "audit_source_sha256": "75850a4a5aa15e4173f7f80dd523c18204b0919ba1880467d267a7e92ea74843",
+  "final_source_guard": [
+    {
+      "arguments": [
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "stdout": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "branch",
+        "--show-current"
+      ],
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "diff",
+        "--check"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "diff",
+        "--cached",
+        "--name-status"
+      ],
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

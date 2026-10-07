@@ -1,0 +1,70 @@
+[
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-slot-000",
+    "LastWriteTimeUtc": "2026-10-07T12:17:14.2547935Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-slot-001",
+    "LastWriteTimeUtc": "2026-10-07T12:17:17.0523038Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-slot-002",
+    "LastWriteTimeUtc": "2026-10-07T12:17:19.5193452Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-slot-003",
+    "LastWriteTimeUtc": "2026-10-07T12:17:21.9391975Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-slot-004",
+    "LastWriteTimeUtc": "2026-10-07T12:17:24.2947877Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-slot-005",
+    "LastWriteTimeUtc": "2026-10-07T12:17:27.3898021Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-analysis",
+    "LastWriteTimeUtc": "2026-10-07T12:17:29.2729045Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-artifact-freeze.json",
+    "LastWriteTimeUtc": "2026-10-07T10:56:21.5258713Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-control.json",
+    "LastWriteTimeUtc": "2026-10-07T12:17:29.6980329Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-incomplete-audit.json",
+    "LastWriteTimeUtc": "2026-10-07T12:38:55.5323783Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-incomplete-audit.md",
+    "LastWriteTimeUtc": "2026-10-07T12:38:55.5363784Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-manifest.json",
+    "LastWriteTimeUtc": "2026-10-07T11:02:36.711997Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-review.md",
+    "LastWriteTimeUtc": "2026-10-07T11:08:56.5611886Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\local\\ex2-s6-e1-9053263-stage6-verification.json",
+    "LastWriteTimeUtc": "2026-10-07T11:08:56.2066094Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\tmp\\ex2-s6-e1-9053263-execution",
+    "LastWriteTimeUtc": "2026-10-07T12:17:29.8483058Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\tmp\\ex2-s6-e1-9053263-incomplete-audit",
+    "LastWriteTimeUtc": "2026-10-07T12:38:56.0369497Z"
+  },
+  {
+    "FullName": "D:\\ComputeLab\\ComputeLab\\results\\tmp\\ex2-s6-e1-9053263-prep",
+    "LastWriteTimeUtc": "2026-10-07T11:04:57.0457517Z"
+  }
+]

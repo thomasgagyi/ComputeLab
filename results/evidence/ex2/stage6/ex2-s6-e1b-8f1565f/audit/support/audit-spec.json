@@ -1,0 +1,2434 @@
+{
+  "audit_version": 1,
+  "audit_type": "independent-s6-e1b-postrun-evidence-audit",
+  "source_revision": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274",
+  "manifest_id": "ex2-s6-e1b-8f1565f",
+  "protocol_version": "1.4",
+  "schema_version": 2,
+  "evidence_kind": "diagnostic",
+  "instrument_mode": "H",
+  "initial_namespace_absent": true,
+  "initial_namespace_evidence": "Read-only PowerShell Test-Path of all four required output paths in this chat before first write",
+  "independence": "Fresh audit chat; independently written Python; no project helpers/serializers/executables called. Historical memory registry consulted for scope guidance only; no prior campaign audit results used.",
+  "model_selection": "Recommended GPT-6 Astra / High cannot be independently attested from exposed runtime metadata",
+  "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.5.3",
+  "numpy_scope": "Existing NumPy used only for CPU integer-array regeneration, including expected-output digests; statistics/control/serialization/hash use standard library",
+  "frozen_cells": [
+    {
+      "workload": "A",
+      "variant": "A1",
+      "seed": 81985529216486895,
+      "element_count": 256,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "A",
+      "variant": "A1",
+      "seed": 81985529216486895,
+      "element_count": 262144,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "A",
+      "variant": "A1",
+      "seed": 81985529216486895,
+      "element_count": 16777216,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "A",
+      "variant": "A2",
+      "seed": 81985529216486895,
+      "element_count": 262144,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "A",
+      "variant": "A2",
+      "seed": 81985529216486895,
+      "element_count": 16777216,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "B",
+      "variant": "B1",
+      "seed": 81985529216486895,
+      "element_count": 262144,
+      "byte_count": null,
+      "index_pattern": "structured-v1",
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "B",
+      "variant": "B1",
+      "seed": 81985529216486895,
+      "element_count": 262144,
+      "byte_count": null,
+      "index_pattern": "shuffled-v1",
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "B",
+      "variant": "B1",
+      "seed": 81985529216486895,
+      "element_count": 16777216,
+      "byte_count": null,
+      "index_pattern": "shuffled-v1",
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "B",
+      "variant": "B2",
+      "seed": 81985529216486895,
+      "element_count": 262144,
+      "byte_count": null,
+      "index_pattern": "structured-v1",
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "B",
+      "variant": "B2",
+      "seed": 81985529216486895,
+      "element_count": 262144,
+      "byte_count": null,
+      "index_pattern": "shuffled-v1",
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "B",
+      "variant": "B2",
+      "seed": 81985529216486895,
+      "element_count": 16777216,
+      "byte_count": null,
+      "index_pattern": "shuffled-v1",
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "C",
+      "variant": "C",
+      "seed": 81985529216486895,
+      "element_count": 1048576,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": 1048576,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "C",
+      "variant": "C",
+      "seed": 81985529216486895,
+      "element_count": 1048576,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": 32768,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "C",
+      "variant": "C",
+      "seed": 81985529216486895,
+      "element_count": 1048576,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": 64,
+      "iteration_count": null,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "D",
+      "variant": "D1",
+      "seed": 81985529216486895,
+      "element_count": 262144,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": 16,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "D",
+      "variant": "D1",
+      "seed": 81985529216486895,
+      "element_count": 1048576,
+      "byte_count": null,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": 64,
+      "transfer_direction": null,
+      "execution_mode": "ordinary",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "E",
+      "variant": "E1",
+      "seed": 81985529216486895,
+      "element_count": null,
+      "byte_count": 1024,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": "H2D",
+      "execution_mode": "prepared",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "E",
+      "variant": "E1",
+      "seed": 81985529216486895,
+      "element_count": null,
+      "byte_count": 1048576,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": "H2D",
+      "execution_mode": "prepared",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "E",
+      "variant": "E1",
+      "seed": 81985529216486895,
+      "element_count": null,
+      "byte_count": 67108864,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": "H2D",
+      "execution_mode": "prepared",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "E",
+      "variant": "E2",
+      "seed": 81985529216486895,
+      "element_count": null,
+      "byte_count": 1024,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": "D2H",
+      "execution_mode": "prepared",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "E",
+      "variant": "E2",
+      "seed": 81985529216486895,
+      "element_count": null,
+      "byte_count": 1048576,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": "D2H",
+      "execution_mode": "prepared",
+      "instrument_mode": "H"
+    },
+    {
+      "workload": "E",
+      "variant": "E2",
+      "seed": 81985529216486895,
+      "element_count": null,
+      "byte_count": 67108864,
+      "index_pattern": null,
+      "counter_count": null,
+      "iteration_count": null,
+      "transfer_direction": "D2H",
+      "execution_mode": "prepared",
+      "instrument_mode": "H"
+    }
+  ],
+  "frozen_schedule": [
+    {
+      "slot_sequence_index": 0,
+      "cell_index": 0,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-000"
+    },
+    {
+      "slot_sequence_index": 1,
+      "cell_index": 0,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-001"
+    },
+    {
+      "slot_sequence_index": 2,
+      "cell_index": 0,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-002"
+    },
+    {
+      "slot_sequence_index": 3,
+      "cell_index": 0,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-003"
+    },
+    {
+      "slot_sequence_index": 4,
+      "cell_index": 0,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-004"
+    },
+    {
+      "slot_sequence_index": 5,
+      "cell_index": 0,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-005"
+    },
+    {
+      "slot_sequence_index": 6,
+      "cell_index": 0,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-006"
+    },
+    {
+      "slot_sequence_index": 7,
+      "cell_index": 0,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-007"
+    },
+    {
+      "slot_sequence_index": 8,
+      "cell_index": 0,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-008"
+    },
+    {
+      "slot_sequence_index": 9,
+      "cell_index": 0,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-009"
+    },
+    {
+      "slot_sequence_index": 10,
+      "cell_index": 1,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-010"
+    },
+    {
+      "slot_sequence_index": 11,
+      "cell_index": 1,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-011"
+    },
+    {
+      "slot_sequence_index": 12,
+      "cell_index": 1,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-012"
+    },
+    {
+      "slot_sequence_index": 13,
+      "cell_index": 1,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-013"
+    },
+    {
+      "slot_sequence_index": 14,
+      "cell_index": 1,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-014"
+    },
+    {
+      "slot_sequence_index": 15,
+      "cell_index": 1,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-015"
+    },
+    {
+      "slot_sequence_index": 16,
+      "cell_index": 1,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-016"
+    },
+    {
+      "slot_sequence_index": 17,
+      "cell_index": 1,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-017"
+    },
+    {
+      "slot_sequence_index": 18,
+      "cell_index": 1,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-018"
+    },
+    {
+      "slot_sequence_index": 19,
+      "cell_index": 1,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-019"
+    },
+    {
+      "slot_sequence_index": 20,
+      "cell_index": 2,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-020"
+    },
+    {
+      "slot_sequence_index": 21,
+      "cell_index": 2,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-021"
+    },
+    {
+      "slot_sequence_index": 22,
+      "cell_index": 2,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-022"
+    },
+    {
+      "slot_sequence_index": 23,
+      "cell_index": 2,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-023"
+    },
+    {
+      "slot_sequence_index": 24,
+      "cell_index": 2,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-024"
+    },
+    {
+      "slot_sequence_index": 25,
+      "cell_index": 2,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-025"
+    },
+    {
+      "slot_sequence_index": 26,
+      "cell_index": 2,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-026"
+    },
+    {
+      "slot_sequence_index": 27,
+      "cell_index": 2,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-027"
+    },
+    {
+      "slot_sequence_index": 28,
+      "cell_index": 2,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-028"
+    },
+    {
+      "slot_sequence_index": 29,
+      "cell_index": 2,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-029"
+    },
+    {
+      "slot_sequence_index": 30,
+      "cell_index": 3,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-030"
+    },
+    {
+      "slot_sequence_index": 31,
+      "cell_index": 3,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-031"
+    },
+    {
+      "slot_sequence_index": 32,
+      "cell_index": 3,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-032"
+    },
+    {
+      "slot_sequence_index": 33,
+      "cell_index": 3,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-033"
+    },
+    {
+      "slot_sequence_index": 34,
+      "cell_index": 3,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-034"
+    },
+    {
+      "slot_sequence_index": 35,
+      "cell_index": 3,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-035"
+    },
+    {
+      "slot_sequence_index": 36,
+      "cell_index": 3,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-036"
+    },
+    {
+      "slot_sequence_index": 37,
+      "cell_index": 3,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-037"
+    },
+    {
+      "slot_sequence_index": 38,
+      "cell_index": 3,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-038"
+    },
+    {
+      "slot_sequence_index": 39,
+      "cell_index": 3,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-039"
+    },
+    {
+      "slot_sequence_index": 40,
+      "cell_index": 4,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-040"
+    },
+    {
+      "slot_sequence_index": 41,
+      "cell_index": 4,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-041"
+    },
+    {
+      "slot_sequence_index": 42,
+      "cell_index": 4,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-042"
+    },
+    {
+      "slot_sequence_index": 43,
+      "cell_index": 4,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-043"
+    },
+    {
+      "slot_sequence_index": 44,
+      "cell_index": 4,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-044"
+    },
+    {
+      "slot_sequence_index": 45,
+      "cell_index": 4,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-045"
+    },
+    {
+      "slot_sequence_index": 46,
+      "cell_index": 4,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-046"
+    },
+    {
+      "slot_sequence_index": 47,
+      "cell_index": 4,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-047"
+    },
+    {
+      "slot_sequence_index": 48,
+      "cell_index": 4,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-048"
+    },
+    {
+      "slot_sequence_index": 49,
+      "cell_index": 4,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-049"
+    },
+    {
+      "slot_sequence_index": 50,
+      "cell_index": 5,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-050"
+    },
+    {
+      "slot_sequence_index": 51,
+      "cell_index": 5,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-051"
+    },
+    {
+      "slot_sequence_index": 52,
+      "cell_index": 5,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-052"
+    },
+    {
+      "slot_sequence_index": 53,
+      "cell_index": 5,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-053"
+    },
+    {
+      "slot_sequence_index": 54,
+      "cell_index": 5,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-054"
+    },
+    {
+      "slot_sequence_index": 55,
+      "cell_index": 5,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-055"
+    },
+    {
+      "slot_sequence_index": 56,
+      "cell_index": 5,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-056"
+    },
+    {
+      "slot_sequence_index": 57,
+      "cell_index": 5,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-057"
+    },
+    {
+      "slot_sequence_index": 58,
+      "cell_index": 5,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-058"
+    },
+    {
+      "slot_sequence_index": 59,
+      "cell_index": 5,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-059"
+    },
+    {
+      "slot_sequence_index": 60,
+      "cell_index": 6,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-060"
+    },
+    {
+      "slot_sequence_index": 61,
+      "cell_index": 6,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-061"
+    },
+    {
+      "slot_sequence_index": 62,
+      "cell_index": 6,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-062"
+    },
+    {
+      "slot_sequence_index": 63,
+      "cell_index": 6,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-063"
+    },
+    {
+      "slot_sequence_index": 64,
+      "cell_index": 6,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-064"
+    },
+    {
+      "slot_sequence_index": 65,
+      "cell_index": 6,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-065"
+    },
+    {
+      "slot_sequence_index": 66,
+      "cell_index": 6,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-066"
+    },
+    {
+      "slot_sequence_index": 67,
+      "cell_index": 6,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-067"
+    },
+    {
+      "slot_sequence_index": 68,
+      "cell_index": 6,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-068"
+    },
+    {
+      "slot_sequence_index": 69,
+      "cell_index": 6,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-069"
+    },
+    {
+      "slot_sequence_index": 70,
+      "cell_index": 7,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-070"
+    },
+    {
+      "slot_sequence_index": 71,
+      "cell_index": 7,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-071"
+    },
+    {
+      "slot_sequence_index": 72,
+      "cell_index": 7,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-072"
+    },
+    {
+      "slot_sequence_index": 73,
+      "cell_index": 7,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-073"
+    },
+    {
+      "slot_sequence_index": 74,
+      "cell_index": 7,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-074"
+    },
+    {
+      "slot_sequence_index": 75,
+      "cell_index": 7,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-075"
+    },
+    {
+      "slot_sequence_index": 76,
+      "cell_index": 7,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-076"
+    },
+    {
+      "slot_sequence_index": 77,
+      "cell_index": 7,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-077"
+    },
+    {
+      "slot_sequence_index": 78,
+      "cell_index": 7,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-078"
+    },
+    {
+      "slot_sequence_index": 79,
+      "cell_index": 7,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-079"
+    },
+    {
+      "slot_sequence_index": 80,
+      "cell_index": 8,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-080"
+    },
+    {
+      "slot_sequence_index": 81,
+      "cell_index": 8,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-081"
+    },
+    {
+      "slot_sequence_index": 82,
+      "cell_index": 8,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-082"
+    },
+    {
+      "slot_sequence_index": 83,
+      "cell_index": 8,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-083"
+    },
+    {
+      "slot_sequence_index": 84,
+      "cell_index": 8,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-084"
+    },
+    {
+      "slot_sequence_index": 85,
+      "cell_index": 8,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-085"
+    },
+    {
+      "slot_sequence_index": 86,
+      "cell_index": 8,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-086"
+    },
+    {
+      "slot_sequence_index": 87,
+      "cell_index": 8,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-087"
+    },
+    {
+      "slot_sequence_index": 88,
+      "cell_index": 8,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-088"
+    },
+    {
+      "slot_sequence_index": 89,
+      "cell_index": 8,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-089"
+    },
+    {
+      "slot_sequence_index": 90,
+      "cell_index": 9,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-090"
+    },
+    {
+      "slot_sequence_index": 91,
+      "cell_index": 9,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-091"
+    },
+    {
+      "slot_sequence_index": 92,
+      "cell_index": 9,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-092"
+    },
+    {
+      "slot_sequence_index": 93,
+      "cell_index": 9,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-093"
+    },
+    {
+      "slot_sequence_index": 94,
+      "cell_index": 9,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-094"
+    },
+    {
+      "slot_sequence_index": 95,
+      "cell_index": 9,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-095"
+    },
+    {
+      "slot_sequence_index": 96,
+      "cell_index": 9,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-096"
+    },
+    {
+      "slot_sequence_index": 97,
+      "cell_index": 9,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-097"
+    },
+    {
+      "slot_sequence_index": 98,
+      "cell_index": 9,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-098"
+    },
+    {
+      "slot_sequence_index": 99,
+      "cell_index": 9,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-099"
+    },
+    {
+      "slot_sequence_index": 100,
+      "cell_index": 10,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-100"
+    },
+    {
+      "slot_sequence_index": 101,
+      "cell_index": 10,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-101"
+    },
+    {
+      "slot_sequence_index": 102,
+      "cell_index": 10,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-102"
+    },
+    {
+      "slot_sequence_index": 103,
+      "cell_index": 10,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-103"
+    },
+    {
+      "slot_sequence_index": 104,
+      "cell_index": 10,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-104"
+    },
+    {
+      "slot_sequence_index": 105,
+      "cell_index": 10,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-105"
+    },
+    {
+      "slot_sequence_index": 106,
+      "cell_index": 10,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-106"
+    },
+    {
+      "slot_sequence_index": 107,
+      "cell_index": 10,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-107"
+    },
+    {
+      "slot_sequence_index": 108,
+      "cell_index": 10,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-108"
+    },
+    {
+      "slot_sequence_index": 109,
+      "cell_index": 10,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-109"
+    },
+    {
+      "slot_sequence_index": 110,
+      "cell_index": 11,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-110"
+    },
+    {
+      "slot_sequence_index": 111,
+      "cell_index": 11,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-111"
+    },
+    {
+      "slot_sequence_index": 112,
+      "cell_index": 11,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-112"
+    },
+    {
+      "slot_sequence_index": 113,
+      "cell_index": 11,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-113"
+    },
+    {
+      "slot_sequence_index": 114,
+      "cell_index": 11,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-114"
+    },
+    {
+      "slot_sequence_index": 115,
+      "cell_index": 11,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-115"
+    },
+    {
+      "slot_sequence_index": 116,
+      "cell_index": 11,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-116"
+    },
+    {
+      "slot_sequence_index": 117,
+      "cell_index": 11,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-117"
+    },
+    {
+      "slot_sequence_index": 118,
+      "cell_index": 11,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-118"
+    },
+    {
+      "slot_sequence_index": 119,
+      "cell_index": 11,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-119"
+    },
+    {
+      "slot_sequence_index": 120,
+      "cell_index": 12,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-120"
+    },
+    {
+      "slot_sequence_index": 121,
+      "cell_index": 12,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-121"
+    },
+    {
+      "slot_sequence_index": 122,
+      "cell_index": 12,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-122"
+    },
+    {
+      "slot_sequence_index": 123,
+      "cell_index": 12,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-123"
+    },
+    {
+      "slot_sequence_index": 124,
+      "cell_index": 12,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-124"
+    },
+    {
+      "slot_sequence_index": 125,
+      "cell_index": 12,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-125"
+    },
+    {
+      "slot_sequence_index": 126,
+      "cell_index": 12,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-126"
+    },
+    {
+      "slot_sequence_index": 127,
+      "cell_index": 12,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-127"
+    },
+    {
+      "slot_sequence_index": 128,
+      "cell_index": 12,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-128"
+    },
+    {
+      "slot_sequence_index": 129,
+      "cell_index": 12,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-129"
+    },
+    {
+      "slot_sequence_index": 130,
+      "cell_index": 13,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-130"
+    },
+    {
+      "slot_sequence_index": 131,
+      "cell_index": 13,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-131"
+    },
+    {
+      "slot_sequence_index": 132,
+      "cell_index": 13,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-132"
+    },
+    {
+      "slot_sequence_index": 133,
+      "cell_index": 13,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-133"
+    },
+    {
+      "slot_sequence_index": 134,
+      "cell_index": 13,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-134"
+    },
+    {
+      "slot_sequence_index": 135,
+      "cell_index": 13,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-135"
+    },
+    {
+      "slot_sequence_index": 136,
+      "cell_index": 13,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-136"
+    },
+    {
+      "slot_sequence_index": 137,
+      "cell_index": 13,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-137"
+    },
+    {
+      "slot_sequence_index": 138,
+      "cell_index": 13,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-138"
+    },
+    {
+      "slot_sequence_index": 139,
+      "cell_index": 13,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-139"
+    },
+    {
+      "slot_sequence_index": 140,
+      "cell_index": 14,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-140"
+    },
+    {
+      "slot_sequence_index": 141,
+      "cell_index": 14,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-141"
+    },
+    {
+      "slot_sequence_index": 142,
+      "cell_index": 14,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-142"
+    },
+    {
+      "slot_sequence_index": 143,
+      "cell_index": 14,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-143"
+    },
+    {
+      "slot_sequence_index": 144,
+      "cell_index": 14,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-144"
+    },
+    {
+      "slot_sequence_index": 145,
+      "cell_index": 14,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-145"
+    },
+    {
+      "slot_sequence_index": 146,
+      "cell_index": 14,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-146"
+    },
+    {
+      "slot_sequence_index": 147,
+      "cell_index": 14,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-147"
+    },
+    {
+      "slot_sequence_index": 148,
+      "cell_index": 14,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-148"
+    },
+    {
+      "slot_sequence_index": 149,
+      "cell_index": 14,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-149"
+    },
+    {
+      "slot_sequence_index": 150,
+      "cell_index": 15,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-150"
+    },
+    {
+      "slot_sequence_index": 151,
+      "cell_index": 15,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-151"
+    },
+    {
+      "slot_sequence_index": 152,
+      "cell_index": 15,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-152"
+    },
+    {
+      "slot_sequence_index": 153,
+      "cell_index": 15,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-153"
+    },
+    {
+      "slot_sequence_index": 154,
+      "cell_index": 15,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-154"
+    },
+    {
+      "slot_sequence_index": 155,
+      "cell_index": 15,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-155"
+    },
+    {
+      "slot_sequence_index": 156,
+      "cell_index": 15,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-156"
+    },
+    {
+      "slot_sequence_index": 157,
+      "cell_index": 15,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-157"
+    },
+    {
+      "slot_sequence_index": 158,
+      "cell_index": 15,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-158"
+    },
+    {
+      "slot_sequence_index": 159,
+      "cell_index": 15,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-159"
+    },
+    {
+      "slot_sequence_index": 160,
+      "cell_index": 16,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-160"
+    },
+    {
+      "slot_sequence_index": 161,
+      "cell_index": 16,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-161"
+    },
+    {
+      "slot_sequence_index": 162,
+      "cell_index": 16,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-162"
+    },
+    {
+      "slot_sequence_index": 163,
+      "cell_index": 16,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-163"
+    },
+    {
+      "slot_sequence_index": 164,
+      "cell_index": 16,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-164"
+    },
+    {
+      "slot_sequence_index": 165,
+      "cell_index": 16,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-165"
+    },
+    {
+      "slot_sequence_index": 166,
+      "cell_index": 16,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-166"
+    },
+    {
+      "slot_sequence_index": 167,
+      "cell_index": 16,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-167"
+    },
+    {
+      "slot_sequence_index": 168,
+      "cell_index": 16,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-168"
+    },
+    {
+      "slot_sequence_index": 169,
+      "cell_index": 16,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-169"
+    },
+    {
+      "slot_sequence_index": 170,
+      "cell_index": 17,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-170"
+    },
+    {
+      "slot_sequence_index": 171,
+      "cell_index": 17,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-171"
+    },
+    {
+      "slot_sequence_index": 172,
+      "cell_index": 17,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-172"
+    },
+    {
+      "slot_sequence_index": 173,
+      "cell_index": 17,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-173"
+    },
+    {
+      "slot_sequence_index": 174,
+      "cell_index": 17,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-174"
+    },
+    {
+      "slot_sequence_index": 175,
+      "cell_index": 17,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-175"
+    },
+    {
+      "slot_sequence_index": 176,
+      "cell_index": 17,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-176"
+    },
+    {
+      "slot_sequence_index": 177,
+      "cell_index": 17,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-177"
+    },
+    {
+      "slot_sequence_index": 178,
+      "cell_index": 17,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-178"
+    },
+    {
+      "slot_sequence_index": 179,
+      "cell_index": 17,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-179"
+    },
+    {
+      "slot_sequence_index": 180,
+      "cell_index": 18,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-180"
+    },
+    {
+      "slot_sequence_index": 181,
+      "cell_index": 18,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-181"
+    },
+    {
+      "slot_sequence_index": 182,
+      "cell_index": 18,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-182"
+    },
+    {
+      "slot_sequence_index": 183,
+      "cell_index": 18,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-183"
+    },
+    {
+      "slot_sequence_index": 184,
+      "cell_index": 18,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-184"
+    },
+    {
+      "slot_sequence_index": 185,
+      "cell_index": 18,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-185"
+    },
+    {
+      "slot_sequence_index": 186,
+      "cell_index": 18,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-186"
+    },
+    {
+      "slot_sequence_index": 187,
+      "cell_index": 18,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-187"
+    },
+    {
+      "slot_sequence_index": 188,
+      "cell_index": 18,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-188"
+    },
+    {
+      "slot_sequence_index": 189,
+      "cell_index": 18,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-189"
+    },
+    {
+      "slot_sequence_index": 190,
+      "cell_index": 19,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-190"
+    },
+    {
+      "slot_sequence_index": 191,
+      "cell_index": 19,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-191"
+    },
+    {
+      "slot_sequence_index": 192,
+      "cell_index": 19,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-192"
+    },
+    {
+      "slot_sequence_index": 193,
+      "cell_index": 19,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-193"
+    },
+    {
+      "slot_sequence_index": 194,
+      "cell_index": 19,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-194"
+    },
+    {
+      "slot_sequence_index": 195,
+      "cell_index": 19,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-195"
+    },
+    {
+      "slot_sequence_index": 196,
+      "cell_index": 19,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-196"
+    },
+    {
+      "slot_sequence_index": 197,
+      "cell_index": 19,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-197"
+    },
+    {
+      "slot_sequence_index": 198,
+      "cell_index": 19,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-198"
+    },
+    {
+      "slot_sequence_index": 199,
+      "cell_index": 19,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-199"
+    },
+    {
+      "slot_sequence_index": 200,
+      "cell_index": 20,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-200"
+    },
+    {
+      "slot_sequence_index": 201,
+      "cell_index": 20,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-201"
+    },
+    {
+      "slot_sequence_index": 202,
+      "cell_index": 20,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-202"
+    },
+    {
+      "slot_sequence_index": 203,
+      "cell_index": 20,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-203"
+    },
+    {
+      "slot_sequence_index": 204,
+      "cell_index": 20,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-204"
+    },
+    {
+      "slot_sequence_index": 205,
+      "cell_index": 20,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-205"
+    },
+    {
+      "slot_sequence_index": 206,
+      "cell_index": 20,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-206"
+    },
+    {
+      "slot_sequence_index": 207,
+      "cell_index": 20,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-207"
+    },
+    {
+      "slot_sequence_index": 208,
+      "cell_index": 20,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-208"
+    },
+    {
+      "slot_sequence_index": 209,
+      "cell_index": 20,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-209"
+    },
+    {
+      "slot_sequence_index": 210,
+      "cell_index": 21,
+      "backend": "cuda",
+      "block_index": 0,
+      "order_slot": 0,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-210"
+    },
+    {
+      "slot_sequence_index": 211,
+      "cell_index": 21,
+      "backend": "vulkan",
+      "block_index": 0,
+      "order_slot": 1,
+      "process_index": 0,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-211"
+    },
+    {
+      "slot_sequence_index": 212,
+      "cell_index": 21,
+      "backend": "vulkan",
+      "block_index": 1,
+      "order_slot": 0,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-212"
+    },
+    {
+      "slot_sequence_index": 213,
+      "cell_index": 21,
+      "backend": "cuda",
+      "block_index": 1,
+      "order_slot": 1,
+      "process_index": 1,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-213"
+    },
+    {
+      "slot_sequence_index": 214,
+      "cell_index": 21,
+      "backend": "cuda",
+      "block_index": 2,
+      "order_slot": 0,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-214"
+    },
+    {
+      "slot_sequence_index": 215,
+      "cell_index": 21,
+      "backend": "vulkan",
+      "block_index": 2,
+      "order_slot": 1,
+      "process_index": 2,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-215"
+    },
+    {
+      "slot_sequence_index": 216,
+      "cell_index": 21,
+      "backend": "vulkan",
+      "block_index": 3,
+      "order_slot": 0,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-216"
+    },
+    {
+      "slot_sequence_index": 217,
+      "cell_index": 21,
+      "backend": "cuda",
+      "block_index": 3,
+      "order_slot": 1,
+      "process_index": 3,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-217"
+    },
+    {
+      "slot_sequence_index": 218,
+      "cell_index": 21,
+      "backend": "cuda",
+      "block_index": 4,
+      "order_slot": 0,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-218"
+    },
+    {
+      "slot_sequence_index": 219,
+      "cell_index": 21,
+      "backend": "vulkan",
+      "block_index": 4,
+      "order_slot": 1,
+      "process_index": 4,
+      "session_id": "ex2-s6-e1b-8f1565f-slot-219"
+    }
+  ],
+  "formulas": {
+    "metric_input": "IEEE-754 binary64, raw sample order",
+    "mean": "sequential sum / n",
+    "sd": "sqrt(sequential squared deviations / (n-1))",
+    "cv": "sample SD / mean; null if mean zero",
+    "median": "sorted middle or average of two middle values",
+    "p95": "nearest rank ceil(0.95*n)",
+    "windows": "original sample indexes 0..24,25..49,50..74,75..99",
+    "span": "within-backend max(five positive process medians)/min; only for five complete successful processes",
+    "package_hash": "SHA256 of sorted-key canonical JSON without LF: package_hash_version=1 and ordered four name/size_bytes/sha256 artifact objects",
+    "manifest_hash": "SHA256 of sorted-key canonical JSON without manifest_sha256 and without LF"
+  },
+  "source_authority_hashes": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "9db35d22cde4b244fffd360968f89ad55df2028b49cdd57c95ac951dec4622bb"
+    },
+    {
+      "path": "docs/charter.md",
+      "sha256": "58dcaf123bce0983f1a6279315bc85da3e23cdcf4a7881611e5f4b2a861ee061"
+    },
+    {
+      "path": "docs/methodology.md",
+      "sha256": "aabd97c2f89b4e9b302e24f08d534e482577b6ea7793e894ddbaf9fc2496fa4c"
+    },
+    {
+      "path": "docs/results-format.md",
+      "sha256": "5782fc9966365821c3b4c9db644881884750662677c1259b2dab1c4242aafbef"
+    },
+    {
+      "path": "docs/ex2.md",
+      "sha256": "540f813ba1dff84152cb9a2ac73900c8fc0d56d34478b8351fd407b7b63cc2a4"
+    },
+    {
+      "path": "src/ex2/Ex2Configuration.hpp",
+      "sha256": "0c911a9634f0e992e79c776193ec1f0be3635219d9076d74c042959b34417e1e"
+    },
+    {
+      "path": "src/ex2/Ex2Configuration.cpp",
+      "sha256": "0d02cfe74a825537de6126012fbfb8f1bc59e3804405a082d52d137877d97574"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Plan.hpp",
+      "sha256": "98dd19bac11f274cad8efd605f97930071906b948eb1bc43119c2529bf146c81"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Plan.cpp",
+      "sha256": "1352e48890e37b85510dc9b4754517c958f9436e91571f20ccb4a5d1316235f3"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Evidence.hpp",
+      "sha256": "c7f74c314b04486a119c369c1cc4f3b35d0ba5cd52e5ddbc4413b91490562124"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Evidence.cpp",
+      "sha256": "48576ad71568b869ad874ca8f74a243690dd2c89cb43d76b6c61fa5e7d11e843"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Analysis.hpp",
+      "sha256": "ddc8fbeaf121a462c9a35ca662c86b5f37dc29e00ec9fe604de9bbc9525169ec"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Analysis.cpp",
+      "sha256": "89a8b82ac364a84ee0c20201c33a9382e9c50d2bf62d85aa74a971c4467a0129"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Progress.hpp",
+      "sha256": "ac7564b3bc5d60446a9e0d7c7b2ca3f965ffa763b4ab15707332b8006313697c"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Progress.cpp",
+      "sha256": "a19ff957f82835f62681f0e306378fb0d054412a0a16790ae675d51651b275b8"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Supervisor.hpp",
+      "sha256": "cee0d955531c09bea706aaeab715dd3bb781a383e46a8fa9157ad701b67451f5"
+    },
+    {
+      "path": "src/ex2/Ex2Stage6Supervisor.cpp",
+      "sha256": "50636d0997e5054c20b1156061ad848c7aaf6ef4ac30a7348e3bed5b43ac3163"
+    },
+    {
+      "path": "src/ex2/Ex2Input.hpp",
+      "sha256": "872f0a94a5a365f92c200637ff9c6af4d090dbf01377448b991b31923df66e3e"
+    },
+    {
+      "path": "src/ex2/Ex2Input.cpp",
+      "sha256": "8cb11cd68dd7dfb5c4cacf11f39b91cf14f02b51c14015ed6911e0b1cb86e32e"
+    },
+    {
+      "path": "src/ex2/Ex2LogicalInput.hpp",
+      "sha256": "0472f2450317957bf6a8c0e5bd2aa7564fbd0f264b1f81b4c8fb899f6aa97472"
+    },
+    {
+      "path": "src/ex2/Ex2LogicalInput.cpp",
+      "sha256": "fbfab717e382b56f7543916501e293b9d908c1c46cc59f04f0c1231242b11411"
+    },
+    {
+      "path": "src/ex2/Ex2IndexPermutation.hpp",
+      "sha256": "914fc8f8af193d40c36922a766a87f254841d32e9f6753637abe69d3d102c987"
+    },
+    {
+      "path": "src/ex2/Ex2IndexPermutation.cpp",
+      "sha256": "84c88f0d5a511e56032ecb92cee05629522737738865624d31288202d701a111"
+    },
+    {
+      "path": "src/ex2/Ex2ContentionTargets.hpp",
+      "sha256": "29dea04f0c030fbc8d943ca758aa38625e4a2fd74da3d6bd2bf9b9afa4602345"
+    },
+    {
+      "path": "src/ex2/Ex2ContentionTargets.cpp",
+      "sha256": "4848ea8dbe2e1cd56cc4df023dbcf1b2595b8b546ad6f828e8e4d80a4e69adc9"
+    },
+    {
+      "path": "src/ex2/Ex2CpuOracles.hpp",
+      "sha256": "c82a7b0c2d0285146e54b77875cbdef5beaa25aa9e7132c4bbda778f18b3c381"
+    },
+    {
+      "path": "src/ex2/Ex2CpuA.cpp",
+      "sha256": "c7e5fdfcd0d19286b30f3351e161b60756813b79f7172ea99456a7f413d33b35"
+    },
+    {
+      "path": "src/ex2/Ex2CpuB.cpp",
+      "sha256": "49a9ce96d4a207bfd6e5a6079b9970905fabd59faccf29a908dd3afcf80b78d8"
+    },
+    {
+      "path": "src/ex2/Ex2CpuC.cpp",
+      "sha256": "26928befa69cf9a96a39feb531f6b4cff5a57861e2314b68909ef03c6e908c5c"
+    },
+    {
+      "path": "src/ex2/Ex2CpuD.cpp",
+      "sha256": "c3f2719e17f9f4ae8ef020aef0bc6b5f05bd4a96baa281433065a488f09bd8eb"
+    },
+    {
+      "path": "src/ex2/Ex2CpuE.cpp",
+      "sha256": "8cbf7762834d172cb817b8816374aa8df8c304bc1c604c7882e16b44364711a6"
+    },
+    {
+      "path": "src/app/Ex2Stage6Execution.hpp",
+      "sha256": "1e50e13847bb533501946316cc1c096a7f8366506caebe44a79335f1a4a32397"
+    },
+    {
+      "path": "src/app/Ex2Stage6Execution.cpp",
+      "sha256": "41d25e0fb93b7533b0bafbb48b4453c66be7920772acf744279201b6165d24c5"
+    }
+  ],
+  "prohibited_actions_performed": []
+}

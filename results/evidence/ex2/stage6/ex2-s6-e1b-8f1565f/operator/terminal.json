@@ -1,0 +1,11 @@
+{
+    "launch_count":  1,
+    "process_id":  39708,
+    "start_utc":  "2026-10-07T15:05:21.7273853Z",
+    "end_utc":  "2026-10-07T15:27:58.3297548Z",
+    "raw_exit_code":  0,
+    "operator_wall_seconds":  1356.6023695,
+    "manifest_id":  "ex2-s6-e1b-8f1565f",
+    "manifest_sha256":  "5a87f15ef384d3c8c1c0f43adf736e17a5e6cdc46fcd2e849f333ae3e07c0963",
+    "manifest_file_sha256":  "ad83b68e8ff430854325ec944c1317a348b087dd9daaf825f51100b7cdaa68b8"
+}

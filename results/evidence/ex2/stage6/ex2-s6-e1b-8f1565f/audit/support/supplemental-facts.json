@@ -1,0 +1,16 @@
+{
+  "check_counts": {
+    "preparation": 56,
+    "operator": 14,
+    "artifacts": 16,
+    "sequential": 438,
+    "publication": 22,
+    "immutability": 2
+  },
+  "discrepancies": [],
+  "immutable_file_count": 930,
+  "immutable_bytes": 14786169,
+  "required_file_count": 910,
+  "sequential_boundaries": 219,
+  "minimum_interprocess_gap_seconds": 0.581
+}
