@@ -100,7 +100,7 @@ void Smoke(std::size_t cell, std::size_t plan)
     const auto f = ExpectedFoundation({slot, session, c.machineId, {expectedUuid, true}, provenance.sourceRevision, provenance.executableSha256, provenance.shaderSha256});
     const auto environment = Read(cleanup.paths.finalDirectory / "environment.json");
     EXPECT_EQ(Text(environment, "run_id"), session); EXPECT_EQ(Text(environment, "machine_id"), c.machineId);
-    EXPECT_EQ(Text(environment, "protocol_version"), "1.3"); EXPECT_EQ(Text(environment, "evidence_kind"), "diagnostic");
+    EXPECT_EQ(Text(environment, "protocol_version"), "1.4"); EXPECT_EQ(Text(environment, "evidence_kind"), "diagnostic");
     EXPECT_EQ(Text(environment, "backend"), cuda ? "cuda" : "vulkan"); EXPECT_EQ(Text(environment, "instrument_mode"), "H");
     const std::string route = cell < 3 ? "a1" : cell < 5 ? "a2" : cell < 8 ? "b1" : cell < 11 ? "b2" : cell < 14 ? "c" : cell < 16 ? "d1" : cell < 19 ? "e1" : "e2";
     EXPECT_EQ(Text(environment, "implementation"), "ex2-" + std::string(cuda ? "cuda" : "vulkan") + "-" + route + "-native");
@@ -135,6 +135,7 @@ void Smoke(std::size_t cell, std::size_t plan)
     }
     ASSERT_EQ(rows.size(), 100); const auto summary = ev::SummarizeSamples(f.Identity(), rows, ev::Status::Ok);
     const auto diskSummary = Read(cleanup.paths.finalDirectory / "summary.json"); EXPECT_EQ(diskSummary, ev::SerializeSummaryJson(summary, rows));
+    EXPECT_EQ(Text(diskSummary, "protocol_version"), "1.4");
     EXPECT_EQ(summary.recordedSampleCount, 100); EXPECT_EQ(summary.successfulSampleCount, 100); EXPECT_EQ(summary.validationFailures, 0); EXPECT_EQ(summary.failedSampleCount, 0);
     EXPECT_EQ(summary.hostSubmissionNanoseconds.sampleCount, 100); EXPECT_EQ(summary.hostWaitNanoseconds.sampleCount, 100); EXPECT_EQ(summary.hostCompletionNanoseconds.sampleCount, 100); EXPECT_FALSE(summary.nativeDeviceIntervalNanoseconds);
     run::RequireSameProvenance(provenance, run::ResolveProvenance(paths, slot));

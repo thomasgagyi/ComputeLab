@@ -6,7 +6,7 @@
 namespace computelab::ex2::stage6::evidence
 {
 inline constexpr std::uint32_t SchemaVersion = 2;
-inline constexpr std::string_view ProtocolVersion = "1.3", EvidenceKind = "diagnostic", ExperimentId = "EX-2";
+inline constexpr std::string_view ProtocolVersion = "1.4", EvidenceKind = "diagnostic", ExperimentId = "EX-2";
 using Status = computelab::ex2::evidence::OperationStatus;
 using FailurePhase = computelab::ex2::evidence::FailurePhase;
 using CorrectnessProgress = computelab::ex2::evidence::CorrectnessProgress;

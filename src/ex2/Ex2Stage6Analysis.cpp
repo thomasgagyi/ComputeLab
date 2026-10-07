@@ -161,7 +161,7 @@ CampaignDescription DescribeCampaign(const CampaignInput& input)
 std::string SerializeCellJson(const CellDescription& c)
 {
     using namespace evidence::detail;
-    std::string out = "{\"analysis_version\":1,\"protocol_version\":\"1.3\",\"analysis_kind\":\"stage6-cell-diagnostic\",\"cell_index\":" + Json(c.CellIndex());
+    std::string out = "{\"analysis_version\":1,\"protocol_version\":\"1.4\",\"analysis_kind\":\"stage6-cell-diagnostic\",\"cell_index\":" + Json(c.CellIndex());
     out += ",\"workload\":" + WorkloadJson(WorkloadForCell(c.CellIndex()));
     Field(out, "status", c.Status() == CoverageStatus::Complete ? "complete" : "incomplete");
     Field(out, "resolved_slot_count", c.ResolvedSlotCount()); Field(out, "successful_slot_count", c.SuccessfulSlotCount());
@@ -171,7 +171,7 @@ std::string SerializeCellJson(const CellDescription& c)
 std::string SerializeCampaignJson(const CampaignDescription& c)
 {
     using namespace evidence::detail;
-    std::string out = "{\"analysis_version\":1,\"protocol_version\":\"1.3\",\"analysis_kind\":\"stage6-campaign-diagnostic\"";
+    std::string out = "{\"analysis_version\":1,\"protocol_version\":\"1.4\",\"analysis_kind\":\"stage6-campaign-diagnostic\"";
     Field(out, "status", c.Status() == CoverageStatus::Complete ? "complete" : "incomplete");
     Field(out, "declared_slots", static_cast<std::uint64_t>(TotalChildCount)); Field(out, "attempted_slots", c.AttemptedSlots());
     Field(out, "resolved_slots", c.ResolvedSlots()); Field(out, "successful_slots", c.SuccessfulSlots());

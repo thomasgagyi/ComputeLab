@@ -307,7 +307,7 @@ TEST(Ex2Identity, AFixtureMatchesIndependentLiteralCanonicalJsonAndSha256)
         "4d7f59d82a16d18a7738e43eaa236ce233f1384e749da092c813793265b22ffa");
 }
 
-TEST(Ex2Identity, ScopedProtocolVersionPolicyAcceptsOnlyOnePointZeroOnePointOneAndOnePointTwo)
+TEST(Ex2Identity, ScopedProtocolVersionPolicyAcceptsOnePointZeroThroughOnePointFour)
 {
     const auto v10 = Condition(ex2::MakeConfiguration(
         ex2::LinearConfiguration{ex2::LinearVariant::A1, 257U}));
@@ -326,7 +326,14 @@ TEST(Ex2Identity, ScopedProtocolVersionPolicyAcceptsOnlyOnePointZeroOnePointOneA
     arbitrary.protocolVersion = "1.2";
     EXPECT_NO_THROW(static_cast<void>(ex2::ComparisonConditionCanonicalJson(arbitrary)));
     EXPECT_NE(ex2::ComparisonConditionId(arbitrary), ex2::ComparisonConditionId(v11));
-    for (const auto version : {"", "1", "1.00", "1.4", "2.0"})
+    for (const auto version : {"1.3", "1.4"})
+    {
+        arbitrary.protocolVersion = version;
+        EXPECT_NO_THROW(static_cast<void>(ex2::ComparisonConditionCanonicalJson(arbitrary)));
+        EXPECT_NE(ex2::ComparisonConditionId(arbitrary), ex2::ComparisonConditionId(v11));
+        EXPECT_NE(ex2::SeriesId(CudaSeries(arbitrary)), ex2::SeriesId(v10Series));
+    }
+    for (const auto version : {"", "1", "1.00", "1.5", "2.0"})
     {
         arbitrary.protocolVersion = version;
         EXPECT_THROW(static_cast<void>(ex2::ComparisonConditionId(arbitrary)), std::invalid_argument);

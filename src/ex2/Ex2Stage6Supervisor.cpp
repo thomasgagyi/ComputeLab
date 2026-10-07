@@ -909,7 +909,7 @@ Manifest ParseManifest(std::string_view bytes)
         "cuda_device_ordinal", "vulkan_physical_device_index", "expected_vulkan_shader_sha256", "operation_timeout_ms", "child_timeout_ms",
         "campaign_timeout_ms", "continuation_policy", "declared_cell_group_count", "declared_child_count", "groups"}, "manifest");
     Check(RequireUnsigned(object, "manifest_version") == 1 && RequireString(object, "manifest_type") == "ex2-stage6-diagnostic"
-        && RequireString(object, "protocol_version") == "1.3" && RequireUnsigned(object, "evidence_schema_version") == 2
+        && RequireString(object, "protocol_version") == "1.4" && RequireUnsigned(object, "evidence_schema_version") == 2
         && RequireString(object, "evidence_kind") == "diagnostic" && RequireString(object, "instrument_mode") == "H"
         && RequireString(object, "continuation_policy") == "resolved-only-no-retry" && !RequireBoolean(object, "expected_git_dirty")
         && RequireUnsigned(object, "declared_cell_group_count") == CoreCellCount && RequireUnsigned(object, "declared_child_count") == TotalChildCount,
@@ -1422,9 +1422,13 @@ Reconciliation ReconcileSlot(const ProcessResult& p, const PackageInspection& i)
     if (p.operationTimedOut) return fatal("operation_timeout");
     if (p.campaignTimedOut) return fatal("campaign_timeout");
     if (p.childTimedOut) return fatal("child_timeout");
-    if (!p.processCreated || !p.processResumed || !p.primaryTerminationConfirmed || !p.containmentAssigned || !p.containmentVerified
-        || !p.jobEmptyConfirmed || p.jobActiveProcesses != 0 || (p.jobTotalProcesses && *p.jobTotalProcesses < 1)
-        || p.descendantSurvivalObserved || p.containmentVerificationFailed || p.supervisorTerminationRequested || p.controlError)
+    const bool quiescentControlSafe = p.processCreated && p.processResumed && p.primaryTerminationConfirmed
+        && p.containmentAssigned && p.containmentVerified && p.jobEmptyConfirmed && p.jobActiveProcesses == 0
+        && (!p.jobTotalProcesses || *p.jobTotalProcesses >= 1) && !p.containmentVerificationFailed && !p.controlError;
+    const bool ordinaryControlSafe = quiescentControlSafe && !p.descendantSurvivalObserved && !p.supervisorTerminationRequested;
+    const bool safePostCompletionCleanupCandidate = quiescentControlSafe && p.descendantSurvivalObserved
+        && p.supervisorTerminationRequested && p.terminateJobSucceeded && p.exitCode == 0;
+    if (!ordinaryControlSafe && !safePostCompletionCleanupCandidate)
         return fatal("unsafe_process_control");
     if (p.exitKind == ExitKind::VoluntaryStage6 && p.exitCode && i.sidecarPresent && i.sidecarValid && i.sidecar) {
         const auto actual = *p.exitCode; const auto historical = i.sidecar->exitCategory;
@@ -1432,7 +1436,9 @@ Reconciliation ReconcileSlot(const ProcessResult& p, const PackageInspection& i)
             : actual == 5 ? historical == 0 || historical == 5 : false;
         if (!compatible) return fatal("sidecar_exit_incompatible");
     }
-    if (p.exitKind != ExitKind::VoluntaryStage6 || !p.exitCode || (*p.exitCode != 0 && *p.exitCode != 4)) return fatal("unsafe_child_exit");
+    const bool safeCleanupExit = safePostCompletionCleanupCandidate && p.exitKind == ExitKind::SupervisorForced && p.exitCode == 0;
+    if (!safeCleanupExit && (p.exitKind != ExitKind::VoluntaryStage6 || !p.exitCode || (*p.exitCode != 0 && *p.exitCode != 4)))
+        return fatal("unsafe_child_exit");
     if (p.progressTransportFailed || !p.cleanEof || p.trailingBytes || p.activeAttempt
         || p.progressForm == progress::TerminalForm::NotStarted || p.progressForm == progress::TerminalForm::OutstandingStartedPrefix)
         return fatal("unsafe_progress_terminal");
@@ -1460,6 +1466,10 @@ Reconciliation ReconcileSlot(const ProcessResult& p, const PackageInspection& i)
         } else if (i.packageFinalized || i.location != PackageLocation::Staging || i.topology != Topology::StagingWithSidecar
             || !i.sidecarPresent || !i.sidecarValid || !i.sidecar || (i.sidecar->exitCategory != 0 && i.sidecar->exitCategory != 4))
             return fatal("unrecoverable_publication_failure");
+        if (safePostCompletionCleanupCandidate) {
+            if (!success) return fatal("unsafe_process_control");
+            return {analysis::SlotDisposition::ResolvedSuccess, "resolved_success_post_completion_cleanup", description};
+        }
         return {success ? analysis::SlotDisposition::ResolvedSuccess : analysis::SlotDisposition::ResolvedDiagnosticFailure,
             *p.exitCode == 4 ? "resolved_complete_staging" : success ? "resolved_success" : "resolved_diagnostic_failure", description};
     } catch (...) { return fatal("reconciliation_input_invalid"); }
@@ -1561,7 +1571,7 @@ JsonValue LedgerJson(const Ledger& l)
             {"reconciliation_reason", NullableText(s.reason)}, {"continuation", J(s.continuation)}}}});
     }
     for (const auto& a : l.cellAnalyses) cells.push_back(AnchorJson(a));
-    return {{JsonObject{{"record_version", J(std::uint64_t{1})}, {"record_type", J("ex2-stage6-supervisor-control")}, {"protocol_version", J("1.3")},
+    return {{JsonObject{{"record_version", J(std::uint64_t{1})}, {"record_type", J("ex2-stage6-supervisor-control")}, {"protocol_version", J("1.4")},
         {"manifest_id", J(l.manifest.id)}, {"manifest_sha256", J(l.manifest.sha256)}, {"manifest_file_sha256", J(l.manifest.fileSha256)},
         {"manifest", JsonParser(l.manifest.canonicalJson).Parse()}, {"resume_policy", J("forbidden")}, {"ledger_revision", J(l.revision)}, {"control_state", J(l.state)},
         {"control_start_time_utc", J(l.controlStartUtc)}, {"campaign_start_time_utc", NullableText(l.campaignStartUtc)}, {"campaign_end_time_utc", NullableText(l.campaignEndUtc)},
@@ -1586,7 +1596,7 @@ void ValidateLedgerBytes(std::string_view bytes)
         "ledger_revision", "control_state", "control_start_time_utc", "campaign_start_time_utc", "campaign_end_time_utc", "qpc_frequency", "campaign_start_counter",
         "campaign_deadline_counter", "observed_preflight", "fatal_sequence_index", "fatal_reason", "slots", "cell_analysis", "campaign_analysis"});
     Check(RequireUnsigned(o, "record_version") == 1 && RequireString(o, "record_type") == "ex2-stage6-supervisor-control"
-        && RequireString(o, "protocol_version") == "1.3" && RequireString(o, "resume_policy") == "forbidden", "ledger identity");
+        && RequireString(o, "protocol_version") == "1.4" && RequireString(o, "resume_policy") == "forbidden", "ledger identity");
     const auto m = ParseManifest(Canonical(RequireMember(o, "manifest")) + "\n");
     const PreflightFacts expectedFacts{m.sourceRevision, false, m.childExecutableSha256, m.supervisorExecutableSha256, m.gpuUuid, m.gpuUuid, m.shaderSha256};
     Check(Canonical(RequireMember(o, "observed_preflight")) == Canonical(FactsJson(expectedFacts)), "ledger observed preflight differs from manifest");

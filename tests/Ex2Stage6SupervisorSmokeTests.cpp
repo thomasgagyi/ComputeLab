@@ -24,7 +24,7 @@ std::string Rehash(std::string_view raw)
 std::string ManifestBytes(std::string id = "s6-i3-test")
 {
     std::string raw = "{\"manifest_version\":1,\"manifest_type\":\"ex2-stage6-diagnostic\",\"manifest_id\":\"" + id
-        + "\",\"manifest_sha256\":\"" + std::string(64, '0') + "\",\"protocol_version\":\"1.3\",\"evidence_schema_version\":2,\"evidence_kind\":\"diagnostic\",\"instrument_mode\":\"H\","
+        + "\",\"manifest_sha256\":\"" + std::string(64, '0') + "\",\"protocol_version\":\"1.4\",\"evidence_schema_version\":2,\"evidence_kind\":\"diagnostic\",\"instrument_mode\":\"H\","
         "\"machine_id\":\"test-machine\",\"child_executable_path\":\"out/build/x64-release/src/app/ComputeLabEx2Stage6.exe\",\"expected_source_revision\":\"" + std::string(40, 'a')
         + "\",\"expected_git_dirty\":false,\"expected_child_executable_sha256\":\"" + std::string(64, 'b') + "\",\"expected_supervisor_executable_sha256\":\"" + std::string(64, 'c')
         + "\",\"expected_gpu_uuid\":\"" + std::string(Uuid) + "\",\"cuda_device_ordinal\":0,\"vulkan_physical_device_index\":0,\"expected_vulkan_shader_sha256\":{";

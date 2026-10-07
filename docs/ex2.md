@@ -411,6 +411,134 @@ For **new v1.3 Stage-6 diagnostic evidence only**, this amendment supersedes his
 
 This amendment does **not** supersede A–E semantics, `ex2-mix64-v1` constants/semantics, the exact 22 core cells, CPU oracles, logical-input identity, the same-GPU rule, H `t0/t1/t2`, route operation semantics, mandatory correctness, schema 2, the exact `samples.csv` v2 header, summary formulas/null rules, process-pair identities, historical v1.0/v1.1/v1.2 evidence, EX-1 history, Stage-4 correctness history, Stage-5 qualification history or curation principles. Compatible historical rules remain inherited. Gate-0 FAIL and the comparative-claim firewall remain authoritative.
 
+### Scoped v1.4 Stage-6 safe post-completion cleanup amendment
+
+**S6-C2, decision date 2026-10-07.** Accepted DR-45 (Notion identity
+`3f24ccea332e8137ae18f8a81211d1cd`) permits proven-safe post-completion Job
+cleanup to continue the predeclared Stage-6 diagnostic schedule. DR-44 remains
+Accepted. This additive amendment supersedes only the v1.3 reconciliation of
+the exact successful cleanup class below and the protocol identity for new
+Stage-6 outputs. Historical publication-time status text above remains history.
+Gate 0 remains FAIL for proposed D1/H `host_completion_ns` comparative scope;
+Stage 2 remains NOT GRANTED and the production backend remains UNSELECTED.
+Claims remain descriptive/diagnostic only: no CUDA/Vulkan faster/slower claim,
+speedup, winner/loser, candidate-performance ranking or production selection.
+
+#### Immutable S6-E1a attempt-1 motivation
+
+Protocol-1.3 attempt 1 used source
+`905326396644e9f73396ebdef7517a97b8419556` and manifest `ex2-s6-e1-9053263`.
+Its semantic manifest SHA-256 is
+`60e24f2e14fefec292be0d34707f4a316e31b88e963bdcc8234c99577677c6fd`;
+physical manifest-file SHA-256 is
+`99ff1f8debe378ba08f9b48914078e7845b4f25b5c093f4da80f4c27953a3ec0`.
+It remains **INCOMPLETE / independently audited**, with 5 resolved successes,
+0 resolved diagnostic failures, 1 unresolved campaign-fatal slot and 214
+not-launched slots. Slot 5 stopped for `unsafe_process_control`.
+The audit classification is `LIVE_DESCENDANT_SURVIVAL` and
+`NO_IMPLEMENTATION_DEFECT_ESTABLISHED`; audit JSON SHA-256 is
+`1046373a3c0f6f87eb299a5c3ca4afbdd432af49b1f887fcdd914fd1efcd7576` and
+audit Markdown SHA-256 is
+`e1c0d34402ba7460b2605cdf5ea99554af855e2743972f0d7c387a6b6a37e69d`.
+
+That A1/256 Vulkan child (cell 0, block 2, order slot 1, process index 2)
+completed with primary raw exit 0, 100 Started/100 Returned observations, full
+progress, clean EOF, and a canonical FinalOnly four-file package containing
+100 successful rows, no failures and no sidecar. A live Job descendant survived
+primary completion. The supervisor requested cleanup; TerminateJobObject
+succeeded, final ActiveProcesses was 0, TotalProcesses was 17, and Job emptiness
+was proven without containment failure or control error. DR-45 changes the
+interpretation of this proven-safe class for **new protocol-1.4 evidence only**.
+Attempt 1 and its protocol-1.3 identities, dispositions and bytes must never be
+edited, relabeled, deleted, regenerated, migrated or adopted as v1.4 evidence.
+
+#### Provisional cleanup exception and mandatory success
+
+Ordinary safe control still requires process creation/resumption, confirmed
+primary termination, assigned/verified containment, proven final Job emptiness,
+present ActiveProcesses equal to 0, absent TotalProcesses or TotalProcesses >= 1,
+no live descendant, no supervisor termination request, no containment
+verification failure and no control error. Lifetime helper creation remains
+permitted; TotalProcesses need not equal 1.
+
+A safe post-completion cleanup candidate requires all the same creation,
+resumption, primary-termination, containment and final-quiescence facts, but
+requires `descendantSurvivalObserved=true`,
+`supervisorTerminationRequested=true`, `terminateJobSucceeded=true`, present
+primary exit code 0, and no containment verification failure or control error.
+This is a provisional exception through the early control gate. The stored
+`SupervisorForced` exit kind with code 0 is permitted only for this candidate;
+ordinary accepted exits remain unchanged and every other forced exit is fatal.
+
+Preserve reconciliation order: progress validity; operation/campaign/child
+timeouts; process-control safety; sidecar/exit compatibility; child exit;
+terminal progress; independent scientific package; hash and progress/sample
+correspondence; device loss, sidecar validity and completion uncertainty;
+process description; final disposition. The candidate skips no later gate.
+It requires full valid complete progress, clean EOF, no outstanding operation,
+an independently inspected canonical unchanged final four-file package, valid
+package hashes, and a final scientific `ProcessDescription` of Success.
+
+Only then does it become `resolved_success` with reason
+`resolved_success_post_completion_cleanup` and continuation `launch_next`
+(or `schedule_complete` for slot 219). Existing ledger process fields retain
+the descendant, cleanup, exit and Job facts; no ledger field is added. Its valid
+timing rows and successful process description enter analysis normally.
+A candidate ending in scientific diagnostic failure remains campaign-fatal
+(`unsafe_process_control` unless an earlier fatal gate applies); it never
+becomes `resolved_diagnostic_failure`. Ordinary success and safely resolved
+diagnostic failure retain their existing reasons and continuation semantics.
+
+Cleanup failure, missing/nonzero ActiveProcesses, absent emptiness proof,
+TotalProcesses < 1, unconfirmed primary termination, containment failure,
+control error, primary nonzero/abnormal exit, any timeout, progress invalidity,
+transport failure, non-clean EOF, trailing bytes, outstanding Started,
+invalid/incomplete/changed/noncanonical packages, hash or sample mismatch,
+device loss, invalid sidecar and native completion uncertainty remain fatal.
+No speculative quiescence, breakaway, arbitrary API error or incomplete child
+is admitted. RunSupervisedProcess, Job containment/kill-on-close, restricted
+handle inheritance, descendant observation, bounded cleanup, accounting,
+progress draining and deadlines remain unchanged.
+
+#### New identity, unchanged science and focused validation
+
+New Stage-6 evidence, analyses, manifests and ledgers require
+`protocol_version="1.4"`. Keep `schema_version=2`, `evidence_kind="diagnostic"`,
+`instrument_mode="H"`, analysis version 1, control record version 1 and manifest
+version 1. Protocol participates in condition/series identities; new IDs follow
+the existing deterministic formula. No workload or logical-input identity changes.
+The frozen plan's unused v1.3 declaration remains a historical foundation marker;
+active evidence construction and validation use the v1.4 evidence identity.
+
+Keep the exact 22 cells, 220 slots, 10 fresh processes/cell, 100 operations/process,
+warmup 0, paired backend order, A–E semantics, `ex2-mix64-v1`, CPU references,
+CUDA/Vulkan implementation semantics, H timing boundaries, deadlines, raw
+retention, four-file package and sample header. No W search, timing gate,
+sample adaptation, outlier deletion, retry or Gate-0 rerun is introduced.
+
+S6-I4 validation requires ordinary success, the exact slot-5 cleanup pattern,
+cleanup/quiescence/control/exit failures, timeout and incomplete-progress
+rejection, invalid package and device/native uncertainty rejection, and pure
+220-slot simulation demonstrating the next predeclared slot without retry,
+retained cleanup facts, successful counts and valid claim-firewalled analyses.
+Use the explicit focused Debug Stage-6 GTest filter and relevant existing
+process-control tests, then x64-release build and the existing four child and
+four supervisor Release smokes. These are disposable engineering validation,
+not campaign evidence. This increment excludes `scripts/test.ps1`, unfiltered
+CTest, the full canonical suite and unrelated integration tests.
+
+#### Current human-controlled sequence
+
+`S6-E1a attempt 1 — INCOMPLETE / audited -> S6-C2 — protocol 1.4 amendment ->
+S6-I4 — narrow reconciliation implementation -> human source review/push ->
+new artifact/manifest freeze -> independent pre-execution verification ->
+separately authorized S6-E1b full campaign`.
+
+S6-I4 permits one local implementation commit; it does not authorize push,
+artifact harvest/freeze, production manifest generation/verification, campaign
+launch/retry, post-run audit, curation or Notion updates. S6-E1b requires explicit
+human launch authorization after the preceding gates. There is no S6-E2.
+
 ## Question
 
 Are native CUDA and Raw Vulkan Compute credible initial generic infrastructure candidates on the available NVIDIA systems, and what bounded trade-offs arise from contiguous and indexed memory access, contention, dependent dispatch, transfers, host submission/completion and engineering workflow?

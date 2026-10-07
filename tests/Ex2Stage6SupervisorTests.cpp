@@ -36,7 +36,7 @@ std::string Rehash(std::string_view raw)
 std::string ManifestBytes(std::string id = "s6-i3-test")
 {
     std::string raw = "{\"manifest_version\":1,\"manifest_type\":\"ex2-stage6-diagnostic\",\"manifest_id\":\"" + id
-        + "\",\"manifest_sha256\":\"" + std::string(64, '0') + "\",\"protocol_version\":\"1.3\",\"evidence_schema_version\":2,\"evidence_kind\":\"diagnostic\",\"instrument_mode\":\"H\","
+        + "\",\"manifest_sha256\":\"" + std::string(64, '0') + "\",\"protocol_version\":\"1.4\",\"evidence_schema_version\":2,\"evidence_kind\":\"diagnostic\",\"instrument_mode\":\"H\","
         "\"machine_id\":\"test-machine\",\"child_executable_path\":\"out/build/x64-release/src/app/ComputeLabEx2Stage6.exe\",\"expected_source_revision\":\"" + std::string(40, 'a')
         + "\",\"expected_git_dirty\":false,\"expected_child_executable_sha256\":\"" + std::string(64, 'b') + "\",\"expected_supervisor_executable_sha256\":\"" + std::string(64, 'c')
         + "\",\"expected_gpu_uuid\":\"" + std::string(Uuid) + "\",\"cuda_device_ordinal\":0,\"vulkan_physical_device_index\":0,\"expected_vulkan_shader_sha256\":{";
@@ -111,6 +111,13 @@ c::ProcessResult Safe(std::uint64_t slot = 0, std::size_t rows = 100)
     r.progressForm = rows == 0 ? p::TerminalForm::Empty : rows == 100 ? p::TerminalForm::Full : p::TerminalForm::ReturnedPrefix;
     if (rows) r.lastReturnedAttempt = p::AttemptIdentity{slot, rows - 1}; return r;
 }
+c::ProcessResult PostCompletionCleanup(std::uint64_t slot = 0, std::size_t rows = 100)
+{
+    auto r = Safe(slot, rows);
+    r.descendantSurvivalObserved = r.supervisorTerminationRequested = r.terminateJobSucceeded = true;
+    r.exitKind = c::ExitKind::SupervisorForced; r.jobTotalProcesses = 17;
+    return r;
+}
 std::map<std::string, std::string> Bundle(const ev::Foundation& f, int kind = 0)
 {
     computelab::results::EnvironmentRecord common{2, "EX-2", f.Identity().runId, "2026-10-06T00:00:00Z", f.Identity().seriesIdentity.sourceRevision, false, "test-machine",
@@ -158,7 +165,7 @@ TEST(Ex2Stage6SupervisorManifest, FixedFullScheduleAndCanonicalHash)
 {
     const auto bytes = ManifestBytes(); const auto m = c::ParseManifest(bytes); EXPECT_EQ(m.canonicalJson + "\n", bytes);
     EXPECT_EQ(m.sha256, c::CalculateManifestSha256(bytes)); EXPECT_EQ(m.fileSha256, ex2::Sha256(bytes));
-    EXPECT_EQ(m.sha256, "f7edc96b712addbc4aa954993bbb430c2942cd1eae4ad997e1ffe378641f276e");
+    EXPECT_EQ(m.sha256, "084716d1795f8eb98e5dbae8f8c00a48925a85b444a74decb8dc8b99c842613e");
     for (std::size_t n = 0; n < 220; ++n) { EXPECT_EQ(m.groups[n / 10].children[n % 10].sequenceIndex, n); EXPECT_EQ(c::ChildArguments(m, n).size(), 14); }
     EXPECT_EQ(c::ParseSupervisorArguments(std::array<std::string_view, 2>{"--manifest", "results/local/s6-i3-test-stage6-manifest.json"}).generic_string(), "results/local/s6-i3-test-stage6-manifest.json");
 }
@@ -166,7 +173,8 @@ TEST(Ex2Stage6SupervisorManifest, RejectsTypesKeysVersionsCountsIdentityAndTimeo
 {
     const auto raw = ManifestBytes();
     for (const auto& [before, after] : std::vector<std::pair<std::string, std::string>>{
-        {"\"manifest_version\":1", "\"manifest_version\":2"}, {"\"protocol_version\":\"1.3\"", "\"protocol_version\":\"1.2\""},
+        {"\"manifest_version\":1", "\"manifest_version\":2"}, {"\"protocol_version\":\"1.4\"", "\"protocol_version\":\"1.2\""},
+        {"\"protocol_version\":\"1.4\"", "\"protocol_version\":\"1.3\""},
         {"\"evidence_schema_version\":2", "\"evidence_schema_version\":1"}, {"\"instrument_mode\":\"H\"", "\"instrument_mode\":\"N\""},
         {"\"expected_git_dirty\":false", "\"expected_git_dirty\":true"}, {"\"declared_child_count\":220", "\"declared_child_count\":219"},
         {"\"declared_cell_group_count\":22", "\"declared_cell_group_count\":21"}, {"\"sequence_index\":137", "\"sequence_index\":138"},
@@ -302,7 +310,8 @@ TEST(Ex2Stage6SupervisorReconcile, EveryPackageGateAndProgressRowMismatchFailsCl
 {
     PackageFixture f; f.Package(); const auto valid = f.Inspect(); ASSERT_TRUE(valid.input);
     for (int n = 0; n < 22; ++n) {
-        auto i = valid; auto process = Safe();
+        for (const bool cleanup : {false, true}) {
+        auto i = valid; auto process = cleanup ? PostCompletionCleanup() : Safe();
         switch (n) {
         case 0: i.attempted = false; break; case 1: i.structurallyValid = false; break; case 2: i.exactFileSet = false; break;
         case 3: i.scientificBundleParsed = false; break; case 4: i.scientificBundleValid = false; break;
@@ -310,13 +319,84 @@ TEST(Ex2Stage6SupervisorReconcile, EveryPackageGateAndProgressRowMismatchFailsCl
         case 7: i.packageSha256.reset(); break; case 8: i.input.reset(); break; case 9: i.input->packageSha256 = std::string(64, 'f'); break;
         case 10: ++i.artifacts[0].sizeBytes; break; case 11: i.packageFinalized = false; break; case 12: i.location = c::PackageLocation::Staging; break;
         case 13: i.topology = c::Topology::Contradictory; break; case 14: i.sidecarPresent = true; break;
-        case 15: process = Safe(0, 99); break; case 16: process.progressForm = p::TerminalForm::NotStarted; break;
+        case 15: process = cleanup ? PostCompletionCleanup(0, 99) : Safe(0, 99); break; case 16: process.progressForm = p::TerminalForm::NotStarted; break;
         case 17: process.lastReturnedAttempt.reset(); break; case 18: process.activeAttempt = p::AttemptIdentity{0, 99}; break;
         case 19: i.input->summary.processStatus = ev::Status::DeviceLost; break; case 20: i.input->samples.back().status = ev::Status::DeviceLost; break;
         case 21: process.exitCode = 4; break;
         }
         const auto r = c::ReconcileSlot(process, i); EXPECT_EQ(r.disposition, a::SlotDisposition::UnresolvedCampaignFatal) << n; EXPECT_FALSE(r.process);
+        }
     }
+}
+TEST(Ex2Stage6SupervisorReconcile, OrdinarySuccessAndExactAttemptOneSlotFiveCleanup)
+{
+    PackageFixture f; f.Package(); const auto inspection = f.Inspect();
+    const auto ordinary = c::ReconcileSlot(Safe(), inspection);
+    EXPECT_EQ(ordinary.disposition, a::SlotDisposition::ResolvedSuccess); EXPECT_EQ(ordinary.reason, "resolved_success");
+    // Independently inspect canonical bytes for the exact cell/backend/block/order/process of slot 5.
+    const auto foundation = c::ReconstructFoundation(f.manifest, 5);
+    const auto final = f.temp.root / "results/local" / foundation.Identity().runId;
+    std::filesystem::create_directory(final);
+    for (const auto& [name, bytes] : Bundle(foundation)) Write(final / name, bytes);
+    const auto result = c::ReconcileSlot(PostCompletionCleanup(5), c::InspectPackage(f.manifest, 5, f.temp.root));
+    EXPECT_EQ(result.disposition, a::SlotDisposition::ResolvedSuccess);
+    EXPECT_EQ(result.reason, "resolved_success_post_completion_cleanup"); ASSERT_TRUE(result.process);
+    EXPECT_EQ(result.process->TerminalState(), a::ProcessTerminalState::Success);
+    EXPECT_EQ(result.process->Summary().successfulSampleCount, 100);
+}
+TEST(Ex2Stage6SupervisorReconcile, CleanupSafetyAndExitMutationsRemainFatal)
+{
+    PackageFixture f; f.Package(); const auto inspection = f.Inspect();
+    for (int n = 0; n < 20; ++n) {
+        auto process = PostCompletionCleanup();
+        switch (n) {
+        case 0: process.terminateJobSucceeded = false; break; case 1: process.jobEmptyConfirmed = false; break;
+        case 2: process.jobActiveProcesses = 1; break; case 3: process.jobActiveProcesses.reset(); break;
+        case 4: process.jobTotalProcesses = 0; break; case 5: process.primaryTerminationConfirmed = false; break;
+        case 6: process.exitCode = 3; break; case 7: process.exitCode.reset(); break;
+        case 8: process.exitKind = c::ExitKind::Abnormal; break; case 9: process.exitKind = c::ExitKind::ProgressTransportAbort; break;
+        case 10: process.exitKind = c::ExitKind::NotAvailable; break; case 11: process.containmentAssigned = false; break;
+        case 12: process.containmentVerified = false; break; case 13: process.containmentVerificationFailed = true; break;
+        case 14: process.controlError = "injected"; break; case 15: process.processCreated = false; break;
+        case 16: process.processResumed = false; break; case 17: process.descendantSurvivalObserved = false; break;
+        case 18: process.supervisorTerminationRequested = false; break; case 19: process.exitCode = 4; break;
+        }
+        const auto result = c::ReconcileSlot(process, inspection);
+        EXPECT_EQ(result.disposition, a::SlotDisposition::UnresolvedCampaignFatal) << n; EXPECT_FALSE(result.process);
+    }
+    auto absentTotal = PostCompletionCleanup(); absentTotal.jobTotalProcesses.reset();
+    EXPECT_EQ(c::ReconcileSlot(absentTotal, inspection).disposition, a::SlotDisposition::ResolvedSuccess);
+}
+TEST(Ex2Stage6SupervisorReconcile, CleanupCannotRescueTimeoutOrUnsafeProgress)
+{
+    PackageFixture f; f.Package(); const auto inspection = f.Inspect();
+    const std::array reasons{"progress_protocol_invalid", "progress_protocol_invalid", "operation_timeout", "campaign_timeout", "child_timeout",
+        "unsafe_progress_terminal", "unsafe_progress_terminal", "unsafe_progress_terminal", "unsafe_progress_terminal", "unsafe_progress_terminal", "unsafe_progress_terminal", "progress_sample_mismatch"};
+    for (std::size_t n = 0; n < reasons.size(); ++n) {
+        auto process = PostCompletionCleanup();
+        switch (n) {
+        case 0: process.progressInvalid = true; break; case 1: process.progressForm = p::TerminalForm::Invalid; break;
+        case 2: process.operationTimedOut = true; break; case 3: process.campaignTimedOut = true; break; case 4: process.childTimedOut = true; break;
+        case 5: process.progressTransportFailed = true; break; case 6: process.cleanEof = false; break; case 7: process.trailingBytes = 1; break;
+        case 8: process.activeAttempt = p::AttemptIdentity{0, 99}; break; case 9: process.progressForm = p::TerminalForm::OutstandingStartedPrefix; break;
+        case 10: process.progressForm = p::TerminalForm::NotStarted; break; case 11: process.observations[3].record.sampleIndex = 9; break;
+        }
+        const auto result = c::ReconcileSlot(process, inspection);
+        EXPECT_EQ(result.disposition, a::SlotDisposition::UnresolvedCampaignFatal) << n; EXPECT_EQ(result.reason, reasons[n]);
+    }
+}
+TEST(Ex2Stage6SupervisorReconcile, CleanupRequiresScientificSuccessAndKnownNativeCompletion)
+{
+    for (int kind = 1; kind <= 4; ++kind) {
+        PackageFixture f; f.Package(kind); const auto inspection = f.Inspect();
+        const auto ordinary = c::ReconcileSlot(Safe(0, kind == 4 ? 0 : 3), inspection);
+        EXPECT_EQ(ordinary.disposition, a::SlotDisposition::ResolvedDiagnosticFailure); EXPECT_EQ(ordinary.reason, "resolved_diagnostic_failure");
+        const auto result = c::ReconcileSlot(PostCompletionCleanup(0, kind == 4 ? 0 : 3), inspection);
+        EXPECT_EQ(result.disposition, a::SlotDisposition::UnresolvedCampaignFatal); EXPECT_EQ(result.reason, "unsafe_process_control");
+    }
+    PackageFixture f; f.Package(3); Write(f.side, Sidecar(f.foundation, 0, true, 2));
+    const auto uncertain = c::ReconcileSlot(PostCompletionCleanup(0, 3), f.Inspect());
+    EXPECT_EQ(uncertain.disposition, a::SlotDisposition::UnresolvedCampaignFatal); EXPECT_EQ(uncertain.reason, "native_completion_uncertain");
 }
 TEST(Ex2Stage6SupervisorReconcile, CompleteStagingRecoveryPreservesEveryDiagnosticTemplate)
 {
@@ -333,7 +413,7 @@ struct Simulation
     std::map<std::uint64_t, c::PackageInspection> packages;
     std::vector<std::uint64_t> launched;
     std::optional<std::uint64_t> fatalAt, driftAt;
-    std::set<std::uint64_t> diagnosticAt;
+    std::set<std::uint64_t> diagnosticAt, cleanupAt;
     std::function<void(const c::Ledger&)> onUpdate;
     std::function<void(std::string_view, const c::Ledger&)> fault;
     std::optional<std::uint64_t> failCell;
@@ -344,7 +424,7 @@ struct Simulation
     ev::Plan Plan(std::uint64_t sequence)
     {
         const auto slot = s6::FrozenCampaignPlan()[sequence]; const auto& process = slot.process;
-        ex2::SeriesIdentityContext identity{{"1.3", manifest.machineId, {manifest.gpuUuid, true}, s6::WorkloadForCell(slot.cellIndex), ex2::InstrumentMode::H},
+        ex2::SeriesIdentityContext identity{{"1.4", manifest.machineId, {manifest.gpuUuid, true}, s6::WorkloadForCell(slot.cellIndex), ex2::InstrumentMode::H},
             process.backend, process.processIndex, process.blockIndex, process.orderSlot, 0, 100, manifest.sourceRevision, manifest.childExecutableSha256, {}};
         if (process.backend == ex2::Backend::Vulkan && slot.cellIndex < 16) identity.shaderSha256 = manifest.shaderSha256[0];
         ev::Plan plan{slot, manifest.groups[sequence / 10].children[sequence % 10].sessionId, identity, ex2::ComparisonConditionId(identity.condition), ex2::SeriesId(identity)};
@@ -375,7 +455,8 @@ struct Simulation
             if ((driftAt && entered == *driftAt + 1) || (terminalDrift && launched.size() == 220)) f.childSha256 = std::string(64, 'e'); return f; };
         services.runProcess = [&](const auto&, const auto&, std::uint64_t n, auto, auto) {
             EXPECT_EQ(entered, n + 1); EXPECT_EQ(launched.size(), n); launched.push_back(n); Package(n);
-            auto r = Safe(n, diagnosticAt.contains(n) ? 3 : 100); if (fatalAt == n) { r.exitCode = 3; } return r;
+            auto r = cleanupAt.contains(n) ? PostCompletionCleanup(n, diagnosticAt.contains(n) ? 3 : 100) : Safe(n, diagnosticAt.contains(n) ? 3 : 100);
+            if (fatalAt == n) { r.exitCode = 3; } return r;
         };
         services.inspectPackage = [&](const auto&, std::uint64_t n, const auto&) { return packages.at(n); };
         services.publishAnalysis = [&](const auto& root, const auto& path, auto bytes) {
@@ -450,6 +531,52 @@ TEST(Ex2Stage6SupervisorSimulation, DiagnosticFailuresAtZeroAndOneThirtySevenCon
 {
     Simulation f; f.diagnosticAt = {0, 9, 10, 137, 219}; EXPECT_EQ(f.Run(), c::ExitCode::Completed); ASSERT_TRUE(f.terminal); EXPECT_EQ(f.launched.size(), 220);
     for (const auto n : f.diagnosticAt) EXPECT_EQ(f.terminal->slots[n].disposition, a::SlotDisposition::ResolvedDiagnosticFailure);
+}
+TEST(Ex2Stage6SupervisorSimulation, SlotFiveCleanupLaunchesNextPredeclaredSlotWithoutRetry)
+{
+    Simulation f; f.cleanupAt = {5}; f.fatalAt = 6;
+    EXPECT_EQ(f.Run(), c::ExitCode::CampaignIncomplete); ASSERT_TRUE(f.terminal);
+    EXPECT_EQ(f.launched, (std::vector<std::uint64_t>{0, 1, 2, 3, 4, 5, 6}));
+    const auto& slot = f.terminal->slots[5];
+    EXPECT_EQ(slot.disposition, a::SlotDisposition::ResolvedSuccess);
+    EXPECT_EQ(slot.reason, "resolved_success_post_completion_cleanup"); EXPECT_EQ(slot.continuation, "launch_next");
+    EXPECT_EQ(f.terminal->fatalSequence, 6);
+}
+TEST(Ex2Stage6SupervisorSimulation, FullCampaignWithCleanupRetainsFactsAndSuccessfulAnalyses)
+{
+    Simulation f; f.cleanupAt = {5, 137, 219};
+    EXPECT_EQ(f.Run(), c::ExitCode::Completed); ASSERT_TRUE(f.terminal); ASSERT_EQ(f.launched.size(), 220);
+    const auto& ledger = *f.terminal; EXPECT_EQ(ledger.state, "completed"); EXPECT_FALSE(ledger.fatalReason);
+    for (std::size_t n = 0; n < 220; ++n) {
+        EXPECT_EQ(f.launched[n], n); EXPECT_EQ(ledger.slots[n].disposition, a::SlotDisposition::ResolvedSuccess);
+        EXPECT_EQ(ledger.slots[n].reason, f.cleanupAt.contains(n) ? "resolved_success_post_completion_cleanup" : "resolved_success");
+    }
+    for (const auto n : f.cleanupAt) {
+        const auto& slot = ledger.slots[n]; const auto& process = slot.process;
+        EXPECT_TRUE(process.descendantSurvivalObserved); EXPECT_TRUE(process.supervisorTerminationRequested);
+        EXPECT_TRUE(process.terminateJobSucceeded); EXPECT_TRUE(process.jobEmptyConfirmed); EXPECT_EQ(process.jobActiveProcesses, 0);
+        EXPECT_EQ(process.jobTotalProcesses, 17); EXPECT_EQ(process.exitKind, c::ExitKind::SupervisorForced); EXPECT_EQ(process.exitCode, 0);
+        EXPECT_EQ(slot.continuation, n == 219 ? "schedule_complete" : "launch_next");
+    }
+    const auto bytes = Read(c::ControlPath(f.manifest, f.temp.root)); EXPECT_NO_THROW(c::ValidateLedgerBytes(bytes));
+    EXPECT_NE(bytes.find("\"protocol_version\":\"1.4\""), bytes.npos);
+    a::CampaignInput campaign;
+    for (std::size_t cell = 0; cell < 22; ++cell) {
+        ASSERT_TRUE(ledger.cellAnalyses[cell]); a::CellInput input; input.cellIndex = cell;
+        for (std::size_t pos = 0; pos < 10; ++pos) input.slots[pos] = {a::SlotDisposition::ResolvedSuccess, a::DescribeProcess(*f.packages.at(cell * 10 + pos).input)};
+        const auto description = a::DescribeCell(input); EXPECT_EQ(description.SuccessfulSlotCount(), 10);
+        const auto cellBytes = Read(f.temp.root / ledger.cellAnalyses[cell]->relativePath);
+        EXPECT_EQ(cellBytes, a::SerializeCellJson(description)); campaign.cellAnalysisSha256[cell] = ex2::Sha256(cellBytes);
+        for (std::size_t pos = 0; pos < 10; ++pos) campaign.slots[cell * 10 + pos] = a::SlotDisposition::ResolvedSuccess;
+    }
+    ASSERT_TRUE(ledger.campaignAnalysis); const auto analysis = Read(f.temp.root / ledger.campaignAnalysis->relativePath);
+    EXPECT_EQ(analysis, a::SerializeCampaignJson(a::DescribeCampaign(campaign)));
+    EXPECT_NE(analysis.find("\"successful_slots\":220"), analysis.npos);
+    for (const auto forbidden : {"speedup", "winner", "loser", "paired_ratio", "backend_rank", "cuda_over_vulkan", "vulkan_over_cuda"})
+        EXPECT_EQ(analysis.find(forbidden), analysis.npos);
+    EXPECT_NE(analysis.find("\"cross_backend_performance_admitted\":false"), analysis.npos);
+    EXPECT_NE(analysis.find("\"stage2_authorized\":false"), analysis.npos);
+    EXPECT_NE(analysis.find("\"production_backend_selected\":false"), analysis.npos);
 }
 TEST(Ex2Stage6SupervisorSimulation, FatalBoundariesHaveOneFatalAndAtomicUnlaunchedSuffix)
 {
