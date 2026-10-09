@@ -1,0 +1,105 @@
+{
+  "files": {
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\capture-inputs.py": {
+      "bytes": 5349,
+      "sha256": "88a3aeb732eeccfd26547df461e3dc173047765627dec466636e2e5184cc852c"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e1-preservation-baseline.json": {
+      "bytes": 36593,
+      "sha256": "6f58628025bf01f06b9735003ffa206b5a99bcc1e009e4904fc1a34ba8273cd6"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e1-task-preserved.xml": {
+      "bytes": 1670,
+      "sha256": "065338f3d88ab42bc7032640d9f0aabae2f2430f5a80feee0b253694879c65d9"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e2-artifact-freeze.json": {
+      "bytes": 2069,
+      "sha256": "bbbbe3c06df548fca88b036fe01a9521f7b81c41cdceba02119b88f3e82a0f38"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e2-host-preflight.json": {
+      "bytes": 26693,
+      "sha256": "0cf2990f4dc2333e257366c964f3d892e8328d8e8479d5e37c2304e594e361e1"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e2-initial-namespace-proof.json": {
+      "bytes": 38698,
+      "sha256": "c719b8f58fadf0f42a906e003d5cac051e0de137e8efd7a62d2240fa4f24fc21"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e2-power-setting.json": {
+      "bytes": 4774,
+      "sha256": "b7e5d2145a6a8c281d41e360066877a1a0ffc5bf75912fb8a25b9d3b6dcfc8e7"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e2-prelaunch-handoff.md": {
+      "bytes": 9561,
+      "sha256": "292a7fdf9541b75f93a612bcdc7c7e4649ba17d82a0a19e25678c138b45f0de5"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\e2-preparation-handoff.json": {
+      "bytes": 2399,
+      "sha256": "9255ea7017589ca919447c51187395162d202e7eaae116d263b77d84da801bdc"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\final-task-and-path-observation.json": {
+      "bytes": 356,
+      "sha256": "d4d912f1452e4fdc39c85856af9c46da256a34a9a216dc5283dd0657356077c3"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\generate-e2.ps1": {
+      "bytes": 5343,
+      "sha256": "a00bd85ed0a6de8178d60c6de9c28857c4c405a5a42c5383d5b06ce5af47f8ac"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\host-preflight-e2.ps1": {
+      "bytes": 3725,
+      "sha256": "d6226e6d5dff2d33058312899bfb9b0b4f0e1fbc81fa6c6d45ce9f7d6116b6ff"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\independent-e2-verify-publish.py": {
+      "bytes": 12049,
+      "sha256": "bef061fcce7bc09f4d9dbd609cb0b8429a4995a88899e27c28cf5bd7cc6962be"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\independent-prelaunch-verification.json": {
+      "bytes": 388596,
+      "sha256": "1643b6c8622fc3d23dd7d10b5b0b07a0f6fa17fd6e5b754b8a8b68afacf72d3f"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\initial-source-and-probe.json": {
+      "bytes": 248,
+      "sha256": "9d962f0602610bb7a773b31e5ccdeb427f01d36eb187405ffb4e3ced885bb8f0"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\intended-launch-environment.json": {
+      "bytes": 2579,
+      "sha256": "9dead3e620e4015bd55a8eede3523aec957f0e3e11a467c5e71c5698fac9b2d4"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\metadata-only-probe.py": {
+      "bytes": 7369,
+      "sha256": "87ffcbb6709e9ed03c54eba3d5ac39eba3130958ddf0c72109f45de8cb1e0f3c"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\observed-frozen-artifacts.json": {
+      "bytes": 1502,
+      "sha256": "39273e65c5a15256d1ef25e62f576c0fd8c6fdb1d7a0023372f5f3b43d351e7a"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\probe-execution.json": {
+      "bytes": 616,
+      "sha256": "61d186928ad99b9279cbeeecb3e3d397e75c84652fdf7808f77aca8cadfe7fae"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\probe-result.json": {
+      "bytes": 7033,
+      "sha256": "2648999d1474eed2d890d41e03fcd6676891a06f847b5a7c0438d286fae73194"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\probe-stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\probe-stdout.txt": {
+      "bytes": 6252,
+      "sha256": "687d18813b2901b919be570430926203b1987e0a75172da10a2af114a62bbe1a"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\publish-handoff.py": {
+      "bytes": 10613,
+      "sha256": "b9c88ec93af4104a8a1d3e8bdd7578b1fbea054e69e437c43d2038507ff10509"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-stage6-manifest.json": {
+      "bytes": 18474,
+      "sha256": "d4d93217721285bbc7d55d8fc6853a3685e0d23f1f5e1b6203244c359122e1e1"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\tmp\\ex2-s7-3060ti-e2-8f1565f-prep\\candidate-manifest.json": {
+      "bytes": 18474,
+      "sha256": "d4d93217721285bbc7d55d8fc6853a3685e0d23f1f5e1b6203244c359122e1e1"
+    }
+  },
+  "self_hash_excluded": true
+}

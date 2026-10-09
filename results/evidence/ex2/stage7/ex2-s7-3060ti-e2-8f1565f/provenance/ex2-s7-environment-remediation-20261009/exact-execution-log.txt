@@ -1,0 +1,14 @@
+Scope: read-only frozen-input/host checks; one fresh metadata-only CUDA/Vulkan subprocess; exactly one approved AC standby setting change. No production binaries/test/build commands executed.
+Initial native observations: git rev-parse HEAD / branch --show-current / status --porcelain=v1 --untracked-files=all / rev-parse --git-common-dir; powercfg /getactivescheme; powercfg /query SCHEME_CURRENT SUB_SLEEP; Get-Process production names.
+Host before/after exact commands: & results/local/ex2-s7-environment-remediation-20261009/host-observation.ps1 -Phase before ; same script -Phase after. Exit 0 each. Query argv/stdout/exit in before-host.json and after-host.json; script itself retains precise PowerShell queries.
+Approved mutation exact command: powercfg /change standby-timeout-ac 0. Exit 0. Active scheme GUID/before/after AC/DC readback and restoration command in approved-power-change.json. No other persistent setting changed.
+Integrity exact commands: bundled python.exe -B results/local/ex2-s7-environment-remediation-20261009/remediation-control.py before ; same script final. Exit 0 each. New bounded checker, not prior verifier rerun; prior receipts read unchanged as evidence.
+Metadata subprocess exact argv: ["C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe", "-B", "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\metadata-only-probe.py"] ; PID=22096 ; exit=0 ; stdout/stderr retained exact bytes in probe-stdout.txt and probe-stderr.txt. Child environment and helper hashes in probe-execution.json.
+Only audited api_identity function copied from previous read-only probe source; no import/execution of previous audit/checker. Module inventory expanded to all paths; new helper metadata-only-probe.py. Pointer size verified 64-bit. Modules captured while instance alive; no CUDA context or Vulkan logical device/queue/workload.
+NVIDIA supplement: read Global/ShadowPlay and Global/NvCamera HKCU/HKLM keys; list capture/overlay/NVIDIA processes; read nvspcap64.dll file metadata/hash. No settings or services changed.
+Publication exact command: bundled python.exe -B results/local/ex2-s7-environment-remediation-20261009/publish-remediation-review.py. Create-new durable output only; final hashes/Git/namespace retained inputs recaptured.
+No broad layer fallback, loader debug or machine/user environment changes. No historical launch/generate/verify programs executed.
+PRODUCTION SUPERVISOR LAUNCHES BY THIS TASK: 0
+PRODUCTION CHILDREN LAUNCHED BY THIS TASK: 0
+CAMPAIGN NOT EXECUTED
+LAUNCH NOT AUTHORIZED

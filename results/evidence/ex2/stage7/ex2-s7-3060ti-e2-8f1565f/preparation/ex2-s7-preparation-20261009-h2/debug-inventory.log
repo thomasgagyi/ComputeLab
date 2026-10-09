@@ -1,0 +1,6 @@
+Test project C:/Users/rolan/src/ComputeLab-Stage7-3060Ti/out/build/x64-debug
+  Test #1240: ComputeLabSmoke.CUDA
+  Test #1241: ComputeLabSmoke.Vulkan
+  Test #1242: ComputeLabSmoke.GpuIdentity
+
+Total Tests: 3

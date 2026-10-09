@@ -1,0 +1,35 @@
+{
+  "HKLM:\\SOFTWARE\\NVIDIA Corporation\\Global\\NvCamera": {
+    "present": false
+  },
+  "HKCU:\\Software\\NVIDIA Corporation\\Global\\NvCamera": {
+    "present": false
+  },
+  "capture_dll_sha256": "ec8837a6f35507beef70382071842ef4b3a0d466aa0b8be02f0d5fa911d79767",
+  "capture_processes": [
+    {
+      "ProcessName": "nvcontainer",
+      "Id": 5076,
+      "Path": null
+    },
+    {
+      "ProcessName": "nvcontainer",
+      "Id": 9108,
+      "Path": null
+    },
+    {
+      "ProcessName": "nvcontainer",
+      "Id": 9912,
+      "Path": "C:\\Program Files\\NVIDIA Corporation\\NvContainer\\nvcontainer.exe"
+    }
+  ],
+  "HKLM:\\SOFTWARE\\NVIDIA Corporation\\Global\\ShadowPlay": {
+    "present": false
+  },
+  "capture_dll": {
+    "FullName": "C:\\Windows\\System32\\nvspcap64.dll",
+    "Length": 1456752,
+    "FileVersion": "11.0.9.251"
+  },
+  "HKCU:\\Software\\NVIDIA Corporation\\Global\\ShadowPlay": null
+}

@@ -1,0 +1,34 @@
+{
+  "ac_sleep": {
+    "approved_scope": "Only active Balanced scheme AC standby 30 minutes to Never; restore 30 minutes after campaign",
+    "executed": true,
+    "reply": "Approve this exact AC sleep change"
+  },
+  "anydesk": {
+    "future_native_launch_arrangement_exercised": false,
+    "operator_assurance": true,
+    "reply": "there wont be any windows updates and anydesk is not an issue"
+  },
+  "avast": {
+    "current_required_executable_alert_explicitly_attested": false,
+    "restoration_reply": "Restore all protection immediately after the campaign ends, including failure",
+    "scope": "Reply to all Avast shields/firewall question",
+    "shield_status_independently_verified": false,
+    "state_reply": "all are disablerd"
+  },
+  "background": {
+    "interpretation": "Accepts the documented diagnostic desktop/AnyDesk/ChatGPT background condition; does not certify absent capture/injection",
+    "reply": "its ok"
+  },
+  "coverage": "Current task explicitly preserves 1242 canonical suite INCOMPLETE (924 PASS, one interrupted, 317 not started), later 3 Debug and 8 Release smokes PASS; no rerun; missing original Debug console log and separate archive EOL discrepancy disclosed.",
+  "source": "Direct human replies in this conversation; not machine observations",
+  "updates": {
+    "attestation_recorded": true,
+    "pause_changed_by_this_task": false,
+    "replies": [
+      "dont do any windows updates or reboots",
+      "there wont be any windows updates and anydesk is not an issue"
+    ],
+    "verified_24h_restart_prevention": false
+  }
+}

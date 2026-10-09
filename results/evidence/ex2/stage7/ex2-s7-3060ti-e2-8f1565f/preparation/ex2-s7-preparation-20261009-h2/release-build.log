@@ -1,0 +1,323 @@
+INVOCATION: .\scripts\build.ps1 -Preset x64-release
+**********************************************************************
+** Visual Studio 2026 Developer PowerShell v18.10.3
+** Copyright (c) 2026 Microsoft Corporation
+**********************************************************************
+-- Running vcpkg install
+Fetching registry information from https://github.com/microsoft/vcpkg (HEAD)...
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe
+The following packages will be built and installed:
+    gtest:x64-windows@1.18.0 -- git+https://github.com/microsoft/vcpkg@17742fd5386949217cc8d3c0c562f25282e7fa0e
+  * vcpkg-cmake:x64-windows@2025-08-07 -- git+https://github.com/microsoft/vcpkg@16b9390dfeaca6df7288ba3f827e40e48e5fc942
+  * vcpkg-cmake-config:x64-windows@2026-07-21 -- git+https://github.com/microsoft/vcpkg@51befcb03097f8d19c1c59f9ec3625e69d85322a
+Additional packages (*) will be modified to complete this operation.
+Restored 3 package(s) from C:\Users\rolan\AppData\Local\vcpkg\archives in 270 ms. Use --debug to see more details.
+Installing 1/3 vcpkg-cmake-config:x64-windows@2026-07-21...
+vcpkg-cmake-config:x64-windows@2026-07-21 package ABI: 188e3c95682f6f8bc84c8261c52ea1f3d03940ac3580b533ac7e38a01b4bd49e
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 3.26 ms
+Installing 2/3 vcpkg-cmake:x64-windows@2025-08-07...
+vcpkg-cmake:x64-windows@2025-08-07 package ABI: acdc02f44c9151bb5e482ef0ef3aa7df6c8276249c6a6d119e7fb87012f28935
+Elapsed time to handle vcpkg-cmake:x64-windows: 3.39 ms
+Installing 3/3 gtest:x64-windows@1.18.0...
+gtest:x64-windows@1.18.0 package ABI: b52e48ed83d5f95e20ed202bd499be17efacdbb46fddaa6cc1a636e1c27857d5
+Elapsed time to handle gtest:x64-windows: 12 ms
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Packages installed in this vcpkg installation declare the following licenses:
+BSD-3-Clause
+MIT
+The package gtest is compatible with built-in CMake targets:
+
+    enable_testing()
+    
+    find_package(GTest CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+    
+    add_test(AllTestsInMain main)
+
+All requested installations completed successfully in: 20 ms
+-- Running vcpkg install - done
+-- The CXX compiler identification is MSVC 19.51.36260.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.4/bin/nvcc.exe
+-- The CUDA compiler identification is NVIDIA 13.4.92 with host compiler MSVC 19.51.36260.0
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.4/bin/nvcc.exe - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.4/include;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.4/include/cccl (found suitable version "13.4.92", minimum required is "13.4")
+-- Found Vulkan: C:/VulkanSDK/1.4.363.0/Lib/vulkan-1.lib (found suitable version "1.4.363", minimum required is "1.4") found components: glslc glslangValidator
+-- Configuring done (34.2s)
+-- Generating done (0.2s)
+-- Build files have been written to: C:/Users/rolan/src/ComputeLab-Stage7-3060Ti/out/build/x64-release
+[1/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Foundation.dir\Ex2ContentionTargets.cpp.obj
+[2/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2CpuOracles.dir\Ex2CpuA.cpp.obj
+[3/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2CpuOracles.dir\Ex2CpuB.cpp.obj
+[4/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2CpuOracles.dir\Ex2CpuD.cpp.obj
+[5/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2CpuOracles.dir\Ex2CpuC.cpp.obj
+[6/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2CpuOracles.dir\Ex2CpuE.cpp.obj
+[7/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Foundation.dir\Ex2IndexPermutation.cpp.obj
+[8/211] Building CXX object src\results\CMakeFiles\ComputeLabResults.dir\ResultRecords.cpp.obj
+[9/211] Linking CXX static library src\results\ComputeLabResults.lib
+[10/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage5Qualification.dir\Ex2Stage5OperationalFacts.cpp.obj
+[11/211] Building CXX object src\timing\CMakeFiles\ComputeLabHostTiming.dir\HostTiming.cpp.obj
+[12/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2HostTiming.dir\Ex2HostTiming.cpp.obj
+[13/211] Linking CXX static library src\timing\ComputeLabHostTiming.lib
+[14/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Foundation.dir\Ex2Sha256.cpp.obj
+[15/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Foundation.dir\Ex2LogicalInput.cpp.obj
+[16/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Foundation.dir\Ex2Input.cpp.obj
+[17/211] Building CXX object src\oracle\CMakeFiles\ComputeLabDeterministicOracle.dir\DeterministicTransform.cpp.obj
+[18/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Plan.dir\Ex2Stage6Plan.cpp.obj
+[19/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Evidence.dir\Ex2CorrectnessFoundation.cpp.obj
+[20/211] Linking CXX static library src\ex2\ComputeLabEx2HostTiming.lib
+[21/211] Linking CXX static library src\ex2\ComputeLabEx2Foundation.lib
+[22/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Evidence.dir\Ex2Evidence.cpp.obj
+[23/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage5Qualification.dir\Ex2Stage5Qualification.cpp.obj
+[24/211] Linking CXX static library src\ex2\ComputeLabEx2CpuOracles.lib
+[25/211] Linking CXX static library src\ex2\ComputeLabEx2Stage5Qualification.lib
+[26/211] Generating Ex1Transform.comp.spv
+[27/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Configuration.dir\Ex2Configuration.cpp.obj
+[28/211] Linking CXX static library src\oracle\ComputeLabDeterministicOracle.lib
+[29/211] Building CXX object src\cuda\CMakeFiles\ComputeLabEx2CudaA2.dir\Ex2CudaA2.cpp.obj
+[30/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabEx2VulkanE.dir\Ex2VulkanE.cpp.obj
+[31/211] Linking CXX static library src\ex2\ComputeLabEx2Configuration.lib
+[32/211] Building CXX object src\environment\CMakeFiles\ComputeLabEnvironment.dir\EnvironmentCollector.cpp.obj
+[33/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Evidence.dir\Ex2Stage6Evidence.cpp.obj
+[34/211] Generating Ex2A1.comp.spv
+[35/211] Generating Ex2B1.comp.spv
+[36/211] Generating Ex2B2.comp.spv
+[37/211] Building CXX object src\input\CMakeFiles\ComputeLabSeededInput.dir\SeededInput.cpp.obj
+[38/211] Generating Ex2C.comp.spv
+[39/211] Generating Ex2D1.comp.spv
+[40/211] Linking CXX static library src\ex2\ComputeLabEx2Evidence.lib
+[41/211] Linking CXX static library src\ex2\ComputeLabEx2Stage6Plan.lib
+[42/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage5Evidence.dir\Ex2Stage5Evidence.cpp.obj
+[43/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Analysis.dir\Ex2Stage6Analysis.cpp.obj
+[44/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Progress.dir\Ex2Stage6Progress.cpp.obj
+[45/211] Linking CXX static library src\ex2\ComputeLabEx2Stage6Evidence.lib
+[46/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2EIntegration.dir\Ex2EIntegration.cpp.obj
+[47/211] Linking CXX static library src\vulkan\ComputeLabEx2VulkanE.lib
+[48/211] Linking CXX static library src\environment\ComputeLabEnvironment.lib
+[49/211] Linking CXX static library src\ex2\ComputeLabEx2Stage5Evidence.lib
+[50/211] Linking CXX static library src\ex2\ComputeLabEx2Stage6Analysis.lib
+[51/211] Linking CXX static library src\ex2\ComputeLabEx2Stage6Progress.lib
+[52/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabEx2VulkanA1.dir\Ex2VulkanA1.cpp.obj
+[53/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabEx2VulkanB.dir\Ex2VulkanB.cpp.obj
+[54/211] Linking CXX static library src\vulkan\ComputeLabEx2VulkanA1.lib
+[55/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Gate0Support.dir\Ex2Gate0.cpp.obj
+[56/211] Linking CXX static library src\vulkan\ComputeLabEx2VulkanB.lib
+[57/211] Generating Ex2A2.comp.spv
+[58/211] Linking CXX static library src\input\ComputeLabSeededInput.lib
+[59/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabEx2VulkanD1.dir\Ex2VulkanD1.cpp.obj
+[60/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabEx2VulkanC.dir\Ex2VulkanC.cpp.obj
+[61/211] Linking CXX static library src\vulkan\ComputeLabEx2VulkanD1.lib
+[62/211] Linking CXX static library src\vulkan\ComputeLabEx2VulkanC.lib
+[63/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Gate0Support.dir\Ex2Gate0Supervisor.cpp.obj
+[64/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2CIntegration.dir\Ex2CIntegration.cpp.obj
+[65/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2D1Integration.dir\Ex2D1Integration.cpp.obj
+[66/211] Linking CXX static library src\ex2\ComputeLabEx2Gate0Support.lib
+[67/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2CorrectnessControl.dir\Ex2CorrectnessSupervisor.cpp.obj
+[68/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2BIntegration.dir\Ex2BIntegration.cpp.obj
+[69/211] Linking CXX static library src\ex2\ComputeLabEx2CorrectnessControl.lib
+[70/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabVulkanQualification.dir\VulkanQualification.cpp.obj
+[71/211] Linking CXX static library src\vulkan\ComputeLabVulkanQualification.lib
+[72/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabEx2VulkanA2.dir\Ex2VulkanA2.cpp.obj
+[73/211] Linking CXX static library src\vulkan\ComputeLabEx2VulkanA2.lib
+[74/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2A1Integration.dir\Ex2A1Integration.cpp.obj
+[75/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2A1Integration.dir\Ex2A2Integration.cpp.obj
+[76/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage5Control.dir\Ex2Stage5Supervisor.cpp.obj
+[77/211] Building CUDA object src\cuda\CMakeFiles\ComputeLabEx2CudaA1.dir\Ex2CudaA1.cu.obj
+Ex2CudaA1.cu
+[78/211] Building CUDA object src\cuda\CMakeFiles\ComputeLabEx2CudaB.dir\Ex2CudaB.cu.obj
+Ex2CudaB.cu
+[79/211] Building CUDA object src\cuda\CMakeFiles\ComputeLabEx2CudaC.dir\Ex2CudaC.cu.obj
+Ex2CudaC.cu
+[80/211] Linking CXX static library src\cuda\ComputeLabEx2CudaA1.lib
+[81/211] Linking CXX static library src\ex2\ComputeLabEx2Stage5Control.lib
+[82/211] Linking CXX static library src\cuda\ComputeLabEx2CudaB.lib
+[83/211] Linking CXX static library src\cuda\ComputeLabEx2CudaA2.lib
+[84/211] Linking CXX static library src\cuda\ComputeLabEx2CudaC.lib
+[85/211] Linking CXX static library src\app\ComputeLabEx2BIntegration.lib
+[86/211] Linking CXX static library src\app\ComputeLabEx2A1Integration.lib
+[87/211] Linking CXX static library src\app\ComputeLabEx2CIntegration.lib
+[88/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2CorrectnessSupervisor.dir\Ex2CorrectnessSupervisorMain.cpp.obj
+[89/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Correctness.dir\Ex2CorrectnessMain.cpp.obj
+[90/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2A1.dir\Ex2A1Main.cpp.obj
+[91/211] Building CUDA object src\cuda\CMakeFiles\ComputeLabEx2CudaD1.dir\Ex2CudaD1.cu.obj
+Ex2CudaD1.cu
+[92/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage5Supervisor.dir\Ex2Stage5SupervisorMain.cpp.obj
+[93/211] Building CXX object src\ex2\CMakeFiles\ComputeLabEx2Stage6Control.dir\Ex2Stage6Supervisor.cpp.obj
+[94/211] Linking CXX static library src\cuda\ComputeLabEx2CudaD1.lib
+[95/211] Linking CXX static library src\ex2\ComputeLabEx2Stage6Control.lib
+[96/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabVulkanTransform.dir\VulkanTiming.cpp.obj
+[97/211] Linking CXX static library src\app\ComputeLabEx2D1Integration.lib
+[98/211] Building CXX object tests\CMakeFiles\ComputeLabEx2Gate0SupervisorTestChild.dir\Ex2Gate0SupervisorTestChild.cpp.obj
+[99/211] Building CUDA object src\cuda\CMakeFiles\ComputeLabEx2CudaE.dir\Ex2CudaE.cu.obj
+Ex2CudaE.cu
+[100/211] Linking CXX static library src\cuda\ComputeLabEx2CudaE.lib
+[101/211] Linking CXX executable src\app\ComputeLabEx2A1.exe
+[102/211] Linking CXX static library src\app\ComputeLabEx2EIntegration.lib
+[103/211] Linking CXX executable src\app\ComputeLabEx2CorrectnessSupervisor.exe
+[104/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2CorrectnessExecution.dir\Ex2CorrectnessExecution.cpp.obj
+[105/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Gate0.dir\Ex2Gate0Main.cpp.obj
+[106/211] Linking CXX executable tests\ComputeLabEx2Gate0SupervisorTestChild.exe
+[107/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage6.dir\Ex2Stage6Main.cpp.obj
+[108/211] Linking CXX executable src\app\ComputeLabEx2Stage5Supervisor.exe
+[109/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage6Supervisor.dir\Ex2Stage6SupervisorMain.cpp.obj
+[110/211] Linking CXX static library src\app\ComputeLabEx2CorrectnessExecution.lib
+[111/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage6Execution.dir\Ex2Stage6Execution.cpp.obj
+[112/211] Building CXX object tests\CMakeFiles\ComputeLabEx2CorrectnessSupervisorTestChild.dir\Ex2CorrectnessSupervisorTestChild.cpp.obj
+[113/211] Linking CXX static library src\app\ComputeLabEx2Stage6Execution.lib
+[114/211] Linking CXX executable src\app\ComputeLabEx2Stage6Supervisor.exe
+[115/211] Building CXX object src\app\CMakeFiles\ComputeLab.dir\main.cpp.obj
+[116/211] Linking CXX executable tests\ComputeLabEx2CorrectnessSupervisorTestChild.exe
+[117/211] Linking CXX executable src\app\ComputeLabEx2Correctness.exe
+[118/211] Building CXX object src\vulkan\CMakeFiles\ComputeLabVulkanTransform.dir\VulkanTransform.cpp.obj
+[119/211] Linking CXX executable src\app\ComputeLabEx2Stage6.exe
+[120/211] Linking CXX static library src\vulkan\ComputeLabVulkanTransform.lib
+[121/211] Linking CXX executable src\app\ComputeLab.exe
+[122/211] Building CXX object tools\smoke\CMakeFiles\ComputeLabVulkanSmoke.dir\VulkanSmoke.cpp.obj
+[123/211] Building CXX object tests\CMakeFiles\ComputeLabEx2Stage6SupervisorTestChild.dir\Ex2Stage6SupervisorTestChild.cpp.obj
+[124/211] Linking CXX executable tools\smoke\ComputeLabVulkanSmoke.exe
+[125/211] Linking CXX executable tests\ComputeLabEx2Stage6SupervisorTestChild.exe
+[126/211] Building CXX object src\ex1\CMakeFiles\ComputeLabEx1Support.dir\Ex1Support.cpp.obj
+[127/211] Linking CXX static library src\ex1\ComputeLabEx1Support.lib
+[128/211] Building CXX object tests\CMakeFiles\ComputeLabEx2Stage5SupervisorTestChild.dir\Ex2Stage5SupervisorTestChild.cpp.obj
+[129/211] Linking CXX executable tests\ComputeLabEx2Stage5SupervisorTestChild.exe
+[130/211] Building CXX object src\app\CMakeFiles\ComputeLabEx1.dir\Ex1Main.cpp.obj
+[131/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage5.dir\Ex2Stage5Main.cpp.obj
+[132/211] Building CUDA object src\cuda\CMakeFiles\ComputeLabCudaTransform.dir\CudaTransform.cu.obj
+CudaTransform.cu
+[133/211] Linking CUDA static library src\cuda\ComputeLabCudaTransform.lib
+[134/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Gate0Supervisor.dir\Ex2Gate0SupervisorMain.cpp.obj
+[135/211] Linking CXX executable src\app\ComputeLabEx1.exe
+[136/211] Building CUDA object src\cuda\CMakeFiles\ComputeLabCudaQualification.dir\CudaQualification.cu.obj
+CudaQualification.cu
+[137/211] Linking CXX executable src\app\ComputeLabEx2Gate0Supervisor.exe
+[138/211] Linking CXX static library src\cuda\ComputeLabCudaQualification.lib
+[139/211] Linking CXX executable src\app\ComputeLabEx2Gate0.exe
+[140/211] Building CXX object tests\CMakeFiles\ComputeLabEx2CorrectnessSupervisorSmokeTests.dir\Ex2CorrectnessSupervisorSmokeTests.cpp.obj
+[141/211] Building CXX object src\app\CMakeFiles\ComputeLabEx2Stage5Execution.dir\Ex2Stage5Execution.cpp.obj
+[142/211] Building CUDA object tools\smoke\CMakeFiles\ComputeLabCudaSmoke.dir\CudaSmoke.cu.obj
+CudaSmoke.cu
+[143/211] Linking CXX static library src\app\ComputeLabEx2Stage5Execution.lib
+[144/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\SmokeTests.cpp.obj
+[145/211] Building CXX object tests\CMakeFiles\ComputeLabEx2Stage6SupervisorSmokeTests.dir\Ex2Stage6SupervisorSmokeTests.cpp.obj
+[146/211] Building CXX object tests\CMakeFiles\ComputeLabEx2Stage6ChildSmokeTests.dir\Ex2Stage6ChildSmokeTests.cpp.obj
+[147/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\DeterministicTransformTests.cpp.obj
+[148/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CpuATests.cpp.obj
+[149/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2InputTests.cpp.obj
+[150/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\SeededInputTests.cpp.obj
+[151/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CpuDTests.cpp.obj
+[152/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CpuCTests.cpp.obj
+[153/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CpuBTests.cpp.obj
+[154/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\ResultRecordsTests.cpp.obj
+[155/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\HostTimingTests.cpp.obj
+[156/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2HostTimingTests.cpp.obj
+[157/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CpuETests.cpp.obj
+[158/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Sha256Tests.cpp.obj
+[159/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2LogicalInputTests.cpp.obj
+[160/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2ConfigurationTests.cpp.obj
+[161/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\EnvironmentCollectorTests.cpp.obj
+[162/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage5OperationalFactsTests.cpp.obj
+[163/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\CudaTransformTests.cpp.obj
+[164/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6PlanTests.cpp.obj
+[165/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2EvidenceTests.cpp.obj
+[166/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage5QualificationTests.cpp.obj
+[167/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Gate0SupervisorTests.cpp.obj
+[168/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2FoundationIntegrationTests.cpp.obj
+[169/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Gate0Tests.cpp.obj
+[170/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6EvidenceTests.cpp.obj
+[171/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\CudaQualificationTests.cpp.obj
+[172/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage5EvidenceTests.cpp.obj
+[173/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6AnalysisTests.cpp.obj
+[174/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CudaA2Tests.cpp.obj
+[175/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CudaBTests.cpp.obj
+[176/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex1SupportTests.cpp.obj
+[177/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CudaA1Tests.cpp.obj
+[178/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CudaD1Tests.cpp.obj
+[179/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CudaCTests.cpp.obj
+[180/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CudaETests.cpp.obj
+[181/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\VulkanTransformTests.cpp.obj
+[182/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\VulkanQualificationTests.cpp.obj
+[183/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2VulkanA2Tests.cpp.obj
+[184/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2VulkanA1Tests.cpp.obj
+[185/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2VulkanBTests.cpp.obj
+[186/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2VulkanCTests.cpp.obj
+[187/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2VulkanD1Tests.cpp.obj
+[188/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2VulkanETests.cpp.obj
+[189/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2BIntegrationTests.cpp.obj
+[190/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CIntegrationTests.cpp.obj
+[191/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2D1IntegrationTests.cpp.obj
+[192/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2A2IntegrationTests.cpp.obj
+[193/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CorrectnessChildSmokeTests.cpp.obj
+[194/211] Linking CXX executable src\app\ComputeLabEx2Stage5.exe
+[195/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2A1IntegrationTests.cpp.obj
+[196/211] Linking CXX executable tests\ComputeLabEx2CorrectnessSupervisorSmokeTests.exe
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\out\build\x64-release\vcpkg_installed\x64-windows\bin\gtest_main.dll -> C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\out\build\x64-release\tests\gtest_main.dll done
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\out\build\x64-release\vcpkg_installed\x64-windows\bin\gtest.dll -> C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\out\build\x64-release\tests\gtest.dll done
+[197/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2EIntegrationTests.cpp.obj
+[198/211] Linking CXX executable tests\ComputeLabEx2Stage6ChildSmokeTests.exe
+[199/211] Linking CXX executable tests\ComputeLabEx2Stage6SupervisorSmokeTests.exe
+[200/211] Linking CUDA executable tools\smoke\ComputeLabCudaSmoke.exe
+[201/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CorrectnessExecutionTests.cpp.obj
+[202/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Gate0ChildSmokeTests.cpp.obj
+[203/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CorrectnessSupervisorProcessTests.cpp.obj
+[204/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6SupervisorProcessTests.cpp.obj
+[205/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2CorrectnessSupervisorTests.cpp.obj
+[206/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage5SupervisorProcessTests.cpp.obj
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorProcessTests.cpp(109): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorProcessTests.cpp(110): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorProcessTests.cpp(115): warning C4834: discarding return value of function with [[nodiscard]] attribute
+[207/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6ExecutionTests.cpp.obj
+[208/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage6SupervisorTests.cpp.obj
+[209/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage5ExecutionTests.cpp.obj
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(127): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(133): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(134): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(135): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(136): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(150): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(151): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(152): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(153): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(155): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(160): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(163): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(169): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(192): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(202): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(227): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(281): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(351): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(363): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(489): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5ExecutionTests.cpp(491): warning C4834: discarding return value of function with [[nodiscard]] attribute
+[210/211] Building CXX object tests\CMakeFiles\ComputeLabTests.dir\Ex2Stage5SupervisorTests.cpp.obj
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(166): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(170): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(175): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(186): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(209): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(211): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(225): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(249): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(250): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(251): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(252): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(253): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(254): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(260): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(262): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(263): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(264): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(265): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\tests\Ex2Stage5SupervisorTests.cpp(500): warning C4834: discarding return value of function with [[nodiscard]] attribute
+[211/211] Linking CXX executable tests\ComputeLabTests.exe
+WRAPPER_EXIT=0

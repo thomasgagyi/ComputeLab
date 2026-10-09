@@ -1,0 +1,62 @@
+{
+  "tests": 4,
+  "failures": 0,
+  "disabled": 0,
+  "errors": 0,
+  "timestamp": "2026-10-09T13:09:56Z",
+  "time": "2.323s",
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "Ex2Stage6ReleaseSmoke",
+      "tests": 4,
+      "failures": 0,
+      "disabled": 0,
+      "errors": 0,
+      "timestamp": "2026-10-09T13:09:56Z",
+      "time": "2.323s",
+      "testsuite": [
+        {
+          "name": "A1Cuda",
+          "file": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\tests\\Ex2Stage6ChildSmokeTests.cpp",
+          "line": 157,
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2026-10-09T13:09:56Z",
+          "time": "0.529s",
+          "classname": "Ex2Stage6ReleaseSmoke"
+        },
+        {
+          "name": "A1Vulkan",
+          "file": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\tests\\Ex2Stage6ChildSmokeTests.cpp",
+          "line": 157,
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2026-10-09T13:09:56Z",
+          "time": "0.802s",
+          "classname": "Ex2Stage6ReleaseSmoke"
+        },
+        {
+          "name": "E1Cuda",
+          "file": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\tests\\Ex2Stage6ChildSmokeTests.cpp",
+          "line": 158,
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2026-10-09T13:09:57Z",
+          "time": "0.467s",
+          "classname": "Ex2Stage6ReleaseSmoke"
+        },
+        {
+          "name": "E1Vulkan",
+          "file": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\tests\\Ex2Stage6ChildSmokeTests.cpp",
+          "line": 158,
+          "status": "RUN",
+          "result": "COMPLETED",
+          "timestamp": "2026-10-09T13:09:58Z",
+          "time": "0.524s",
+          "classname": "Ex2Stage6ReleaseSmoke"
+        }
+      ]
+    }
+  ]
+}

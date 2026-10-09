@@ -1,0 +1,15 @@
+Read-only review command record. No builds/tests/smokes/campaign programs executed. GIT_OPTIONAL_LOCKS=0 for Git queries.
+Initial queries: Get-Location; git rev-parse --show-toplevel; git rev-parse HEAD; git branch --show-current; git status --porcelain=v1 --untracked-files=all; git rev-parse --git-common-dir; git worktree list --porcelain; .NET DriveInfo NTFS/disk and Get-Item path ancestors.
+Documentation/source reads: AGENTS.md; docs/charter.md; docs/methodology.md; docs/results-format.md; docs/ex2.md active 1.4 and inherited diagnostic provisions; source/control/manifest/timing/validation sections. No old preparation script was executed.
+Host observation exact invocation: & .\results\local\ex2-s7-final-prelaunch-review-20261009\observe-host.ps1 (normal local host access approved, process itself non-elevated). Exit 0. Native query argv/exit/stdout are in final-host-state.json; individual query successes/errors in host-query-receipt.json; exact query source in observe-host.ps1.
+Independent audit exact invocation: & C:\Users\rolan\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -B results/local/ex2-s7-final-prelaunch-review-20261009/independent-audit.py. Exit 0. Metadata-only CUDA/Vulkan enumeration; scope and input hashes in final-integrity-inventory.json.
+Supplemental read: process/user/machine values of DISABLE_VULKAN_OBS_CAPTURE and four Steam enable/disable variables; values recorded create-new in layer-environment-conditions.json.
+Report exact invocation: & C:\Users\rolan\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -B results/local/ex2-s7-final-prelaunch-review-20261009/write-review-reports.py. Read-only final hash/source/namespace/process stability and GetSystemPowerStatus; create-new report files only.
+Production process read command: @(Get-Process | Where-Object { $_.ProcessName -in @('ComputeLabEx2Stage6','ComputeLabEx2Stage6Supervisor') } | Select-Object ProcessName,Id,Path) | ConvertTo-Json -Compress; stdout=
+Known read failures: AvastUI.log sharing lock; powercfg /requests exit 1 requires elevated command prompt; absent Windows Update AU policy key. No retry/elevation workaround performed for these optional disclosures.
+Host JSON serialization emitted depth warning for verbose SDK layer settings; essential implicit layer names, manifest enable/disable conditions and all core host observations retained. No claim of full deep SDK setting serialization.
+Reference pages accessed read-only: https://github.com/KhronosGroup/Vulkan-Loader/blob/main/docs/LoaderLayerInterface.md ; https://git-scm.com/docs/git-worktree . Supplied Microsoft Get-FileHash URL was unavailable to web tool; hashing used local Get-FileHash.
+PRODUCTION SUPERVISOR LAUNCHES BY THIS TASK: 0
+PRODUCTION CHILDREN LAUNCHED BY THIS TASK: 0
+CAMPAIGN NOT EXECUTED
+LAUNCH NOT AUTHORIZED

@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-B",
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-preparation-20261009\\metadata-only-probe.py"
+  ],
+  "environment_file": "intended-launch-environment.json",
+  "exit_code": 0,
+  "helper_sha256": "87ffcbb6709e9ed03c54eba3d5ac39eba3130958ddf0c72109f45de8cb1e0f3c",
+  "pid": 13828,
+  "scope": "Fresh metadata-only process; same intended launch environment; no production binaries or GPU workload",
+  "utc": "2026-10-09T12:56:26.645658+00:00"
+}

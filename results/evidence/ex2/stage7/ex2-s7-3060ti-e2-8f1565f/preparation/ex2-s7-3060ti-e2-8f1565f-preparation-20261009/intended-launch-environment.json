@@ -1,0 +1,21 @@
+{
+  "debug_force_enables_absent": true,
+  "nvidia_recording_off_attestation_source": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-single-execution-20261009\\operator-launch-confirmation.json",
+  "nvidia_support_dll_not_proof_of_capture": true,
+  "process_only_set": {
+    "DISABLE_VULKAN_OBS_CAPTURE": "1"
+  },
+  "removed_instrumentation_variable_names": [
+    "ALLUSERSPROFILE",
+    "CODEX_PERMISSION_PROFILE",
+    "USERDOMAIN_ROAMINGPROFILE",
+    "USERPROFILE",
+    "VK_SDK_PATH"
+  ],
+  "required_environment": {
+    "CUDA_PATH": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4",
+    "PATH": "C:\\Users\\rolan\\.codex\\tmp\\arg0\\codex-arg0A9jbtG;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\libheif\\libheif\\bin;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\jxrlib\\jxrlib\\bin;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\override;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\x64;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin;C:\\VulkanSDK\\1.4.363.0\\Bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\nodejs\\;C:\\Program Files\\Tailscale\\;C:\\Program Files\\Sunshine;C:\\Program Files\\Sunshine\\tools;C:\\Program Files\\PuTTY\\;C:\\Program Files\\dotnet\\;R:\\Apps\\Git\\cmd;C:\\Program Files\\GitHub CLI\\;C:\\Program Files\\CMake\\bin;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2026.3.1\\;D:\\vcpkg;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd;C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;C:\\Users\\rolan\\AppData\\Local\\OpenAI\\Codex\\bin\\6de5bf5fa8384f8d;C:\\Users\\rolan\\AppData\\Local\\OpenAI\\Codex\\bin\\f544b3844e0f14e9",
+    "VCPKG_ROOT": "D:\\vcpkg",
+    "VULKAN_SDK": "C:\\VulkanSDK\\1.4.363.0"
+  }
+}

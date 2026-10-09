@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-09T13:00:49.9188364Z",
+  "e1_task_configuration_unchanged": true,
+  "live_production": [],
+  "e1_task_xml_sha256": "065338f3d88ab42bc7032640d9f0aabae2f2430f5a80feee0b253694879c65d9",
+  "drive": {
+    "DriveFormat": "NTFS",
+    "AvailableFreeSpace": 285720879104,
+    "TotalSize": 499427872768
+  },
+  "e2_task_absent": true
+}

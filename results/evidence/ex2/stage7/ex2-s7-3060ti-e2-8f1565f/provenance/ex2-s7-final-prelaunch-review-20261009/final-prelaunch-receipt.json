@@ -1,0 +1,193 @@
+{
+  "artifact_mismatch_count": 0,
+  "attribution": {
+    "api_observation": "Fresh CUDA UUID v2, attributes and Vulkan 1.3 properties2/device ID/layers; OBS module observed in own review process",
+    "host_observation": "Read-only CIM/registry/PowerShell/native metadata queries; query errors preserved",
+    "human_statement": "Avast reportedly blocked something without deleting/moving files and was subsequently turned off; historical Debug interruption counts supplied by operator/retained report",
+    "on_disk": "Frozen hashes/sizes/canonical JSON/source/index/logs/namespaces; exact reviewed input identities in final-integrity-inventory.json",
+    "uncertainty": "Effective future process layer chain/capture, full Avast shield/history, uninterrupted power/sleep/update/remote-session behavior and universal historical execution audit are not certified"
+  },
+  "campaign_executed": false,
+  "evidence_files": {
+    "final-host-state.json": {
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\final-host-state.json",
+      "sha256": "e608d75d15a3f31bd9bd872531e2153945de0062dceb758bf7e1b8d2f2ec0485"
+    },
+    "final-integrity-inventory.json": {
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\final-integrity-inventory.json",
+      "sha256": "c87aace54a52af4eb4c00ef48d19897d52aab7df7d4919fab25707dc3586ee09"
+    },
+    "host-query-receipt.json": {
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\host-query-receipt.json",
+      "sha256": "8997c9e84923edc257fa122782ee70098a8054b68511b19473ff618c157bba04"
+    },
+    "independent-api-identity.json": {
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\independent-api-identity.json",
+      "sha256": "8c70ae8606e20411e11d09168c28d4f81621e3006f2e2c87bcc413aed40a5e86"
+    },
+    "layer-environment-conditions.json": {
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\layer-environment-conditions.json",
+      "sha256": "7eb262c0aec9005252b36eb3eee86fbb9538f5f8dba94cc5b96db2a499b9ddf7"
+    },
+    "powershell-hash-crosscheck.json": {
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\powershell-hash-crosscheck.json",
+      "sha256": "d7aca62e79ede26c7b812a0a51ee7e2d2ef8632b6a33c021de0814ffbd31fac2"
+    }
+  },
+  "final_git": {
+    "branch": "",
+    "head": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274",
+    "status": ""
+  },
+  "final_stability_pass": true,
+  "gpu": {
+    "api_scope": "Driver and instance metadata only; no CUDA context, logical VkDevice, queue, kernel or operations",
+    "cuda": [
+      {
+        "compute_capability": "8.6",
+        "name": "NVIDIA GeForce RTX 3060 Ti",
+        "ordinal": 0,
+        "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084"
+      }
+    ],
+    "cuda_driver_api_version": 13040,
+    "discoverable_layers": [
+      {
+        "description": "NVIDIA Optimus layer",
+        "name": "VK_LAYER_NV_optimus"
+      },
+      {
+        "description": "NVIDIA Presentation Layer",
+        "name": "VK_LAYER_NV_present"
+      },
+      {
+        "description": "Open Broadcaster Software hook",
+        "name": "VK_LAYER_OBS_HOOK"
+      },
+      {
+        "description": "Steam Overlay Layer",
+        "name": "VK_LAYER_VALVE_steam_overlay"
+      },
+      {
+        "description": "Steam Pipeline Caching Layer",
+        "name": "VK_LAYER_VALVE_steam_fossilize"
+      },
+      {
+        "description": "LunarG API dump layer",
+        "name": "VK_LAYER_LUNARG_api_dump"
+      },
+      {
+        "description": "GFXReconstruct Capture Layer Version 1.0.5",
+        "name": "VK_LAYER_LUNARG_gfxreconstruct"
+      },
+      {
+        "description": "Khronos Synchronization2 layer",
+        "name": "VK_LAYER_KHRONOS_synchronization2"
+      },
+      {
+        "description": "Khronos Validation Layer",
+        "name": "VK_LAYER_KHRONOS_validation"
+      },
+      {
+        "description": "Execution Monitoring Layer",
+        "name": "VK_LAYER_LUNARG_monitor"
+      },
+      {
+        "description": "LunarG image capture layer",
+        "name": "VK_LAYER_LUNARG_screenshot"
+      },
+      {
+        "description": "Khronos Profiles layer",
+        "name": "VK_LAYER_KHRONOS_profiles"
+      },
+      {
+        "description": "Khronos Shader object layer",
+        "name": "VK_LAYER_KHRONOS_shader_object"
+      },
+      {
+        "description": "Crash Diagnostic Layer is a crash/hang debugging tool that helps determines GPU progress in a Vulkan application.",
+        "name": "VK_LAYER_LUNARG_crash_diagnostic"
+      }
+    ],
+    "independent_of_prior_helper": true,
+    "loaded_relevant_modules": [
+      "C:\\Windows\\SYSTEM32\\vulkan-1.dll",
+      "C:\\ProgramData\\obs-studio-hook\\graphics-hook64.dll"
+    ],
+    "requested_explicit_layers": [],
+    "vulkan": [
+      {
+        "api_version": 4211039,
+        "device_id": 9353,
+        "driver_uuid": "16edf611-2967-515e-b44e-a51f39e45424",
+        "driver_version_raw": 2585198592,
+        "index": 0,
+        "luid": "23a0000000000000",
+        "luid_valid": true,
+        "name": "NVIDIA GeForce RTX 3060 Ti",
+        "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084",
+        "vendor_id": 4318
+      }
+    ]
+  },
+  "hard_blockers": [
+    "OBS implicit Vulkan graphics-hook64.dll was loaded into the independent metadata-only review instance; external Vulkan-layer OFF condition is not satisfied/established in the current environment. No layer/environment setting was changed."
+  ],
+  "host_query_implementation_path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\observe-host.ps1",
+  "host_query_implementation_sha256": "ad563d4627f34bba78ef5e35a75776217dd6b2041ac4cc599abd4d149180f2d7",
+  "immutable_checks_pass": true,
+  "independent_implementation_path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\independent-audit.py",
+  "independent_implementation_sha256": "0423c431e595f9487c795ac0a4e807b9c029b3e7253b03d7bfc4fb5ed4a58f38",
+  "initial_git": {
+    "branch": "",
+    "common": "C:/Users/rolan/Desktop/CmptLab/ComputeLab/.git",
+    "head": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274",
+    "status": "",
+    "top": "C:/Users/rolan/src/ComputeLab-Stage7-3060Ti"
+  },
+  "launch_authorized": false,
+  "machine_id": "ex2-s7-3060ti-machine",
+  "manifest": {
+    "bytes": 18474,
+    "candidate_identical": true,
+    "expected_physical": "175141852d8c04509bda9342d2ff9e534950a5e95c49e8c04654029e406dad91",
+    "expected_semantic": "5082991f007606e8644601f0c6d076d9850730b54ad236f504aee39afa23fcb0",
+    "measured_physical": "175141852d8c04509bda9342d2ff9e534950a5e95c49e8c04654029e406dad91",
+    "measured_semantic": "5082991f007606e8644601f0c6d076d9850730b54ad236f504aee39afa23fcb0",
+    "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e1-8f1565f-stage6-manifest.json",
+    "strict_schema_and_canonical": true
+  },
+  "manifest_id": "ex2-s7-3060ti-e1-8f1565f",
+  "power_source": {
+    "ACLineStatus": 1,
+    "BatteryFlag": 128,
+    "BatteryFullLifeTime": 4294967295,
+    "BatteryLifePercent": 255,
+    "BatteryLifeTime": 4294967295,
+    "SystemStatusFlag": 0
+  },
+  "production_children_launched_by_this_task": 0,
+  "production_supervisor_launches_by_this_task": 0,
+  "rationale": "Immutable inputs PASS, but current OBS implicit hook prevents certifying the required external-layer-off launch condition.",
+  "required_operator_confirmations": [
+    "Decide how the future launch environment will meet the frozen external Vulkan/API layer, profiling and tracing OFF condition, then independently verify that environment. The current OBS finding is a hard blocker, not an acknowledgment-only waiver; this review authorizes no changes.",
+    "Confirm exact Avast protection/shield and firewall state and any time-limited re-enable schedule; confirm no active blocking of the required frozen executable paths. Service-running and raw SecurityCenter state do not prove shield status. Avast event details remain UNKNOWN. No indefinite global protection disablement is recommended.",
+    "Confirm uninterrupted AC power and an awake execution interval covering the planned campaign (maximum campaign deadline 24 hours). Balanced plan currently permits AC sleep after 1800 s/DC after 900 s; hibernation is unavailable. Existing power-request prevention could not be read without elevated privileges.",
+    "Confirm no unattended update/reboot during execution. CBS and Windows Update reboot keys absent, but an EdgeUpdate pending file-rename entry exists; configured AU policy absent and reboot task detail unavailable/empty. This is not a guarantee against an unattended restart.",
+    "Confirm AnyDesk disconnect leaves the Windows logon session and production supervisor running, with no logoff, parent termination, Codex lifetime dependency or automatic relaunch. Current console session is active; AnyDesk disconnect/logoff policy is UNKNOWN.",
+    "Accept the recorded desktop/AnyDesk/ChatGPT/antivirus/GPU background state as the explicitly diagnostic environment. Confirm no profiler/capture/overlay intervention; no software was closed or tuned here.",
+    "Accept the already agreed incomplete Debug coverage, missing full native Debug build console retention and separate archival EOL limitation. These acknowledgments do not waive exact source/artifacts/manifest/API identity/containment/no-retry requirements."
+  ],
+  "retained_preparation_index": {
+    "indexed_input_count": 46,
+    "missing_or_changed": [],
+    "note": "Prior review.md and preparation-index.json are self-publication inputs without an earlier self-digest; audited now, no fabricated prior anchor.",
+    "unindexed_named_inputs": [
+      "review.md",
+      "preparation-index.json"
+    ]
+  },
+  "review_worktree": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti",
+  "reviewed_utc": "2026-10-09T10:43:05.405939+00:00",
+  "verdict": "NO_GO"
+}

@@ -1,0 +1,33 @@
+{
+  "cuda_device_ordinal": 0,
+  "cuda_devices": [
+    {
+      "compute_capability": "8.6",
+      "name": "NVIDIA GeForce RTX 3060 Ti",
+      "ordinal": 0,
+      "total_memory_bytes": 8589410304,
+      "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084"
+    }
+  ],
+  "cuda_driver_api_version": 13040,
+  "cuda_uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084",
+  "explicitly_enabled_vulkan_layers": [],
+  "reporter": "CUDA Driver and Vulkan properties2 device-ID APIs; no workload",
+  "same_physical_gpu": true,
+  "vulkan_devices": [
+    {
+      "api_version": 4211039,
+      "device_id": 9353,
+      "driver_uuid": "16edf611-2967-515e-b44e-a51f39e45424",
+      "driver_version_raw": 2585198592,
+      "index": 0,
+      "luid": "23a0000000000000",
+      "luid_valid": true,
+      "name": "NVIDIA GeForce RTX 3060 Ti",
+      "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084",
+      "vendor_id": 4318
+    }
+  ],
+  "vulkan_physical_device_index": 0,
+  "vulkan_uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084"
+}

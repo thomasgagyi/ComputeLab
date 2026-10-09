@@ -1,0 +1,26 @@
+Running main() from C:\Users\rolan\Desktop\CmptLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+Note: Google Test filter = Ex2Stage6SupervisorReleaseSmoke.A1Cuda:Ex2Stage6SupervisorReleaseSmoke.A1Vulkan:Ex2Stage6SupervisorReleaseSmoke.E1Cuda:Ex2Stage6SupervisorReleaseSmoke.E1Vulkan
+[==========] Running 4 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 4 tests from Ex2Stage6SupervisorReleaseSmoke
+[ RUN      ] Ex2Stage6SupervisorReleaseSmoke.A1Cuda
+S6-I3 supervised Release smoke slot=0 exit=0 job_total=17 job_active=0
+S6-I3 supervised smoke artifacts=4 samples=100 progress=200 seconds=1.01649 cleanup=success-owned-local-session
+[       OK ] Ex2Stage6SupervisorReleaseSmoke.A1Cuda (1016 ms)
+[ RUN      ] Ex2Stage6SupervisorReleaseSmoke.A1Vulkan
+S6-I3 supervised Release smoke slot=1 exit=0 job_total=17 job_active=0
+S6-I3 supervised smoke artifacts=4 samples=100 progress=200 seconds=0.93711 cleanup=success-owned-local-session
+[       OK ] Ex2Stage6SupervisorReleaseSmoke.A1Vulkan (937 ms)
+[ RUN      ] Ex2Stage6SupervisorReleaseSmoke.E1Cuda
+S6-I3 supervised Release smoke slot=160 exit=0 job_total=17 job_active=0
+S6-I3 supervised smoke artifacts=4 samples=100 progress=200 seconds=0.882677 cleanup=success-owned-local-session
+[       OK ] Ex2Stage6SupervisorReleaseSmoke.E1Cuda (882 ms)
+[ RUN      ] Ex2Stage6SupervisorReleaseSmoke.E1Vulkan
+S6-I3 supervised Release smoke slot=161 exit=0 job_total=17 job_active=0
+S6-I3 supervised smoke artifacts=4 samples=100 progress=200 seconds=0.923953 cleanup=success-owned-local-session
+[       OK ] Ex2Stage6SupervisorReleaseSmoke.E1Vulkan (924 ms)
+[----------] 4 tests from Ex2Stage6SupervisorReleaseSmoke (3761 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 1 test suite ran. (3761 ms total)
+[  PASSED  ] 4 tests.

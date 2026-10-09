@@ -1,0 +1,387 @@
+{
+  "phase": "after",
+  "utc": "2026-10-09T11:04:58.4571153Z",
+  "local_time": "2026-10-09T14:04:58.4834686+03:00",
+  "timezone": "GTB Standard Time",
+  "user": "DESKTOP-IL5MPRL\\rolan",
+  "cwd": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti",
+  "power_scheme": {
+    "command": "powercfg",
+    "exit_code": 0,
+    "stdout": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)\r\n",
+    "argv": [
+      "/getactivescheme"
+    ]
+  },
+  "sleep": {
+    "command": "powercfg",
+    "exit_code": 0,
+    "stdout": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)\r\n  GUID Alias: SCHEME_BALANCED\r\n  Subgroup GUID: 238c9fa8-0aad-41ed-83f4-97be242c8f20  (Sleep)\r\n    GUID Alias: SUB_SLEEP\r\n    Power Setting GUID: 29f6c1db-86da-48c5-9fdb-f2b67b1f44da  (Sleep after)\r\n      GUID Alias: STANDBYIDLE\r\n      Minimum Possible Setting: 0x00000000\r\n      Maximum Possible Setting: 0xffffffff\r\n      Possible Settings increment: 0x00000001\r\n      Possible Settings units: Seconds\r\n    Current AC Power Setting Index: 0x00000000\r\n    Current DC Power Setting Index: 0x00000384\r\n\r\n    Power Setting GUID: 94ac6d29-73ce-41a6-809f-6363ba21b47e  (Allow hybrid sleep)\r\n      GUID Alias: HYBRIDSLEEP\r\n      Possible Setting Index: 000\r\n      Possible Setting Friendly Name: Off\r\n      Possible Setting Index: 001\r\n      Possible Setting Friendly Name: On\r\n    Current AC Power Setting Index: 0x00000001\r\n    Current DC Power Setting Index: 0x00000001\r\n\r\n    Power Setting GUID: 9d7815a6-7ee4-497e-8888-515a05f02364  (Hibernate after)\r\n      GUID Alias: HIBERNATEIDLE\r\n      Minimum Possible Setting: 0x00000000\r\n      Maximum Possible Setting: 0xffffffff\r\n      Possible Settings increment: 0x00000001\r\n      Possible Settings units: Seconds\r\n    Current AC Power Setting Index: 0x00000000\r\n    Current DC Power Setting Index: 0x00000000\r\n\r\n    Power Setting GUID: bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d  (Allow wake timers)\r\n      GUID Alias: RTCWAKE\r\n      Possible Setting Index: 000\r\n      Possible Setting Friendly Name: Disable\r\n      Possible Setting Index: 001\r\n      Possible Setting Friendly Name: Enable\r\n      Possible Setting Index: 002\r\n      Possible Setting Friendly Name: Important Wake Timers Only\r\n    Current AC Power Setting Index: 0x00000001\r\n    Current DC Power Setting Index: 0x00000001\r\n\r\n",
+    "argv": [
+      "/query",
+      "SCHEME_CURRENT",
+      "SUB_SLEEP"
+    ]
+  },
+  "nvidia": {
+    "command": "nvidia-smi",
+    "exit_code": 0,
+    "stdout": "\r\n==============NVSMI LOG==============\r\n\r\nTimestamp                                              : Fri Oct  9 14:04:58 2026\r\nDriver Version                                         : 616.92 [Deprecated; will be removed in CUDA 14.0. Use KMD Version instead]\r\nCUDA Version                                           : 13.4 [Deprecated; will be removed in CUDA 14.0. Use CUDA UMD Version instead]\r\nKMD Version                                            : 616.92\r\nCUDA UMD Version                                       : 13.4\r\n\r\nAttached GPUs                                          : 1\r\nGPU 00000000:2B:00.0\r\n    Product Name                                       : NVIDIA GeForce RTX 3060 Ti\r\n    Product Brand                                      : GeForce\r\n    Product Architecture                               : Ampere\r\n    Display Mode                                       : Requested functionality has been deprecated\r\n    Display Attached                                   : No\r\n    Display Active                                     : Disabled\r\n    Persistence Mode                                   : N/A\r\n    Addressing Mode                                    : N/A\r\n    MIG Mode\r\n        Current                                        : N/A\r\n        Pending                                        : N/A\r\n    Accounting Mode                                    : Disabled\r\n    Accounting Mode Buffer Size                        : 4000\r\n    Driver Model\r\n        Current                                        : WDDM\r\n        Pending                                        : WDDM\r\n    Serial Number                                      : N/A\r\n    GPU UUID                                           : GPU-99a2369e-ca50-aac6-5c2c-fcaa44625084\r\n    GPU PDI                                            : 0x3ab75151880d25c1\r\n    Minor Number                                       : N/A\r\n    VBIOS Version                                      : 94.04.6b.00.4a\r\n    MultiGPU Board                                     : No\r\n    Board ID                                           : 0x2b00\r\n    Board Part Number                                  : N/A\r\n    GPU Part Number                                    : 2489-202-A1\r\n    FRU Part Number                                    : N/A\r\n    Platform Info\r\n        Chassis Serial Number                          : N/A\r\n        Slot Number                                    : N/A\r\n        Tray Index                                     : N/A\r\n        Host ID                                        : N/A\r\n        Peer Type                                      : N/A\r\n        Module Id                                      : 1\r\n        GPU Fabric GUID                                : N/A\r\n    Inforom Version\r\n        Image Version                                  : G001.0000.03.03\r\n        OEM Object                                     : 2.0\r\n        ECC Object                                     : N/A\r\n        Power Management Object                        : N/A\r\n    Inforom BBX Object Flush\r\n        Latest Timestamp                               : N/A\r\n        Latest Duration                                : N/A\r\n    Inforom Time Data\r\n        Time Run                                       : N/A\r\n    GPU Operation Mode\r\n        Current                                        : N/A\r\n        Pending                                        : N/A\r\n    GPU C2C Mode                                       : N/A\r\n    GPU Virtualization Mode\r\n        Virtualization Mode                            : None\r\n        Host VGPU Mode                                 : N/A\r\n        vGPU Heterogeneous Mode                        : N/A\r\n    GPU Recovery Action                                : None\r\n    GSP Firmware Version                               : N/A\r\n    IBMNPU\r\n        Relaxed Ordering Mode                          : N/A\r\n    PCI\r\n        Bus                                            : 0x2B\r\n        Device                                         : 0x00\r\n        Domain                                         : 0x0000\r\n        Device Id                                      : 0x248910DE\r\n        Bus Id                                         : 00000000:2B:00.0\r\n        Sub System Id                                  : 0x163019DA\r\n        GPU Link Info\r\n            PCIe Generation\r\n                Max                                    : 4\r\n                Current                                : 1\r\n                Device Current                         : 1\r\n                Device Max                             : 4\r\n                Host Max                               : 4\r\n            Link Width\r\n                Max                                    : 16x\r\n                Current                                : 16x\r\n        Bridge Chip\r\n            Type                                       : N/A\r\n            Firmware                                   : N/A\r\n        Replays Since Reset                            : 0\r\n        Replay Number Rollovers                        : 0\r\n        Tx Throughput                                  : 1009521 KB/s\r\n        Rx Throughput                                  : 117333 KB/s\r\n        Atomic Caps Outbound                           : N/A\r\n        Atomic Caps Inbound                            : N/A\r\n    Fan Speed                                          : 30 %\r\n    Performance State                                  : P8\r\n    Clocks Event Reasons\r\n        Idle                                           : Active\r\n        Applications Clocks Setting                    : Not Active\r\n        SW Power Cap                                   : Not Active\r\n        HW Slowdown                                    : Not Active\r\n            HW Thermal Slowdown                        : Not Active\r\n            HW Power Brake Slowdown                    : Not Active\r\n        Sync Boost                                     : Not Active\r\n        SW Thermal Slowdown                            : Not Active\r\n        Display Clock Setting                          : Not Active\r\n        Board Limit                                    : Not Active\r\n        Reliability                                    : Not Active\r\n    Clocks Event Reasons Counters\r\n        SW Power Capping                               : 0 us\r\n        Sync Boost                                     : 0 us\r\n        SW Thermal Slowdown                            : 0 us\r\n        HW Thermal Slowdown                            : 0 us\r\n        HW Power Braking                               : 0 us\r\n    Sparse Operation Mode                              : N/A\r\n    FB Memory Usage\r\n        Total                                          : 8192 MiB\r\n        Reserved                                       : 168 MiB\r\n        Used                                           : 501 MiB\r\n        Free                                           : 7524 MiB\r\n    BAR1 Memory Usage\r\n        Total                                          : 8192 MiB\r\n        Used                                           : 8163 MiB\r\n        Free                                           : 29 MiB\r\n    Conf Compute Protected Memory Usage\r\n        Total                                          : N/A\r\n        Used                                           : N/A\r\n        Free                                           : N/A\r\n    Compute Mode                                       : Default\r\n    Utilization\r\n        GPU                                            : 96 %\r\n        Memory                                         : 42 %\r\n        Encoder                                        : 0 %\r\n        Decoder                                        : 0 %\r\n        JPEG                                           : 0 %\r\n        OFA                                            : 0 %\r\n    Encoder Stats\r\n        Active Sessions                                : 0\r\n        Average FPS                                    : 0\r\n        Average Latency                                : 0\r\n    FBC Stats\r\n        Active Sessions                                : 0\r\n        Average FPS                                    : 0\r\n        Average Latency                                : 0\r\n    DRAM Encryption Mode\r\n        Current                                        : N/A\r\n        Pending                                        : N/A\r\n    ECC Mode\r\n        Current                                        : N/A\r\n        Pending                                        : N/A\r\n    ECC Errors\r\n        Volatile\r\n            SRAM Correctable                           : N/A\r\n            SRAM Uncorrectable Parity                  : N/A\r\n            SRAM Uncorrectable SEC-DED                 : N/A\r\n            DRAM Correctable                           : N/A\r\n            DRAM Uncorrectable                         : N/A\r\n        Aggregate\r\n            SRAM Correctable                           : N/A\r\n            SRAM Uncorrectable Parity                  : N/A\r\n            SRAM Uncorrectable SEC-DED                 : N/A\r\n            DRAM Correctable                           : N/A\r\n            DRAM Uncorrectable                         : N/A\r\n            SRAM Threshold Exceeded                    : N/A\r\n        Aggregate Uncorrectable SRAM Sources\r\n            SRAM L2                                    : N/A\r\n            SRAM SM                                    : N/A\r\n            SRAM Microcontroller                       : N/A\r\n            SRAM PCIE                                  : N/A\r\n            SRAM Other                                 : N/A\r\n        Channel Repair Pending                         : No\r\n        TPC Repair Pending                             : No\r\n        Unrepairable Memory                            : N/A\r\n    Retired Pages\r\n        Single Bit ECC                                 : N/A\r\n        Double Bit ECC                                 : N/A\r\n        Pending Page Blacklist                         : N/A\r\n    Remapped Rows                                      : N/A\r\n    Remapped Banks                                     : N/A\r\n    Temperature\r\n        GPU Current Temp                               : 30 C\r\n        GPU Current Max Temp                           : N/A\r\n        GPU Current T.Limit Temp                       : N/A\r\n        GPU Shutdown Temp                              : 98 C\r\n        GPU Slowdown Temp                              : 95 C\r\n        GPU Max Operating Temp                         : 93 C\r\n        GPU Target Temperature Specification           : 83 C\r\n        Memory Current Temp                            : N/A\r\n        Memory Max Operating Temp                      : N/A\r\n    GPU Power Readings\r\n        Average Power Draw                             : 15.89 W\r\n        Instantaneous Power Draw                       : 20.96 W\r\n        GPU Ceiling Power Limit\r\n            Current Power Limit                        : 200.00 W\r\n            Requested Power Limit                      : 200.00 W\r\n            Default Power Limit                        : 200.00 W\r\n        GPU Base Power\r\n            Current Base Power                         : N/A\r\n            Requested Base Power                       : N/A\r\n            Default Base Power                         : N/A\r\n            Adaptive TGP Adjusted Base Power           : N/A\r\n        Min Power Limit                                : 100.00 W\r\n        Max Power Limit                                : 220.00 W\r\n    GPU Memory Power Readings \r\n        Average Power Draw                             : N/A\r\n        Instantaneous Power Draw                       : N/A\r\n    Module Power Readings\r\n        Average Power Draw                             : N/A\r\n        Instantaneous Power Draw                       : N/A\r\n        Current Power Limit                            : N/A\r\n        Requested Power Limit                          : N/A\r\n        Default Power Limit                            : N/A\r\n        Min Power Limit                                : N/A\r\n        Max Power Limit                                : N/A\r\n    Power Smoothing                                    : N/A\r\n    Workload Power Profiles\r\n        Requested Profiles                             : N/A\r\n        Enforced Profiles                              : N/A\r\n    EDPp Multiplier                                    : N/A\r\n    Clocks\r\n        Graphics                                       : 210 MHz\r\n        SM                                             : 210 MHz\r\n        Memory                                         : 405 MHz\r\n        Video                                          : 555 MHz\r\n    Applications Clocks\r\n        Graphics                                       : Requested functionality has been deprecated\r\n        Memory                                         : Requested functionality has been deprecated\r\n    Default Applications Clocks\r\n        Graphics                                       : Requested functionality has been deprecated\r\n        Memory                                         : Requested functionality has been deprecated\r\n    Deferred Clocks\r\n        Memory                                         : N/A\r\n    Max Clocks\r\n        Graphics                                       : 2100 MHz\r\n        SM                                             : 2100 MHz\r\n        Memory                                         : 7001 MHz\r\n        Video                                          : 1950 MHz\r\n    Max Customer Boost Clocks\r\n        Graphics                                       : N/A\r\n    Clock Policy\r\n        Auto Boost                                     : N/A\r\n        Auto Boost Default                             : N/A\r\n    DLA Clocks\r\n        Engine                                         : N/A\r\n        Max Engine                                     : N/A\r\n    Fabric\r\n        State                                          : N/A\r\n        Status                                         : N/A\r\n        CliqueId                                       : N/A\r\n        ClusterUUID                                    : N/A\r\n        Health\r\n            Summary                                    : N/A\r\n            Bandwidth                                  : N/A\r\n            Route Recovery in progress                 : N/A\r\n            Route Unhealthy                            : N/A\r\n            Access Timeout Recovery                    : N/A\r\n            Incorrect Configuration                    : N/A\r\n            Partition Assigned                         : N/A\r\n            Global Fabric Manager State                : N/A\r\n        Cliques                                        : \r\n    Processes\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 1668\r\n            Type                          : C+G\r\n            Name                          : C:\\Program Files\\WindowsApps\\9426MICRO-STARINTERNATION.MSICenter_2.0.74.0_x64__kzh8wxbdkxb8p\\DCv2\\DCv2.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 8132\r\n            Type                          : C+G\r\n            Name                          : C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 8968\r\n            Type                          : C+G\r\n            Name                          : C:\\Windows\\explorer.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 12888\r\n            Type                          : C+G\r\n            Name                          : C:\\Windows\\ImmersiveControlPanel\\SystemSettings.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 13448\r\n            Type                          : C+G\r\n            Name                          : C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 13500\r\n            Type                          : C+G\r\n            Name                          : C:\\Program Files\\WindowsApps\\Microsoft.Windows.Photos_2019.19071.12548.0_x64__8wekyb3d8bbwe\\Microsoft.Photos.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 13896\r\n            Type                          : C+G\r\n            Name                          : C:\\Windows\\SystemApps\\Microsoft.Windows.Search_cw5n1h2txyewy\\SearchApp.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 16496\r\n            Type                          : C+G\r\n            Name                          : C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 16708\r\n            Type                          : C+G\r\n            Name                          : C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.25072.79.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 17860\r\n            Type                          : C+G\r\n            Name                          : C:\\Program Files\\WindowsApps\\Microsoft.WindowsCalculator_10.1906.55.0_x64__8wekyb3d8bbwe\\Calculator.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 19292\r\n            Type                          : C+G\r\n            Name                          : C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n        GPU instance ID                   : N/A\r\n        Compute instance ID               : N/A\r\n        Process ID                        : 20268\r\n            Type                          : C+G\r\n            Name                          : C:\\Users\\rolan\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\7d8d3ac5ca9f6767\\bin\\node_modules\\@oai\\sky\\bin\\windows\\swift\\x64\\codex-computer-use-swift.exe\r\n            Used GPU Memory               : Not available in WDDM driver model\r\n    Capabilities\r\n        EGM                                            : disabled\r\n\r\n",
+    "argv": [
+      "-q"
+    ]
+  },
+  "os": {
+    "Caption": "Microsoft Windows 10 Enterprise",
+    "Version": "10.0.19045",
+    "TotalVisibleMemorySize": 33478696,
+    "FreePhysicalMemory": 24740096,
+    "LastBootUpTime": "2026-10-09T12:07:10.5+03:00"
+  },
+  "processes": [
+    {
+      "Name": "dwm.exe",
+      "ProcessId": 1752,
+      "ExecutablePath": null
+    },
+    {
+      "Name": "AvastSvc.exe",
+      "ProcessId": 3384,
+      "ExecutablePath": null
+    },
+    {
+      "Name": "aswToolsSvc.exe",
+      "ProcessId": 4436,
+      "ExecutablePath": null
+    },
+    {
+      "Name": "AnyDesk.exe",
+      "ProcessId": 5032,
+      "ExecutablePath": null
+    },
+    {
+      "Name": "codex-windows-sandbox-service.exe",
+      "ProcessId": 5644,
+      "ExecutablePath": null
+    },
+    {
+      "Name": "aswEngSrv.exe",
+      "ProcessId": 8164,
+      "ExecutablePath": null
+    },
+    {
+      "Name": "explorer.exe",
+      "ProcessId": 8968,
+      "ExecutablePath": "C:\\Windows\\Explorer.EXE"
+    },
+    {
+      "Name": "AvastUI.exe",
+      "ProcessId": 17004,
+      "ExecutablePath": "C:\\Program Files\\Avast Software\\Suite\\AvastUI.exe"
+    },
+    {
+      "Name": "AnyDesk.exe",
+      "ProcessId": 2936,
+      "ExecutablePath": "C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 17816,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 13136,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 15040,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 8132,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 17232,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 18548,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 19316,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 19324,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "codex.exe",
+      "ProcessId": 18588,
+      "ExecutablePath": "C:\\Users\\rolan\\AppData\\Local\\OpenAI\\Codex\\bin\\f544b3844e0f14e9\\codex.exe"
+    },
+    {
+      "Name": "codex-computer-use-swift.exe",
+      "ProcessId": 20268,
+      "ExecutablePath": "C:\\Users\\rolan\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\7d8d3ac5ca9f6767\\bin\\node_modules\\@oai\\sky\\bin\\windows\\swift\\x64\\codex-computer-use-swift.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 21284,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "codex.exe",
+      "ProcessId": 20652,
+      "ExecutablePath": "C:\\Users\\rolan\\AppData\\Local\\OpenAI\\Codex\\bin\\f544b3844e0f14e9\\codex.exe"
+    },
+    {
+      "Name": "AvastUI.exe",
+      "ProcessId": 22012,
+      "ExecutablePath": "C:\\Program Files\\Avast Software\\Suite\\AvastUI.exe"
+    },
+    {
+      "Name": "AvastUI.exe",
+      "ProcessId": 22296,
+      "ExecutablePath": "C:\\Program Files\\Avast Software\\Suite\\AvastUI.exe"
+    },
+    {
+      "Name": "AvastUI.exe",
+      "ProcessId": 21764,
+      "ExecutablePath": "C:\\Program Files\\Avast Software\\Suite\\AvastUI.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 21916,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 20064,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 3060,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "ChatGPT.exe",
+      "ProcessId": 22368,
+      "ExecutablePath": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.930.4958.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe"
+    },
+    {
+      "Name": "codex-code-mode-host.exe",
+      "ProcessId": 14944,
+      "ExecutablePath": "C:\\Users\\rolan\\AppData\\Local\\OpenAI\\Codex\\bin\\f544b3844e0f14e9\\codex-code-mode-host.exe"
+    },
+    {
+      "Name": "AvastUI.exe",
+      "ProcessId": 2860,
+      "ExecutablePath": "C:\\Program Files\\Avast Software\\Suite\\AvastUI.exe"
+    },
+    {
+      "Name": "AnyDesk.exe",
+      "ProcessId": 19132,
+      "ExecutablePath": null
+    }
+  ],
+  "security_center": [
+    {
+      "displayName": "Windows Defender",
+      "productState": 393472,
+      "timestamp": "Tue, 21 Jul 2026 23:49:18 GMT",
+      "pathToSignedReportingExe": "%ProgramFiles%\\Windows Defender\\MsMpeng.exe"
+    },
+    {
+      "displayName": "Avast Antivirus",
+      "productState": 270336,
+      "timestamp": "Fri, 09 Oct 2026 10:05:58 GMT",
+      "pathToSignedReportingExe": "C:\\Program Files\\Avast Software\\Suite\\wsc_proxy.exe"
+    }
+  ],
+  "avast_services": [
+    {
+      "Name": "aswbIDSAgent",
+      "State": "Stopped",
+      "StartMode": "Manual"
+    },
+    {
+      "Name": "Avast BreachGuard Service",
+      "State": "Running",
+      "StartMode": "Auto"
+    },
+    {
+      "Name": "avast! Antivirus",
+      "State": "Running",
+      "StartMode": "Auto"
+    },
+    {
+      "Name": "avast! Firewall",
+      "State": "Running",
+      "StartMode": "Auto"
+    },
+    {
+      "Name": "avast! Tools",
+      "State": "Running",
+      "StartMode": "Auto"
+    },
+    {
+      "Name": "AvastCleanupSvc",
+      "State": "Running",
+      "StartMode": "Auto"
+    },
+    {
+      "Name": "AvastDriverUpdSvc",
+      "State": "Running",
+      "StartMode": "Auto"
+    },
+    {
+      "Name": "AvastWscReporter",
+      "State": "Running",
+      "StartMode": "Auto"
+    }
+  ],
+  "pending_restart": {
+    "windows_update": false,
+    "pending_rename": [
+      "*1\\??\\C:\\Program Files (x86)\\Microsoft\\EdgeUpdate\\1.3.275.13",
+      ""
+    ],
+    "cbs": false
+  },
+  "update_settings": {
+    "PauseUpdatesStartTime": null,
+    "PauseUpdatesExpiryTime": null,
+    "PauseFeatureUpdatesStartTime": null,
+    "PauseFeatureUpdatesEndTime": null,
+    "PauseQualityUpdatesStartTime": null,
+    "PauseQualityUpdatesEndTime": null,
+    "ActiveHoursStart": 8,
+    "ActiveHoursEnd": 17,
+    "SmartActiveHoursState": null
+  },
+  "sessions": {
+    "command": "quser",
+    "exit_code": 0,
+    "stdout": " USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME\r\n>rolan                 console             1  Active      none   10/9/2026 12:07 PM\r\n",
+    "argv": []
+  },
+  "layers": [
+    {
+      "registrations": [
+        {
+          "path": "C:\\ProgramData\\obs-studio-hook\\obs-vulkan64.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\Program Files (x86)\\Steam\\SteamOverlayVulkanLayer64.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\Program Files (x86)\\Steam\\SteamFossilizeVulkanLayer64.json",
+          "value": 0
+        }
+      ],
+      "key": "HKLM:\\SOFTWARE\\Khronos\\Vulkan\\ImplicitLayers"
+    },
+    {
+      "present": false,
+      "key": "HKCU:\\SOFTWARE\\Khronos\\Vulkan\\ImplicitLayers"
+    },
+    {
+      "registrations": [
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_api_dump.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_gfxreconstruct.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_khronos_synchronization2.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_khronos_validation.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_monitor.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_screenshot.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_khronos_profiles.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_khronos_shader_object.json",
+          "value": 0
+        },
+        {
+          "path": "C:\\VulkanSDK\\1.4.363.0\\Bin\\VkLayer_crash_diagnostic.json",
+          "value": 0
+        }
+      ],
+      "key": "HKLM:\\SOFTWARE\\Khronos\\Vulkan\\ExplicitLayers"
+    },
+    {
+      "present": false,
+      "key": "HKCU:\\SOFTWARE\\Khronos\\Vulkan\\ExplicitLayers"
+    }
+  ],
+  "environment": [
+    {
+      "Name": "ALLUSERSPROFILE",
+      "Value": "C:\\ProgramData"
+    },
+    {
+      "Name": "CODEX_PERMISSION_PROFILE",
+      "Value": ":workspace"
+    },
+    {
+      "Name": "CUDA_PATH",
+      "Value": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4"
+    },
+    {
+      "Name": "CUDA_PATH_V13_4",
+      "Value": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4"
+    },
+    {
+      "Name": "USERDOMAIN_ROAMINGPROFILE",
+      "Value": "DESKTOP-IL5MPRL"
+    },
+    {
+      "Name": "USERPROFILE",
+      "Value": "C:\\Users\\rolan"
+    },
+    {
+      "Name": "VK_SDK_PATH",
+      "Value": "C:\\VulkanSDK\\1.4.363.0"
+    }
+  ],
+  "sdk": {
+    "VULKAN_SDK": "C:\\VulkanSDK\\1.4.363.0",
+    "CUDA_PATH": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4",
+    "VCPKG_ROOT": "D:\\vcpkg"
+  },
+  "drive": {
+    "DriveFormat": "NTFS",
+    "AvailableFreeSpace": 285752119296,
+    "TotalSize": 499427872768
+  }
+}

@@ -1,0 +1,33 @@
+**********************
+PowerShell transcript start
+Start time: 20261009130506
+Username: DESKTOP-IL5MPRL\rolan
+RunAs User: DESKTOP-IL5MPRL\rolan
+Configuration Name: 
+Machine: DESKTOP-IL5MPRL (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Users\rolan\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+& .\results\local\ex2-s7-preparation-20261009-h2\build-debug-once.ps1
+Process ID: 12568
+PSVersion: 7.6.5
+PSEdition: Core
+GitCommitId: 7.6.5
+OS: Microsoft Windows 10.0.19045
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Transcript started, output file is C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\results\local\ex2-s7-preparation-20261009-h2\debug-build.log
+INVOCATION: .\scripts\build.ps1 -Preset x64-debug
+**********************************************************************
+** Visual Studio 2026 Developer PowerShell v18.10.3
+** Copyright (c) 2026 Microsoft Corporation
+**********************************************************************
+
+
+WRAPPER_EXIT=0
+**********************
+PowerShell transcript end
+End time: 20261009130700
+**********************

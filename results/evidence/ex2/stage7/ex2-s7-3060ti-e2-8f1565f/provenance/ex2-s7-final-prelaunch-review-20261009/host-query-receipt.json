@@ -1,0 +1,169 @@
+[
+  {
+    "utc": "2026-10-09T10:34:31.0016507Z",
+    "query": "Win32_OperatingSystem",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.0568492Z",
+    "query": "Win32_Processor",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.1128746Z",
+    "query": "Win32_Process relevant processes and production detection",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.2528967Z",
+    "query": "nvidia-smi -q metadata only",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.3032851Z",
+    "query": "Registry HKLM:\\SOFTWARE\\Khronos\\Vulkan\\ExplicitLayers",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.3101714Z",
+    "query": "Registry HKLM:\\SOFTWARE\\Khronos\\Vulkan\\ImplicitLayers",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.3221490Z",
+    "query": "Registry HKCU:\\SOFTWARE\\Khronos\\Vulkan\\ExplicitLayers",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.3339764Z",
+    "query": "Registry HKCU:\\SOFTWARE\\Khronos\\Vulkan\\ImplicitLayers",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.3444189Z",
+    "query": "SecurityCenter2 AntiVirusProduct raw state",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:32.6188820Z",
+    "query": "Avast/asw service state",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:33.1332785Z",
+    "query": "Recent Avast/asw application events, maximum 30",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:33.1611404Z",
+    "query": "Bounded Avast report/log tail matches for ComputeLab or block/quarantine events",
+    "error": "The process cannot access the file 'C:\\ProgramData\\Avast Software\\Avast\\log\\AvastUI.log' because it is being used by another process.",
+    "success": false
+  },
+  {
+    "utc": "2026-10-09T10:34:33.1727496Z",
+    "query": "powercfg /getactivescheme",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:33.1995564Z",
+    "query": "powercfg /query SCHEME_CURRENT SUB_SLEEP",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:33.2086425Z",
+    "query": "powercfg /a",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:33.2338374Z",
+    "query": "powercfg /requests",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:33.2393917Z",
+    "query": "Win32_Battery",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:33.3051113Z",
+    "query": "Read pending reboot flags",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.1071944Z",
+    "query": "UpdateOrchestrator reboot task state",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.1235219Z",
+    "query": "Windows Update configured policy",
+    "error": "Cannot find path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU' because it does not exist.",
+    "success": false
+  },
+  {
+    "utc": "2026-10-09T10:34:34.1362961Z",
+    "query": "query user",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.1422549Z",
+    "query": "Terminal Services disconnect/logoff policy",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.1963206Z",
+    "query": "Read tool file identity C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\nvcc.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2071142Z",
+    "query": "Read tool file identity C:\\VulkanSDK\\1.4.363.0\\Bin\\glslc.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2128709Z",
+    "query": "Read tool file identity C:\\VulkanSDK\\1.4.363.0\\Bin\\spirv-val.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2351163Z",
+    "query": "Read tool file identity C:\\Program Files\\CMake\\bin\\cmake.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2415571Z",
+    "query": "Read tool file identity C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2435837Z",
+    "query": "Read tool file identity C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\cl.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2446381Z",
+    "query": "Read tool file identity C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2485378Z",
+    "query": "Read tool file identity C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2592676Z",
+    "query": "Read tool file identity C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\vcpkg\\vcpkg.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2662286Z",
+    "query": "Read tool file identity D:\\vcpkg\\vcpkg.exe (never execute)",
+    "success": true
+  },
+  {
+    "utc": "2026-10-09T10:34:34.2773917Z",
+    "query": "Read tool file identity C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\lib\\x64\\nvml.lib (never execute)",
+    "success": true
+  }
+]

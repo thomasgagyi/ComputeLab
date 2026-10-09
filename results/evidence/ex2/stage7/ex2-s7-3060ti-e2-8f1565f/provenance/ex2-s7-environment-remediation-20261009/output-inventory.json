@@ -1,0 +1,87 @@
+{
+  "files": {
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\after-host.json": {
+      "bytes": 33719,
+      "sha256": "c261e433ed9a52be8f20b5b576060628758f2136a92c4b0d43f361b0fdb3cc48"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\approved-ac-sleep-change.ps1": {
+      "bytes": 1996,
+      "sha256": "67b83c8673d5b485ec8e9ed78fda8f2711936eb015e5133e7e6ebccb44eeb001"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\approved-power-change.json": {
+      "bytes": 4464,
+      "sha256": "ddb62ebf1850b616cd37bd4d3a0e0f33029bd36905e38fb5c89c340ced740947"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\before-host.json": {
+      "bytes": 33716,
+      "sha256": "181ed79db8c95cf8ba6b10a30b0f91d738f1bc71b5dc23b16e2da3e4f24e3f1e"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\before-integrity.json": {
+      "bytes": 125535,
+      "sha256": "df3ce88da3e7a87a4eaacd4848959d6f0a3734635a676bfb7d4271e0299cc593"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\environment-remediation-receipt.json": {
+      "bytes": 14850,
+      "sha256": "d2df53e1dd19ae52aab3c1731f9b5481ecebe47e2a12f2f572d36bef0aefeb53"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\environment-remediation-review.md": {
+      "bytes": 17065,
+      "sha256": "e5cd99bc3878df2c1ea19065a595aaf800a13cd46c1ca54f75d1ef40238a1ece"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\exact-execution-log.txt": {
+      "bytes": 2632,
+      "sha256": "cca3bea17f09e57cce3fe0f95796d4b077b0f28921ba98912bf24dbd6c776698"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\final-integrity.json": {
+      "bytes": 125534,
+      "sha256": "c42c434b9790ec806b515c08dc29a2275fbdd8d3c3cd169c6c51db62162f9f08"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\host-observation.ps1": {
+      "bytes": 3664,
+      "sha256": "520112f5a4980cbf86ad5c8eef5254b3fdf935a290899ababb828ca1a1129e23"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\metadata-only-probe.py": {
+      "bytes": 7369,
+      "sha256": "87ffcbb6709e9ed03c54eba3d5ac39eba3130958ddf0c72109f45de8cb1e0f3c"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\nvidia-capture-observation.json": {
+      "bytes": 946,
+      "sha256": "2bce52040361321c86fe4055f83e919021cc2a91ee252f1937fe63c01dc87628"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\operator-decisions.json": {
+      "bytes": 1564,
+      "sha256": "bf98fc51d951059814d14198f3a14b7e8b4ee887eda5e784adf9be55f293c278"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-execution.json": {
+      "bytes": 3507,
+      "sha256": "5054e49d4016b70877f154b9e5df39e169c8be12d9256134e5530b52a6227b14"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-invocation-before.json": {
+      "bytes": 3257,
+      "sha256": "6dea3bdd542be08917837f9770b438e18b72912907d731e24b4700b6e341f12b"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-result.json": {
+      "bytes": 7033,
+      "sha256": "5ade9ff10a15edf69cf1ee3a24ba06fd6f0c23329077016593aca963caa94641"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-stdout.txt": {
+      "bytes": 6252,
+      "sha256": "bfaef376eaeee3b5b95284f00756c7ba2f06d068af78873bb898c2fba02894ad"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\publish-remediation-review.py": {
+      "bytes": 24198,
+      "sha256": "91ca2eecc9033567c42dcce728670c7ca0f87df9a06a16515d3ea622cc874650"
+    },
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\remediation-control.py": {
+      "bytes": 14068,
+      "sha256": "2d8439c9e98ba61db1c647e236a09cbbe4a62b786f4de594f00dab4cabc7c43b"
+    }
+  },
+  "self_digest_omitted": true,
+  "utc": "2026-10-09T11:09:50.048163+00:00",
+  "verdict": "INCOMPLETE"
+}

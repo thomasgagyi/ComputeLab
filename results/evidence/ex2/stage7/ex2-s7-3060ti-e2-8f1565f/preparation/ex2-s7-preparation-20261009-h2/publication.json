@@ -1,0 +1,8 @@
+{
+  "operation": "exclusive CreateNew exact candidate bytes; Flush(true); hash readback",
+  "final": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e1-8f1565f-stage6-manifest.json",
+  "production_supervisor_invoked": false,
+  "candidate": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\tmp\\ex2-s7-3060ti-e1-8f1565f-prep\\candidate-manifest.json",
+  "physical_sha256": "175141852d8c04509bda9342d2ff9e534950a5e95c49e8c04654029e406dad91",
+  "candidate_receipt_sha256": "905b2a26973a1b05ef09b4f4cc5867a7b6a580d8b6ad84257ebb133e9ac76928"
+}

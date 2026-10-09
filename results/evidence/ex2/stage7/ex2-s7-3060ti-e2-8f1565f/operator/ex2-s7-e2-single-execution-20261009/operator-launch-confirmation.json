@@ -1,0 +1,10 @@
+{
+  "nvidia_recording_features_off_checked": true,
+  "semantic": "99404552f6302a7273f991d02d6532ebd06b38a6e7224c17721278d6b00899aa",
+  "manifest_id": "ex2-s7-3060ti-e2-8f1565f",
+  "authorization": "AUTHORIZE S7-3060TI-E2 ex2-s7-3060ti-e2-8f1565f 99404552f6302a7273f991d02d6532ebd06b38a6e7224c17721278d6b00899aa d4d93217721285bbc7d55d8fc6853a3685e0d23f1f5e1b6203244c359122e1e1",
+  "utc": "2026-10-09T13:06:19.4894181Z",
+  "source": "Direct exact operator E2 authorization in current chat",
+  "physical": "d4d93217721285bbc7d55d8fc6853a3685e0d23f1f5e1b6203244c359122e1e1",
+  "nvidia_attestation_source": "Prior direct manual operator confirmation, explicitly retained by E2 preparation instruction"
+}

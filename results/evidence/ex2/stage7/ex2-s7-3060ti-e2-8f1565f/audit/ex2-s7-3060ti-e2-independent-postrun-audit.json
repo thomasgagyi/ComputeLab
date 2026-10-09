@@ -1,0 +1,1756 @@
+{
+  "accepted_index": {
+    "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-postrun-audit-20261009\\ex2-s7-3060ti-e2-accepted-process-index.json",
+    "sha256": "187e8b3dab63bdb6a4d99611b501d039462b87a2c522a6b7f5ed7a8b6cfc1d78",
+    "size_bytes": 503846
+  },
+  "audit_identity": "ex2-s7-3060ti-e2-8f1565f-independent-postrun-20261009",
+  "campaign": "ex2-s7-3060ti-e2-8f1565f",
+  "check_counts": {
+    "FAIL": 0,
+    "PASS": 284,
+    "UNVERIFIED": 0
+  },
+  "checks": [
+    {
+      "check": "clean detached pinned source before",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "sealed input identity at audit start",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "supplemental preparation inventory at audit start",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "strict canonical manifest and separately reconstructed full schedule",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-stage6-manifest.json",
+      "status": "PASS"
+    },
+    {
+      "check": "all eight frozen Release artifacts against manifest and receipts",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "terminal ledger canonical identity, revisions and preflight",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-stage6-control.json",
+      "status": "PASS"
+    },
+    {
+      "check": "E2 topology, staging absence and exact analysis set",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "independent literal known answers and scalar/vector equivalence",
+      "detail": "literal mix64/A1/A2/B1/B2/C/D1/E and framing; independently written scalar versus vector boundary probes",
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "shortest decimal serializer known answers",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 00 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 01 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 02 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 03 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 04 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 05 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 06 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 07 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 08 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 09 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 10 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 11 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 12 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 13 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 14 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 15 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 16 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 17 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 18 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 19 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 20 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 21 complete independent input/output reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "slot 000 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-000",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 001 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-001",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 002 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-002",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 003 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-003",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 004 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-004",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 005 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-005",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 006 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-006",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 007 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-007",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 008 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-008",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 009 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-009",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 010 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-010",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 011 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-011",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 012 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-012",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 013 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-013",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 014 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-014",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 015 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-015",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 016 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-016",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 017 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-017",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 018 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-018",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 019 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-019",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 020 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-020",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 021 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-021",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 022 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-022",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 023 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-023",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 024 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-024",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 025 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-025",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 026 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-026",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 027 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-027",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 028 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-028",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 029 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-029",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 030 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-030",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 031 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-031",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 032 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-032",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 033 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-033",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 034 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-034",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 035 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-035",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 036 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-036",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 037 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-037",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 038 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-038",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 039 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-039",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 040 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-040",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 041 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-041",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 042 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-042",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 043 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-043",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 044 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-044",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 045 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-045",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 046 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-046",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 047 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-047",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 048 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-048",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 049 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-049",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 050 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-050",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 051 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-051",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 052 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-052",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 053 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-053",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 054 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-054",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 055 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-055",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 056 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-056",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 057 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-057",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 058 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-058",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 059 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-059",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 060 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-060",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 061 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-061",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 062 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-062",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 063 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-063",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 064 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-064",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 065 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-065",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 066 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-066",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 067 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-067",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 068 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-068",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 069 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-069",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 070 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-070",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 071 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-071",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 072 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-072",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 073 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-073",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 074 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-074",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 075 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-075",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 076 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-076",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 077 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-077",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 078 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-078",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 079 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-079",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 080 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-080",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 081 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-081",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 082 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-082",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 083 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-083",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 084 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-084",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 085 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-085",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 086 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-086",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 087 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-087",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 088 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-088",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 089 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-089",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 090 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-090",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 091 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-091",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 092 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-092",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 093 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-093",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 094 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-094",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 095 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-095",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 096 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-096",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 097 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-097",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 098 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-098",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 099 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-099",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 100 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-100",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 101 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-101",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 102 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-102",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 103 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-103",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 104 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-104",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 105 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-105",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 106 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-106",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 107 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-107",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 108 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-108",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 109 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-109",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 110 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-110",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 111 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-111",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 112 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-112",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 113 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-113",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 114 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-114",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 115 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-115",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 116 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-116",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 117 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-117",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 118 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-118",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 119 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-119",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 120 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-120",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 121 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-121",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 122 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-122",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 123 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-123",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 124 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-124",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 125 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-125",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 126 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-126",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 127 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-127",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 128 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-128",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 129 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-129",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 130 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-130",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 131 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-131",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 132 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-132",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 133 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-133",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 134 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-134",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 135 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-135",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 136 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-136",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 137 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-137",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 138 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-138",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 139 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-139",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 140 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-140",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 141 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-141",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 142 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-142",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 143 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-143",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 144 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-144",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 145 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-145",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 146 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-146",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 147 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-147",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 148 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-148",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 149 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-149",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 150 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-150",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 151 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-151",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 152 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-152",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 153 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-153",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 154 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-154",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 155 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-155",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 156 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-156",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 157 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-157",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 158 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-158",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 159 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-159",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 160 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-160",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 161 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-161",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 162 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-162",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 163 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-163",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 164 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-164",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 165 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-165",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 166 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-166",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 167 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-167",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 168 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-168",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 169 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-169",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 170 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-170",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 171 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-171",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 172 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-172",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 173 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-173",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 174 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-174",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 175 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-175",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 176 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-176",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 177 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-177",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 178 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-178",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 179 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-179",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 180 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-180",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 181 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-181",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 182 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-182",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 183 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-183",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 184 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-184",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 185 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-185",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 186 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-186",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 187 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-187",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 188 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-188",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 189 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-189",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 190 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-190",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 191 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-191",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 192 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-192",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 193 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-193",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 194 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-194",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 195 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-195",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 196 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-196",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 197 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-197",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 198 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-198",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 199 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-199",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 200 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-200",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 201 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-201",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 202 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-202",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 203 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-203",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 204 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-204",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 205 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-205",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 206 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-206",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 207 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-207",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 208 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-208",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 209 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-209",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 210 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-210",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 211 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-211",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 212 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-212",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 213 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-213",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 214 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-214",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 215 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-215",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 216 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-216",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 217 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-217",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 218 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-218",
+      "status": "PASS"
+    },
+    {
+      "check": "slot 219 package/control/progress/raw/summary/windows",
+      "detail": null,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-slot-219",
+      "status": "PASS"
+    },
+    {
+      "check": "cell 00 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 01 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 02 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 03 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 04 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 05 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 06 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 07 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 08 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 09 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 10 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 11 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 12 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 13 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 14 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 15 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 16 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 17 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 18 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 19 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 20 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "cell 21 exact diagnostic analysis reconstruction",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "exact canonical campaign analysis and claim firewall",
+      "detail": {
+        "relative_path": "results/local/ex2-s7-3060ti-e2-8f1565f-stage6-analysis/campaign-analysis.json",
+        "sha256": "700859aa237c0eca55cf59ede7392b00f8a1391e636fc873b8f52f88797b8bb8",
+        "size_bytes": 1931
+      },
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 candidate/final/precreation/authorization anchors",
+      "detail": "E2 candidate bytes and frozen identity independently checked; prelaunch PASS is not sole proof",
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "original one-launch scheduled task and native terminal reconciliation",
+      "detail": "one retained task dispatch and one native creation; sequential 220 child records, no retry within retained evidence",
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "retained execution metadata probe and restoration context",
+      "detail": "retained metadata-only same-GPU/OBS-off context and AC sleep restoration",
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "shared Phase-A candidate/final/stability/deployment artifact authority",
+      "detail": "shared artifact build authority verified; historical E1 manifest not conflated with E2",
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "retained producer inventories independently anchored to actual bytes",
+      "detail": {
+        "historical_e1_excluded": 2,
+        "verified": 999
+      },
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "summary mathematical known answer",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "sealed E2 path set unchanged",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "all original bytes, sizes, paths and mtimes unchanged",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "all shared historical preparation authority unchanged",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    },
+    {
+      "check": "audit outputs ignored and confined to fresh roots",
+      "detail": null,
+      "path": null,
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "campaign_analyses_regenerated": 1,
+    "cell_analyses_regenerated": 22,
+    "cleanup_slots": [],
+    "correctness_valid_rows": 22000,
+    "logical_cells_regenerated": 22,
+    "packages_verified": 220,
+    "process_summaries_regenerated": 220,
+    "progress_events_verified": 44000,
+    "raw_rows_verified": 22000,
+    "windows_regenerated": 880
+  },
+  "discrepancies": [],
+  "limitations": [
+    "Retained validation flags plus independently reconstructed expected digests are correctness evidence, not a fresh GPU correctness rerun; actual output buffers are not retained.",
+    "Progress validation independently interprets retained ledger event records; original pipe byte streams are not separately retained. QPC does not replace scientific host timing values.",
+    "No external continuous OS process monitor is claimed. One launch/no retry is established only within retained supervisor, task and wrapper evidence.",
+    "Operator NVIDIA recording-off attestation and OBS-off probe are contextual provenance, not proof of universal absence of overhead.",
+    "Avast restoration is a retained reminder unless an actual restoration attestation is present; environmental restoration is not a scientific correctness gate.",
+    "Shared Phase-A records explicitly retain incomplete canonical Debug coverage and missing full Debug build console retention; prior bounded Release smoke receipts exist, and this audit reruns no tests.",
+    "E1 remains permanently INCOMPLETE; historical shared artifact receipts are not E2 scientific evidence and historical E1 manifest identities remain distinct.",
+    "Gate 0 FAIL, Stage 2 NOT GRANTED, production backend UNSELECTED; no ranking, speedup, cross-generation or production-runtime inference."
+  ],
+  "manifest_physical_sha256": "d4d93217721285bbc7d55d8fc6853a3685e0d23f1f5e1b6203244c359122e1e1",
+  "manifest_semantic_sha256": "99404552f6302a7273f991d02d6532ebd06b38a6e7224c17721278d6b00899aa",
+  "next_human_controlled_step": "Separate curation review only after acceptance; no benchmark inference",
+  "prohibited_actions_performed": [],
+  "source_revision": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274",
+  "verdict": "ACCEPTED"
+}

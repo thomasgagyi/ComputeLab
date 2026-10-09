@@ -1,0 +1,565 @@
+{
+  "files": [
+    {
+      "mtime_ns": 1791540707902048900,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\artifact-freeze.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/artifact-freeze.json",
+      "sha256": "2092a80e3cf49d1148fac5a35aed762fdfc81a56a5b91074cb88d01ce1dfb59b",
+      "size_bytes": 2722
+    },
+    {
+      "mtime_ns": 1791540303511231900,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\build-debug-once.ps1",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/build-debug-once.ps1",
+      "sha256": "07bc3e413acf7425859e9b09aae18722a1db6a24290e1f5862a7023d572348ab",
+      "size_bytes": 628
+    },
+    {
+      "mtime_ns": 1791540469219065300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\build-release-once.ps1",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/build-release-once.ps1",
+      "sha256": "c5ea5d10c562bcdfa7b56f871479b2803d3f1d4172bfa0eaa45fe9bc6f779ba1",
+      "size_bytes": 909
+    },
+    {
+      "mtime_ns": 1791540821965856200,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\candidate-verification.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/candidate-verification.json",
+      "sha256": "905b2a26973a1b05ef09b4f4cc5867a7b6a580d8b6ad84257ebb133e9ac76928",
+      "size_bytes": 137911
+    },
+    {
+      "mtime_ns": 1791540821972854500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\candidate-verification.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/candidate-verification.log",
+      "sha256": "42d75c5f687425e2d7f5279db785f4c0b978bf1cc2f1bd4374dea4a2fa8f5fdf",
+      "size_bytes": 180
+    },
+    {
+      "mtime_ns": 1791540420862817600,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-build-exit.txt",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-build-exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    {
+      "mtime_ns": 1791540420752480800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-build.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-build.log",
+      "sha256": "bbd4d25b8920931724eac0482bff1c514005332aa0acd32162e67e5b0e7f3e90",
+      "size_bytes": 1357
+    },
+    {
+      "mtime_ns": 1791540707662804500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-configure.yaml",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-configure.yaml",
+      "sha256": "ac627c0069b7d891a9e8b6a37e6a47149f8da95243f1af7367965fd5bfb90b15",
+      "size_bytes": 40804579
+    },
+    {
+      "mtime_ns": 1791540436167496700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-inventory.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-inventory.log",
+      "sha256": "2f4ce79d26ebf79e47f116d64c1f6772eba3035f9ca3496a1adeca000ddc2f69",
+      "size_bytes": 213
+    },
+    {
+      "mtime_ns": 1791540707625867800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-last-test.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-last-test.log",
+      "sha256": "e4c554e5b4fa66627466c3c1bd6b1ad358d154b18fc22dee0fd89922ac12a4c7",
+      "size_bytes": 3161
+    },
+    {
+      "mtime_ns": 1791540707628868600,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-ninja.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-ninja.log",
+      "sha256": "ab78929b5d5cb03ad20bed56b90fba7f0a4e18f1896dd3e8b60205e9ecf00f6d",
+      "size_bytes": 23137
+    },
+    {
+      "mtime_ns": 1791540453411749400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-smoke-exit.txt",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-smoke-exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    {
+      "mtime_ns": 1791540453400748000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\debug-smoke.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/debug-smoke.log",
+      "sha256": "2f138871c17e01250cc84fece7bffc5f8e81b5005c597bf20992c27066f29d42",
+      "size_bytes": 629
+    },
+    {
+      "mtime_ns": 1791540303388220500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\deployment-contract.md",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/deployment-contract.md",
+      "sha256": "90715e5ab1658350b529152205bd40fdf2c2d08645319c27f71c68477f7340c6",
+      "size_bytes": 3462
+    },
+    {
+      "mtime_ns": 1791540584775076400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\direct-inventory.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/direct-inventory.log",
+      "sha256": "c4177edf0d47b178f8be4d727502ba82cb2aa90833737f5684c63b9efd53e540",
+      "size_bytes": 242
+    },
+    {
+      "mtime_ns": 1791540598555352000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\direct-smoke-exit.txt",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/direct-smoke-exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    {
+      "mtime_ns": 1791540598538342700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\direct-smoke.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/direct-smoke.json",
+      "sha256": "4e6cd6dc8f04fc23e95355c9e74c619110ca0d65bbbda6ddde9b5de52acfac47",
+      "size_bytes": 1901
+    },
+    {
+      "mtime_ns": 1791540598538342700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\direct-smoke.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/direct-smoke.log",
+      "sha256": "f75a012ff96298cdc624be52a49aed181b8eaa61d9474038815d28ce3e9d7d26",
+      "size_bytes": 1856
+    },
+    {
+      "mtime_ns": 1791540844120497300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\final-verification.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/final-verification.json",
+      "sha256": "5942552fcf2efb1f14b473d6ffcc2113dc847a85232f56f376a8ea9e181d4e57",
+      "size_bytes": 137893
+    },
+    {
+      "mtime_ns": 1791540844126515800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\final-verification.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/final-verification.log",
+      "sha256": "85a215035d1b584c1032b87bc69bda16506c07b70d81e5350e48ac85851b6dc9",
+      "size_bytes": 176
+    },
+    {
+      "mtime_ns": 1791540707033419300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\freeze-and-generate.ps1",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/freeze-and-generate.ps1",
+      "sha256": "e6406010d48b029667316011bcad69ab8e11f176771faf42ae032602a18660f9",
+      "size_bytes": 8349
+    },
+    {
+      "mtime_ns": 1791540708085225000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\freeze-generate.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/freeze-generate.log",
+      "sha256": "372663c5f896fa69db5a80144fc1f5f4ff050e5def5f237f183525c99d229619",
+      "size_bytes": 138
+    },
+    {
+      "mtime_ns": 1791540707427331000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\gpu-freeze.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/gpu-freeze.json",
+      "sha256": "195d2b9ab67e1fcf65709d00f6c96f9027b38cc72d6aa798c01e3ca84dded9ad",
+      "size_bytes": 991
+    },
+    {
+      "mtime_ns": 1791540436438539600,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\gpu-initial.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/gpu-initial.json",
+      "sha256": "195d2b9ab67e1fcf65709d00f6c96f9027b38cc72d6aa798c01e3ca84dded9ad",
+      "size_bytes": 991
+    },
+    {
+      "mtime_ns": 1791540428409937500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\gpu_identity.py",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/gpu_identity.py",
+      "sha256": "864088184335d4d80cccea57220253c65df10a5ba98d1689b2f9c4c74192fad9",
+      "size_bytes": 5139
+    },
+    {
+      "mtime_ns": 1791540255928394500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\inventory.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/inventory.log",
+      "sha256": "500c4c6e9f1cf935f5b28d2a09f787b8de0cb127338a084d7b965e86c78757d9",
+      "size_bytes": 4835
+    },
+    {
+      "mtime_ns": 1791540248842276200,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\inventory.ps1",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/inventory.ps1",
+      "sha256": "7aabf1ee9a2c3f0eacc9345d7786e9526b7f553805acbc036307c47bfbec5354",
+      "size_bytes": 2131
+    },
+    {
+      "mtime_ns": 1791540707935569500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\namespace-initial.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/namespace-initial.json",
+      "sha256": "f8805a50ee4a945a04d5f900496d86fa3b840599f67357b1e9900b3d78057717",
+      "size_bytes": 38719
+    },
+    {
+      "mtime_ns": 1791541000239721500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\preparation-index.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/preparation-index.json",
+      "sha256": "dd6bbd7c7c658477774884cec3a3b004e308af05b8edbb420b6029f5cc80ecca",
+      "size_bytes": 11737
+    },
+    {
+      "mtime_ns": 1791540843178406800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\publication.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/publication.json",
+      "sha256": "0acf8aba8535f8c662c0ae0c24d54dda66c11920e0be132e0ad061a08c460abf",
+      "size_bytes": 588
+    },
+    {
+      "mtime_ns": 1791540999783211900,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\publish_review.py",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/publish_review.py",
+      "sha256": "e39fe0fd75aff9d9f1e2d6fb22382159c0796dd6230ba650c0965e91df127f28",
+      "size_bytes": 15636
+    },
+    {
+      "mtime_ns": 1791540577053354400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\release-build-exit.txt",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/release-build-exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    {
+      "mtime_ns": 1791540577048356700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\release-build.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/release-build.log",
+      "sha256": "8bebc078491fb06aaae859c78c350321ddb0c2ffecab09a36615888c80b1d66c",
+      "size_bytes": 30654
+    },
+    {
+      "mtime_ns": 1791540707672173700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\release-build.ninja",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/release-build.ninja",
+      "sha256": "ad368f287579367f0def15c91d08b26860b30b60ff60d7df2143121a92af537b",
+      "size_bytes": 524733
+    },
+    {
+      "mtime_ns": 1791540707675173300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\release-cache.txt",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/release-cache.txt",
+      "sha256": "2981be64edfcc2634f96c0ab5581a029c9e74d7bcf68debf4ccd80a6dfdaec04",
+      "size_bytes": 37992
+    },
+    {
+      "mtime_ns": 1791540707711490100,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\release-configure.yaml",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/release-configure.yaml",
+      "sha256": "0e0f0ff24b5076f8ebba3694f0d2195fa446e374cd265e73c1f7b2ab4b8afa56",
+      "size_bytes": 41235139
+    },
+    {
+      "mtime_ns": 1791540636331825800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\release-cuda-elf.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/release-cuda-elf.log",
+      "sha256": "fed9ed719bd3be6ec46712a080b5bbdec4803414590d713ec830e2f49a1f7691",
+      "size_bytes": 250
+    },
+    {
+      "mtime_ns": 1791540707678173500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\release-ninja.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/release-ninja.log",
+      "sha256": "19d2538b141310ead581ca4c2420093e62878fb3d57343a695020b380d45f70f",
+      "size_bytes": 23172
+    },
+    {
+      "mtime_ns": 1791541000240722600,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\review.md",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/review.md",
+      "sha256": "cc2beab3ec45bd7562078c518b5841a566b10e914094d23e7de6647ad054b2fd",
+      "size_bytes": 19511
+    },
+    {
+      "mtime_ns": 1791540873660085000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\stability-verification.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/stability-verification.json",
+      "sha256": "bd13bd32210a610e891a16296a9739801f3ebad9658c76b1dc06ff43c72cf3c7",
+      "size_bytes": 137905
+    },
+    {
+      "mtime_ns": 1791540873667087100,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\stability-verification.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/stability-verification.log",
+      "sha256": "5d4f9e87316e66c27d2a064a2a11aca33edeb673dceef36b8e9ade2ffba0e9c0",
+      "size_bytes": 180
+    },
+    {
+      "mtime_ns": 1791540584786241200,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\supervisor-inventory.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/supervisor-inventory.log",
+      "sha256": "2cbd1df62acc96968713ee1e5965b52f28be3fd548907c1a852256002171ac2a",
+      "size_bytes": 252
+    },
+    {
+      "mtime_ns": 1791540612265076200,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\supervisor-smoke-exit.txt",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/supervisor-smoke-exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size_bytes": 2
+    },
+    {
+      "mtime_ns": 1791540612249076200,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\supervisor-smoke.json",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/supervisor-smoke.json",
+      "sha256": "dc30c8a5415d692838a63827413f6c92ddf51cad3d00687f9d91820d0f4bbcdc",
+      "size_bytes": 1967
+    },
+    {
+      "mtime_ns": 1791540612250075000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\supervisor-smoke.log",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/supervisor-smoke.log",
+      "sha256": "b28dc30ae8914547a1383ca2464b306a46477aea3e48be5e256c6a70ce8221e4",
+      "size_bytes": 1940
+    },
+    {
+      "mtime_ns": 1791540810349673400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\verify.py",
+      "relative_path": "results/local/ex2-s7-preparation-20261009-h2/verify.py",
+      "sha256": "409c8d5a9cc43485d936f87e93f4cfa7d12bff3c92afacc91f2f04f9d31ebf05",
+      "size_bytes": 12804
+    },
+    {
+      "mtime_ns": 1791542074321040700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\final-host-state.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/final-host-state.json",
+      "sha256": "e608d75d15a3f31bd9bd872531e2153945de0062dceb758bf7e1b8d2f2ec0485",
+      "size_bytes": 325768
+    },
+    {
+      "mtime_ns": 1791542271906705400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\final-integrity-inventory.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/final-integrity-inventory.json",
+      "sha256": "c87aace54a52af4eb4c00ef48d19897d52aab7df7d4919fab25707dc3586ee09",
+      "size_bytes": 215006
+    },
+    {
+      "mtime_ns": 1791542585407942800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\final-prelaunch-receipt.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/final-prelaunch-receipt.json",
+      "sha256": "81db203166cebbb3683e4ee91a6095572ea408943bb6192d1d39a6ec054304a3",
+      "size_bytes": 10247
+    },
+    {
+      "mtime_ns": 1791542585410938600,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\final-prelaunch-review.md",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/final-prelaunch-review.md",
+      "sha256": "fe05e04e606571bc2f9ded383e8963579f38dda9527e17358a099ec1c5b18314",
+      "size_bytes": 25731
+    },
+    {
+      "mtime_ns": 1791542074324037700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\host-query-receipt.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/host-query-receipt.json",
+      "sha256": "8997c9e84923edc257fa122782ee70098a8054b68511b19473ff618c157bba04",
+      "size_bytes": 5386
+    },
+    {
+      "mtime_ns": 1791542271820704200,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\independent-api-identity.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/independent-api-identity.json",
+      "sha256": "8c70ae8606e20411e11d09168c28d4f81621e3006f2e2c87bcc413aed40a5e86",
+      "size_bytes": 2553
+    },
+    {
+      "mtime_ns": 1791542270757371600,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\independent-audit.py",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/independent-audit.py",
+      "sha256": "0423c431e595f9487c795ac0a4e807b9c029b3e7253b03d7bfc4fb5ed4a58f38",
+      "size_bytes": 23447
+    },
+    {
+      "mtime_ns": 1791542344113189500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\layer-environment-conditions.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/layer-environment-conditions.json",
+      "sha256": "7eb262c0aec9005252b36eb3eee86fbb9538f5f8dba94cc5b96db2a499b9ddf7",
+      "size_bytes": 634
+    },
+    {
+      "mtime_ns": 1791542066892132400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\observe-host.ps1",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/observe-host.ps1",
+      "sha256": "ad563d4627f34bba78ef5e35a75776217dd6b2041ac4cc599abd4d149180f2d7",
+      "size_bytes": 10546
+    },
+    {
+      "mtime_ns": 1791542074302038100,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\powershell-hash-crosscheck.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/powershell-hash-crosscheck.json",
+      "sha256": "d7aca62e79ede26c7b812a0a51ee7e2d2ef8632b6a33c021de0814ffbd31fac2",
+      "size_bytes": 2388
+    },
+    {
+      "mtime_ns": 1791542585408940300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\read-only-command-log.txt",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/read-only-command-log.txt",
+      "sha256": "5be6599c18bb54cf91b9a19a1efc7e5b3321901a070e5f9bf7c639c49de74e8b",
+      "size_bytes": 2862
+    },
+    {
+      "mtime_ns": 1791542585414940400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\review-index.json",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/review-index.json",
+      "sha256": "9672a788518e4086f47be2125c977712fab43115cae2119b953cd2d30f339728",
+      "size_bytes": 3150
+    },
+    {
+      "mtime_ns": 1791542584706086100,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-final-prelaunch-review-20261009\\write-review-reports.py",
+      "relative_path": "results/local/ex2-s7-final-prelaunch-review-20261009/write-review-reports.py",
+      "sha256": "8a2fe76d9093ec1c0234a3270e12feeebf8f65d49d45534590638eff770d6cf6",
+      "size_bytes": 31244
+    },
+    {
+      "mtime_ns": 1791543899170204600,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\after-host.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/after-host.json",
+      "sha256": "c261e433ed9a52be8f20b5b576060628758f2136a92c4b0d43f361b0fdb3cc48",
+      "size_bytes": 33719
+    },
+    {
+      "mtime_ns": 1791543720703043300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\approved-ac-sleep-change.ps1",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/approved-ac-sleep-change.ps1",
+      "sha256": "67b83c8673d5b485ec8e9ed78fda8f2711936eb015e5133e7e6ebccb44eeb001",
+      "size_bytes": 1996
+    },
+    {
+      "mtime_ns": 1791543722866242000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\approved-power-change.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/approved-power-change.json",
+      "sha256": "ddb62ebf1850b616cd37bd4d3a0e0f33029bd36905e38fb5c89c340ced740947",
+      "size_bytes": 4464
+    },
+    {
+      "mtime_ns": 1791543680980306300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\before-host.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/before-host.json",
+      "sha256": "181ed79db8c95cf8ba6b10a30b0f91d738f1bc71b5dc23b16e2da3e4f24e3f1e",
+      "size_bytes": 33716
+    },
+    {
+      "mtime_ns": 1791543842243544100,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\before-integrity.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/before-integrity.json",
+      "sha256": "df3ce88da3e7a87a4eaacd4848959d6f0a3734635a676bfb7d4271e0299cc593",
+      "size_bytes": 125535
+    },
+    {
+      "mtime_ns": 1791544190041162100,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\environment-remediation-receipt.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/environment-remediation-receipt.json",
+      "sha256": "d2df53e1dd19ae52aab3c1731f9b5481ecebe47e2a12f2f572d36bef0aefeb53",
+      "size_bytes": 14850
+    },
+    {
+      "mtime_ns": 1791544190044160700,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\environment-remediation-review.md",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/environment-remediation-review.md",
+      "sha256": "e5cd99bc3878df2c1ea19065a595aaf800a13cd46c1ca54f75d1ef40238a1ece",
+      "size_bytes": 17065
+    },
+    {
+      "mtime_ns": 1791544190043160900,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\exact-execution-log.txt",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/exact-execution-log.txt",
+      "sha256": "cca3bea17f09e57cce3fe0f95796d4b077b0f28921ba98912bf24dbd6c776698",
+      "size_bytes": 2632
+    },
+    {
+      "mtime_ns": 1791543900333971900,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\final-integrity.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/final-integrity.json",
+      "sha256": "c42c434b9790ec806b515c08dc29a2275fbdd8d3c3cd169c6c51db62162f9f08",
+      "size_bytes": 125534
+    },
+    {
+      "mtime_ns": 1791543678224634500,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\host-observation.ps1",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/host-observation.ps1",
+      "sha256": "520112f5a4980cbf86ad5c8eef5254b3fdf935a290899ababb828ca1a1129e23",
+      "size_bytes": 3664
+    },
+    {
+      "mtime_ns": 1791543865554957300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\metadata-only-probe.py",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/metadata-only-probe.py",
+      "sha256": "87ffcbb6709e9ed03c54eba3d5ac39eba3130958ddf0c72109f45de8cb1e0f3c",
+      "size_bytes": 7369
+    },
+    {
+      "mtime_ns": 1791544001927777800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\nvidia-capture-observation.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/nvidia-capture-observation.json",
+      "sha256": "2bce52040361321c86fe4055f83e919021cc2a91ee252f1937fe63c01dc87628",
+      "size_bytes": 946
+    },
+    {
+      "mtime_ns": 1791544190039161900,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\operator-decisions.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/operator-decisions.json",
+      "sha256": "bf98fc51d951059814d14198f3a14b7e8b4ee887eda5e784adf9be55f293c278",
+      "size_bytes": 1564
+    },
+    {
+      "mtime_ns": 1791544190048163400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\output-inventory.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/output-inventory.json",
+      "sha256": "940f76e9f22b0109efe246198786def264fb0fabfa340797d1a8864ca9a9708b",
+      "size_bytes": 5131
+    },
+    {
+      "mtime_ns": 1791543865731959400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-execution.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/probe-execution.json",
+      "sha256": "5054e49d4016b70877f154b9e5df39e169c8be12d9256134e5530b52a6227b14",
+      "size_bytes": 3507
+    },
+    {
+      "mtime_ns": 1791543865556958400,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-invocation-before.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/probe-invocation-before.json",
+      "sha256": "6dea3bdd542be08917837f9770b438e18b72912907d731e24b4700b6e341f12b",
+      "size_bytes": 3257
+    },
+    {
+      "mtime_ns": 1791543865732960000,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-result.json",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/probe-result.json",
+      "sha256": "5ade9ff10a15edf69cf1ee3a24ba06fd6f0c23329077016593aca963caa94641",
+      "size_bytes": 7033
+    },
+    {
+      "mtime_ns": 1791543865729959800,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-stderr.txt",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/probe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "mtime_ns": 1791543865728956200,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\probe-stdout.txt",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/probe-stdout.txt",
+      "sha256": "bfaef376eaeee3b5b95284f00756c7ba2f06d068af78873bb898c2fba02894ad",
+      "size_bytes": 6252
+    },
+    {
+      "mtime_ns": 1791544189581288300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\publish-remediation-review.py",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/publish-remediation-review.py",
+      "sha256": "91ca2eecc9033567c42dcce728670c7ca0f87df9a06a16515d3ea622cc874650",
+      "size_bytes": 24198
+    },
+    {
+      "mtime_ns": 1791543841125333300,
+      "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-environment-remediation-20261009\\remediation-control.py",
+      "relative_path": "results/local/ex2-s7-environment-remediation-20261009/remediation-control.py",
+      "sha256": "2d8439c9e98ba61db1c647e236a09cbbe4a62b786f4de594f00dab4cabc7c43b",
+      "size_bytes": 14068
+    }
+  ],
+  "scope": "Historical shared preparation authority only; no E1 scientific adoption"
+}

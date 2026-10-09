@@ -1,0 +1,74 @@
+{
+  "active_ledger_package_reads_during_execution": 0,
+  "counts": {
+    "not_launched": 0,
+    "pending_phase": 0,
+    "process_creations_recorded": 220,
+    "resolved_diagnostic_failure": 0,
+    "resolved_success": 220,
+    "undispositioned": 0,
+    "unresolved_campaign_fatal": 0
+  },
+  "counts_basis": "Authoritative final terminal ledger",
+  "created": {
+    "argv": [
+      "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\out\\build\\x64-release\\src\\app\\ComputeLabEx2Stage6Supervisor.exe",
+      "--manifest",
+      "results/local/ex2-s7-3060ti-e2-8f1565f-stage6-manifest.json"
+    ],
+    "cwd": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti",
+    "pid": 4852,
+    "start_utc": "2026-10-09T13:07:23.381699+00:00",
+    "status": "LAUNCHED_ONCE",
+    "wrapper_pid": 15060
+  },
+  "dispatch_count": 1,
+  "e1_preservation_drift": [],
+  "e1_preserved": true,
+  "git_clean": true,
+  "ledger_file_identity": {
+    "bytes": 7257688,
+    "path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-stage6-control.json",
+    "sha256": "6194c50f8a2f38aeb977c96eb17ec9abd8ca8607ae9db1bc4f0eeafdf0b5b2c5"
+  },
+  "ledger_path": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e2-8f1565f-stage6-control.json",
+  "ledger_revision": 905,
+  "ledger_state": "completed",
+  "live_production_observed": false,
+  "manifest_id": "ex2-s7-3060ti-e2-8f1565f",
+  "native_supervisor_creations": 1,
+  "native_terminal": {
+    "end_utc": "2026-10-09T13:21:58.012108+00:00",
+    "exit_code": 0,
+    "pid": 4852,
+    "restore_avast_immediately": true,
+    "scientific_acceptance_inferred": false,
+    "status": "TERMINAL"
+  },
+  "power_restoration": {
+    "argv": [
+      "powercfg",
+      "/change",
+      "standby-timeout-ac",
+      "30"
+    ],
+    "exit_code": 0,
+    "readback": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)\n  GUID Alias: SCHEME_BALANCED\n  Subgroup GUID: 238c9fa8-0aad-41ed-83f4-97be242c8f20  (Sleep)\n    GUID Alias: SUB_SLEEP\n    Power Setting GUID: 29f6c1db-86da-48c5-9fdb-f2b67b1f44da  (Sleep after)\n      GUID Alias: STANDBYIDLE\n      Minimum Possible Setting: 0x00000000\n      Maximum Possible Setting: 0xffffffff\n      Possible Settings increment: 0x00000001\n      Possible Settings units: Seconds\n    Current AC Power Setting Index: 0x00000708\n    Current DC Power Setting Index: 0x00000384\n\n    Power Setting GUID: 94ac6d29-73ce-41a6-809f-6363ba21b47e  (Allow hybrid sleep)\n      GUID Alias: HYBRIDSLEEP\n      Possible Setting Index: 000\n      Possible Setting Friendly Name: Off\n      Possible Setting Index: 001\n      Possible Setting Friendly Name: On\n    Current AC Power Setting Index: 0x00000001\n    Current DC Power Setting Index: 0x00000001\n\n    Power Setting GUID: 9d7815a6-7ee4-497e-8888-515a05f02364  (Hibernate after)\n      GUID Alias: HIBERNATEIDLE\n      Minimum Possible Setting: 0x00000000\n      Maximum Possible Setting: 0xffffffff\n      Possible Settings increment: 0x00000001\n      Possible Settings units: Seconds\n    Current AC Power Setting Index: 0x00000000\n    Current DC Power Setting Index: 0x00000000\n\n    Power Setting GUID: bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d  (Allow wake timers)\n      GUID Alias: RTCWAKE\n      Possible Setting Index: 000\n      Possible Setting Friendly Name: Disable\n      Possible Setting Index: 001\n      Possible Setting Friendly Name: Enable\n      Possible Setting Index: 002\n      Possible Setting Friendly Name: Important Wake Timers Only\n    Current AC Power Setting Index: 0x00000001\n    Current DC Power Setting Index: 0x00000001",
+    "restored": true,
+    "stderr": "",
+    "stdout": "",
+    "utc": "2026-10-09T13:21:58.065107+00:00"
+  },
+  "restore_avast_immediately": true,
+  "retry_resume_performed": false,
+  "scientific_acceptance_requires_separate_independent_audit": true,
+  "source_git_status": "",
+  "status": "E2_COMPLETED_NATIVE_0",
+  "utc": "2026-10-09T13:23:36.899466+00:00",
+  "wrapper_terminal": {
+    "restore_avast_immediately": true,
+    "status": "TERMINAL",
+    "supervisor_exit_code": 0,
+    "utc": "2026-10-09T13:21:58.067108+00:00"
+  }
+}

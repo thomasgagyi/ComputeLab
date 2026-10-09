@@ -1,0 +1,90 @@
+{
+  "api_scope": "Driver and instance metadata only; no CUDA context, logical VkDevice, queue, kernel or operations",
+  "cuda": [
+    {
+      "compute_capability": "8.6",
+      "name": "NVIDIA GeForce RTX 3060 Ti",
+      "ordinal": 0,
+      "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084"
+    }
+  ],
+  "cuda_driver_api_version": 13040,
+  "discoverable_layers": [
+    {
+      "description": "NVIDIA Optimus layer",
+      "name": "VK_LAYER_NV_optimus"
+    },
+    {
+      "description": "NVIDIA Presentation Layer",
+      "name": "VK_LAYER_NV_present"
+    },
+    {
+      "description": "Open Broadcaster Software hook",
+      "name": "VK_LAYER_OBS_HOOK"
+    },
+    {
+      "description": "Steam Overlay Layer",
+      "name": "VK_LAYER_VALVE_steam_overlay"
+    },
+    {
+      "description": "Steam Pipeline Caching Layer",
+      "name": "VK_LAYER_VALVE_steam_fossilize"
+    },
+    {
+      "description": "LunarG API dump layer",
+      "name": "VK_LAYER_LUNARG_api_dump"
+    },
+    {
+      "description": "GFXReconstruct Capture Layer Version 1.0.5",
+      "name": "VK_LAYER_LUNARG_gfxreconstruct"
+    },
+    {
+      "description": "Khronos Synchronization2 layer",
+      "name": "VK_LAYER_KHRONOS_synchronization2"
+    },
+    {
+      "description": "Khronos Validation Layer",
+      "name": "VK_LAYER_KHRONOS_validation"
+    },
+    {
+      "description": "Execution Monitoring Layer",
+      "name": "VK_LAYER_LUNARG_monitor"
+    },
+    {
+      "description": "LunarG image capture layer",
+      "name": "VK_LAYER_LUNARG_screenshot"
+    },
+    {
+      "description": "Khronos Profiles layer",
+      "name": "VK_LAYER_KHRONOS_profiles"
+    },
+    {
+      "description": "Khronos Shader object layer",
+      "name": "VK_LAYER_KHRONOS_shader_object"
+    },
+    {
+      "description": "Crash Diagnostic Layer is a crash/hang debugging tool that helps determines GPU progress in a Vulkan application.",
+      "name": "VK_LAYER_LUNARG_crash_diagnostic"
+    }
+  ],
+  "independent_of_prior_helper": true,
+  "loaded_relevant_modules": [
+    "C:\\Windows\\SYSTEM32\\vulkan-1.dll",
+    "C:\\ProgramData\\obs-studio-hook\\graphics-hook64.dll"
+  ],
+  "requested_explicit_layers": [],
+  "vulkan": [
+    {
+      "api_version": 4211039,
+      "device_id": 9353,
+      "driver_uuid": "16edf611-2967-515e-b44e-a51f39e45424",
+      "driver_version_raw": 2585198592,
+      "index": 0,
+      "luid": "23a0000000000000",
+      "luid_valid": true,
+      "name": "NVIDIA GeForce RTX 3060 Ti",
+      "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084",
+      "vendor_id": 4318
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "DISABLE_VULKAN_OBS_CAPTURE",
+    "process": null,
+    "user": null,
+    "machine": null
+  },
+  {
+    "name": "ENABLE_VK_LAYER_VALVE_steam_overlay_1",
+    "process": null,
+    "user": null,
+    "machine": null
+  },
+  {
+    "name": "ENABLE_VK_LAYER_VALVE_steam_fossilize_1",
+    "process": null,
+    "user": null,
+    "machine": null
+  },
+  {
+    "name": "DISABLE_VK_LAYER_VALVE_steam_overlay_1",
+    "process": null,
+    "user": null,
+    "machine": null
+  },
+  {
+    "name": "DISABLE_VK_LAYER_VALVE_steam_fossilize_1",
+    "process": null,
+    "user": null,
+    "machine": null
+  }
+]

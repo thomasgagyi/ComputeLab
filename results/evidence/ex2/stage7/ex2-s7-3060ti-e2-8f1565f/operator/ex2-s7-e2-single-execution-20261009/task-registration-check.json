@@ -1,0 +1,11 @@
+{
+  "state": "Ready",
+  "utc": "2026-10-09T13:07:21.4406935Z",
+  "triggers": 0,
+  "no_start_yet": true,
+  "xml": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Task version=\"1.4\" xmlns=\"http://schemas.microsoft.com/windows/2004/02/mit/task\"><RegistrationInfo><Description>Exact human-authorized EX2 Stage7 E2 one-shot. No triggers/restart/retry/resume; exclusive intent guards; no live-ledger monitoring.</Description><URI>\\ComputeLab-EX2-S7-3060Ti-ex2-s7-3060ti-e2-8f1565f</URI></RegistrationInfo><Principals><Principal id=\"Author\"><UserId>S-1-5-21-468799824-2266556073-2519923603-1000</UserId><LogonType>InteractiveToken</LogonType></Principal></Principals><Settings><AllowHardTerminate>false</AllowHardTerminate><DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries><StopIfGoingOnBatteries>false</StopIfGoingOnBatteries><ExecutionTimeLimit>PT0S</ExecutionTimeLimit><MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy><IdleSettings><Duration>PT10M</Duration><WaitTimeout>PT1H</WaitTimeout><StopOnIdleEnd>true</StopOnIdleEnd><RestartOnIdle>false</RestartOnIdle></IdleSettings><UseUnifiedSchedulingEngine>true</UseUnifiedSchedulingEngine></Settings><Triggers /><Actions Context=\"Author\"><Exec><Command>C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe</Command><Arguments>-B \"C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-e2-single-execution-20261009\\single-use-execution.py\" execute-once</Arguments><WorkingDirectory>C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti</WorkingDirectory></Exec></Actions></Task>",
+  "principal_sid": "S-1-5-21-468799824-2266556073-2519923603-1000",
+  "restarts": 0,
+  "passed": true,
+  "task_name": "ComputeLab-EX2-S7-3060Ti-ex2-s7-3060ti-e2-8f1565f"
+}

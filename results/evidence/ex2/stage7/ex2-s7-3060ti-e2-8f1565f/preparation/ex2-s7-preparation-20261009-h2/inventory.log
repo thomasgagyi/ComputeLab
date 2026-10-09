@@ -1,0 +1,165 @@
+**********************
+PowerShell transcript start
+Start time: 20261009130411
+Username: DESKTOP-IL5MPRL\rolan
+RunAs User: DESKTOP-IL5MPRL\rolan
+Configuration Name: 
+Machine: DESKTOP-IL5MPRL (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Users\rolan\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+& .\results\local\ex2-s7-preparation-20261009-h2\inventory.ps1
+Process ID: 7820
+PSVersion: 7.6.5
+PSEdition: Core
+GitCommitId: 7.6.5
+OS: Microsoft Windows 10.0.19045
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Transcript started, output file is C:\Users\rolan\src\ComputeLab-Stage7-3060Ti\results\local\ex2-s7-preparation-20261009-h2/inventory.log
+
+
+
+
+Path
+----
+C:\Users\rolan\src\ComputeLab-Stage7-3060Ti
+
+
+Name               : C:\
+DriveFormat        : NTFS
+AvailableFreeSpace : 287323746304
+TotalSize          : 499427872768
+
+
+Caption                : Microsoft Windows 10 Enterprise
+Version                : 10.0.19045
+BuildNumber            : 19045
+TotalVisibleMemorySize : 33478696
+FreePhysicalMemory     : 24823684
+
+
+Name                      : AMD Ryzen 7 5700X 8-Core Processor
+NumberOfCores             : 8
+NumberOfLogicalProcessors : 16
+
+
+ProcessName                      Id
+-----------                      --
+AnyDesk                        2936
+AnyDesk                        5032
+AnyDesk                       18164
+ChatGPT                        3060
+ChatGPT                        8132
+ChatGPT                       13136
+ChatGPT                       15040
+ChatGPT                       17232
+ChatGPT                       17816
+ChatGPT                       18548
+ChatGPT                       19316
+ChatGPT                       19324
+ChatGPT                       20064
+ChatGPT                       21284
+ChatGPT                       21916
+ChatGPT                       22368
+codex                         18588
+codex                         20652
+codex-code-mode-host          14944
+codex-computer-use-swift      20268
+codex-windows-sandbox-service  5644
+dwm                            1752
+explorer                       8968
+
+
+NORMAL ENVIRONMENT
+
+Name       Value
+----       -----
+CUDA_PATH  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.4
+VULKAN_SDK C:\VulkanSDK\1.4.363.0
+VCPKG_ROOT D:\vcpkg
+
+
+Name   : nvcc.exe
+Source : C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.4\bin\nvcc.exe
+
+Name   : glslc.exe
+Source : C:\VulkanSDK\1.4.363.0\Bin\glslc.exe
+
+Name   : spirv-val.exe
+Source : C:\VulkanSDK\1.4.363.0\Bin\spirv-val.exe
+
+Name   : cmake.exe
+Source : C:\Program Files\CMake\bin\cmake.exe
+
+Name   : vcpkg.exe
+Source : D:\vcpkg\vcpkg.exe
+
+
+
+
+
+
+**********************************************************************
+** Visual Studio 2026 Developer PowerShell v18.10.3
+** Copyright (c) 2026 Microsoft Corporation
+**********************************************************************
+ACTUAL BUILD DEVELOPER SHELL
+
+Name              Value
+----              -----
+CUDA_PATH         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.4
+VULKAN_SDK        C:\VulkanSDK\1.4.363.0
+VCPKG_ROOT        C:\Program Files\Microsoft Visual Studio\18\Community\VC\vcpkg
+WindowsSDKVersion 10.0.26100.0\
+
+
+Name   : cl.exe
+Source : C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe
+
+Name   : nvcc.exe
+Source : C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.4\bin\nvcc.exe
+
+Name   : glslc.exe
+Source : C:\VulkanSDK\1.4.363.0\Bin\glslc.exe
+
+Name   : spirv-val.exe
+Source : C:\VulkanSDK\1.4.363.0\Bin\spirv-val.exe
+
+Name   : rc.exe
+Source : C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\\x64\rc.exe
+
+Name   : mt.exe
+Source : C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\\x64\mt.exe
+
+Name   : ninja.exe
+Source : C:\Program Files\Microsoft Visual
+         Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe
+
+Name   : cmake.exe
+Source : C:\Program Files\CMake\bin\cmake.exe
+
+Name   : vcpkg.exe
+Source : C:\Program Files\Microsoft Visual Studio\18\Community\VC\vcpkg\vcpkg.exe
+
+Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36260 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+usage: cl [ option... ] filename... [ /link linkoption... ]
+
+
+
+
+
+
+
+FullName : C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.4\lib\x64\nvml.lib
+Length   : 118114
+
+
+**********************
+PowerShell transcript end
+End time: 20261009130415
+**********************

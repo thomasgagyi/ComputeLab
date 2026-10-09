@@ -1,0 +1,13 @@
+{
+  "single_dispatch_guard_present": true,
+  "e2_task_state": "Ready",
+  "source": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274",
+  "e1_task_configuration_unchanged": true,
+  "utc": "2026-10-09T13:24:24.2584121Z",
+  "native_supervisor_terminal_exit": 0,
+  "scheduler_result_is_not_native_scientific_acceptance": true,
+  "scheduler_wrapper_result": 0,
+  "manifest_physical_sha256": "d4d93217721285bbc7d55d8fc6853a3685e0d23f1f5e1b6203244c359122e1e1",
+  "git_status": [],
+  "single_native_launch_intent_present": true
+}

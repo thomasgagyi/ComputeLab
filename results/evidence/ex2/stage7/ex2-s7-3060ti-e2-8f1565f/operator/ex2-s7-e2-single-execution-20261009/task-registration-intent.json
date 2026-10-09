@@ -1,0 +1,12 @@
+{
+  "e1_unchanged": true,
+  "utc": "2026-10-09T13:07:21.0709650Z",
+  "script_sha256": "b4600275cb81f883fa31a8a2d5cc835ae883fb5937a251d2cb00efabc4b67aba",
+  "arguments": "-B \"C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-e2-single-execution-20261009\\single-use-execution.py\" execute-once",
+  "python_sha256": "10d845f50a2af64e3500bb2fcb348b5bc98a75d8ddada63e45ba1da6a1fc79d1",
+  "restart_count": 0,
+  "principal_sid": "S-1-5-21-468799824-2266556073-2519923603-1000",
+  "execute": "C:\\Users\\rolan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "trigger_count": 0,
+  "task_name": "ComputeLab-EX2-S7-3060Ti-ex2-s7-3060ti-e2-8f1565f"
+}

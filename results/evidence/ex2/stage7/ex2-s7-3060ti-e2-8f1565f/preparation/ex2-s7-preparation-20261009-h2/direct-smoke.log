@@ -1,0 +1,30 @@
+Running main() from C:\Users\rolan\Desktop\CmptLab\ComputeLab\out\build\x64-debug\vcpkg_installed\vcpkg\blds\gtest\src\v1.18.0-e6987f02b9.clean\googletest\src\gtest_main.cc
+Note: Google Test filter = Ex2Stage6ReleaseSmoke.A1Cuda:Ex2Stage6ReleaseSmoke.A1Vulkan:Ex2Stage6ReleaseSmoke.E1Cuda:Ex2Stage6ReleaseSmoke.E1Vulkan
+[==========] Running 4 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 4 tests from Ex2Stage6ReleaseSmoke
+[ RUN      ] Ex2Stage6ReleaseSmoke.A1Cuda
+S6-I2 child exit=0
+S6-I2 smoke cell=0 plan=0 backend=cuda exit=0 session=s6-i2-smoke-21900-0-0-3765789712000
+S6-I2 smoke artifacts=4 rows=100 successful=100 seconds=0.528425 cleanup=owned-session
+[       OK ] Ex2Stage6ReleaseSmoke.A1Cuda (529 ms)
+[ RUN      ] Ex2Stage6ReleaseSmoke.A1Vulkan
+S6-I2 child exit=0
+S6-I2 smoke cell=0 plan=1 backend=vulkan exit=0 session=s6-i2-smoke-21900-0-1-3766318936800
+S6-I2 smoke artifacts=4 rows=100 successful=100 seconds=0.801404 cleanup=owned-session
+[       OK ] Ex2Stage6ReleaseSmoke.A1Vulkan (802 ms)
+[ RUN      ] Ex2Stage6ReleaseSmoke.E1Cuda
+S6-I2 child exit=0
+S6-I2 smoke cell=16 plan=0 backend=cuda exit=0 session=s6-i2-smoke-21900-16-0-3767121117600
+S6-I2 smoke artifacts=4 rows=100 successful=100 seconds=0.46673 cleanup=owned-session
+[       OK ] Ex2Stage6ReleaseSmoke.E1Cuda (467 ms)
+[ RUN      ] Ex2Stage6ReleaseSmoke.E1Vulkan
+S6-I2 child exit=0
+S6-I2 smoke cell=16 plan=1 backend=vulkan exit=0 session=s6-i2-smoke-21900-16-1-3767588641800
+S6-I2 smoke artifacts=4 rows=100 successful=100 seconds=0.523932 cleanup=owned-session
+[       OK ] Ex2Stage6ReleaseSmoke.E1Vulkan (524 ms)
+[----------] 4 tests from Ex2Stage6ReleaseSmoke (2323 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 1 test suite ran. (2323 ms total)
+[  PASSED  ] 4 tests.

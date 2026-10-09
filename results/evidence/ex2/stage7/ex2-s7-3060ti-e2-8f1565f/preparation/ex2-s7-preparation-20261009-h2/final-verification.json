@@ -1,0 +1,5125 @@
+{
+  "absent_paths": [
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-000",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-000.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-000.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-001",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-001.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-001.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-002",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-002.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-002.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-003",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-003.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-003.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-004",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-004.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-004.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-005",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-005.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-005.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-006",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-006.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-006.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-007",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-007.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-007.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-008",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-008.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-008.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-009",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-009.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-009.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-010",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-010.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-010.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-011",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-011.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-011.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-012",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-012.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-012.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-013",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-013.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-013.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-014",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-014.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-014.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-015",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-015.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-015.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-016",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-016.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-016.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-017",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-017.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-017.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-018",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-018.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-018.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-019",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-019.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-019.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-020",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-020.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-020.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-021",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-021.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-021.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-022",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-022.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-022.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-023",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-023.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-023.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-024",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-024.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-024.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-025",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-025.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-025.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-026",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-026.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-026.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-027",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-027.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-027.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-028",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-028.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-028.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-029",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-029.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-029.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-030",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-030.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-030.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-031",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-031.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-031.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-032",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-032.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-032.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-033",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-033.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-033.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-034",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-034.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-034.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-035",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-035.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-035.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-036",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-036.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-036.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-037",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-037.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-037.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-038",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-038.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-038.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-039",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-039.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-039.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-040",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-040.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-040.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-041",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-041.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-041.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-042",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-042.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-042.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-043",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-043.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-043.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-044",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-044.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-044.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-045",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-045.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-045.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-046",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-046.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-046.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-047",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-047.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-047.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-048",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-048.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-048.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-049",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-049.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-049.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-050",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-050.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-050.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-051",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-051.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-051.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-052",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-052.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-052.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-053",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-053.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-053.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-054",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-054.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-054.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-055",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-055.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-055.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-056",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-056.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-056.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-057",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-057.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-057.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-058",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-058.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-058.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-059",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-059.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-059.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-060",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-060.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-060.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-061",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-061.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-061.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-062",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-062.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-062.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-063",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-063.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-063.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-064",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-064.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-064.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-065",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-065.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-065.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-066",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-066.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-066.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-067",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-067.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-067.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-068",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-068.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-068.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-069",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-069.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-069.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-070",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-070.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-070.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-071",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-071.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-071.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-072",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-072.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-072.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-073",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-073.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-073.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-074",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-074.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-074.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-075",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-075.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-075.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-076",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-076.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-076.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-077",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-077.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-077.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-078",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-078.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-078.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-079",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-079.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-079.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-080",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-080.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-080.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-081",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-081.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-081.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-082",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-082.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-082.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-083",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-083.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-083.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-084",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-084.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-084.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-085",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-085.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-085.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-086",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-086.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-086.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-087",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-087.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-087.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-088",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-088.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-088.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-089",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-089.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-089.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-090",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-090.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-090.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-091",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-091.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-091.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-092",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-092.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-092.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-093",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-093.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-093.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-094",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-094.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-094.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-095",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-095.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-095.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-096",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-096.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-096.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-097",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-097.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-097.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-098",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-098.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-098.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-099",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-099.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-099.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-100",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-100.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-100.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-101",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-101.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-101.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-102",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-102.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-102.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-103",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-103.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-103.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-104",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-104.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-104.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-105",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-105.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-105.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-106",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-106.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-106.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-107",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-107.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-107.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-108",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-108.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-108.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-109",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-109.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-109.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-110",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-110.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-110.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-111",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-111.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-111.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-112",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-112.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-112.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-113",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-113.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-113.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-114",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-114.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-114.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-115",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-115.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-115.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-116",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-116.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-116.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-117",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-117.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-117.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-118",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-118.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-118.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-119",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-119.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-119.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-120",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-120.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-120.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-121",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-121.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-121.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-122",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-122.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-122.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-123",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-123.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-123.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-124",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-124.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-124.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-125",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-125.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-125.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-126",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-126.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-126.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-127",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-127.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-127.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-128",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-128.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-128.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-129",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-129.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-129.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-130",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-130.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-130.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-131",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-131.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-131.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-132",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-132.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-132.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-133",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-133.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-133.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-134",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-134.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-134.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-135",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-135.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-135.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-136",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-136.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-136.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-137",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-137.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-137.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-138",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-138.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-138.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-139",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-139.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-139.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-140",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-140.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-140.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-141",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-141.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-141.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-142",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-142.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-142.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-143",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-143.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-143.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-144",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-144.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-144.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-145",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-145.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-145.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-146",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-146.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-146.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-147",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-147.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-147.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-148",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-148.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-148.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-149",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-149.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-149.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-150",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-150.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-150.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-151",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-151.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-151.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-152",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-152.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-152.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-153",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-153.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-153.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-154",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-154.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-154.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-155",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-155.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-155.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-156",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-156.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-156.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-157",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-157.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-157.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-158",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-158.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-158.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-159",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-159.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-159.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-160",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-160.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-160.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-161",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-161.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-161.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-162",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-162.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-162.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-163",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-163.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-163.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-164",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-164.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-164.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-165",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-165.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-165.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-166",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-166.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-166.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-167",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-167.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-167.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-168",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-168.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-168.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-169",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-169.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-169.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-170",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-170.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-170.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-171",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-171.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-171.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-172",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-172.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-172.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-173",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-173.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-173.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-174",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-174.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-174.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-175",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-175.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-175.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-176",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-176.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-176.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-177",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-177.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-177.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-178",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-178.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-178.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-179",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-179.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-179.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-180",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-180.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-180.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-181",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-181.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-181.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-182",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-182.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-182.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-183",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-183.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-183.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-184",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-184.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-184.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-185",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-185.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-185.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-186",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-186.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-186.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-187",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-187.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-187.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-188",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-188.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-188.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-189",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-189.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-189.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-190",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-190.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-190.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-191",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-191.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-191.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-192",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-192.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-192.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-193",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-193.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-193.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-194",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-194.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-194.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-195",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-195.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-195.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-196",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-196.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-196.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-197",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-197.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-197.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-198",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-198.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-198.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-199",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-199.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-199.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-200",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-200.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-200.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-201",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-201.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-201.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-202",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-202.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-202.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-203",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-203.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-203.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-204",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-204.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-204.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-205",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-205.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-205.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-206",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-206.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-206.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-207",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-207.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-207.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-208",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-208.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-208.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-209",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-209.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-209.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-210",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-210.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-210.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-211",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-211.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-211.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-212",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-212.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-212.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-213",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-213.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-213.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-214",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-214.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-214.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-215",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-215.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-215.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-216",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-216.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-216.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-217",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-217.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-217.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-218",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-218.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-218.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-219",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-219.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-slot-219.failure.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-stage6-control.json",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-stage6-control.json.incomplete",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-stage6-control.json.incomplete.tmp",
+    "results\\local\\ex2-s7-3060ti-e1-8f1565f-stage6-analysis",
+    "results\\tmp\\ex2-s7-3060ti-e1-8f1565f-execution"
+  ],
+  "absent_paths_checked": 665,
+  "artifacts": {
+    "a1": {
+      "path": "out/build/x64-release/src/vulkan/Ex2A1.comp.spv",
+      "sha256": "c40c5ef608254d7763aa244d1ca6403605f750212a038ccf1913cff2bd61c63a",
+      "size_bytes": 1552
+    },
+    "a2": {
+      "path": "out/build/x64-release/src/vulkan/Ex2A2.comp.spv",
+      "sha256": "bfda73b6abe562facaba4fa265b281144e2c8761517ffad71c8176184cf17f3f",
+      "size_bytes": 2188
+    },
+    "b1": {
+      "path": "out/build/x64-release/src/vulkan/Ex2B1.comp.spv",
+      "sha256": "7eb4a7d40c2ea5aa133821290318b18b45c49f5284cb6ffc8ebda5f9b35e933c",
+      "size_bytes": 1880
+    },
+    "b2": {
+      "path": "out/build/x64-release/src/vulkan/Ex2B2.comp.spv",
+      "sha256": "2761fe5fab23630ce7ed47a93afe74cd769d1b154fa13a33a49601ed02120a26",
+      "size_bytes": 1880
+    },
+    "c": {
+      "path": "out/build/x64-release/src/vulkan/Ex2C.comp.spv",
+      "sha256": "7e4643308689eb49ee19a205ad126cf616e57f2c613b2e11007ad5a95446a4aa",
+      "size_bytes": 1436
+    },
+    "child": {
+      "path": "out/build/x64-release/src/app/ComputeLabEx2Stage6.exe",
+      "sha256": "4104e5f7237b03d5ac3265f450358e76533b099e4fdc049e62cd9ff20e9ae93c",
+      "size_bytes": 766464
+    },
+    "d1": {
+      "path": "out/build/x64-release/src/vulkan/Ex2D1.comp.spv",
+      "sha256": "3d0787c7ce83802caca54cd9bc107d506949a509ba0ffe5f0604bf72ed9e7d61",
+      "size_bytes": 1912
+    },
+    "supervisor": {
+      "path": "out/build/x64-release/src/app/ComputeLabEx2Stage6Supervisor.exe",
+      "sha256": "33a0bebcba66e02e2f39ee4b311844c748e1a9b0c828a9c49b5e57ea989de5c8",
+      "size_bytes": 659456
+    }
+  },
+  "canonical_debug_suite": "INCOMPLETE; NOT RERUN",
+  "cell_count": 22,
+  "child_count": 220,
+  "detached_head": true,
+  "direct_release_pass": 4,
+  "execution_worktree": "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti",
+  "final_manifest_absent": false,
+  "git_clean": true,
+  "gpu": {
+    "cuda_device_ordinal": 0,
+    "cuda_devices": [
+      {
+        "compute_capability": "8.6",
+        "name": "NVIDIA GeForce RTX 3060 Ti",
+        "ordinal": 0,
+        "total_memory_bytes": 8589410304,
+        "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084"
+      }
+    ],
+    "cuda_driver_api_version": 13040,
+    "cuda_uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084",
+    "explicitly_enabled_vulkan_layers": [],
+    "reporter": "CUDA Driver and Vulkan properties2 device-ID APIs; no workload",
+    "same_physical_gpu": true,
+    "vulkan_devices": [
+      {
+        "api_version": 4211039,
+        "device_id": 9353,
+        "driver_uuid": "16edf611-2967-515e-b44e-a51f39e45424",
+        "driver_version_raw": 2585198592,
+        "index": 0,
+        "luid": "23a0000000000000",
+        "luid_valid": true,
+        "name": "NVIDIA GeForce RTX 3060 Ti",
+        "uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084",
+        "vendor_id": 4318
+      }
+    ],
+    "vulkan_physical_device_index": 0,
+    "vulkan_uuid": "99a2369e-ca50-aac6-5c2c-fcaa44625084"
+  },
+  "invocation": [
+    "results/local/ex2-s7-preparation-20261009-h2/verify.py",
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-3060ti-e1-8f1565f-stage6-manifest.json",
+    "final",
+    "C:\\Users\\rolan\\src\\ComputeLab-Stage7-3060Ti\\results\\local\\ex2-s7-preparation-20261009-h2\\final-verification.json"
+  ],
+  "machine_id": "ex2-s7-3060ti-machine",
+  "manifest_id": "ex2-s7-3060ti-e1-8f1565f",
+  "namespace_clear": true,
+  "phase": "final",
+  "physical_sha256": "175141852d8c04509bda9342d2ff9e534950a5e95c49e8c04654029e406dad91",
+  "planned_operations": 22000,
+  "production_launch_authorized": false,
+  "production_outputs_present": false,
+  "schedule": [
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 0,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 0,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-000",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 0,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 1,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-001",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 0,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 2,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-002",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 0,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 3,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-003",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 0,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 4,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-004",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 0,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 5,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-005",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 0,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 6,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-006",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 0,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 7,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-007",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 0,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 8,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-008",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 0,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 9,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-009",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        256
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 1,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 10,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-010",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 1,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 11,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-011",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 1,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 12,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-012",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 1,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 13,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-013",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 1,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 14,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-014",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 1,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 15,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-015",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 1,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 16,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-016",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 1,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 17,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-017",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 1,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 18,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-018",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 1,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 19,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-019",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 2,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 20,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-020",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 2,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 21,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-021",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 2,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 22,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-022",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 2,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 23,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-023",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 2,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 24,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-024",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 2,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 25,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-025",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 2,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 26,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-026",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 2,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 27,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-027",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 2,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 28,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-028",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 2,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 29,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-029",
+      "warmup_count": 0,
+      "workload": [
+        "A1",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 3,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 30,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-030",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 3,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 31,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-031",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 3,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 32,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-032",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 3,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 33,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-033",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 3,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 34,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-034",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 3,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 35,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-035",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 3,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 36,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-036",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 3,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 37,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-037",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 3,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 38,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-038",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 3,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 39,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-039",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        262144
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 4,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 40,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-040",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 4,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 41,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-041",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 4,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 42,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-042",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 4,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 43,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-043",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 4,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 44,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-044",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 4,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 45,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-045",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 4,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 46,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-046",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 4,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 47,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-047",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 4,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 48,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-048",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 4,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 49,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-049",
+      "warmup_count": 0,
+      "workload": [
+        "A2",
+        16777216
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 5,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 50,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-050",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 5,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 51,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-051",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 5,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 52,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-052",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 5,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 53,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-053",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 5,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 54,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-054",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 5,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 55,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-055",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 5,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 56,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-056",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 5,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 57,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-057",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 5,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 58,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-058",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 5,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 59,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-059",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 6,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 60,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-060",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 6,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 61,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-061",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 6,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 62,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-062",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 6,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 63,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-063",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 6,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 64,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-064",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 6,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 65,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-065",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 6,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 66,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-066",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 6,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 67,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-067",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 6,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 68,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-068",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 6,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 69,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-069",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 7,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 70,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-070",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 7,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 71,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-071",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 7,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 72,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-072",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 7,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 73,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-073",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 7,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 74,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-074",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 7,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 75,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-075",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 7,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 76,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-076",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 7,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 77,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-077",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 7,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 78,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-078",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 7,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 79,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-079",
+      "warmup_count": 0,
+      "workload": [
+        "B1",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 8,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 80,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-080",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 8,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 81,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-081",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 8,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 82,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-082",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 8,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 83,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-083",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 8,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 84,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-084",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 8,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 85,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-085",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 8,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 86,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-086",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 8,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 87,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-087",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 8,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 88,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-088",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 8,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 89,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-089",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "structured-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 9,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 90,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-090",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 9,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 91,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-091",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 9,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 92,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-092",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 9,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 93,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-093",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 9,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 94,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-094",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 9,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 95,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-095",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 9,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 96,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-096",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 9,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 97,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-097",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 9,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 98,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-098",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 9,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 99,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-099",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        262144,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 10,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 100,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-100",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 10,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 101,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-101",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 10,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 102,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-102",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 10,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 103,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-103",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 10,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 104,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-104",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 10,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 105,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-105",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 10,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 106,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-106",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 10,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 107,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-107",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 10,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 108,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-108",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 10,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 109,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-109",
+      "warmup_count": 0,
+      "workload": [
+        "B2",
+        16777216,
+        "shuffled-v1"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 11,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 110,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-110",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 11,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 111,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-111",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 11,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 112,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-112",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 11,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 113,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-113",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 11,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 114,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-114",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 11,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 115,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-115",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 11,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 116,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-116",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 11,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 117,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-117",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 11,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 118,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-118",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 11,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 119,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-119",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        1048576
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 12,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 120,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-120",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 12,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 121,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-121",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 12,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 122,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-122",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 12,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 123,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-123",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 12,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 124,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-124",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 12,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 125,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-125",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 12,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 126,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-126",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 12,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 127,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-127",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 12,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 128,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-128",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 12,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 129,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-129",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        32768
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 13,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 130,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-130",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 13,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 131,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-131",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 13,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 132,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-132",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 13,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 133,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-133",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 13,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 134,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-134",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 13,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 135,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-135",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 13,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 136,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-136",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 13,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 137,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-137",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 13,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 138,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-138",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 13,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 139,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-139",
+      "warmup_count": 0,
+      "workload": [
+        "C",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 14,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 140,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-140",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 14,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 141,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-141",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 14,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 142,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-142",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 14,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 143,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-143",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 14,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 144,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-144",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 14,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 145,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-145",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 14,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 146,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-146",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 14,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 147,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-147",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 14,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 148,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-148",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 14,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 149,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-149",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        262144,
+        16
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 15,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 150,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-150",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 15,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 151,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-151",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 15,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 152,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-152",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 15,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 153,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-153",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 15,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 154,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-154",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 15,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 155,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-155",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 15,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 156,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-156",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 15,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 157,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-157",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 15,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 158,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-158",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 15,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 159,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-159",
+      "warmup_count": 0,
+      "workload": [
+        "D1",
+        1048576,
+        64
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 16,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 160,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-160",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 16,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 161,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-161",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 16,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 162,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-162",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 16,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 163,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-163",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 16,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 164,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-164",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 16,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 165,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-165",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 16,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 166,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-166",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 16,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 167,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-167",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 16,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 168,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-168",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 16,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 169,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-169",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1024,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 17,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 170,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-170",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 17,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 171,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-171",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 17,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 172,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-172",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 17,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 173,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-173",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 17,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 174,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-174",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 17,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 175,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-175",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 17,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 176,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-176",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 17,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 177,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-177",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 17,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 178,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-178",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 17,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 179,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-179",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        1048576,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 18,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 180,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-180",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 18,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 181,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-181",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 18,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 182,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-182",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 18,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 183,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-183",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 18,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 184,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-184",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 18,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 185,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-185",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 18,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 186,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-186",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 18,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 187,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-187",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 18,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 188,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-188",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 18,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 189,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-189",
+      "warmup_count": 0,
+      "workload": [
+        "E1",
+        67108864,
+        "host-to-device"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 19,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 190,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-190",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 19,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 191,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-191",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 19,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 192,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-192",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 19,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 193,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-193",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 19,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 194,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-194",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 19,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 195,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-195",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 19,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 196,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-196",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 19,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 197,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-197",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 19,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 198,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-198",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 19,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 199,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-199",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1024,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 20,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 200,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-200",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 20,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 201,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-201",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 20,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 202,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-202",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 20,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 203,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-203",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 20,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 204,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-204",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 20,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 205,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-205",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 20,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 206,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-206",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 20,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 207,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-207",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 20,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 208,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-208",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 20,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 209,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-209",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        1048576,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 0,
+      "cell_index": 21,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 210,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-210",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 0,
+      "cell_index": 21,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 0,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 211,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-211",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 1,
+      "cell_index": 21,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 212,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-212",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 1,
+      "cell_index": 21,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 1,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 213,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-213",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 2,
+      "cell_index": 21,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 214,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-214",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 2,
+      "cell_index": 21,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 2,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 215,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-215",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 3,
+      "cell_index": 21,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 216,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-216",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 3,
+      "cell_index": 21,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 3,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 217,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-217",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "cuda",
+      "block_index": 4,
+      "cell_index": 21,
+      "order_slot": 0,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 218,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-218",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    },
+    {
+      "backend": "vulkan",
+      "block_index": 4,
+      "cell_index": 21,
+      "order_slot": 1,
+      "planned_sample_count": 100,
+      "process_index": 4,
+      "sample_indices": [
+        0,
+        99
+      ],
+      "sequence_index": 219,
+      "session_id": "ex2-s7-3060ti-e1-8f1565f-slot-219",
+      "warmup_count": 0,
+      "workload": [
+        "E2",
+        67108864,
+        "device-to-host"
+      ]
+    }
+  ],
+  "semantic_sha256": "5082991f007606e8644601f0c6d076d9850730b54ad236f504aee39afa23fcb0",
+  "source_revision": "8f1565f7fb92e2184f4d2382aabf8fa7d00e1274",
+  "supervised_release_pass": 4,
+  "targeted_debug_pass": 3,
+  "verification_pass": true,
+  "verified_utc": "2026-10-09T10:14:04.094496+00:00"
+}
